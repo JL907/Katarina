@@ -1,0 +1,10 @@
+{
+    "name": "KatarinaMod",
+    "version_number": "0.0.1",
+    "website_url": "https://github.com/JL907/Katarina",
+    "description": "The Boss.",
+    "dependencies": [
+        "bbepis-BepInExPack-5.4.1903",
+        "tristanmcpherson-R2API-4.0.11"
+    ]
+}

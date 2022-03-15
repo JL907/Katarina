@@ -1,0 +1,72 @@
+ManifestFileVersion: 0
+CRC: 1119263229
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 173c294696cd9459a2a20ed9dd6d9f31
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: b1ecde1401cf17e892da83e1d339beb4
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 23
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 33
+  Script: {instanceID: 0}
+- Class: 43
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 74
+  Script: {instanceID: 0}
+- Class: 90
+  Script: {instanceID: 0}
+- Class: 91
+  Script: {instanceID: 0}
+- Class: 95
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: 261c50d8a80898e4ebf2e8e415ea6766, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+- Class: 136
+  Script: {instanceID: 0}
+- Class: 137
+  Script: {instanceID: 0}
+- Class: 198
+  Script: {instanceID: 0}
+- Class: 199
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+- Class: 319
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/Katarina/VFX/ImpactHenrySlash.prefab
+- Assets/Katarina/KatUpper.mask
+- Assets/Katarina/KATARINA.fbx
+- Assets/Katarina/VFX/HenrySwordSwingEffect.prefab
+- Assets/Katarina/HUD/Katarina_Passive.png
+- Assets/Katarina/HUD/KatarinaEWrapper.png
+- Assets/Katarina/skin0.png
+- Assets/Katarina/KatarinaDisplay.prefab
+- Assets/Katarina/animDisplay.controller
+- Assets/Katarina/Jumping UP.anim
+- Assets/Katarina/HUD/KatarinaR.png
+- Assets/Katarina/KatarinaMat2.mat
+- Assets/Katarina/HUD/KatarinaQ.png
+- Assets/Katarina/KatarinaMat.mat
+- Assets/Katarina/animKatarina.controller
+- Assets/Katarina/mdlKatarina.prefab
+- Assets/Katarina/HUD/KatarinaW.png
+- Assets/Katarina/Falling Idle.anim
+Dependencies: []
