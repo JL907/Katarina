@@ -391,3 +391,10 @@ SettMod-1.1.0.zip
 SettMod.dll
 SettMod 1.2.0.zip
 *.zip
+
+*.suo
+*.user
+_ReSharper.*
+bin
+obj
+packages
