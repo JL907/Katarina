@@ -2834,17 +2834,17 @@
   "project": {
     "version": "0.0.1",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Johnrey\\Desktop\\KatarinaMod\\KatarinaMod\\KatarinaMod.csproj",
+      "projectUniqueName": "C:\\Users\\Johnrey\\Desktop\\Katarina\\KatarinaMod\\KatarinaMod.csproj",
       "projectName": "KatarinaMod",
-      "projectPath": "C:\\Users\\Johnrey\\Desktop\\KatarinaMod\\KatarinaMod\\KatarinaMod.csproj",
+      "projectPath": "C:\\Users\\Johnrey\\Desktop\\Katarina\\KatarinaMod\\KatarinaMod.csproj",
       "packagesPath": "C:\\Users\\Johnrey\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Johnrey\\Desktop\\KatarinaMod\\KatarinaMod\\obj\\",
+      "outputPath": "C:\\Users\\Johnrey\\Desktop\\Katarina\\KatarinaMod\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\Johnrey\\Desktop\\KatarinaMod\\NuGet.Config",
+        "C:\\Users\\Johnrey\\Desktop\\Katarina\\NuGet.Config",
         "C:\\Users\\Johnrey\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"

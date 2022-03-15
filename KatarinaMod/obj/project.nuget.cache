@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "2ZlVeu+bZgbms6bw0iYs1kpympsBwsWPjZcBSu9BzrH8vsMPwwWvyv/z5W9voDNfnsM6gVTJNJRsuZfOFU+q2Q==",
+  "dgSpecHash": "0Gw/3zmysKiKo5/vkut90jZp+9L0H7kCUy3FWp1jFuEkPjr8rhmC4hqHC/ix66OAE+eqZ1M3SEGEjxJJX+ggZg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Johnrey\\Desktop\\KatarinaMod\\KatarinaMod\\KatarinaMod.csproj",
+  "projectFilePath": "C:\\Users\\Johnrey\\Desktop\\Katarina\\KatarinaMod\\KatarinaMod.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Johnrey\\.nuget\\packages\\bepinex.analyzers\\1.0.8\\bepinex.analyzers.1.0.8.nupkg.sha512",
     "C:\\Users\\Johnrey\\.nuget\\packages\\bepinex.baselib\\5.4.19\\bepinex.baselib.5.4.19.nupkg.sha512",
