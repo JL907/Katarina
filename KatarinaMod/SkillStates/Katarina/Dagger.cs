@@ -1,5 +1,6 @@
 ﻿using EntityStates;
 using EntityStates.Huntress.HuntressWeapon;
+using KatarinaMod.Orb;
 using RoR2;
 using RoR2.Orbs;
 using System;
@@ -42,8 +43,6 @@ namespace KatarinaMod.SkillStates.Katarina.Weapon
 			{
 				this.initialOrbTarget = this.huntressTracker.GetTrackingTarget();
 			}
-
-			base.PlayAnimation("FullBody, Override", "ThrowDagger", "ThrowDagger.playbackRate", this.duration);
 
 			if (this.modelTransform)
 			{
@@ -92,12 +91,13 @@ namespace KatarinaMod.SkillStates.Katarina.Weapon
 
 		private void FireOrbGlaive()
 		{
+			base.PlayAnimation("FullBody, Override", "ThrowDagger", "ThrowDagger.playbackRate", this.duration);
 			if (!NetworkServer.active || this.hasTriedToThrowDagger)
 			{
 				return;
 			}
 			this.hasTriedToThrowDagger = true;
-			LightningOrb lightningOrb = new LightningOrb();
+			DaggerOrb lightningOrb = new DaggerOrb();
 			lightningOrb.lightningType = LightningOrb.LightningType.HuntressGlaive;
 			lightningOrb.damageValue = base.characterBody.damage * ThrowDagger.damageCoefficient;
 			lightningOrb.isCrit = Util.CheckRoll(base.characterBody.crit, base.characterBody.master);

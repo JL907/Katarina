@@ -26,6 +26,7 @@ namespace KatarinaMod.Modules
         internal static List<NetworkSoundEventDef> networkSoundEventDefs = new List<NetworkSoundEventDef>();
 
         internal static GameObject swordHitImpactEffect;
+        internal static GameObject daggerSpinEffect;
 
         // networked hit sounds
         internal static NetworkSoundEventDef swordHitSoundEvent;

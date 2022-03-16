@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 2664166202
+CRC: 1830896240
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 9cffc50d56f159b8b60bbadcac6e7076
+    Hash: 5f67741e3bb0decc682137d20fd691f6
   TypeTreeHash:
     serializedVersion: 2
-    Hash: b1ecde1401cf17e892da83e1d339beb4
+    Hash: dfa27d4bb65706ba244b800e023a017b
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -25,6 +25,8 @@ ClassTypes:
   Script: {instanceID: 0}
 - Class: 48
   Script: {instanceID: 0}
+- Class: 54
+  Script: {instanceID: 0}
 - Class: 74
   Script: {instanceID: 0}
 - Class: 90
@@ -36,6 +38,8 @@ ClassTypes:
 - Class: 114
   Script: {fileID: 11500000, guid: 261c50d8a80898e4ebf2e8e415ea6766, type: 3}
 - Class: 115
+  Script: {instanceID: 0}
+- Class: 135
   Script: {instanceID: 0}
 - Class: 136
   Script: {instanceID: 0}
@@ -56,6 +60,7 @@ Assets:
 - Assets/Katarina/KATARINA.fbx
 - Assets/Katarina/VFX/HenrySwordSwingEffect.prefab
 - Assets/Katarina/HUD/Katarina_Passive.png
+- Assets/Katarina/VFX/KatarinaWeapon.prefab
 - Assets/Katarina/HUD/KatarinaEWrapper.png
 - Assets/Katarina/skin0.png
 - Assets/Katarina/katarina weapon.fbx
@@ -71,5 +76,4 @@ Assets:
 - Assets/Katarina/HUD/KatarinaW.png
 - Assets/Katarina/weaponAnim.controller
 - Assets/Katarina/Falling Idle.anim
-- Assets/Katarina/katWeapon.prefab
 Dependencies: []

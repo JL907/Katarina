@@ -1,5 +1,6 @@
 ﻿using KatarinaMod.SkillStates;
 using KatarinaMod.SkillStates.BaseStates;
+using KatarinaMod.SkillStates.Katarina;
 using KatarinaMod.SkillStates.Katarina.Weapon;
 using System;
 using System.Collections.Generic;
@@ -18,6 +19,8 @@ namespace KatarinaMod.Modules
             entityStates.Add(typeof(ThrowDagger));
 
             entityStates.Add(typeof(Roll));
+
+            entityStates.Add(typeof(Voracity));
 
             entityStates.Add(typeof(ThrowBomb));
         }

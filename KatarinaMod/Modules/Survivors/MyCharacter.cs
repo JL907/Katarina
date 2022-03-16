@@ -102,7 +102,7 @@ namespace KatarinaMod.Modules.Survivors
                 activationState = new EntityStates.SerializableEntityStateType(typeof(KatarinaMod.SkillStates.Katarina.Weapon.ThrowDagger)),
                 activationStateMachineName = "Slide",
                 baseMaxStock = 1,
-                baseRechargeInterval = 4f,
+                baseRechargeInterval = 3f,
                 beginSkillCooldownOnSkillEnd = false,
                 canceledFromSprinting = false,
                 forceSprintDuringState = false,
