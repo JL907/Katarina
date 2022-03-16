@@ -21,9 +21,9 @@ namespace KatarinaMod
 				if (component)
 				{
 					this.alive = false;
-					component.SetInterruptState(new Voracity(), InterruptPriority.Any);
+					component.SetNextState(new Voracity());
 					//EffectManager.SimpleEffect(this.pickupEffect, base.transform.position, Quaternion.identity, true);
-					UnityEngine.Object.Destroy(this.baseObject);
+					UnityEngine.Object.Destroy(base.gameObject);
 				}
 			}
 		}

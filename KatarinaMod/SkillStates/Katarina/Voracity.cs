@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace KatarinaMod.SkillStates.Katarina
 {
-    public class Voracity : BaseState
+    public class Voracity : GenericCharacterMain
     {
         public float duration;
         public bool attacked;

@@ -17,9 +17,8 @@ namespace KatarinaMod.Orb
             base.Begin();
             if (!weaponInstance)
             {
-                GameObject gameObject = UnityEngine.Object.Instantiate<GameObject>(Assets.mainAssetBundle.LoadAsset<GameObject>("KatarinaWeapon"));
-                weaponInstance = gameObject;
-                weaponInstance.transform.Find("Trigger").gameObject.AddComponent<DaggerPickup>().baseObject = weaponInstance;
+                weaponInstance = UnityEngine.Object.Instantiate<GameObject>(Assets.mainAssetBundle.LoadAsset<GameObject>("KatarinaWeapon"));
+                weaponInstance.AddComponent<DaggerPickup>().baseObject = weaponInstance;
                 weaponInstance.AddComponent<DestroyOnTimer>().duration = 12;
                 weaponInstance.AddComponent<NetworkIdentity>();
             }
@@ -35,12 +34,13 @@ namespace KatarinaMod.Orb
         {
             if(NetworkServer.active)
             {
-                weaponInstance.transform.position = this.target.transform.position;
+                Vector3 position = this.target.transform.position + Vector3.up * 1.5f;
+                Vector3 toTarget = (this.target.transform.position - this.attacker.gameObject.transform.position).normalized;
+                Vector3 upVector = Vector3.up * 20 + toTarget * 3f;
+                weaponInstance.transform.position = position;
                 Rigidbody component2 = weaponInstance.GetComponent<Rigidbody>();
-                if (component2)
-                {
-                    
-                }
+                component2.velocity = upVector;
+                component2.AddTorque(UnityEngine.Random.Range(150f, 120f) * UnityEngine.Random.onUnitSphere);
                 NetworkServer.Spawn(weaponInstance);
             }
         }
