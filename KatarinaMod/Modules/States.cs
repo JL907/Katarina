@@ -1,5 +1,6 @@
 ﻿using KatarinaMod.SkillStates;
 using KatarinaMod.SkillStates.BaseStates;
+using KatarinaMod.SkillStates.Katarina.Weapon;
 using System;
 using System.Collections.Generic;
 
@@ -14,7 +15,7 @@ namespace KatarinaMod.Modules
             entityStates.Add(typeof(BaseMeleeAttack));
             entityStates.Add(typeof(SlashCombo));
 
-            entityStates.Add(typeof(Shoot));
+            entityStates.Add(typeof(ThrowDagger));
 
             entityStates.Add(typeof(Roll));
 

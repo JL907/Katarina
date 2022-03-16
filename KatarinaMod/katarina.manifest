@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 1119263229
+CRC: 2664166202
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 173c294696cd9459a2a20ed9dd6d9f31
+    Hash: 9cffc50d56f159b8b60bbadcac6e7076
   TypeTreeHash:
     serializedVersion: 2
     Hash: b1ecde1401cf17e892da83e1d339beb4
@@ -58,6 +58,7 @@ Assets:
 - Assets/Katarina/HUD/Katarina_Passive.png
 - Assets/Katarina/HUD/KatarinaEWrapper.png
 - Assets/Katarina/skin0.png
+- Assets/Katarina/katarina weapon.fbx
 - Assets/Katarina/KatarinaDisplay.prefab
 - Assets/Katarina/animDisplay.controller
 - Assets/Katarina/Jumping UP.anim
@@ -68,5 +69,7 @@ Assets:
 - Assets/Katarina/animKatarina.controller
 - Assets/Katarina/mdlKatarina.prefab
 - Assets/Katarina/HUD/KatarinaW.png
+- Assets/Katarina/weaponAnim.controller
 - Assets/Katarina/Falling Idle.anim
+- Assets/Katarina/katWeapon.prefab
 Dependencies: []

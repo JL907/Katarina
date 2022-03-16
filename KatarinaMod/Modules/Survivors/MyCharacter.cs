@@ -57,6 +57,12 @@ namespace KatarinaMod.Modules.Survivors
         internal override void InitializeCharacter()
         {
             base.InitializeCharacter();
+            bodyPrefab.AddComponent<HuntressTracker>();
+            HuntressTracker huntressTracker = bodyPrefab.GetComponent<HuntressTracker>();
+            if (huntressTracker)
+            {
+                huntressTracker.maxTrackingDistance = 30f;
+            }
         }
 
         internal override void InitializeDoppelganger()
@@ -92,11 +98,11 @@ namespace KatarinaMod.Modules.Survivors
                 skillName = prefix + "_KATARINA_BODY_SECONDARY_GUN_NAME",
                 skillNameToken = prefix + "_KATARINA_BODY_SECONDARY_GUN_NAME",
                 skillDescriptionToken = prefix + "_KATARINA_BODY_SECONDARY_GUN_DESCRIPTION",
-                skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texSecondaryIcon"),
-                activationState = new EntityStates.SerializableEntityStateType(typeof(SkillStates.Shoot)),
+                skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("KatarinaQ"),
+                activationState = new EntityStates.SerializableEntityStateType(typeof(KatarinaMod.SkillStates.Katarina.Weapon.ThrowDagger)),
                 activationStateMachineName = "Slide",
                 baseMaxStock = 1,
-                baseRechargeInterval = 1f,
+                baseRechargeInterval = 4f,
                 beginSkillCooldownOnSkillEnd = false,
                 canceledFromSprinting = false,
                 forceSprintDuringState = false,
@@ -104,12 +110,11 @@ namespace KatarinaMod.Modules.Survivors
                 interruptPriority = EntityStates.InterruptPriority.Skill,
                 resetCooldownTimerOnUse = false,
                 isCombatSkill = true,
-                mustKeyPress = false,
+                mustKeyPress = true,
                 cancelSprintingOnActivation = false,
                 rechargeStock = 1,
                 requiredStock = 1,
-                stockToConsume = 1,
-                keywordTokens = new string[] { "KEYWORD_AGILE" }
+                stockToConsume = 1
             });
 
             Modules.Skills.AddSecondarySkills(bodyPrefab, shootSkillDef);
