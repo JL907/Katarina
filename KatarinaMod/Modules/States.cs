@@ -18,7 +18,7 @@ namespace KatarinaMod.Modules
 
             entityStates.Add(typeof(ThrowDagger));
 
-            entityStates.Add(typeof(Roll));
+            entityStates.Add(typeof(Shunpo));
 
             entityStates.Add(typeof(Voracity));
 
