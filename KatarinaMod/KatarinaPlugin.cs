@@ -47,7 +47,7 @@ namespace KatarinaMod
             Modules.Buffs.RegisterBuffs(); // add and register custom buffs/debuffs
             //Modules.Projectiles.RegisterProjectiles(); // add and register custom projectiles
             Modules.Tokens.AddTokens(); // register name tokens
-            Modules.ItemDisplays.PopulateDisplays(); // collect item display prefabs for use in our display rules
+            //Modules.ItemDisplays.PopulateDisplays(); // collect item display prefabs for use in our display rules
 
             // survivor initialization
             new MyCharacter().Initialize();

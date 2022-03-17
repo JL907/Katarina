@@ -15,13 +15,6 @@ namespace KatarinaMod.Orb
         public override void Begin()
         {
             base.Begin();
-            if (!weaponInstance)
-            {
-                weaponInstance = UnityEngine.Object.Instantiate<GameObject>(Assets.mainAssetBundle.LoadAsset<GameObject>("KatarinaWeapon"));
-                weaponInstance.AddComponent<DaggerPickup>().baseObject = weaponInstance;
-                weaponInstance.AddComponent<DestroyOnTimer>().duration = 12;
-                weaponInstance.AddComponent<NetworkIdentity>();
-            }
         }
 
         public override void OnArrival()
@@ -34,6 +27,13 @@ namespace KatarinaMod.Orb
         {
             if(NetworkServer.active)
             {
+                if (!weaponInstance)
+                {
+                    weaponInstance = UnityEngine.Object.Instantiate<GameObject>(Assets.mainAssetBundle.LoadAsset<GameObject>("KatarinaWeapon"));
+                    weaponInstance.AddComponent<DaggerPickup>().baseObject = weaponInstance;
+                    weaponInstance.AddComponent<DestroyOnTimer>().duration = 12;
+                    weaponInstance.AddComponent<NetworkIdentity>();
+                }
                 Vector3 position = this.target.transform.position + Vector3.up * 1.5f;
                 Vector3 toTarget = (this.target.transform.position - this.attacker.gameObject.transform.position).normalized;
                 Vector3 upVector = Vector3.up * 20 + toTarget * 3f;

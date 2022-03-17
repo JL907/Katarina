@@ -53,14 +53,14 @@ namespace KatarinaMod.SkillStates.Katarina
             if (EntityStates.Huntress.ArrowRain.areaIndicatorPrefab)
             {
                 this.indicatorInstance = UnityEngine.Object.Instantiate<GameObject>(EntityStates.Huntress.ArrowRain.areaIndicatorPrefab).transform;
-                this.indicatorInstance.localScale = Vector3.one * 5f;
+                this.indicatorInstance.localScale = Vector3.one * 10f;
                 this.indicatorInstance.transform.position = base.gameObject.transform.position;
             }
         }
         private void Fire()
         {
             Ray aimRay = base.GetAimRay();
-            foreach (Collider collider in Physics.OverlapSphere(this.indicatorInstance.transform.position, 5f))
+            foreach (Collider collider in Physics.OverlapSphere(this.indicatorInstance.transform.position, 10f))
             {
                 HealthComponent component = collider.GetComponent<HealthComponent>();
                 if (component)

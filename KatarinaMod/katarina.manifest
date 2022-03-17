@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 3659738004
+CRC: 3457693713
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: e93b584912993a850f520f434ca655f0
+    Hash: dc4b114326946d9b09cbf4ca8812057a
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 27ce71e9b900d98e4b5aab263b72e2ca
+    Hash: dfa27d4bb65706ba244b800e023a017b
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -26,8 +26,6 @@ ClassTypes:
 - Class: 48
   Script: {instanceID: 0}
 - Class: 54
-  Script: {instanceID: 0}
-- Class: 65
   Script: {instanceID: 0}
 - Class: 74
   Script: {instanceID: 0}
@@ -58,24 +56,24 @@ ClassTypes:
 SerializeReferenceClassIdentifiers: []
 Assets:
 - Assets/Katarina/VFX/ImpactHenrySlash.prefab
-- Assets/Katarina/KatUpper.mask
-- Assets/Katarina/KATARINA.fbx
+- Assets/Katarina/Animations/KatUpper.mask
+- Assets/Katarina/Models/KATARINA.fbx
 - Assets/Katarina/VFX/HenrySwordSwingEffect.prefab
 - Assets/Katarina/HUD/Katarina_Passive.png
 - Assets/Katarina/VFX/KatarinaWeapon.prefab
 - Assets/Katarina/HUD/KatarinaEWrapper.png
-- Assets/Katarina/skin0.png
-- Assets/Katarina/katarina weapon.fbx
-- Assets/Katarina/KatarinaDisplay.prefab
-- Assets/Katarina/animDisplay.controller
-- Assets/Katarina/Jumping UP.anim
+- Assets/Katarina/Materials/skin0.png
+- Assets/Katarina/Models/katarina weapon.fbx
+- Assets/Katarina/Prefabs/KatarinaDisplay.prefab
+- Assets/Katarina/Animations/animDisplay.controller
+- Assets/Katarina/Animations/Jumping UP.anim
 - Assets/Katarina/HUD/KatarinaR.png
-- Assets/Katarina/KatarinaMat2.mat
+- Assets/Katarina/Materials/KatarinaMat2.mat
 - Assets/Katarina/HUD/KatarinaQ.png
-- Assets/Katarina/KatarinaMat.mat
-- Assets/Katarina/animKatarina.controller
-- Assets/Katarina/mdlKatarina.prefab
+- Assets/Katarina/Materials/KatarinaMat.mat
+- Assets/Katarina/Animations/animKatarina.controller
+- Assets/Katarina/Prefabs/mdlKatarina.prefab
 - Assets/Katarina/HUD/KatarinaW.png
-- Assets/Katarina/weaponAnim.controller
-- Assets/Katarina/Falling Idle.anim
+- Assets/Katarina/Animations/weaponAnim.controller
+- Assets/Katarina/Animations/Falling Idle.anim
 Dependencies: []
