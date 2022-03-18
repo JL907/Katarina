@@ -46,7 +46,7 @@ namespace KatarinaMod
 			this.duration += Time.deltaTime;
 			if (this.duration < 1f && alive)
             {
-				this.rigidbody.AddTorque(2500, 0, 0);
+				this.rigidbody.AddTorque(25000, 0, 0);
             }
 			if (this.duration > 1f && alive)
 			{

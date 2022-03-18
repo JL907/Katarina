@@ -1,4 +1,5 @@
 ﻿using EntityStates;
+using EntityStates.Huntress;
 using RoR2;
 using System;
 using System.Collections.Generic;
@@ -11,84 +12,108 @@ namespace KatarinaMod.SkillStates
     public class Shunpo : BaseSkillState
     {
         private Transform modelTransform;
-        private Animator animator;
-        private HuntressTracker huntressTracker;
-        private HurtBox target;
-        private CharacterMotor characterMotor;
-        private float duration = 0.5f;
-        public float stopwatch;
-        private bool successfulTeleport;
-        private bool hasTriedToTeleport;
+        public static GameObject blinkPrefab;
+        private float stopwatch;
+        private Vector3 blinkVector = Vector3.zero;
+        public float duration = 0.3f;
+        public float speedCoefficient = 8f;
+        public string beginSoundString;
+        public string endSoundString;
+        private CharacterModel characterModel;
+        private HurtBoxGroup hurtboxGroup;
 
         public override void OnEnter()
         {
             base.OnEnter();
-            this.characterMotor = base.GetComponent<CharacterMotor>();
+            Util.PlaySound(this.beginSoundString, base.gameObject);
             this.modelTransform = base.GetModelTransform();
-            this.animator = base.GetModelAnimator();
-            this.huntressTracker = base.GetComponent<HuntressTracker>();
-            if (this.huntressTracker && base.isAuthority)
+            if (this.modelTransform)
             {
-                this.target = this.huntressTracker.GetTrackingTarget();
+                this.characterModel = this.modelTransform.GetComponent<CharacterModel>();
+                this.hurtboxGroup = this.modelTransform.GetComponent<HurtBoxGroup>();
             }
-        }
-
-        private void Teleport()
-        {
-            hasTriedToTeleport = true;
-            HurtBox hurtBox = this.target;
-            if (hurtBox)
+            if (this.characterModel)
             {
-                if (this.characterMotor)
-                {
-                    base.PlayAnimation("FullBody, Override", "Shunpo");
-                    this.characterMotor.velocity = Vector3.zero;
-                    this.characterMotor.rootMotion = Vector3.zero;
-                    this.characterMotor.Motor.SetPosition(GetBehindPosition(), true);
-                    var lookPos = target.transform.position - base.transform.position;
-                    lookPos.y = 0;
-                    var rotation = Quaternion.LookRotation(lookPos);
-                    this.characterMotor.Motor.SetRotation(rotation);
-                    successfulTeleport = true;
-                }
+                this.characterModel.invisibilityCount++;
             }
-        }
-
-        private Vector3 GetBehindPosition()
-        {
-            return this.target.transform.TransformPoint(new Vector3(0, 3, -3));
+            if (this.hurtboxGroup)
+            {
+                HurtBoxGroup hurtBoxGroup = this.hurtboxGroup;
+                int hurtBoxesDeactivatorCounter = hurtBoxGroup.hurtBoxesDeactivatorCounter + 1;
+                hurtBoxGroup.hurtBoxesDeactivatorCounter = hurtBoxesDeactivatorCounter;
+            }
+            this.blinkVector = this.GetBlinkVector();
+            this.CreateBlinkEffect(Util.GetCorePosition(base.gameObject));
         }
 
         public override void OnExit()
         {
+            if (!this.outer.destroying)
+            {
+                Util.PlaySound(this.endSoundString, base.gameObject);
+                this.CreateBlinkEffect(Util.GetCorePosition(base.gameObject));
+                this.modelTransform = base.GetModelTransform();
+                if (this.modelTransform)
+                {
+                    TemporaryOverlay temporaryOverlay = this.modelTransform.gameObject.AddComponent<TemporaryOverlay>();
+                    temporaryOverlay.duration = 0.6f;
+                    temporaryOverlay.animateShaderAlpha = true;
+                    temporaryOverlay.alphaCurve = AnimationCurve.EaseInOut(0f, 1f, 1f, 0f);
+                    temporaryOverlay.destroyComponentOnEnd = true;
+                    temporaryOverlay.originalMaterial = LegacyResourcesAPI.Load<Material>("Materials/matHuntressFlashBright");
+                    temporaryOverlay.AddToCharacerModel(this.modelTransform.GetComponent<CharacterModel>());
+                    TemporaryOverlay temporaryOverlay2 = this.modelTransform.gameObject.AddComponent<TemporaryOverlay>();
+                    temporaryOverlay2.duration = 0.7f;
+                    temporaryOverlay2.animateShaderAlpha = true;
+                    temporaryOverlay2.alphaCurve = AnimationCurve.EaseInOut(0f, 1f, 1f, 0f);
+                    temporaryOverlay2.destroyComponentOnEnd = true;
+                    temporaryOverlay2.originalMaterial = LegacyResourcesAPI.Load<Material>("Materials/matHuntressFlashExpanded");
+                    temporaryOverlay2.AddToCharacerModel(this.modelTransform.GetComponent<CharacterModel>());
+                }
+            }
+            if (this.characterModel)
+            {
+                this.characterModel.invisibilityCount--;
+            }
+            if (this.hurtboxGroup)
+            {
+                HurtBoxGroup hurtBoxGroup = this.hurtboxGroup;
+                int hurtBoxesDeactivatorCounter = hurtBoxGroup.hurtBoxesDeactivatorCounter - 1;
+                hurtBoxGroup.hurtBoxesDeactivatorCounter = hurtBoxesDeactivatorCounter;
+            }
+            if (base.characterMotor)
+            {
+                base.characterMotor.disableAirControlUntilCollision = false;
+            }
             base.OnExit();
-            base.PlayAnimation("FullBody, Override", "BufferEmpty");
-            if (!this.hasTriedToTeleport)
-            {
-                Teleport();
-            }
-            if (!successfulTeleport && NetworkServer.active)
-            {
-                base.skillLocator.utility.AddOneStock();
-            }
         }
 
         public override void FixedUpdate()
         {
             base.FixedUpdate();
             this.stopwatch += Time.fixedDeltaTime;
-            if (!hasTriedToTeleport)
+            if (base.characterMotor && base.characterDirection)
             {
-                Teleport();
-            }
-            if (successfulTeleport && base.isAuthority)
-            {
-                this.outer.SetNextStateToMain();
+                base.characterMotor.velocity = Vector3.zero;
+                base.characterMotor.rootMotion += this.blinkVector * (this.moveSpeedStat * this.speedCoefficient * Time.fixedDeltaTime);
             }
             if (this.stopwatch >= this.duration && base.isAuthority)
             {
                 this.outer.SetNextStateToMain();
             }
+        }
+
+        protected virtual Vector3 GetBlinkVector()
+        {
+            return base.inputBank.aimDirection;
+        }
+
+        private void CreateBlinkEffect(Vector3 origin)
+        {
+            EffectData effectData = new EffectData();
+            effectData.rotation = Util.QuaternionSafeLookRotation(this.blinkVector);
+            effectData.origin = origin;
+            EffectManager.SpawnEffect(BlinkState.blinkPrefab, effectData, false);
         }
     }
 }

@@ -130,7 +130,7 @@ namespace KatarinaMod.Modules.Survivors
                 skillDescriptionToken = prefix + "_KATARINA_BODY_UTILITY_ROLL_DESCRIPTION",
                 skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texUtilityIcon"),
                 activationState = new EntityStates.SerializableEntityStateType(typeof(SkillStates.Shunpo)),
-                activationStateMachineName = "Body",
+                activationStateMachineName = "Slide",
                 baseMaxStock = 1,
                 baseRechargeInterval = 4f,
                 beginSkillCooldownOnSkillEnd = false,

@@ -91,7 +91,6 @@ namespace KatarinaMod.SkillStates.Katarina.Weapon
 
 		private void FireOrbGlaive()
 		{
-			base.PlayAnimation("FullBody, Override", "ThrowDagger", "ThrowDagger.playbackRate", this.duration);
 			if (!NetworkServer.active || this.hasTriedToThrowDagger)
 			{
 				return;
@@ -113,6 +112,7 @@ namespace KatarinaMod.SkillStates.Katarina.Weapon
 			if (hurtBox)
 			{
 				this.hasSuccessfullyThrownDagger = true;
+				base.PlayAnimation("FullBody, Override", "ThrowDagger", "ThrowDagger.playbackRate", this.duration);
 				Transform transform = this.childLocator.FindChild("R_Hand");
 				EffectManager.SimpleMuzzleFlash(ThrowGlaive.muzzleFlashPrefab, base.gameObject, "R_Hand", true);
 				lightningOrb.origin = transform.position;
