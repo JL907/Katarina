@@ -126,7 +126,7 @@ namespace KatarinaMod.SkillStates
             if (base.characterMotor && base.characterDirection)
             {
                 base.characterMotor.velocity = Vector3.zero;
-                base.characterMotor.rootMotion += this.blinkVector * (this.moveSpeedStat * this.speedCoefficient * Time.fixedDeltaTime);
+                base.characterMotor.rootMotion += this.blinkVector * (7f * this.speedCoefficient * Time.fixedDeltaTime);
             }
             if (this.stopwatch >= this.duration && base.isAuthority)
             {

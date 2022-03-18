@@ -59,11 +59,19 @@ namespace KatarinaMod
         }
 		private void OnCollisionEnter()
         {
-			if (duration > 1f)
+			if (duration > 1f && !collided)
             {
 				this.rigidbody.isKinematic = true;
 				this.collided = true;
 			}
         }
+		private void OnCollisionExit()
+		{
+			if (duration > 1f && collided)
+			{
+				this.rigidbody.isKinematic = false;
+				this.collided = false;
+			}
+		}
 	}
 }
