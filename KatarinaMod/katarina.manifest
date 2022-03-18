@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 2955346886
+CRC: 4204069282
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 2569c5cc11668c36cf6011d56497dba3
+    Hash: 83d6c1ba7e8cf044b72e5c3141c57f80
   TypeTreeHash:
     serializedVersion: 2
     Hash: dfa27d4bb65706ba244b800e023a017b
@@ -61,11 +61,12 @@ Assets:
 - Assets/Katarina/VFX/HenrySwordSwingEffect.prefab
 - Assets/Katarina/HUD/Katarina_Passive.png
 - Assets/Katarina/VFX/KatarinaWeapon.prefab
-- Assets/Katarina/HUD/KatarinaEWrapper.png
+- Assets/Katarina/HUD/KatarinaE.png
 - Assets/Katarina/Materials/skin0.png
 - Assets/Katarina/Models/katarina weapon.fbx
 - Assets/Katarina/Prefabs/KatarinaDisplay.prefab
 - Assets/Katarina/Animations/animDisplay.controller
+- Assets/Katarina/HUD/bouncing.png
 - Assets/Katarina/Animations/Jumping UP.anim
 - Assets/Katarina/HUD/KatarinaR.png
 - Assets/Katarina/Materials/KatarinaMat2.mat

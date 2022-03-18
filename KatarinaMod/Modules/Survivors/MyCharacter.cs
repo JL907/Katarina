@@ -87,7 +87,7 @@ namespace KatarinaMod.Modules.Survivors
 
             #region Primary
 
-            Modules.Skills.AddPrimarySkill(bodyPrefab, Modules.Skills.CreatePrimarySkillDef(new EntityStates.SerializableEntityStateType(typeof(SkillStates.SlashCombo)), "Weapon", prefix + "_KATARINA_BODY_PRIMARY_SLASH_NAME", prefix + "_KATARINA_BODY_PRIMARY_SLASH_DESCRIPTION", Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texPrimaryIcon"), true));
+            Modules.Skills.AddPrimarySkill(bodyPrefab, Modules.Skills.CreatePrimarySkillDef(new EntityStates.SerializableEntityStateType(typeof(SkillStates.SlashCombo)), "Weapon", prefix + "_KATARINA_BODY_PRIMARY_SLASH_NAME", prefix + "_KATARINA_BODY_PRIMARY_SLASH_DESCRIPTION", Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("bouncing"), true));
 
             #endregion Primary
 
@@ -128,7 +128,7 @@ namespace KatarinaMod.Modules.Survivors
                 skillName = prefix + "_KATARINA_BODY_UTILITY_ROLL_NAME",
                 skillNameToken = prefix + "_KATARINA_BODY_UTILITY_ROLL_NAME",
                 skillDescriptionToken = prefix + "_KATARINA_BODY_UTILITY_ROLL_DESCRIPTION",
-                skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texUtilityIcon"),
+                skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("KatarinaE"),
                 activationState = new EntityStates.SerializableEntityStateType(typeof(SkillStates.Shunpo)),
                 activationStateMachineName = "Slide",
                 baseMaxStock = 1,
@@ -158,7 +158,7 @@ namespace KatarinaMod.Modules.Survivors
                 skillName = prefix + "_KATARINA_BODY_SPECIAL_BOMB_NAME",
                 skillNameToken = prefix + "_KATARINA_BODY_SPECIAL_BOMB_NAME",
                 skillDescriptionToken = prefix + "_KATARINA_BODY_SPECIAL_BOMB_DESCRIPTION",
-                skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("texSpecialIcon"),
+                skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("KatarinaR"),
                 activationState = new EntityStates.SerializableEntityStateType(typeof(SkillStates.ThrowBomb)),
                 activationStateMachineName = "Slide",
                 baseMaxStock = 1,

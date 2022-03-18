@@ -59,10 +59,10 @@ namespace KatarinaMod.SkillStates
                 {
                     weaponInstance = UnityEngine.Object.Instantiate<GameObject>(Assets.mainAssetBundle.LoadAsset<GameObject>("KatarinaWeapon"));
                     weaponInstance.AddComponent<DaggerPickup>().baseObject = weaponInstance;
-                    weaponInstance.AddComponent<DestroyOnTimer>().duration = 4f;
+                    weaponInstance.AddComponent<DestroyOnTimer>().duration = 6f;
                     weaponInstance.AddComponent<NetworkIdentity>();
                 }
-                Vector3 position = startLoc + Vector3.up * 6f;
+                Vector3 position = startLoc + Vector3.up * 1.5f;
                 Vector3 upVector = Vector3.up * 20;
                 weaponInstance.transform.position = position;
                 Rigidbody component2 = weaponInstance.GetComponent<Rigidbody>();

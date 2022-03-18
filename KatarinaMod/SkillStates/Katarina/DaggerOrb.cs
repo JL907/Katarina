@@ -92,7 +92,7 @@ namespace KatarinaMod.Orb
                 {
                     weaponInstance = UnityEngine.Object.Instantiate<GameObject>(Assets.mainAssetBundle.LoadAsset<GameObject>("KatarinaWeapon"));
                     weaponInstance.AddComponent<DaggerPickup>().baseObject = weaponInstance;
-                    weaponInstance.AddComponent<DestroyOnTimer>().duration = 4f;
+                    weaponInstance.AddComponent<DestroyOnTimer>().duration = 6f;
                     weaponInstance.AddComponent<NetworkIdentity>();
                 }
                 Vector3 position = this.target.transform.position + Vector3.up * 1.5f;
