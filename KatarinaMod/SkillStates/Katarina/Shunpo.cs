@@ -1,5 +1,6 @@
 ﻿using EntityStates;
 using EntityStates.Huntress;
+using KatarinaMod.Modules;
 using RoR2;
 using System;
 using System.Collections.Generic;
@@ -21,6 +22,9 @@ namespace KatarinaMod.SkillStates
         public string endSoundString;
         private CharacterModel characterModel;
         private HurtBoxGroup hurtboxGroup;
+        private GameObject weaponInstance;
+        private Vector3 startLoc;
+        private bool daggerThrown;
 
         public override void OnEnter()
         {
@@ -43,7 +47,30 @@ namespace KatarinaMod.SkillStates
                 hurtBoxGroup.hurtBoxesDeactivatorCounter = hurtBoxesDeactivatorCounter;
             }
             this.blinkVector = this.GetBlinkVector();
+            this.startLoc = Util.GetCorePosition(base.gameObject);
             this.CreateBlinkEffect(Util.GetCorePosition(base.gameObject));
+        }
+
+        private void TossDagger()
+        {
+            if (NetworkServer.active)
+            {
+                if (!weaponInstance)
+                {
+                    weaponInstance = UnityEngine.Object.Instantiate<GameObject>(Assets.mainAssetBundle.LoadAsset<GameObject>("KatarinaWeapon"));
+                    weaponInstance.AddComponent<DaggerPickup>().baseObject = weaponInstance;
+                    weaponInstance.AddComponent<DestroyOnTimer>().duration = 4f;
+                    weaponInstance.AddComponent<NetworkIdentity>();
+                }
+                Vector3 position = startLoc + Vector3.up * 6f;
+                Vector3 upVector = Vector3.up * 20;
+                weaponInstance.transform.position = position;
+                Rigidbody component2 = weaponInstance.GetComponent<Rigidbody>();
+                component2.velocity = upVector;
+                component2.AddTorque(UnityEngine.Random.Range(150f, 120f) * UnityEngine.Random.onUnitSphere);
+                daggerThrown = true;
+                NetworkServer.Spawn(weaponInstance);
+            }
         }
 
         public override void OnExit()
@@ -92,6 +119,10 @@ namespace KatarinaMod.SkillStates
         {
             base.FixedUpdate();
             this.stopwatch += Time.fixedDeltaTime;
+            if (this.stopwatch >= 0.3f && !this.daggerThrown)
+            {
+                TossDagger();
+            }
             if (base.characterMotor && base.characterDirection)
             {
                 base.characterMotor.velocity = Vector3.zero;
