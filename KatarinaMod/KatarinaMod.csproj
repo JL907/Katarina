@@ -4,6 +4,7 @@
 		<TargetFramework>netstandard2.0</TargetFramework>
 		<LangVersion>7.3</LangVersion>
 		<Version>0.0.1</Version>
+		<AssemblyName>LemonKatarinaMod</AssemblyName>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)'=='Release'">
@@ -50,7 +51,7 @@
 	</ItemGroup>
 
 	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
-	  <Exec Command="XCOPY &quot;$(TargetDir)$(ProjectName).dll&quot; &quot;C:\Program Files (x86)\Steam\steamapps\common\Risk of Rain 2\BepInEx\plugins&quot; /S /Y&#xD;&#xA;&#xD;&#xA;XCOPY &quot;$(TargetDir)$(ProjectName).pdb&quot; &quot;C:\Program Files (x86)\Steam\steamapps\common\Risk of Rain 2\BepInEx\plugins&quot; /S /Y&#xD;&#xA;&#xD;&#xA;if $(Configuration) == Debug (&#xD;&#xA;goto debug&#xD;&#xA;)&#xD;&#xA;&#xD;&#xA;if $(Configuration) == Release (&#xD;&#xA;goto release&#xD;&#xA;)&#xD;&#xA;&#xD;&#xA;:debug&#xD;&#xA;echo Debug, only dll is updated.&#xD;&#xA;goto:EOF&#xD;&#xA;&#xD;&#xA;:release&#xD;&#xA;powershell Compress-Archive -Path '$(TargetDir)$(ProjectName).dll', '$(SolutionDir)icon.png', '$(SolutionDir)manifest.json', '$(SolutionDir)README.md' -DestinationPath '$(SolutionDir)$(ProjectName) $(Version).zip' -Force&#xD;&#xA;goto:EOF:&#xD;&#xA;&#xD;&#xA;:eof&#xD;&#xA;" />
+	  <Exec Command="XCOPY &quot;$(TargetDir)$(TargetName).dll&quot; &quot;C:\Program Files (x86)\Steam\steamapps\common\Risk of Rain 2\BepInEx\plugins&quot; /S /Y&#xD;&#xA;&#xD;&#xA;XCOPY &quot;$(TargetDir)$(TargetName).pdb&quot; &quot;C:\Program Files (x86)\Steam\steamapps\common\Risk of Rain 2\BepInEx\plugins&quot; /S /Y&#xD;&#xA;&#xD;&#xA;if $(Configuration) == Debug (&#xD;&#xA;goto debug&#xD;&#xA;)&#xD;&#xA;&#xD;&#xA;if $(Configuration) == Release (&#xD;&#xA;goto release&#xD;&#xA;)&#xD;&#xA;&#xD;&#xA;:debug&#xD;&#xA;echo Debug, only dll is updated.&#xD;&#xA;goto:EOF&#xD;&#xA;&#xD;&#xA;:release&#xD;&#xA;powershell Compress-Archive -Path '$(TargetDir)$(TargetName).dll', '$(SolutionDir)icon.png', '$(SolutionDir)manifest.json', '$(SolutionDir)README.md' -DestinationPath '$(SolutionDir)$(TargetName) $(Version).zip' -Force&#xD;&#xA;goto:EOF:&#xD;&#xA;&#xD;&#xA;:eof&#xD;&#xA;" />
 	</Target>
 
 </Project>

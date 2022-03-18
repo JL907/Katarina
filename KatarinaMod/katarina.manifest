@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 4204069282
+CRC: 809543056
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 83d6c1ba7e8cf044b72e5c3141c57f80
+    Hash: a168f95fcc625c0341807983651b3817
   TypeTreeHash:
     serializedVersion: 2
-    Hash: dfa27d4bb65706ba244b800e023a017b
+    Hash: 1fa692d6cdee47feb28ec66b66246763
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -28,6 +28,8 @@ ClassTypes:
 - Class: 54
   Script: {instanceID: 0}
 - Class: 74
+  Script: {instanceID: 0}
+- Class: 89
   Script: {instanceID: 0}
 - Class: 90
   Script: {instanceID: 0}
@@ -64,7 +66,7 @@ Assets:
 - Assets/Katarina/HUD/KatarinaE.png
 - Assets/Katarina/Materials/skin0.png
 - Assets/Katarina/Models/katarina weapon.fbx
-- Assets/Katarina/Prefabs/KatarinaDisplay.prefab
+- Assets/Katarina/Prefabs/olddisplay.prefab
 - Assets/Katarina/Animations/animDisplay.controller
 - Assets/Katarina/HUD/bouncing.png
 - Assets/Katarina/Animations/Jumping UP.anim
@@ -72,9 +74,12 @@ Assets:
 - Assets/Katarina/Materials/KatarinaMat2.mat
 - Assets/Katarina/HUD/KatarinaQ.png
 - Assets/Katarina/Materials/KatarinaMat.mat
+- Assets/Katarina/Prefabs/KatarinaDisplay.prefab
 - Assets/Katarina/Animations/animKatarina.controller
-- Assets/Katarina/Prefabs/mdlKatarina.prefab
+- Assets/Katarina/Prefabs/oldmdl.prefab
+- Assets/Katarina/Models/katarinafix.fbx
 - Assets/Katarina/HUD/KatarinaW.png
 - Assets/Katarina/Animations/weaponAnim.controller
+- Assets/Katarina/Prefabs/mdlKatarina.prefab
 - Assets/Katarina/Animations/Falling Idle.anim
 Dependencies: []

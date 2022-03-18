@@ -41,7 +41,6 @@ namespace KatarinaMod.Modules.Survivors
                 new CustomRendererInfo
                 {
                     childName = "Model",
-                    material = KatarinaMat
                 }};
 
         internal override GameObject displayPrefab { get; set; }

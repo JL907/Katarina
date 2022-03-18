@@ -1,6 +1,7 @@
 ﻿using R2API;
 using RoR2;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace KatarinaMod.Modules
@@ -204,7 +205,7 @@ namespace KatarinaMod.Modules
                         rendererInfos.Add(new CharacterModel.RendererInfo
                         {
                             renderer = childLocator.FindChild(rendererInfo[i].childName).GetComponent<Renderer>(),
-                            defaultMaterial = rendererInfo[i].material,
+                            defaultMaterial = rendererInfo[i].material ?? j.materials.FirstOrDefault(),
                             ignoreOverlays = rendererInfo[i].ignoreOverlays,
                             defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On
                         });
