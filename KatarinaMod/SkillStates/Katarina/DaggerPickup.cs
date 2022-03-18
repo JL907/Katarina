@@ -11,15 +11,14 @@ using UnityEngine.Networking;
 
 namespace KatarinaMod
 {
-    public class DaggerPickup : MonoBehaviour
+	public class DaggerPickup : MonoBehaviour
     {
 		private float duration;
-		public GameObject baseObject;
 		public Rigidbody rigidbody;
 		public GameObject pickupEffect;
 		public bool collided = false;
+		public GameObject owner;
 		private bool alive = true;
-
 		private void Awake()
         {
 			this.rigidbody = this.GetComponent<Rigidbody>();
@@ -73,5 +72,5 @@ namespace KatarinaMod
 				this.collided = false;
 			}
 		}
-	}
+    }
 }

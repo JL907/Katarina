@@ -1,6 +1,7 @@
 ﻿using EntityStates;
 using EntityStates.Huntress;
 using KatarinaMod.Modules;
+using R2API;
 using RoR2;
 using System;
 using System.Collections.Generic;
@@ -17,7 +18,7 @@ namespace KatarinaMod.SkillStates
         private float stopwatch;
         private Vector3 blinkVector = Vector3.zero;
         public float duration = 0.3f;
-        public float speedCoefficient = 8f;
+        public float speedCoefficient = 12f;
         public string beginSoundString;
         public string endSoundString;
         private CharacterModel characterModel;
@@ -53,23 +54,24 @@ namespace KatarinaMod.SkillStates
 
         private void TossDagger()
         {
-            if (NetworkServer.active)
+            if (!weaponInstance)
             {
-                if (!weaponInstance)
-                {
-                    weaponInstance = UnityEngine.Object.Instantiate<GameObject>(Assets.mainAssetBundle.LoadAsset<GameObject>("KatarinaWeapon"));
-                    weaponInstance.AddComponent<DaggerPickup>().baseObject = weaponInstance;
-                    weaponInstance.AddComponent<DestroyOnTimer>().duration = 6f;
-                    weaponInstance.AddComponent<NetworkIdentity>();
-                }
                 Vector3 position = startLoc + Vector3.up * 1.5f;
                 Vector3 upVector = Vector3.up * 20;
+                weaponInstance = UnityEngine.Object.Instantiate<GameObject>(Assets.mainAssetBundle.LoadAsset<GameObject>("KatarinaWeapon"));
+                DaggerPickup daggerPickup = weaponInstance.AddComponent<DaggerPickup>();
+                daggerPickup.owner = base.gameObject;
+                weaponInstance.AddComponent<DestroyOnTimer>().duration = 6f;
+                weaponInstance.AddComponent<NetworkIdentity>();
                 weaponInstance.transform.position = position;
                 Rigidbody component2 = weaponInstance.GetComponent<Rigidbody>();
                 component2.velocity = upVector;
                 component2.AddTorque(UnityEngine.Random.Range(150f, 120f) * UnityEngine.Random.onUnitSphere);
-                daggerThrown = true;
-                NetworkServer.Spawn(weaponInstance);
+
+                if (NetworkServer.active)
+                {
+                    NetworkServer.Spawn(weaponInstance);
+                }
             }
         }
 
