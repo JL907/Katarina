@@ -19,7 +19,7 @@ namespace KatarinaMod.SkillStates
         private Vector3 blinkVector = Vector3.zero;
         public float duration = 0.3f;
         public float speedCoefficient = 12f;
-        public string beginSoundString;
+        public string beginSoundString = "KatarinaESFX";
         public string endSoundString;
         private CharacterModel characterModel;
         private HurtBoxGroup hurtboxGroup;

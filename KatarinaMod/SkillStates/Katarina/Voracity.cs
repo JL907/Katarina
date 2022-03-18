@@ -21,6 +21,7 @@ namespace KatarinaMod.SkillStates.Katarina
             this.attacked = false;
             this.duration = this.baseDuration / this.attackSpeedStat;
             base.PlayAnimation("FullBody, Override", "Passive", "Passive.playbackRate", this.duration);
+            Util.PlaySound("KatarinaVoracitySFX", base.gameObject);
             if (!this.indicatorInstance) this.CreateIndicator();
         }
 

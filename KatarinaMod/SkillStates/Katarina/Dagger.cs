@@ -17,8 +17,8 @@ namespace KatarinaMod.SkillStates.Katarina.Weapon
         private static float daggerProcCoefficient = 1f;
 		public static int maxBounceCount = 4;
 		public static float daggerTravelSpeed = 100f;
-		public static float daggerBounceRange = 20f;
-        private static float damageCoefficientPerBounce = 1.1f;
+		public static float daggerBounceRange = 8f;
+        private static float damageCoefficientPerBounce = 1.0f;
         public float baseDuration = 1f;
         private HuntressTracker huntressTracker;
         private float stopwatch;
@@ -53,7 +53,9 @@ namespace KatarinaMod.SkillStates.Katarina.Weapon
             {
                 base.characterBody.SetAimTimer(this.duration);
             }
-        }
+			Util.PlaySound("KatarinaQSFX", base.gameObject);
+			Util.PlaySound("KatarinaQVO", base.gameObject);
+		}
 
 		public override void FixedUpdate()
 		{
@@ -68,12 +70,11 @@ namespace KatarinaMod.SkillStates.Katarina.Weapon
 				this.outer.SetNextStateToMain();
 				return;
 			}
-		}
+        }
 
 		public override void OnExit()
         {
 			base.OnExit();
-			base.PlayAnimation("FullBody, Override", "BufferEmpty");
 			if (!this.hasTriedToThrowDagger)
 			{
 				this.FireOrbGlaive();
@@ -82,7 +83,7 @@ namespace KatarinaMod.SkillStates.Katarina.Weapon
 			{
 				base.skillLocator.secondary.AddOneStock();
 			}
-		}
+        }
 
 		public override InterruptPriority GetMinimumInterruptPriority()
 		{

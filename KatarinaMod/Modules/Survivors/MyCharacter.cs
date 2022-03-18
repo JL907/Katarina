@@ -62,6 +62,7 @@ namespace KatarinaMod.Modules.Survivors
             {
                 huntressTracker.maxTrackingDistance = 30f;
             }
+            displayPrefab.AddComponent<MenuSound>();
         }
 
         internal override void InitializeDoppelganger()
@@ -104,7 +105,7 @@ namespace KatarinaMod.Modules.Survivors
                 baseRechargeInterval = 4f,
                 beginSkillCooldownOnSkillEnd = false,
                 canceledFromSprinting = false,
-                forceSprintDuringState = false,
+                forceSprintDuringState = true,
                 fullRestockOnAssign = true,
                 interruptPriority = EntityStates.InterruptPriority.Skill,
                 resetCooldownTimerOnUse = false,
@@ -158,19 +159,19 @@ namespace KatarinaMod.Modules.Survivors
                 skillNameToken = prefix + "_KATARINA_BODY_SPECIAL_BOMB_NAME",
                 skillDescriptionToken = prefix + "_KATARINA_BODY_SPECIAL_BOMB_DESCRIPTION",
                 skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("KatarinaR"),
-                activationState = new EntityStates.SerializableEntityStateType(typeof(SkillStates.ThrowBomb)),
+                activationState = new EntityStates.SerializableEntityStateType(typeof(SkillStates.Deathlotus)),
                 activationStateMachineName = "Slide",
                 baseMaxStock = 1,
                 baseRechargeInterval = 10f,
                 beginSkillCooldownOnSkillEnd = false,
                 canceledFromSprinting = false,
-                forceSprintDuringState = false,
+                forceSprintDuringState = true,
                 fullRestockOnAssign = true,
                 interruptPriority = EntityStates.InterruptPriority.Skill,
                 resetCooldownTimerOnUse = false,
                 isCombatSkill = true,
                 mustKeyPress = false,
-                cancelSprintingOnActivation = true,
+                cancelSprintingOnActivation = false,
                 rechargeStock = 1,
                 requiredStock = 1,
                 stockToConsume = 1

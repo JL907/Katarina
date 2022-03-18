@@ -23,8 +23,8 @@ namespace KatarinaMod.SkillStates
             this.attackRecoil = 0.5f;
             this.hitHopVelocity = 4f;
 
-            this.swingSoundString = "KatarinaSwordSwing";
-            this.hitSoundString = "";
+            this.swingSoundString = "KatarinaAutoSFX";
+            this.hitSoundString = "KatarinaImpactSFX";
             this.muzzleString = swingIndex % 2 == 0 ? "SwingLeft" : "SwingRight";
             this.swingEffectPrefab = Modules.Assets.swordSwingEffect;
             this.hitEffectPrefab = Modules.Assets.swordHitImpactEffect;

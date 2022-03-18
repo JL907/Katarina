@@ -34,6 +34,7 @@ namespace KatarinaMod
 					this.alive = false;
 					component.SetNextState(new Voracity());
 					component2.utility.AddOneStock();
+					component2.special.AddOneStock();
 					//EffectManager.SimpleEffect(this.pickupEffect, base.transform.position, Quaternion.identity, true);
 					UnityEngine.Object.Destroy(base.gameObject);
 				}
