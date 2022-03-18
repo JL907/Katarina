@@ -50,9 +50,9 @@ namespace KatarinaMod.Orb
 					healthComponent.TakeDamage(damageInfo);
 					GlobalEventManager.instance.OnHitEnemy(damageInfo, healthComponent.gameObject);
 					GlobalEventManager.instance.OnHitAll(damageInfo, healthComponent.gameObject);
-					TossDagger();
 				}
 				this.failedToKill |= (!healthComponent || healthComponent.alive);
+				if (this.bouncesRemaining == 0) TossDagger();
 				if (this.bouncesRemaining > 0)
 				{
 					for (int i = 0; i < this.targetsToFindPerBounce; i++)
@@ -90,6 +90,7 @@ namespace KatarinaMod.Orb
 							lightningOrb.failedToKill = this.failedToKill;
 							OrbManager.instance.AddOrb(lightningOrb);
 						}
+						else TossDagger();
 					}
 					return;
 				}
@@ -103,10 +104,11 @@ namespace KatarinaMod.Orb
 				Vector3 toTarget = (this.target.transform.position - this.attacker.gameObject.transform.position).normalized;
 				Vector3 upVector = Vector3.up * 20 + toTarget * 2f;
 				weaponInstance = UnityEngine.Object.Instantiate<GameObject>(Assets.mainAssetBundle.LoadAsset<GameObject>("KatarinaWeapon"));
-				DaggerPickup daggerPickup = weaponInstance.AddComponent<DaggerPickup>();
-				daggerPickup.owner = this.attacker.gameObject;
+				weaponInstance.AddComponent<DaggerPickup>();
 				weaponInstance.AddComponent<DestroyOnTimer>().duration = 6f;
 				weaponInstance.AddComponent<NetworkIdentity>();
+
+				weaponInstance.GetComponent<DaggerPickup>().owner = this.attacker.gameObject;
 				weaponInstance.transform.position = position;
 				Rigidbody component2 = weaponInstance.GetComponent<Rigidbody>();
 				component2.velocity = upVector;

@@ -25,7 +25,7 @@ namespace KatarinaMod
         }
 		private void OnTriggerStay(Collider other)
 		{
-			if (NetworkServer.active && this.alive && TeamComponent.GetObjectTeam(other.gameObject) == TeamIndex.Player)
+			if (NetworkServer.active && this.alive && TeamComponent.GetObjectTeam(other.gameObject) == TeamIndex.Player && owner == other.gameObject)
 			{
 				EntityStateMachine component = other.GetComponent<EntityStateMachine>();
 				SkillLocator component2 = other.GetComponent<SkillLocator>();

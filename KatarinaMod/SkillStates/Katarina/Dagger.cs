@@ -13,7 +13,7 @@ namespace KatarinaMod.SkillStates.Katarina.Weapon
 {
     public class ThrowDagger : BaseState
     {
-        private static float damageCoefficient = 10f;
+        private static float damageCoefficient = 2f;
         private static float daggerProcCoefficient = 1f;
 		public static int maxBounceCount = 4;
 		public static float daggerTravelSpeed = 100f;
