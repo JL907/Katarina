@@ -53,8 +53,6 @@ namespace KatarinaMod.SkillStates.Katarina.Weapon
             {
                 base.characterBody.SetAimTimer(this.duration);
             }
-			Util.PlaySound("KatarinaQSFX", base.gameObject);
-			Util.PlaySound("KatarinaQVO", base.gameObject);
 		}
 
 		public override void FixedUpdate()
@@ -113,6 +111,8 @@ namespace KatarinaMod.SkillStates.Katarina.Weapon
 			if (hurtBox)
 			{
 				this.hasSuccessfullyThrownDagger = true;
+				Util.PlaySound("KatarinaQSFX", base.gameObject);
+				Util.PlaySound("KatarinaQVO", base.gameObject);
 				base.PlayAnimation("FullBody, Override", "ThrowDagger", "ThrowDagger.playbackRate", this.duration);
 				Transform transform = this.childLocator.FindChild("R_Hand");
 				EffectManager.SimpleMuzzleFlash(ThrowGlaive.muzzleFlashPrefab, base.gameObject, "R_Hand", true);

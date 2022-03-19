@@ -53,7 +53,7 @@ namespace KatarinaMod.SkillStates
 
         private void ThrowDagger()
         {
-            foreach (Collider collider in Physics.OverlapSphere(base.gameObject.transform.position, 25f))
+            foreach (Collider collider in Physics.OverlapSphere(base.gameObject.transform.position, 20f))
             {
                 HealthComponent component = collider.GetComponent<HealthComponent>();
                 if (component)
@@ -75,7 +75,7 @@ namespace KatarinaMod.SkillStates
                         HurtBox hurtBox = component.body.mainHurtBox;
                         if (hurtBox)
                         {
-                            genericDamageOrb.origin = base.transform.position + base.transform.up * 1.8f;
+                            genericDamageOrb.origin = base.transform.position + base.transform.up * 0.8f;
                             genericDamageOrb.target = hurtBox;
                             OrbManager.instance.AddOrb(genericDamageOrb);
 
