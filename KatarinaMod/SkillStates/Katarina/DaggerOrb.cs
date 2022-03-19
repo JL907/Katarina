@@ -20,14 +20,6 @@ namespace KatarinaMod.Orb
 			this.outer = attacker.GetComponent<EntityStateMachine>();
 		}
 
-		protected bool isAuthority
-		{
-			get
-			{
-				return Util.HasEffectiveAuthority(this.outer.networkIdentity);
-			}
-		}
-
 		public override void OnArrival()
 		{
 			this.canBounceOnSameTarget = false;
@@ -100,19 +92,14 @@ namespace KatarinaMod.Orb
         {
             if (!weaponInstance)
             {
-				Vector3 position = this.target.transform.position + Vector3.up * 1.5f;
+				Vector3 position = this.target.transform.position + Vector3.up * 2.5f;
 				Vector3 toTarget = (this.target.transform.position - this.attacker.gameObject.transform.position).normalized;
-				Vector3 upVector = Vector3.up * 20 + toTarget * 2f;
-				weaponInstance = UnityEngine.Object.Instantiate<GameObject>(Assets.mainAssetBundle.LoadAsset<GameObject>("KatarinaWeapon"));
-				weaponInstance.AddComponent<DaggerPickup>();
-				weaponInstance.AddComponent<DestroyOnTimer>().duration = 6f;
-				weaponInstance.AddComponent<NetworkIdentity>();
-
-				weaponInstance.GetComponent<DaggerPickup>().owner = this.attacker.gameObject;
+				Vector3 upVector = Vector3.up * 20 + toTarget * 3f;
+				weaponInstance = DaggerPickup.CreateDagger(this.attacker.gameObject);
 				weaponInstance.transform.position = position;
-				Rigidbody component2 = weaponInstance.GetComponent<Rigidbody>();
-				component2.velocity = upVector;
-				component2.AddTorque(UnityEngine.Random.Range(150f, 120f) * UnityEngine.Random.onUnitSphere);
+				Rigidbody component = weaponInstance.GetComponent<Rigidbody>();
+				component.velocity = upVector;
+				component.AddTorque(UnityEngine.Random.Range(150f, 120f) * UnityEngine.Random.onUnitSphere);
 
 				if (NetworkServer.active)
                 {

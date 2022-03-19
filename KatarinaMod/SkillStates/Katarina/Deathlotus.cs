@@ -42,7 +42,7 @@ namespace KatarinaMod.SkillStates
                 throwing = true;
                 ThrowDagger();
             }
-            if (this.stopwatch >= this.duration)
+            if (this.stopwatch >= this.duration && base.isAuthority)
             {
                 this.outer.SetNextStateToMain();
                 return;

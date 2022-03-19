@@ -24,8 +24,11 @@ namespace KatarinaMod.SkillStates
         private CharacterModel characterModel;
         private HurtBoxGroup hurtboxGroup;
         private GameObject weaponInstance;
+        private GameObject weaponInstance2;
         private Vector3 startLoc;
+        private Vector3 endLoc;
         private bool daggerThrown;
+        private bool daggerThrown2;
 
         public override void OnEnter()
         {
@@ -58,11 +61,7 @@ namespace KatarinaMod.SkillStates
             {
                 Vector3 position = startLoc + Vector3.up * 1.5f;
                 Vector3 upVector = Vector3.up * 20;
-                weaponInstance = UnityEngine.Object.Instantiate<GameObject>(Assets.mainAssetBundle.LoadAsset<GameObject>("KatarinaWeapon"));
-                weaponInstance.AddComponent<DaggerPickup>();
-                weaponInstance.AddComponent<DestroyOnTimer>().duration = 6f;
-                weaponInstance.AddComponent<NetworkIdentity>();
-                weaponInstance.GetComponent<DaggerPickup>().owner = base.gameObject;
+                weaponInstance = DaggerPickup.CreateDagger(base.gameObject);
                 weaponInstance.transform.position = position;
                 Rigidbody component2 = weaponInstance.GetComponent<Rigidbody>();
                 component2.velocity = upVector;
@@ -71,6 +70,25 @@ namespace KatarinaMod.SkillStates
                 if (NetworkServer.active)
                 {
                     NetworkServer.Spawn(weaponInstance);
+                }
+            }
+        }
+
+        private void TossDagger2()
+        {
+            if (!weaponInstance2)
+            {
+                Vector3 position = endLoc + Vector3.up * 1.5f;
+                Vector3 upVector = Vector3.up * 20;
+                weaponInstance2 = DaggerPickup.CreateDagger(base.gameObject);
+                weaponInstance2.transform.position = position;
+                Rigidbody component2 = weaponInstance2.GetComponent<Rigidbody>();
+                component2.velocity = upVector;
+                component2.AddTorque(UnityEngine.Random.Range(150f, 120f) * UnityEngine.Random.onUnitSphere);
+
+                if (NetworkServer.active)
+                {
+                    NetworkServer.Spawn(weaponInstance2);
                 }
             }
         }
@@ -123,8 +141,16 @@ namespace KatarinaMod.SkillStates
             this.stopwatch += Time.fixedDeltaTime;
             if (this.stopwatch >= 0.3f && !this.daggerThrown)
             {
+                daggerThrown = true;
                 TossDagger();
             }
+            if (this.stopwatch >= this.duration && !this.daggerThrown2)
+            {
+                endLoc = Util.GetCorePosition(base.gameObject);
+                daggerThrown2 = true;
+                TossDagger2();
+            }
+
             if (base.characterMotor && base.characterDirection)
             {
                 base.characterMotor.velocity = Vector3.zero;

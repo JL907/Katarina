@@ -19,12 +19,13 @@ namespace KatarinaMod
 		public bool collided = false;
 		public GameObject owner;
 		private bool alive = true;
+		private SphereCollider sphereCollider;
 		private void Awake()
         {
 			this.rigidbody = this.GetComponent<Rigidbody>();
+			this.sphereCollider = this.GetComponent<SphereCollider>();
+			if (this.sphereCollider) this.sphereCollider.enabled = false;
         }
-
-        
 
 		private void OnTriggerStay(Collider other)
 		{
@@ -42,13 +43,12 @@ namespace KatarinaMod
 				}
 			}
 		}
-
 		private void FixedUpdate()
         {
 			this.duration += Time.deltaTime;
 			if (this.duration < 1f && alive)
             {
-				this.rigidbody.AddTorque(2500000, 0, 0);
+				this.rigidbody.AddTorque(250000, 0, 0);
             }
 			if (this.duration > 1f && alive)
 			{
@@ -56,6 +56,7 @@ namespace KatarinaMod
                 {
 					this.rigidbody.AddForce(Vector3.down * 100f); ;
 				}
+				if (this.sphereCollider) sphereCollider.enabled = true;
 				this.rigidbody.rotation = Quaternion.identity;
 			}
         }
@@ -75,5 +76,15 @@ namespace KatarinaMod
 				this.collided = false;
 			}
 		}
-    }
+		internal static GameObject CreateDagger(GameObject daggerOwner)
+		{
+			var newDagger = UnityEngine.Object.Instantiate<GameObject>(Assets.mainAssetBundle.LoadAsset<GameObject>("KatarinaWeapon"));
+			newDagger.AddComponent<DaggerPickup>();
+			newDagger.AddComponent<DestroyOnTimer>().duration = 6f;
+			newDagger.AddComponent<NetworkIdentity>();
+			newDagger.GetComponent<DaggerPickup>().owner = daggerOwner;
+			return newDagger;
+		}
+
+	}
 }
