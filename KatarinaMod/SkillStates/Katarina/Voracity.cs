@@ -15,9 +15,11 @@ namespace KatarinaMod.SkillStates.Katarina
         protected float baseDuration = 0.2f;
         protected float damageCoefficient = 6f;
         private Transform indicatorInstance;
+        private Animator animator;
         public override void OnEnter()
         {
             base.OnEnter();
+            this.animator = base.GetModelAnimator();
             this.attacked = false;
             this.duration = this.baseDuration / this.attackSpeedStat;
             base.PlayAnimation("FullBody, Override", "Passive", "Passive.playbackRate", this.duration);

@@ -30,6 +30,7 @@ namespace KatarinaMod.Modules
 
         // networked hit sounds
         internal static NetworkSoundEventDef swordHitSoundEvent;
+        internal static NetworkSoundEventDef daggerSoundEvent;
 
         // particle effects
         internal static GameObject swordSwingEffect;
@@ -171,6 +172,7 @@ namespace KatarinaMod.Modules
                 return;
             }
             swordHitSoundEvent = CreateNetworkSoundEventDef("KatarinaSwordHit");
+            daggerSoundEvent = CreateNetworkSoundEventDef("KatarinaSwordHit"); 
             swordSwingEffect = Assets.LoadEffect("HenrySwordSwingEffect", true);
             swordHitImpactEffect = Assets.LoadEffect("ImpactHenrySlash");
         }

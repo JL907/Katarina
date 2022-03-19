@@ -17,18 +17,15 @@ namespace KatarinaMod.SkillStates
         private float baseDaggerThrottle = 0.166f;
         private float daggerThrottle;
         private bool throwing;
-        private static float damageCoefficient = 0.167f;
+        private static float damageCoefficient = 1f;
         private float stopwatch;
-        private uint activeSFXPlayID;
+        private Animator animator;
+        public uint activeSFXPlayID;
 
         public override void FixedUpdate()
         {
             base.FixedUpdate();
             this.stopwatch += Time.fixedDeltaTime;
-            if (this.stopwatch <= this.duration)
-            {
-                if (!throwing) throwing = true;
-            }
             if (daggerTimer < daggerThrottle)
             {
                 daggerTimer += Time.fixedDeltaTime;
@@ -40,10 +37,14 @@ namespace KatarinaMod.SkillStates
             }
             if (this.stopwatch >= this.duration && base.isAuthority)
             {
-                throwing = false;
                 this.outer.SetNextStateToMain();
                 return;
             }
+        }
+
+        public uint GetID()
+        {
+            return activeSFXPlayID;
         }
 
         protected virtual GenericDamageOrb CreateArrowOrb()
@@ -66,7 +67,7 @@ namespace KatarinaMod.SkillStates
                     }
                     if (!flag)
                     {
-                        GenericDamageOrb genericDamageOrb = this.CreateArrowOrb();
+                        KnifeDamageOrb genericDamageOrb = new KnifeDamageOrb();
                         genericDamageOrb.damageValue = base.characterBody.damage * damageCoefficient;
                         genericDamageOrb.isCrit = base.RollCrit();
                         genericDamageOrb.teamIndex = TeamComponent.GetObjectTeam(base.gameObject);
@@ -88,19 +89,27 @@ namespace KatarinaMod.SkillStates
         public override void OnEnter()
         {
             base.OnEnter();
+            this.animator = base.GetModelAnimator();
             this.stopwatch = 0f;
             this.duration = this.baseDuration / this.attackSpeedStat;
             this.daggerThrottle = this.baseDaggerThrottle / this.attackSpeedStat;
-            activeSFXPlayID = Util.PlaySound("KatarinaRSFX", base.gameObject);
+            this.activeSFXPlayID = Util.PlaySound("KatarinaRSFX", base.gameObject);
             Util.PlaySound("KatarinaRVO", base.gameObject);
-            base.PlayAnimation("Fullbody, Override", "Passive");
+            base.PlayAnimation("FullBody, Override", "Ultimate", "Ultimate.playbackRate", this.duration);
+            throwing = true;
         }
 
         public override void OnExit()
         {
-            base.OnExit();
+            throwing = false;
             base.PlayAnimation("FullBody, Override", "BufferEmpty");
-            if(this.activeSFXPlayID != 0) AkSoundEngine.StopPlayingID(this.activeSFXPlayID);
+            if (this.activeSFXPlayID != 0) AkSoundEngine.StopPlayingID(this.activeSFXPlayID);
+            base.OnExit();
+        }
+
+        public override InterruptPriority GetMinimumInterruptPriority()
+        {
+            return InterruptPriority.Skill;
         }
     }
 }

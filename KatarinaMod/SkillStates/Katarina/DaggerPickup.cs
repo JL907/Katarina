@@ -22,19 +22,48 @@ namespace KatarinaMod
 		private void Awake()
         {
 			this.rigidbody = this.GetComponent<Rigidbody>();
+            RoR2.GlobalEventManager.onCharacterDeathGlobal += GlobalEventManager_onCharacterDeathGlobal;
         }
+
+        private void GlobalEventManager_onCharacterDeathGlobal(DamageReport damageReport)
+		{
+			if (damageReport is null) return;
+			if (damageReport.victimBody is null) return;
+			if (damageReport.attackerBody is null) return;
+
+			if (damageReport.victimTeamIndex != TeamIndex.Player && damageReport.attackerBody.baseNameToken == "Lemonlust_KATARINA_BODY_NAME")
+			{
+				SkillLocator component = damageReport.attackerBody.GetComponent<SkillLocator>();
+				if (component.primary)
+				{
+					component.primary.RunRecharge(2f);
+				}
+				if (component.secondary)
+				{
+					component.secondary.RunRecharge(2f);
+				}
+				if (component.utility)
+				{
+					component.utility.RunRecharge(2f);
+				}
+				if (component.special)
+				{
+					component.special.RunRecharge(2f);
+				}
+			}
+		}
+
 		private void OnTriggerStay(Collider other)
 		{
 			if (NetworkServer.active && this.alive && TeamComponent.GetObjectTeam(other.gameObject) == TeamIndex.Player && owner == other.gameObject)
 			{
 				EntityStateMachine component = other.GetComponent<EntityStateMachine>();
 				SkillLocator component2 = other.GetComponent<SkillLocator>();
-				if (component && component2)
+				if (component && component2 && component.state.isAuthority)
 				{
 					this.alive = false;
 					component.SetNextState(new Voracity());
 					component2.utility.AddOneStock();
-					component2.special.AddOneStock();
 					//EffectManager.SimpleEffect(this.pickupEffect, base.transform.position, Quaternion.identity, true);
 					UnityEngine.Object.Destroy(base.gameObject);
 				}
@@ -46,7 +75,7 @@ namespace KatarinaMod
 			this.duration += Time.deltaTime;
 			if (this.duration < 1f && alive)
             {
-				this.rigidbody.AddTorque(25000, 0, 0);
+				this.rigidbody.AddTorque(2500000, 0, 0);
             }
 			if (this.duration > 1f && alive)
 			{
