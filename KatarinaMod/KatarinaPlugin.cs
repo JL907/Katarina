@@ -78,12 +78,40 @@ namespace KatarinaMod
         {
             // run hooks here, disabling one is as simple as commenting out the line
             On.RoR2.CharacterBody.RecalculateStats += CharacterBody_RecalculateStats;
+            RoR2.GlobalEventManager.onCharacterDeathGlobal += GlobalEventManager_onCharacterDeathGlobal;
         }
 
         private void LateSetup(HG.ReadOnlyArray<RoR2.ContentManagement.ReadOnlyContentPack> obj)
         {
             // have to set item displays later now because they require direct object references..
             Modules.Survivors.MyCharacter.instance.SetItemDisplays();
+        }
+        private void GlobalEventManager_onCharacterDeathGlobal(DamageReport damageReport)
+        {
+            if (damageReport is null) return;
+            if (damageReport.victimBody is null) return;
+            if (damageReport.attackerBody is null) return;
+
+            if (damageReport.victimTeamIndex != TeamIndex.Player && damageReport.attackerBody.baseNameToken == "Lemonlust_KATARINA_BODY_NAME")
+            {
+                SkillLocator component = damageReport.attackerBody.GetComponent<SkillLocator>();
+                if (component.primary)
+                {
+                    component.primary.RunRecharge(2f);
+                }
+                if (component.secondary)
+                {
+                    component.secondary.RunRecharge(2f);
+                }
+                if (component.utility)
+                {
+                    component.utility.RunRecharge(2f);
+                }
+                if (component.special)
+                {
+                    component.special.RunRecharge(2f);
+                }
+            }
         }
     }
 }

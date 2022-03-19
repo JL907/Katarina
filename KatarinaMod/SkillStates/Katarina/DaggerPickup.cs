@@ -22,36 +22,9 @@ namespace KatarinaMod
 		private void Awake()
         {
 			this.rigidbody = this.GetComponent<Rigidbody>();
-            RoR2.GlobalEventManager.onCharacterDeathGlobal += GlobalEventManager_onCharacterDeathGlobal;
         }
 
-        private void GlobalEventManager_onCharacterDeathGlobal(DamageReport damageReport)
-		{
-			if (damageReport is null) return;
-			if (damageReport.victimBody is null) return;
-			if (damageReport.attackerBody is null) return;
-
-			if (damageReport.victimTeamIndex != TeamIndex.Player && damageReport.attackerBody.baseNameToken == "Lemonlust_KATARINA_BODY_NAME")
-			{
-				SkillLocator component = damageReport.attackerBody.GetComponent<SkillLocator>();
-				if (component.primary)
-				{
-					component.primary.RunRecharge(2f);
-				}
-				if (component.secondary)
-				{
-					component.secondary.RunRecharge(2f);
-				}
-				if (component.utility)
-				{
-					component.utility.RunRecharge(2f);
-				}
-				if (component.special)
-				{
-					component.special.RunRecharge(2f);
-				}
-			}
-		}
+        
 
 		private void OnTriggerStay(Collider other)
 		{
