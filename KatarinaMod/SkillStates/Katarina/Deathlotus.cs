@@ -17,7 +17,7 @@ namespace KatarinaMod.SkillStates
         private float baseDaggerThrottle = 0.166f;
         private float daggerThrottle;
         private bool throwing;
-        private static float damageCoefficient = 1f;
+        private static float damageCoefficient = 2f;
         private float stopwatch;
         private Animator animator;
         public uint activeSFXPlayID;
@@ -41,12 +41,6 @@ namespace KatarinaMod.SkillStates
                 return;
             }
         }
-
-        public uint GetID()
-        {
-            return activeSFXPlayID;
-        }
-
         protected virtual GenericDamageOrb CreateArrowOrb()
         {
             return new HuntressArrowOrb();
@@ -91,7 +85,7 @@ namespace KatarinaMod.SkillStates
             base.OnEnter();
             this.animator = base.GetModelAnimator();
             this.stopwatch = 0f;
-            this.duration = this.baseDuration / this.attackSpeedStat;
+            this.duration = this.baseDuration;
             this.daggerThrottle = this.baseDaggerThrottle / this.attackSpeedStat;
             this.activeSFXPlayID = Util.PlaySound("KatarinaRSFX", base.gameObject);
             Util.PlaySound("KatarinaRVO", base.gameObject);

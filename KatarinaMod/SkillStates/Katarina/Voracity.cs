@@ -13,7 +13,7 @@ namespace KatarinaMod.SkillStates.Katarina
         public bool attacked;
         protected float stopwatch;
         protected float baseDuration = 0.2f;
-        protected float damageCoefficient = 6f;
+        protected float damageCoefficient = 10f;
         private Transform indicatorInstance;
         private Animator animator;
         public override void OnEnter()
