@@ -5,6 +5,7 @@ using RoR2;
 using System.Collections.Generic;
 using System.Security;
 using System.Security.Permissions;
+using BepInEx.Logging;
 
 [module: UnverifiableCode]
 [assembly: SecurityPermission(SecurityAction.RequestMinimum, SkipVerification = true)]
@@ -35,6 +36,14 @@ namespace KatarinaMod
         public const string MODVERSION = "0.0.1";
         public static KatarinaPlugin instance;
         internal List<SurvivorBase> Survivors = new List<SurvivorBase>();
+
+        public new ManualLogSource Logger
+        {
+            get
+            {
+                return base.Logger;
+            }
+        }
 
         private void Awake()
         {

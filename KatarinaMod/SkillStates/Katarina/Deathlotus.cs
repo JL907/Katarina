@@ -26,16 +26,23 @@ namespace KatarinaMod.SkillStates
         {
             base.FixedUpdate();
             this.stopwatch += Time.fixedDeltaTime;
+            int layerIndex = animator.GetLayerIndex("FullBody, Override");
+            this.animator.PlayInFixedTime("Ultimate", layerIndex, this.stopwatch);
+            this.animator.Update(0f);
+            float length = animator.GetCurrentAnimatorStateInfo(layerIndex).length;
+            animator.SetFloat("Ultimate.playbackRate", length / duration);
             if (daggerTimer < daggerThrottle)
             {
+                throwing = false;
                 daggerTimer += Time.fixedDeltaTime;
             }
-            if (daggerTimer >= daggerThrottle && throwing)
+            if (daggerTimer >= daggerThrottle && !throwing)
             {
                 daggerTimer = 0f;
+                throwing = true;
                 ThrowDagger();
             }
-            if (this.stopwatch >= this.duration && base.isAuthority)
+            if (this.stopwatch >= this.duration)
             {
                 this.outer.SetNextStateToMain();
                 return;
@@ -87,17 +94,17 @@ namespace KatarinaMod.SkillStates
             this.stopwatch = 0f;
             this.duration = this.baseDuration;
             this.daggerThrottle = this.baseDaggerThrottle / this.attackSpeedStat;
-            this.activeSFXPlayID = Util.PlaySound("KatarinaRSFX", base.gameObject);
+            activeSFXPlayID = Util.PlaySound("KatarinaRSFX", base.gameObject);
             Util.PlaySound("KatarinaRVO", base.gameObject);
-            base.PlayAnimation("FullBody, Override", "Ultimate", "Ultimate.playbackRate", this.duration);
-            throwing = true;
+            this.animator.SetFloat("Ultimate.playbackRate", 1f);
+            //base.PlayAnimation("FullBody, Override", "Ultimate", "Ultimate.playbackRate", this.duration);
         }
 
         public override void OnExit()
         {
-            throwing = false;
-            base.PlayAnimation("FullBody, Override", "BufferEmpty");
+            KatarinaMod.KatarinaPlugin.instance.Logger.LogMessage("Deathlotus onexit()");
             if (this.activeSFXPlayID != 0) AkSoundEngine.StopPlayingID(this.activeSFXPlayID);
+            base.PlayAnimation("FullBody, Override", "BufferEmpty");
             base.OnExit();
         }
 

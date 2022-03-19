@@ -22,8 +22,8 @@ namespace KatarinaMod.SkillStates.Katarina
             this.animator = base.GetModelAnimator();
             this.attacked = false;
             this.duration = this.baseDuration / this.attackSpeedStat;
-            base.PlayAnimation("FullBody, Override", "Passive", "Passive.playbackRate", this.duration);
             Util.PlaySound("KatarinaVoracitySFX", base.gameObject);
+            this.animator.SetFloat("Ultimate.playbackRate", 1f);
             if (!this.indicatorInstance) this.CreateIndicator();
         }
 
@@ -38,8 +38,13 @@ namespace KatarinaMod.SkillStates.Katarina
         {
             base.FixedUpdate();
             this.stopwatch += Time.fixedDeltaTime;
+            int layerIndex = animator.GetLayerIndex("FullBody, Override");
+            this.animator.PlayInFixedTime("Ultimate", layerIndex, this.stopwatch);
+            this.animator.Update(0f);
+            float length = animator.GetCurrentAnimatorStateInfo(layerIndex).length;
+            animator.SetFloat("Ultimate.playbackRate", length / duration);
             if (!this.indicatorInstance) this.CreateIndicator(); this.UpdateIndicator();
-            if (!attacked)
+            if (!attacked) 
             {
                 this.Fire();
                 this.attacked = true;

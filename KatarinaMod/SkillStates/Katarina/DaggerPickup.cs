@@ -32,7 +32,7 @@ namespace KatarinaMod
 			{
 				EntityStateMachine component = other.GetComponent<EntityStateMachine>();
 				SkillLocator component2 = other.GetComponent<SkillLocator>();
-				if (component && component2 && component.state.isAuthority)
+				if (component && component2)
 				{
 					this.alive = false;
 					component.SetNextState(new Voracity());
