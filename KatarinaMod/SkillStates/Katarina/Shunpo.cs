@@ -61,7 +61,7 @@ namespace KatarinaMod.SkillStates
             {
                 Vector3 position = startLoc + Vector3.up * 1.5f;
                 Vector3 upVector = Vector3.up * 20;
-                weaponInstance = DaggerPickup.CreateDagger(base.gameObject);
+                weaponInstance = Prefabs.CreateDagger(base.gameObject);
                 weaponInstance.transform.position = position;
                 Rigidbody component2 = weaponInstance.GetComponent<Rigidbody>();
                 component2.velocity = upVector;
@@ -80,7 +80,7 @@ namespace KatarinaMod.SkillStates
             {
                 Vector3 position = endLoc + Vector3.up * 1.5f;
                 Vector3 upVector = Vector3.up * 20;
-                weaponInstance2 = DaggerPickup.CreateDagger(base.gameObject);
+                weaponInstance2 = Prefabs.CreateDagger(base.gameObject);
                 weaponInstance2.transform.position = position;
                 Rigidbody component2 = weaponInstance2.GetComponent<Rigidbody>();
                 component2.velocity = upVector;

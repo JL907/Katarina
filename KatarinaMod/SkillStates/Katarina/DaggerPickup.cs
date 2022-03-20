@@ -34,15 +34,13 @@ namespace KatarinaMod
 			{
 				if (other.gameObject.GetComponent<CharacterBody>().baseNameToken == "Lemonlust_KATARINA_BODY_NAME")
                 {
-					EntityStateMachine component = other.GetComponent<EntityStateMachine>();
-					SkillLocator component2 = other.GetComponent<SkillLocator>();
-					if (component && component2 && Util.HasEffectiveAuthority(component.networkIdentity))
+					EntityStateMachine component = other.gameObject.GetComponent<EntityStateMachine>();
+					if (component)
 					{
 						this.alive = false;
-						component.SetNextState(new Voracity());
-						if (component2.utility)
-						{
-							component2.utility.RunRecharge(8f);
+						if (Util.HasEffectiveAuthority(component.networkIdentity))
+                        {
+							component.SetNextState(new Voracity());
 						}
 						UnityEngine.Object.Destroy(base.gameObject);
 					}
@@ -83,15 +81,5 @@ namespace KatarinaMod
 				this.collided = false;
 			}
 		}
-		internal static GameObject CreateDagger(GameObject daggerOwner)
-		{
-			var newDagger = UnityEngine.Object.Instantiate<GameObject>(Assets.mainAssetBundle.LoadAsset<GameObject>("KatarinaWeapon"));
-			newDagger.AddComponent<DaggerPickup>();
-			newDagger.AddComponent<DestroyOnTimer>().duration = 6f;
-			newDagger.AddComponent<NetworkIdentity>();
-			newDagger.GetComponent<DaggerPickup>().owner = daggerOwner;
-			return newDagger;
-		}
-
 	}
 }

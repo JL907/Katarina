@@ -77,7 +77,7 @@ namespace KatarinaMod.SkillStates.Katarina.Weapon
 			{
 				this.FireOrbGlaive();
 			}
-			if (!this.hasSuccessfullyThrownDagger)
+			if (!this.hasSuccessfullyThrownDagger && NetworkServer.active)
 			{
 				base.skillLocator.secondary.AddOneStock();
 			}
@@ -90,7 +90,7 @@ namespace KatarinaMod.SkillStates.Katarina.Weapon
 
 		private void FireOrbGlaive()
 		{
-			if (!NetworkServer.active)
+			if (!NetworkServer.active || this.hasTriedToThrowDagger)
 			{
 				return;
 			}

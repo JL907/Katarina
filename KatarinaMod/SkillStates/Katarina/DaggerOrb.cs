@@ -95,7 +95,7 @@ namespace KatarinaMod.Orb
 				Vector3 position = this.target.transform.position + Vector3.up * 2.5f;
 				Vector3 toTarget = (this.target.transform.position - this.attacker.gameObject.transform.position).normalized;
 				Vector3 upVector = Vector3.up * 20 + toTarget * 3f;
-				weaponInstance = DaggerPickup.CreateDagger(this.attacker.gameObject);
+				weaponInstance = Prefabs.CreateDagger(this.attacker.gameObject);
 				weaponInstance.transform.position = position;
 				Rigidbody component = weaponInstance.GetComponent<Rigidbody>();
 				component.velocity = upVector;

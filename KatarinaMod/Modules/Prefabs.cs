@@ -3,6 +3,7 @@ using RoR2;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Networking;
 
 namespace KatarinaMod.Modules
 {
@@ -48,6 +49,16 @@ namespace KatarinaMod.Modules
             newMaster.GetComponent<CharacterMaster>().bodyPrefab = bodyPrefab;
 
             masterPrefabs.Add(newMaster);
+        }
+
+        internal static GameObject CreateDagger(GameObject daggerOwner)
+        {
+            var newDagger = UnityEngine.Object.Instantiate<GameObject>(Assets.mainAssetBundle.LoadAsset<GameObject>("KatarinaWeapon"));
+            newDagger.AddComponent<DaggerPickup>();
+            newDagger.AddComponent<DestroyOnTimer>().duration = 6f;
+            newDagger.AddComponent<NetworkIdentity>();
+            newDagger.GetComponent<DaggerPickup>().owner = daggerOwner;
+            return newDagger;
         }
 
         internal static GameObject CreatePrefab(string bodyName, string modelName, BodyInfo bodyInfo)
