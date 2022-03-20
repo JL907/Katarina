@@ -90,7 +90,7 @@ namespace KatarinaMod.SkillStates.Katarina.Weapon
 
 		private void FireOrbGlaive()
 		{
-			if (!NetworkServer.active || this.hasTriedToThrowDagger)
+			if (!NetworkServer.active)
 			{
 				return;
 			}
@@ -113,13 +113,22 @@ namespace KatarinaMod.SkillStates.Katarina.Weapon
 				this.hasSuccessfullyThrownDagger = true;
 				Util.PlaySound("KatarinaQSFX", base.gameObject);
 				Util.PlaySound("KatarinaQVO", base.gameObject);
-				base.PlayAnimation("FullBody, Override", "ThrowDagger", "ThrowDagger.playbackRate", this.duration);
+				base.PlayAnimation("Gesture, Override", "ThrowDagger", "ThrowDagger.playbackRate", this.duration);
 				Transform transform = this.childLocator.FindChild("R_Hand");
 				EffectManager.SimpleMuzzleFlash(ThrowGlaive.muzzleFlashPrefab, base.gameObject, "R_Hand", true);
 				lightningOrb.origin = transform.position;
 				lightningOrb.target = hurtBox;
 				OrbManager.instance.AddOrb(lightningOrb);
 			}
+		}
+
+		public override void OnSerialize(NetworkWriter writer)
+		{
+			writer.Write(HurtBoxReference.FromHurtBox(this.initialOrbTarget));
+		}
+		public override void OnDeserialize(NetworkReader reader)
+		{
+			this.initialOrbTarget = reader.ReadHurtBoxReference().ResolveHurtBox();
 		}
 	}
 }

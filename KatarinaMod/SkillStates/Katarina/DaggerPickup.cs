@@ -29,7 +29,7 @@ namespace KatarinaMod
 
 		private void OnTriggerStay(Collider other)
 		{
-			if (NetworkServer.active && this.alive && TeamComponent.GetObjectTeam(other.gameObject) == TeamIndex.Player && owner == other.gameObject)
+			if (this.alive && TeamComponent.GetObjectTeam(other.gameObject) == TeamIndex.Player && other.gameObject.GetComponent<CharacterBody>().baseNameToken == "Lemonlust_KATARINA_BODY_NAME")
 			{
 				EntityStateMachine component = other.GetComponent<EntityStateMachine>();
 				SkillLocator component2 = other.GetComponent<SkillLocator>();
@@ -41,11 +41,11 @@ namespace KatarinaMod
 					{
 						component2.utility.RunRecharge(8f);
 					}
-					//EffectManager.SimpleEffect(this.pickupEffect, base.transform.position, Quaternion.identity, true);
 					UnityEngine.Object.Destroy(base.gameObject);
 				}
 			}
 		}
+
 		private void FixedUpdate()
         {
 			this.stopwatch += Time.deltaTime;
