@@ -13,7 +13,7 @@ namespace KatarinaMod
 {
 	public class DaggerPickup : MonoBehaviour
     {
-		private float duration;
+		private float stopwatch;
 		public Rigidbody rigidbody;
 		public GameObject pickupEffect;
 		public bool collided = false;
@@ -37,7 +37,10 @@ namespace KatarinaMod
 				{
 					this.alive = false;
 					component.SetNextState(new Voracity());
-					component2.utility.AddOneStock();
+					if (component2.utility)
+					{
+						component2.utility.RunRecharge(8f);
+					}
 					//EffectManager.SimpleEffect(this.pickupEffect, base.transform.position, Quaternion.identity, true);
 					UnityEngine.Object.Destroy(base.gameObject);
 				}
@@ -45,24 +48,24 @@ namespace KatarinaMod
 		}
 		private void FixedUpdate()
         {
-			this.duration += Time.deltaTime;
-			if (this.duration < 1f && alive)
+			this.stopwatch += Time.deltaTime;
+			if (this.stopwatch > 0.5f && sphereCollider) this.sphereCollider.enabled = true;
+			if (this.stopwatch < 1f && alive)
             {
 				this.rigidbody.AddTorque(250000, 0, 0);
             }
-			if (this.duration > 1f && alive)
+			if (this.stopwatch > 1f && alive)
 			{
 				if(!collided)
                 {
 					this.rigidbody.AddForce(Vector3.down * 100f); ;
 				}
-				if (this.sphereCollider) sphereCollider.enabled = true;
 				this.rigidbody.rotation = Quaternion.identity;
 			}
         }
 		private void OnCollisionEnter()
         {
-			if (duration > 1f && !collided)
+			if (stopwatch > 1f && !collided)
             {
 				this.rigidbody.isKinematic = true;
 				this.collided = true;
@@ -70,7 +73,7 @@ namespace KatarinaMod
         }
 		private void OnCollisionExit()
 		{
-			if (duration > 1f && collided)
+			if (stopwatch > 1f && collided)
 			{
 				this.rigidbody.isKinematic = false;
 				this.collided = false;
