@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
+using UnityEngine.Networking;
 
 namespace KatarinaMod.SkillStates.Katarina
 {
@@ -50,7 +51,10 @@ namespace KatarinaMod.SkillStates.Katarina
             if (!this.indicatorInstance) this.CreateIndicator(); this.UpdateIndicator();
             if (!attacked) 
             {
-                this.Fire();
+                if (NetworkServer.active)
+                {
+                    this.Fire();
+                }
                 this.attacked = true;
             }
             if (stopwatch >= this.duration && base.isAuthority)
