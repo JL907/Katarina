@@ -103,22 +103,25 @@ namespace KatarinaMod
 
             if (damageReport.victimTeamIndex != TeamIndex.Player && damageReport.attackerBody.baseNameToken == "Lemonlust_KATARINA_BODY_NAME")
             {
-                SkillLocator component = damageReport.attackerBody.GetComponent<SkillLocator>();
-                if (component.primary)
+                if (Util.HasEffectiveAuthority(damageReport.attacker))
                 {
-                    component.primary.RunRecharge(2f);
-                }
-                if (component.secondary)
-                {
-                    component.secondary.RunRecharge(2f);
-                }
-                if (component.utility)
-                {
-                    component.utility.RunRecharge(2f);
-                }
-                if (component.special)
-                {
-                    component.special.RunRecharge(2f);
+                    SkillLocator component = damageReport.attackerBody.GetComponent<SkillLocator>();
+                    if (component.primary)
+                    {
+                        component.primary.RunRecharge(2f);
+                    }
+                    if (component.secondary)
+                    {
+                        component.secondary.RunRecharge(2f);
+                    }
+                    if (component.utility)
+                    {
+                        component.utility.RunRecharge(2f);
+                    }
+                    if (component.special)
+                    {
+                        component.special.RunRecharge(2f);
+                    }
                 }
             }
         }

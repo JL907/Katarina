@@ -103,7 +103,6 @@ namespace KatarinaMod.SkillStates
 
         public override void OnExit()
         {
-            KatarinaMod.KatarinaPlugin.instance.Logger.LogMessage("Deathlotus onexit()");
             if (this.activeSFXPlayID != 0) AkSoundEngine.StopPlayingID(this.activeSFXPlayID);
             base.PlayAnimation("FullBody, Override", "BufferEmpty");
             base.OnExit();
