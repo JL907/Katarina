@@ -1,6 +1,5 @@
 ﻿using EntityStates;
 using EntityStates.Huntress.HuntressWeapon;
-using KatarinaMod.Orb;
 using RoR2;
 using RoR2.Orbs;
 using System;
@@ -17,7 +16,7 @@ namespace KatarinaMod.SkillStates.Katarina.Weapon
         private static float daggerProcCoefficient = 1f;
 		public static int maxBounceCount = 4;
 		public static float daggerTravelSpeed = 100f;
-		public static float daggerBounceRange = 8f;
+		public static float daggerBounceRange = 10f;
         private static float damageCoefficientPerBounce = 1.0f;
         public float baseDuration = 1f;
         private HuntressTracker huntressTracker;
@@ -96,7 +95,6 @@ namespace KatarinaMod.SkillStates.Katarina.Weapon
 			}
 			this.hasTriedToThrowDagger = true;
 			DaggerOrb lightningOrb = new DaggerOrb();
-			lightningOrb.lightningType = LightningOrb.LightningType.HuntressGlaive;
 			lightningOrb.damageValue = base.characterBody.damage * ThrowDagger.damageCoefficient;
 			lightningOrb.isCrit = Util.CheckRoll(base.characterBody.crit, base.characterBody.master);
 			lightningOrb.teamIndex = TeamComponent.GetObjectTeam(base.gameObject);

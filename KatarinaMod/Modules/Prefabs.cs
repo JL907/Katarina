@@ -1,4 +1,5 @@
-﻿using R2API;
+﻿using EntityStates;
+using R2API;
 using RoR2;
 using System.Collections.Generic;
 using System.Linq;
@@ -135,6 +136,10 @@ namespace KatarinaMod.Modules
             bodyComponent.isChampion = false;
 
             bodyComponent.bodyColor = bodyInfo.bodyColor;
+
+            CharacterDeathBehavior characterDeathBehavior = newPrefab.GetComponent<CharacterDeathBehavior>();
+            characterDeathBehavior.deathState = new SerializableEntityStateType(typeof(SkillStates.BaseStates.Death));
+
 
             #endregion CharacterBody
 

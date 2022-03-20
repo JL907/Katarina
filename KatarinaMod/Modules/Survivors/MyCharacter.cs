@@ -1,4 +1,5 @@
 ﻿using BepInEx.Configuration;
+using EntityStates;
 using RoR2;
 using RoR2.Skills;
 using System;

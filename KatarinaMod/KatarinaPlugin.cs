@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Security;
 using System.Security.Permissions;
 using BepInEx.Logging;
+using UnityEngine.Networking;
 
 [module: UnverifiableCode]
 [assembly: SecurityPermission(SecurityAction.RequestMinimum, SkipVerification = true)]
@@ -103,7 +104,7 @@ namespace KatarinaMod
 
             if (damageReport.victimTeamIndex != TeamIndex.Player && damageReport.attackerBody.baseNameToken == "Lemonlust_KATARINA_BODY_NAME")
             {
-                if (Util.HasEffectiveAuthority(damageReport.attacker))
+                if (NetworkServer.active)
                 {
                     SkillLocator component = damageReport.attackerBody.GetComponent<SkillLocator>();
                     if (component.primary)
@@ -123,6 +124,7 @@ namespace KatarinaMod
                         component.special.RunRecharge(2f);
                     }
                 }
+                
             }
         }
     }

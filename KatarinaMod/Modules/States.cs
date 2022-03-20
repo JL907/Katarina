@@ -23,6 +23,8 @@ namespace KatarinaMod.Modules
             entityStates.Add(typeof(Voracity));
 
             entityStates.Add(typeof(Deathlotus));
+
+            entityStates.Add(typeof(Death));
         }
     }
 }
