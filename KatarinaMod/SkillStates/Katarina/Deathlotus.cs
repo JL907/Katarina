@@ -74,13 +74,14 @@ namespace KatarinaMod.SkillStates
                         genericDamageOrb.teamIndex = TeamComponent.GetObjectTeam(base.gameObject);
                         genericDamageOrb.attacker = base.gameObject;
                         genericDamageOrb.procCoefficient = 1f;
-                        HurtBox hurtBox = component.body.mainHurtBox;
+                        CharacterBody characterBody = null;
+                        characterBody = collider.gameObject.GetComponent<CharacterBody>();
+                        HurtBox hurtBox = characterBody ? characterBody.mainHurtBox : component.body.mainHurtBox;
                         if (hurtBox)
                         {
                             genericDamageOrb.origin = base.transform.position + base.transform.up * 0.8f;
                             genericDamageOrb.target = hurtBox;
                             OrbManager.instance.AddOrb(genericDamageOrb);
-
                         }
                     }
                 }

@@ -14,7 +14,7 @@ namespace KatarinaMod.Modules.Survivors
 
         internal override BodyInfo bodyInfo { get; set; } = new BodyInfo
         {
-            armor = 12f,
+            armor = 20f,
             armorGrowth = 0f,
             bodyName = "Katarina",
             bodyNameToken = KatarinaPlugin.developerPrefix + "_KATARINA_BODY_NAME",
@@ -25,7 +25,7 @@ namespace KatarinaMod.Modules.Survivors
             healthGrowth = 33f,
             healthRegen = 1.5f,
             jumpCount = 2,
-            maxHealth = 100f,
+            maxHealth = 101f,
             subtitleNameToken = KatarinaPlugin.developerPrefix + "_KATARINA_BODY_SUBTITLE",
             podPrefab = Resources.Load<GameObject>("Prefabs/NetworkedObjects/SurvivorPod")
         };

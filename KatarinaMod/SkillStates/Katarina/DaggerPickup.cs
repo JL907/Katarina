@@ -27,21 +27,25 @@ namespace KatarinaMod
 			if (this.sphereCollider) this.sphereCollider.enabled = false;
         }
 
+
 		private void OnTriggerStay(Collider other)
 		{
-			if (this.alive && TeamComponent.GetObjectTeam(other.gameObject) == TeamIndex.Player && other.gameObject.GetComponent<CharacterBody>().baseNameToken == "Lemonlust_KATARINA_BODY_NAME")
+			if (this.alive && TeamComponent.GetObjectTeam(other.gameObject) == TeamIndex.Player)
 			{
-				EntityStateMachine component = other.GetComponent<EntityStateMachine>();
-				SkillLocator component2 = other.GetComponent<SkillLocator>();
-				if (component && component2)
-				{
-					this.alive = false;
-					component.SetNextState(new Voracity());
-					if (component2.utility)
+				if (other.gameObject.GetComponent<CharacterBody>().baseNameToken == "Lemonlust_KATARINA_BODY_NAME")
+                {
+					EntityStateMachine component = other.GetComponent<EntityStateMachine>();
+					SkillLocator component2 = other.GetComponent<SkillLocator>();
+					if (component && component2 && Util.HasEffectiveAuthority(component.networkIdentity))
 					{
-						component2.utility.RunRecharge(8f);
+						this.alive = false;
+						component.SetNextState(new Voracity());
+						if (component2.utility)
+						{
+							component2.utility.RunRecharge(8f);
+						}
+						UnityEngine.Object.Destroy(base.gameObject);
 					}
-					UnityEngine.Object.Destroy(base.gameObject);
 				}
 			}
 		}
