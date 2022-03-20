@@ -11,10 +11,29 @@ namespace KatarinaMod
 {
 	public class DaggerOrb : Orb
 	{
+		public float speed = 100f;
+		public float damageValue;
+		public GameObject attacker;
+		public GameObject inflictor;
+		public int bouncesRemaining;
+		public List<HealthComponent> bouncedObjects;
+		public TeamIndex teamIndex;
+		public bool isCrit;
+		public ProcChainMask procChainMask;
+		public float procCoefficient = 1f;
+		public DamageColorIndex damageColorIndex;
+		public float range = 20f;
+		public float damageCoefficientPerBounce = 1f;
+		public int targetsToFindPerBounce = 1;
+		public DamageType damageType;
+		private bool canBounceOnSameTarget;
+		private bool failedToKill;
+		private BullseyeSearch search;
+		private GameObject weaponInstance;
 		public override void Begin()
 		{
 			base.duration = base.distanceToTarget / this.speed;
-			this.canBounceOnSameTarget = true;
+			this.canBounceOnSameTarget = false;
 			EffectData effectData = new EffectData
 			{
 				origin = this.origin,
@@ -28,6 +47,10 @@ namespace KatarinaMod
 		{
 			if (!weaponInstance)
 			{
+				if (!NetworkServer.active)
+                {
+					return;
+                }
 				Vector3 position = this.target.transform.position + Vector3.up * 2.5f;
 				Vector3 toTarget = (this.target.transform.position - this.attacker.gameObject.transform.position).normalized;
 				Vector3 upVector = Vector3.up * 20 + toTarget * 3f;
@@ -37,10 +60,7 @@ namespace KatarinaMod
 				component.velocity = upVector;
 				component.AddTorque(UnityEngine.Random.Range(150f, 120f) * UnityEngine.Random.onUnitSphere);
 
-				if (NetworkServer.active)
-				{
-					NetworkServer.Spawn(weaponInstance);
-				}
+				NetworkServer.Spawn(weaponInstance);
 			}
 		}
 		public override void OnArrival()
@@ -141,24 +161,5 @@ namespace KatarinaMod
 			}
 			return hurtBox;
 		}
-		public float speed = 100f;
-		public float damageValue;
-		public GameObject attacker;
-		public GameObject inflictor;
-		public int bouncesRemaining;
-		public List<HealthComponent> bouncedObjects;
-		public TeamIndex teamIndex;
-		public bool isCrit;
-		public ProcChainMask procChainMask;
-		public float procCoefficient = 1f;
-		public DamageColorIndex damageColorIndex;
-		public float range = 20f;
-		public float damageCoefficientPerBounce = 1f;
-		public int targetsToFindPerBounce = 1;
-		public DamageType damageType;
-		private bool canBounceOnSameTarget;
-		private bool failedToKill;
-		private BullseyeSearch search;
-        private GameObject weaponInstance;
     }
 }

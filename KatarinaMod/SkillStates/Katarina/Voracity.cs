@@ -14,7 +14,7 @@ namespace KatarinaMod.SkillStates.Katarina
         public bool attacked;
         protected float stopwatch;
         protected float baseDuration = 0.2f;
-        protected float damageCoefficient = 10f;
+        protected float damageCoefficient = 6f;
         private Transform indicatorInstance;
         private Animator animator;
         public override void OnEnter()
@@ -59,6 +59,7 @@ namespace KatarinaMod.SkillStates.Katarina
             }
             if (stopwatch >= this.duration && base.isAuthority)
             {
+                if (this.indicatorInstance) EntityState.Destroy(this.indicatorInstance.gameObject);
                 this.outer.SetNextStateToMain();
                 return;
             }

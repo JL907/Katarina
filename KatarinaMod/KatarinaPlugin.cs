@@ -88,23 +88,16 @@ namespace KatarinaMod
         {
             // run hooks here, disabling one is as simple as commenting out the line
             On.RoR2.CharacterBody.RecalculateStats += CharacterBody_RecalculateStats;
-            RoR2.GlobalEventManager.onCharacterDeathGlobal += GlobalEventManager_onCharacterDeathGlobal;
+            On.RoR2.GlobalEventManager.OnCharacterDeath += GlobalEventManager_OnCharacterDeath;
         }
 
-        private void LateSetup(HG.ReadOnlyArray<RoR2.ContentManagement.ReadOnlyContentPack> obj)
+        private void GlobalEventManager_OnCharacterDeath(On.RoR2.GlobalEventManager.orig_OnCharacterDeath orig, GlobalEventManager self, DamageReport damageReport)
         {
-            // have to set item displays later now because they require direct object references..
-            Modules.Survivors.MyCharacter.instance.SetItemDisplays();
-        }
-        private void GlobalEventManager_onCharacterDeathGlobal(DamageReport damageReport)
-        {
-            if (damageReport is null) return;
-            if (damageReport.victimBody is null) return;
-            if (damageReport.attackerBody is null) return;
-
-            if (damageReport.victimTeamIndex != TeamIndex.Player && damageReport.attackerBody.baseNameToken == "Lemonlust_KATARINA_BODY_NAME")
+            orig(self, damageReport);
+            if (damageReport.attackerBody != null && damageReport.attacker != null && damageReport != null)
             {
-                if (NetworkServer.active)
+                BodyIndex bodyIndex = BodyCatalog.FindBodyIndex("Katarina");
+                if (damageReport.victimTeamIndex != TeamIndex.Player && damageReport.attackerBodyIndex == bodyIndex)
                 {
                     SkillLocator component = damageReport.attackerBody.GetComponent<SkillLocator>();
                     if (component.primary)
@@ -124,8 +117,13 @@ namespace KatarinaMod
                         component.special.RunRecharge(2f);
                     }
                 }
-                
             }
+        }
+
+        private void LateSetup(HG.ReadOnlyArray<RoR2.ContentManagement.ReadOnlyContentPack> obj)
+        {
+            // have to set item displays later now because they require direct object references..
+            Modules.Survivors.MyCharacter.instance.SetItemDisplays();
         }
     }
 }

@@ -32,7 +32,9 @@ namespace KatarinaMod
 		{
 			if (this.alive && TeamComponent.GetObjectTeam(other.gameObject) == TeamIndex.Player)
 			{
-				if (other.gameObject.GetComponent<CharacterBody>().baseNameToken == "Lemonlust_KATARINA_BODY_NAME")
+				CharacterBody characterBody = other.gameObject.GetComponent<CharacterBody>();
+				BodyIndex bodyIndex = BodyCatalog.FindBodyIndex("Katarina");
+				if (characterBody && characterBody.bodyIndex == bodyIndex)
                 {
 					EntityStateMachine component = other.gameObject.GetComponent<EntityStateMachine>();
 					if (component)
