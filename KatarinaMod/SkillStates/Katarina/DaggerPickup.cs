@@ -17,20 +17,28 @@ namespace KatarinaMod
 		public Rigidbody rigidbody;
 		public GameObject pickupEffect;
 		public bool collided = false;
-		public GameObject owner;
 		private bool alive = true;
 		private SphereCollider sphereCollider;
-		private void Awake()
+		Vector3 eulerAngleVelocity;
+
+		private void Start()
         {
 			this.rigidbody = this.GetComponent<Rigidbody>();
+			this.rigidbody.collisionDetectionMode = CollisionDetectionMode.ContinuousSpeculative;
 			this.sphereCollider = this.GetComponent<SphereCollider>();
 			if (this.sphereCollider) this.sphereCollider.enabled = false;
-        }
+			this.stopwatch = 0f;
+			this.rigidbody.velocity = Vector3.zero;
+			eulerAngleVelocity = new Vector3(0.25f, 0, 0);
+			rigidbody.maxAngularVelocity = float.MaxValue;
+			rigidbody.rotation = Quaternion.identity;
+
+		}
 
 
 		private void OnTriggerStay(Collider other)
 		{
-			if (this.alive && TeamComponent.GetObjectTeam(other.gameObject) == TeamIndex.Player)
+			if (NetworkServer.active && this.alive && TeamComponent.GetObjectTeam(other.gameObject) == TeamIndex.Player)
 			{
 				CharacterBody characterBody = other.gameObject.GetComponent<CharacterBody>();
 				BodyIndex bodyIndex = BodyCatalog.FindBodyIndex("Katarina");
@@ -52,24 +60,26 @@ namespace KatarinaMod
 
 		private void FixedUpdate()
         {
-			this.stopwatch += Time.deltaTime;
-			if (this.stopwatch > 0.5f && sphereCollider) this.sphereCollider.enabled = true;
-			if (this.stopwatch < 1f && alive)
+			this.stopwatch += Time.fixedDeltaTime;
+			if (this.stopwatch > 0.5 && sphereCollider) this.sphereCollider.enabled = true;
+			if (this.stopwatch < 0.5f && alive)
             {
-				this.rigidbody.AddTorque(250000, 0, 0);
-            }
-			if (this.stopwatch > 1f && alive)
+				this.rigidbody.velocity = Vector3.up * 15f;
+				Quaternion deltaRotation = Quaternion.Euler(eulerAngleVelocity);
+				this.rigidbody.MoveRotation(this.rigidbody.rotation * deltaRotation);
+			}
+			if (this.stopwatch > 0.75f && alive && sphereCollider)
 			{
 				if(!collided)
                 {
-					this.rigidbody.AddForce(Vector3.down * 100f); ;
+					this.rigidbody.AddForce(Vector3.down * 200f); 
 				}
 				this.rigidbody.rotation = Quaternion.identity;
 			}
         }
 		private void OnCollisionEnter()
         {
-			if (stopwatch > 1f && !collided)
+			if (stopwatch > 0.5f && !collided)
             {
 				this.rigidbody.isKinematic = true;
 				this.collided = true;
@@ -77,7 +87,7 @@ namespace KatarinaMod
         }
 		private void OnCollisionExit()
 		{
-			if (stopwatch > 1f && collided)
+			if (stopwatch > 0.5f && collided)
 			{
 				this.rigidbody.isKinematic = false;
 				this.collided = false;

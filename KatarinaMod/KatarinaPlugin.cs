@@ -55,7 +55,7 @@ namespace KatarinaMod
             Modules.Config.ReadConfig();
             Modules.States.RegisterStates(); // register states for networking
             Modules.Buffs.RegisterBuffs(); // add and register custom buffs/debuffs
-            //Modules.Projectiles.RegisterProjectiles(); // add and register custom projectiles
+            Modules.Projectiles.RegisterProjectiles(); // add and register custom projectiles
             Modules.Tokens.AddTokens(); // register name tokens
             //Modules.ItemDisplays.PopulateDisplays(); // collect item display prefabs for use in our display rules
 
@@ -94,27 +94,19 @@ namespace KatarinaMod
         private void GlobalEventManager_OnCharacterDeath(On.RoR2.GlobalEventManager.orig_OnCharacterDeath orig, GlobalEventManager self, DamageReport damageReport)
         {
             orig(self, damageReport);
+            if (!NetworkServer.active)
+            {
+                return;
+            }
             if (damageReport.attackerBody != null && damageReport.attacker != null && damageReport != null)
             {
                 BodyIndex bodyIndex = BodyCatalog.FindBodyIndex("Katarina");
                 if (damageReport.victimTeamIndex != TeamIndex.Player && damageReport.attackerBodyIndex == bodyIndex)
                 {
-                    SkillLocator component = damageReport.attackerBody.GetComponent<SkillLocator>();
-                    if (component.primary)
+                    SkillLocator skillLocator = damageReport.attackerBody.skillLocator;
+                    if (NetworkServer.active)
                     {
-                        component.primary.RunRecharge(2f);
-                    }
-                    if (component.secondary)
-                    {
-                        component.secondary.RunRecharge(2f);
-                    }
-                    if (component.utility)
-                    {
-                        component.utility.RunRecharge(2f);
-                    }
-                    if (component.special)
-                    {
-                        component.special.RunRecharge(2f);
+                        skillLocator.DeductCooldownFromAllSkillsServer(2f);
                     }
                 }
             }

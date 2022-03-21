@@ -6,6 +6,8 @@ using RoR2;
 using RoR2.Orbs;
 using UnityEngine.Networking;
 using KatarinaMod.Modules;
+using R2API;
+using RoR2.Projectile;
 
 namespace KatarinaMod
 {
@@ -30,8 +32,10 @@ namespace KatarinaMod
 		private bool failedToKill;
 		private BullseyeSearch search;
 		private GameObject weaponInstance;
+		private EntityStateMachine outer = null;
 		public override void Begin()
 		{
+			this.outer = attacker.gameObject.GetComponent<EntityStateMachine>();
 			base.duration = base.distanceToTarget / this.speed;
 			this.canBounceOnSameTarget = false;
 			EffectData effectData = new EffectData
@@ -45,22 +49,21 @@ namespace KatarinaMod
 
 		private void TossDagger()
 		{
-			if (!weaponInstance)
-			{
-				if (!NetworkServer.active)
-                {
-					return;
-                }
-				Vector3 position = this.target.transform.position + Vector3.up * 2.5f;
-				Vector3 toTarget = (this.target.transform.position - this.attacker.gameObject.transform.position).normalized;
-				Vector3 upVector = Vector3.up * 20 + toTarget * 3f;
-				weaponInstance = Prefabs.CreateDagger(this.attacker.gameObject);
-				weaponInstance.transform.position = position;
-				Rigidbody component = weaponInstance.GetComponent<Rigidbody>();
-				component.velocity = upVector;
-				component.AddTorque(UnityEngine.Random.Range(150f, 120f) * UnityEngine.Random.onUnitSphere);
+			if (Util.HasEffectiveAuthority(this.outer.networkIdentity))
+            {
+				FireProjectileInfo fireProjectileInfo = new FireProjectileInfo
+				{
+					projectilePrefab = Modules.Projectiles.knifePrefab,
+					position = this.target.transform.position,
+					rotation = Quaternion.identity,
+					owner = attacker.gameObject,
+					damage = 0,
+					force = 0,
+					crit = false,
+					speedOverride = 120f
+				};
 
-				NetworkServer.Spawn(weaponInstance);
+				ProjectileManager.instance.FireProjectile(fireProjectileInfo);
 			}
 		}
 		public override void OnArrival()

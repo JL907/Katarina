@@ -52,16 +52,6 @@ namespace KatarinaMod.Modules
             masterPrefabs.Add(newMaster);
         }
 
-        internal static GameObject CreateDagger(GameObject daggerOwner)
-        {
-            var newDagger = UnityEngine.Object.Instantiate<GameObject>(Assets.mainAssetBundle.LoadAsset<GameObject>("KatarinaWeapon"));
-            newDagger.AddComponent<DaggerPickup>();
-            newDagger.AddComponent<DestroyOnTimer>().duration = 6f;
-            newDagger.AddComponent<NetworkIdentity>();
-            newDagger.GetComponent<DaggerPickup>().owner = daggerOwner;
-            return newDagger;
-        }
-
         internal static GameObject CreatePrefab(string bodyName, string modelName, BodyInfo bodyInfo)
         {
             if (!Resources.Load<GameObject>("Prefabs/CharacterBodies/" + bodyInfo.bodyNameToClone + "Body"))

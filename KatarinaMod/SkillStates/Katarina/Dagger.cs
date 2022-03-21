@@ -78,9 +78,16 @@ namespace KatarinaMod.SkillStates.Katarina.Weapon
 			}
 			if (!this.hasSuccessfullyThrownDagger && NetworkServer.active)
 			{
-				base.skillLocator.secondary.AddOneStock();
+				base.skillLocator.secondary.AddOneStock(); 
 			}
         }
+
+		public void Animation()
+        {
+			Util.PlaySound("KatarinaQSFX", base.gameObject);
+			Util.PlaySound("KatarinaQVO", base.gameObject);
+			base.PlayAnimation("Gesture, Override", "ThrowDagger", "ThrowDagger.playbackRate", this.duration);
+		}
 
 		public override InterruptPriority GetMinimumInterruptPriority()
 		{
@@ -109,9 +116,8 @@ namespace KatarinaMod.SkillStates.Katarina.Weapon
 			if (hurtBox)
 			{
 				this.hasSuccessfullyThrownDagger = true;
-				Util.PlaySound("KatarinaQSFX", base.gameObject);
-				Util.PlaySound("KatarinaQVO", base.gameObject);
-				base.PlayAnimation("Gesture, Override", "ThrowDagger", "ThrowDagger.playbackRate", this.duration);
+				KatarinaMod.KatarinaPlugin.instance.Logger.LogMessage("Toss Dagger");
+				Animation();
 				Transform transform = this.childLocator.FindChild("R_Hand");
 				EffectManager.SimpleMuzzleFlash(ThrowGlaive.muzzleFlashPrefab, base.gameObject, "R_Hand", true);
 				lightningOrb.origin = transform.position;
@@ -119,11 +125,12 @@ namespace KatarinaMod.SkillStates.Katarina.Weapon
 				OrbManager.instance.AddOrb(lightningOrb);
 			}
 		}
-
 		public override void OnSerialize(NetworkWriter writer)
 		{
 			writer.Write(HurtBoxReference.FromHurtBox(this.initialOrbTarget));
 		}
+
+		// Token: 0x06000E6F RID: 3695 RVA: 0x0003E6A4 File Offset: 0x0003C8A4
 		public override void OnDeserialize(NetworkReader reader)
 		{
 			this.initialOrbTarget = reader.ReadHurtBoxReference().ResolveHurtBox();

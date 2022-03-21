@@ -3,6 +3,7 @@ using EntityStates.Huntress;
 using KatarinaMod.Modules;
 using R2API;
 using RoR2;
+using RoR2.Projectile;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -23,13 +24,7 @@ namespace KatarinaMod.SkillStates
         public string endSoundString;
         private CharacterModel characterModel;
         private HurtBoxGroup hurtboxGroup;
-        private GameObject weaponInstance;
-        private GameObject weaponInstance2;
-        private Vector3 startLoc;
-        private Vector3 endLoc;
-        private bool daggerThrown;
-        private bool daggerThrown2;
-
+        private bool secondToss;
         public override void OnEnter()
         {
             base.OnEnter();
@@ -51,45 +46,27 @@ namespace KatarinaMod.SkillStates
                 hurtBoxGroup.hurtBoxesDeactivatorCounter = hurtBoxesDeactivatorCounter;
             }
             this.blinkVector = this.GetBlinkVector();
-            this.startLoc = Util.GetCorePosition(base.gameObject);
+            TossDagger(base.gameObject.transform.position);
             this.CreateBlinkEffect(Util.GetCorePosition(base.gameObject));
         }
 
-        private void TossDagger()
+        private void TossDagger(Vector3 location)
         {
-            if (!weaponInstance)
+            if (base.isAuthority)
             {
-                Vector3 position = startLoc + Vector3.up * 1.5f;
-                Vector3 upVector = Vector3.up * 20;
-                weaponInstance = Prefabs.CreateDagger(base.gameObject);
-                weaponInstance.transform.position = position;
-                Rigidbody component2 = weaponInstance.GetComponent<Rigidbody>();
-                component2.velocity = upVector;
-                component2.AddTorque(UnityEngine.Random.Range(150f, 120f) * UnityEngine.Random.onUnitSphere);
-
-                if (NetworkServer.active)
+                FireProjectileInfo fireProjectileInfo = new FireProjectileInfo
                 {
-                    NetworkServer.Spawn(weaponInstance);
-                }
-            }
-        }
+                    projectilePrefab = Modules.Projectiles.knifePrefab,
+                    position = location,
+                    rotation = Quaternion.identity,
+                    owner = base.gameObject,
+                    damage = 0,
+                    force = 0,
+                    crit = false,
+                    speedOverride = 120f
+                };
 
-        private void TossDagger2()
-        {
-            if (!weaponInstance2)
-            {
-                Vector3 position = endLoc + Vector3.up * 1.5f;
-                Vector3 upVector = Vector3.up * 20;
-                weaponInstance2 = Prefabs.CreateDagger(base.gameObject);
-                weaponInstance2.transform.position = position;
-                Rigidbody component2 = weaponInstance2.GetComponent<Rigidbody>();
-                component2.velocity = upVector;
-                component2.AddTorque(UnityEngine.Random.Range(150f, 120f) * UnityEngine.Random.onUnitSphere);
-
-                if (NetworkServer.active)
-                {
-                    NetworkServer.Spawn(weaponInstance2);
-                }
+                ProjectileManager.instance.FireProjectile(fireProjectileInfo);
             }
         }
 
@@ -139,22 +116,16 @@ namespace KatarinaMod.SkillStates
         {
             base.FixedUpdate();
             this.stopwatch += Time.fixedDeltaTime;
-            if (this.stopwatch >= 0.3f && !this.daggerThrown)
-            {
-                daggerThrown = true;
-                TossDagger();
-            }
-            if (this.stopwatch >= this.duration && !this.daggerThrown2)
-            {
-                endLoc = Util.GetCorePosition(base.gameObject);
-                daggerThrown2 = true;
-                TossDagger2();
-            }
-
             if (base.characterMotor && base.characterDirection)
             {
                 base.characterMotor.velocity = Vector3.zero;
                 base.characterMotor.rootMotion += this.blinkVector * (7f * this.speedCoefficient * Time.fixedDeltaTime);
+            }
+            if (this.stopwatch >= this.duration && !secondToss)
+            {
+                secondToss = true;
+                var location = Util.GetCorePosition(base.gameObject);
+                TossDagger(location);
             }
             if (this.stopwatch >= this.duration && base.isAuthority)
             {
