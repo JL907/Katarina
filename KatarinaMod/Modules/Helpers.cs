@@ -19,8 +19,6 @@ namespace KatarinaMod.Modules
 
     internal static class Helpers
     {
-        internal const string agilePrefix = "<style=cIsUtility>Agile.</style> ";
-
         public static T[] Append<T>(ref T[] array, List<T> list)
         {
             var orig = array.Length;

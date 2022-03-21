@@ -5,79 +5,59 @@ namespace KatarinaMod.Modules
 {
     internal static class Tokens
     {
+        public const string characterLore = "A leader of Ionia's growing criminal underworld, KATARINA rose to prominence in the wake of the war with Noxus. Though he began as a humble challenger in the fighting pits of Navori, he quickly gained notoriety for his savage strength, and his ability to take seemingly endless amounts of punishment. Now, having climbed through the ranks of local combatants, KATARINA has muscled to the top, reigning over the pits he once fought in.";
+        public const string characterName = "<color=#AF1AAF>Katarina</color>";
+        public const string characterOutro = "..expect my visit when the darkness comes. The night I think is best for hiding all.";
+        public const string characterOutroFailure = "...And a horror of outer darkness after, And dust returneth to dust again";
+        public const string characterSubtitle = "The Sinister Blade";
+
+        public static string descriptionText =
+             "Decisive in judgment and lethal in combat, Katarina is a Noxian assassin of the highest caliber." + Environment.NewLine + Environment.NewLine
+             + "Eldest daughter to the legendary General Du Couteau, she made her talents known with swift kills against unsuspecting enemies." + Environment.NewLine + Environment.NewLine
+             + "Her fiery ambition has driven her to pursue heavily-guarded targets, even at the risk of endangering her allies" + Environment.NewLine + Environment.NewLine
+             + "—but no matter the mission, Katarina will not hesitate to execute her duty amid a whirlwind of serrated daggers.";
+
         internal static void AddTokens()
         {
-            #region Katarina
+            //<color=#c9aa71> tan
+            //<color=#ffffff> white
+            //<color=#f68835> orange
+            //<color=#d62d20> red
+            //<color=#AF1AAF> purple
+            LanguageAPI.Add("KATARINA_NAME", characterName);
 
-            string prefix = KatarinaPlugin.developerPrefix + "_KATARINA_BODY_";
+            LanguageAPI.Add("KATARINA_DESCRIPTION", descriptionText);
+            LanguageAPI.Add("KATARINA_SUBTITLE", characterSubtitle);
+            LanguageAPI.Add("KATARINA_LORE", characterLore);
+            LanguageAPI.Add("KATARINA_OUTRO_FLAVOR", characterOutro);
+            LanguageAPI.Add("KATARINA_OUTRO_FAILURE", characterOutroFailure);
 
-            string desc = "Katarina is a skilled fighter who makes use of a wide arsenal of weaponry to take down his foes.<color=#CCD3E0>" + Environment.NewLine + Environment.NewLine;
-            desc = desc + "< ! > Sword is a good all-rounder while Boxing Gloves are better for laying a beatdown on more powerful foes." + Environment.NewLine + Environment.NewLine;
-            desc = desc + "< ! > Pistol is a powerful anti air, with its low cooldown and high damage." + Environment.NewLine + Environment.NewLine;
-            desc = desc + "< ! > Roll has a lingering armor buff that helps to use it aggressively." + Environment.NewLine + Environment.NewLine;
-            desc = desc + "< ! > Bomb can be used to wipe crowds with ease." + Environment.NewLine + Environment.NewLine;
+            LanguageAPI.Add("KATARINA_DEFAULT_SKIN_NAME", "<color=#AF1AAF>KATARINA</color>");
 
-            string outro = "..and so he left, searching for a new identity.";
-            string outroFailure = "..and so he vanished, forever a blank slate.";
+            LanguageAPI.Add("KATARINA_PASSIVE_NAME", "<color=#AF1AAF>VORACITY</color>");
+            LanguageAPI.Add("KATARINA_PASSIVE_DESC",
+                "Whenever Katarina retrieves a <color=#AF1AAF>Dagger</color>, she uses it to slash around herself, dealing <color=#f68835>600%</color> damage to nearby enemies" + Environment.NewLine
+                + "A <color=#AF1AAF>Dagger</color> will disappear after being on the ground for <color=#ffffff>6</color> seconds" + Environment.NewLine
+                + "Kills reduces the current <color=#c9aa71>cooldowns</color> of Katarina's abilities by <color=#ffffff>2</color> seconds.");
 
-            LanguageAPI.Add(prefix + "NAME", "Katarina");
-            LanguageAPI.Add(prefix + "DESCRIPTION", desc);
-            LanguageAPI.Add(prefix + "SUBTITLE", "The Chosen One");
-            LanguageAPI.Add(prefix + "LORE", "sample lore");
-            LanguageAPI.Add(prefix + "OUTRO_FLAVOR", outro);
-            LanguageAPI.Add(prefix + "OUTRO_FAILURE", outroFailure);
+            LanguageAPI.Add("KATARINA_PRIMARY_NAME", "<color=#AF1AAF>BASIC ATTACK</color>");
+            LanguageAPI.Add("KATARINA_PRIMARY_DESC", "Basic Attack's do <color=#f68835>280%</color> damage.");
 
-            #region Skins
+            LanguageAPI.Add("KATARINA_SECONDARY_NAME", "<color=#AF1AAF>BOUNCING BLADE</color>");
+            LanguageAPI.Add("KATARINA_SECONDARY_DESC",
+                "Katarina throws a <color=#AF1AAF>Dagger</color> at the target enemy that can bounce to up to four additional nearby enemies, dealing <color=#f68835>200%</color> damage." + Environment.NewLine
+                + "The Dagger then lands onto the ground after <color=#ffffff>1</color> second.");
 
-            LanguageAPI.Add(prefix + "DEFAULT_SKIN_NAME", "Default");
-            LanguageAPI.Add(prefix + "MASTERY_SKIN_NAME", "Alternate");
+            LanguageAPI.Add("KATARINA_UTILITY_NAME", "<color=#AF1AAF>SHUNPO</color>");
+            LanguageAPI.Add("KATARINA_UTILITY_DESC",
+                "Katarina tosses a <color=#AF1AAF>Dagger</color> into the air above her current location and blinks a fixed distance in front of her." + Environment.NewLine
+                + "Katarina tosses a 2nd <color=#AF1AAF>Dagger</color> after the blinks." + Environment.NewLine
+                + "Whenever Katarina retrieves a <color=#AF1AAF>Dagger</color>, she resets the <color=#c9aa71>cooldown timer</color> of <color=#AF1AAF>Shunpo.</color>");
 
-            #endregion Skins
-
-            #region Passive
-
-            LanguageAPI.Add(prefix + "PASSIVE_NAME", "Katarina passive");
-            LanguageAPI.Add(prefix + "PASSIVE_DESCRIPTION", "Sample text.");
-
-            #endregion Passive
-
-            #region Primary
-
-            LanguageAPI.Add(prefix + "PRIMARY_SLASH_NAME", "Sword");
-            LanguageAPI.Add(prefix + "PRIMARY_SLASH_DESCRIPTION", Helpers.agilePrefix + $"Swing forward for <style=cIsDamage>{100f * StaticValues.swordDamageCoefficient}% damage</style>.");
-
-            #endregion Primary
-
-            #region Secondary
-
-            LanguageAPI.Add(prefix + "SECONDARY_GUN_NAME", "Handgun");
-            LanguageAPI.Add(prefix + "SECONDARY_GUN_DESCRIPTION", Helpers.agilePrefix + $"Fire a handgun for <style=cIsDamage>{100f * StaticValues.gunDamageCoefficient}% damage</style>.");
-
-            #endregion Secondary
-
-            #region Utility
-
-            LanguageAPI.Add(prefix + "UTILITY_ROLL_NAME", "Roll");
-            LanguageAPI.Add(prefix + "UTILITY_ROLL_DESCRIPTION", "Roll a short distance, gaining <style=cIsUtility>300 armor</style>. <style=cIsUtility>You cannot be hit during the roll.</style>");
-
-            #endregion Utility
-
-            #region Special
-
-            LanguageAPI.Add(prefix + "SPECIAL_BOMB_NAME", "Bomb");
-            LanguageAPI.Add(prefix + "SPECIAL_BOMB_DESCRIPTION", $"Throw a bomb for <style=cIsDamage>{100f * StaticValues.bombDamageCoefficient}% damage</style>.");
-
-            #endregion Special
-
-            #region Achievements
-
-            LanguageAPI.Add(prefix + "MASTERYUNLOCKABLE_ACHIEVEMENT_NAME", "Katarina: Mastery");
-            LanguageAPI.Add(prefix + "MASTERYUNLOCKABLE_ACHIEVEMENT_DESC", "As Katarina, beat the game or obliterate on Monsoon.");
-            LanguageAPI.Add(prefix + "MASTERYUNLOCKABLE_UNLOCKABLE_NAME", "Katarina: Mastery");
-
-            #endregion Achievements
-
-            #endregion Katarina
+            LanguageAPI.Add("KATARINA_SPECIAL_NAME", "<color=#AF1AAF>DEATH LOTUS</color>");
+            LanguageAPI.Add("KATARINA_SPECIAL_DESC",
+                "Katarina channels for up to <color=#ffffff>2.5</color> seconds, rapidly throwing a dagger every <color=#ffffff>0.166</color> seconds to the closest nearby enemies." + Environment.NewLine
+                + "Each dagger deals <color=#f68835>200%</color> damage and attack speed increases the amount of daggers thrown.");
         }
     }
 }

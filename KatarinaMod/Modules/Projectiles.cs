@@ -57,7 +57,6 @@ namespace KatarinaMod.Modules
             ProjectileController bombController = knifePrefab.GetComponent<ProjectileController>();
             knifePrefab.AddComponent<DaggerPickup>();
             knifePrefab.AddComponent<DestroyOnTimer>().duration = 6f;
-            knifePrefab.AddComponent<NetworkIdentity>();
             if (Modules.Assets.mainAssetBundle.LoadAsset<GameObject>("KatarinaWeapon") != null) bombController.ghostPrefab = CreateGhostPrefab("KatarinaWeapon");
         }
         private static void CreateBomb()

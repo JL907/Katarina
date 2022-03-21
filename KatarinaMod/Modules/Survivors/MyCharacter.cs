@@ -18,7 +18,7 @@ namespace KatarinaMod.Modules.Survivors
             armor = 20f,
             armorGrowth = 0f,
             bodyName = "Katarina",
-            bodyNameToken = KatarinaPlugin.developerPrefix + "_KATARINA_BODY_NAME",
+            bodyNameToken = "KATARINA_NAME",
             bodyColor = Color.grey,
             characterPortrait = Modules.Assets.LoadCharacterIcon("Katarina"),
             crosshair = Modules.Assets.LoadCrosshair("Standard"),
@@ -27,7 +27,7 @@ namespace KatarinaMod.Modules.Survivors
             healthRegen = 1.5f,
             jumpCount = 2,
             maxHealth = 101f,
-            subtitleNameToken = KatarinaPlugin.developerPrefix + "_KATARINA_BODY_SUBTITLE",
+            subtitleNameToken = "KATARINA_SUBTITLE",
             podPrefab = Resources.Load<GameObject>("Prefabs/NetworkedObjects/SurvivorPod")
         };
 
@@ -88,7 +88,13 @@ namespace KatarinaMod.Modules.Survivors
 
             #region Primary
 
-            Modules.Skills.AddPrimarySkill(bodyPrefab, Modules.Skills.CreatePrimarySkillDef(new EntityStates.SerializableEntityStateType(typeof(SkillStates.SlashCombo)), "Weapon", prefix + "_KATARINA_BODY_PRIMARY_SLASH_NAME", prefix + "_KATARINA_BODY_PRIMARY_SLASH_DESCRIPTION", Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("bouncing"), true));
+            Modules.Skills.AddPrimarySkill(bodyPrefab, 
+                Modules.Skills.CreatePrimarySkillDef(new EntityStates.SerializableEntityStateType(typeof(SkillStates.SlashCombo)), 
+                "Weapon", 
+                "KATARINA_PRIMARY_NAME", 
+                "KATARINA_PRIMARY_DESC", 
+                Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("bouncing"), 
+                true));
 
             #endregion Primary
 
@@ -96,9 +102,9 @@ namespace KatarinaMod.Modules.Survivors
 
             SkillDef shootSkillDef = Modules.Skills.CreateSkillDef(new SkillDefInfo
             {
-                skillName = prefix + "_KATARINA_BODY_SECONDARY_GUN_NAME",
-                skillNameToken = prefix + "_KATARINA_BODY_SECONDARY_GUN_NAME",
-                skillDescriptionToken = prefix + "_KATARINA_BODY_SECONDARY_GUN_DESCRIPTION",
+                skillName = "KATARINA_SECONDARY_NAME",
+                skillNameToken = "KATARINA_SECONDARY_NAME",
+                skillDescriptionToken = "KATARINA_SECONDARY_DESC",
                 skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("KatarinaQ"),
                 activationState = new EntityStates.SerializableEntityStateType(typeof(KatarinaMod.SkillStates.Katarina.Weapon.ThrowDagger)),
                 activationStateMachineName = "Weapon",
@@ -126,9 +132,9 @@ namespace KatarinaMod.Modules.Survivors
 
             SkillDef rollSkillDef = Modules.Skills.CreateSkillDef(new SkillDefInfo
             {
-                skillName = prefix + "_KATARINA_BODY_UTILITY_ROLL_NAME",
-                skillNameToken = prefix + "_KATARINA_BODY_UTILITY_ROLL_NAME",
-                skillDescriptionToken = prefix + "_KATARINA_BODY_UTILITY_ROLL_DESCRIPTION",
+                skillName = "KATARINA_UTILITY_NAME",
+                skillNameToken = "KATARINA_UTILITY_NAME",
+                skillDescriptionToken = "KATARINA_UTILITY_DESC",
                 skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("KatarinaE"),
                 activationState = new EntityStates.SerializableEntityStateType(typeof(SkillStates.Shunpo)),
                 activationStateMachineName = "Slide",
@@ -156,9 +162,9 @@ namespace KatarinaMod.Modules.Survivors
 
             SkillDef bombSkillDef = Modules.Skills.CreateSkillDef(new SkillDefInfo
             {
-                skillName = prefix + "_KATARINA_BODY_SPECIAL_BOMB_NAME",
-                skillNameToken = prefix + "_KATARINA_BODY_SPECIAL_BOMB_NAME",
-                skillDescriptionToken = prefix + "_KATARINA_BODY_SPECIAL_BOMB_DESCRIPTION",
+                skillName = "KATARINA_SPECIAL_NAME",
+                skillNameToken = "KATARINA_SPECIAL_NAME",
+                skillDescriptionToken = "KATARINA_SPECIAL_DESC",
                 skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("KatarinaR"),
                 activationState = new EntityStates.SerializableEntityStateType(typeof(SkillStates.Deathlotus)),
                 activationStateMachineName = "Weapon",
@@ -199,8 +205,8 @@ namespace KatarinaMod.Modules.Survivors
 
             #region DefaultSkin
 
-            SkinDef defaultSkin = Modules.Skins.CreateSkinDef(KatarinaPlugin.developerPrefix + "_KATARINA_BODY_DEFAULT_SKIN_NAME",
-                Assets.mainAssetBundle.LoadAsset<Sprite>("texMainSkin"),
+            SkinDef defaultSkin = Modules.Skins.CreateSkinDef("KATARINA_DEFAULT_SKIN_NAME",
+                Assets.mainAssetBundle.LoadAsset<Sprite>("katarinaSprite"),
                 defaultRenderers,
                 mainRenderer,
                 model);

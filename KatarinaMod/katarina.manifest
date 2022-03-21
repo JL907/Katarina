@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 4066098927
+CRC: 3073564025
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 7f1f6d702914f820b5605c0b27d4b037
+    Hash: 8b9347688a11882010802225b53fb785
   TypeTreeHash:
     serializedVersion: 2
     Hash: 1fa692d6cdee47feb28ec66b66246763
@@ -57,12 +57,14 @@ ClassTypes:
   Script: {instanceID: 0}
 SerializeReferenceClassIdentifiers: []
 Assets:
+- Assets/Katarina/VFX/Projectile/weaponprojectile.prefab
+- Assets/Katarina/Models/runehastefootsteps.anim
 - Assets/Katarina/VFX/ImpactHenrySlash.prefab
+- Assets/Katarina/HUD/katarinaSprite.png
 - Assets/Katarina/Animations/KatUpper.mask
 - Assets/Katarina/Models/KATARINA.fbx
 - Assets/Katarina/VFX/HenrySwordSwingEffect.prefab
 - Assets/Katarina/HUD/Katarina_Passive.png
-- Assets/Katarina/VFX/KatarinaWeapon.prefab
 - Assets/Katarina/VFX/aoe_leona_outer.png
 - Assets/Katarina/VFX/daggeraoe.mat
 - Assets/Katarina/HUD/KatarinaE.png
@@ -73,13 +75,17 @@ Assets:
 - Assets/Katarina/Animations/Jumping UP.anim
 - Assets/Katarina/HUD/KatarinaR.png
 - Assets/Katarina/Materials/KatarinaMat2.mat
+- Assets/Katarina/HUD/katarina_square.png
 - Assets/Katarina/HUD/KatarinaQ.png
 - Assets/Katarina/Materials/KatarinaMat.mat
 - Assets/Katarina/Prefabs/KatarinaDisplay.prefab
 - Assets/Katarina/Animations/animKatarina.controller
 - Assets/Katarina/Models/katarinafix.fbx
+- Assets/Katarina/Models/runfootsteps.anim
+- Assets/Katarina/VFX/Projectile/weaponghost.prefab
 - Assets/Katarina/HUD/KatarinaW.png
 - Assets/Katarina/Animations/weaponAnim.controller
 - Assets/Katarina/Prefabs/mdlKatarina.prefab
 - Assets/Katarina/Animations/Falling Idle.anim
+- Assets/Katarina/VFX/KatarinaWeapon.prefab
 Dependencies: []

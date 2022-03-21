@@ -150,10 +150,10 @@ namespace KatarinaMod.Modules
 
         internal static void RegisterNewSurvivor(GameObject bodyPrefab, GameObject displayPrefab, Color charColor, string namePrefix, UnlockableDef unlockableDef, float sortPosition)
         {
-            string fullNameString = KatarinaPlugin.developerPrefix + "_" + namePrefix + "_BODY_NAME";
-            string fullDescString = KatarinaPlugin.developerPrefix + "_" + namePrefix + "_BODY_DESCRIPTION";
-            string fullOutroString = KatarinaPlugin.developerPrefix + "_" + namePrefix + "_BODY_OUTRO_FLAVOR";
-            string fullFailureString = KatarinaPlugin.developerPrefix + "_" + namePrefix + "_BODY_OUTRO_FAILURE";
+            string fullNameString = "KATARINA_NAME";
+            string fullDescString = "KATARINA_DESCRIPTION";
+            string fullOutroString = "KATARINA_OUTRO_FLAVOR";
+            string fullFailureString = "KATARINA_OUTRO_FAILURE";
 
             SurvivorDef survivorDef = ScriptableObject.CreateInstance<SurvivorDef>();
             survivorDef.bodyPrefab = bodyPrefab;

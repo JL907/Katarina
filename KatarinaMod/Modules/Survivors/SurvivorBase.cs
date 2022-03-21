@@ -48,7 +48,7 @@ namespace KatarinaMod.Modules.Survivors
 
                 displayPrefab = Modules.Prefabs.CreateDisplayPrefab(bodyName + "Display", bodyPrefab, bodyInfo);
 
-                Modules.Prefabs.RegisterNewSurvivor(bodyPrefab, displayPrefab, Color.grey, bodyName.ToUpper(), characterUnlockableDef, sortPosition);
+                Modules.Prefabs.RegisterNewSurvivor(bodyPrefab, displayPrefab, new Color(0.6862f, 0.1019f, 0.6862f), bodyName.ToUpper(), characterUnlockableDef, sortPosition);
 
                 InitializeHitboxes();
                 InitializeSkills();

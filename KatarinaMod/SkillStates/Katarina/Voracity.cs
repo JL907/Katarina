@@ -102,6 +102,7 @@ namespace KatarinaMod.SkillStates.Katarina
                         component.TakeDamage(damageInfo);
                         GlobalEventManager.instance.OnHitEnemy(damageInfo, component.gameObject);
                         GlobalEventManager.instance.OnHitAll(damageInfo, component.gameObject);
+                        Util.PlaySound("KatarinaImpactSFX", base.gameObject);
                     }
                 }
             }
