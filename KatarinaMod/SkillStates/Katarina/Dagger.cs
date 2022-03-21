@@ -27,7 +27,7 @@ namespace KatarinaMod.SkillStates.Katarina.Weapon
         private bool hasTriedToThrowDagger;
         private HurtBox initialOrbTarget;
         private ChildLocator childLocator;
-        private bool hasSuccessfullyThrownDagger;
+		private bool hasSuccessfullyThrownDagger = false;
 
         public override void OnEnter()
         {
@@ -78,7 +78,7 @@ namespace KatarinaMod.SkillStates.Katarina.Weapon
 			}
 			if (!this.hasSuccessfullyThrownDagger && NetworkServer.active)
 			{
-				base.skillLocator.secondary.AddOneStock(); 
+				base.skillLocator.secondary.AddOneStock();
 			}
         }
 
@@ -111,12 +111,11 @@ namespace KatarinaMod.SkillStates.Katarina.Weapon
 			lightningOrb.speed = ThrowDagger.daggerTravelSpeed;
 			lightningOrb.bouncedObjects = new List<HealthComponent>();
 			lightningOrb.range = ThrowDagger.daggerBounceRange;
-			lightningOrb.damageCoefficientPerBounce = ThrowDagger.damageCoefficientPerBounce;
-			HurtBox hurtBox = this.initialOrbTarget;
+            lightningOrb.damageCoefficientPerBounce = ThrowDagger.damageCoefficientPerBounce;
+            HurtBox hurtBox = this.initialOrbTarget;
 			if (hurtBox)
 			{
 				this.hasSuccessfullyThrownDagger = true;
-				KatarinaMod.KatarinaPlugin.instance.Logger.LogMessage("Toss Dagger");
 				Animation();
 				Transform transform = this.childLocator.FindChild("R_Hand");
 				EffectManager.SimpleMuzzleFlash(ThrowGlaive.muzzleFlashPrefab, base.gameObject, "R_Hand", true);

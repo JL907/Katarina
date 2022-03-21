@@ -52,12 +52,12 @@ namespace KatarinaMod.SkillStates
 
         private void TossDagger(Vector3 location)
         {
-            if (base.isAuthority)
+            if (NetworkServer.active)
             {
                 FireProjectileInfo fireProjectileInfo = new FireProjectileInfo
                 {
                     projectilePrefab = Modules.Projectiles.knifePrefab,
-                    position = location,
+                    position = location + Vector3.up * 2f,
                     rotation = Quaternion.identity,
                     owner = base.gameObject,
                     damage = 0,

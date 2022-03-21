@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
+using UnityEngine.Networking;
 
 namespace KatarinaMod.SkillStates
 {
@@ -55,31 +56,34 @@ namespace KatarinaMod.SkillStates
 
         private void ThrowDagger()
         {
-            foreach (Collider collider in Physics.OverlapSphere(base.gameObject.transform.position, 20f))
+            if (NetworkServer.active)
             {
-                HealthComponent component = collider.GetComponent<HealthComponent>();
-                if (component)
+                foreach (Collider collider in Physics.OverlapSphere(base.gameObject.transform.position, 20f))
                 {
-                    TeamComponent component2 = collider.GetComponent<TeamComponent>();
-                    bool flag = false;
-                    if (component2)
+                    HealthComponent component = collider.GetComponent<HealthComponent>();
+                    if (component)
                     {
-                        flag = (component2.teamIndex == base.GetTeam());
-                    }
-                    if (!flag)
-                    {
-                        KnifeDamageOrb genericDamageOrb = new KnifeDamageOrb();
-                        genericDamageOrb.damageValue = base.characterBody.damage * damageCoefficient;
-                        genericDamageOrb.isCrit = base.RollCrit();
-                        genericDamageOrb.teamIndex = TeamComponent.GetObjectTeam(base.gameObject);
-                        genericDamageOrb.attacker = base.gameObject;
-                        genericDamageOrb.procCoefficient = 0.5f;
-                        HurtBox hurtBox = component.body.mainHurtBox;
-                        if (hurtBox)
+                        TeamComponent component2 = collider.GetComponent<TeamComponent>();
+                        bool flag = false;
+                        if (component2)
                         {
-                            genericDamageOrb.origin = base.transform.position + base.transform.up * 0.8f;
-                            genericDamageOrb.target = hurtBox;
-                            OrbManager.instance.AddOrb(genericDamageOrb);
+                            flag = (component2.teamIndex == base.GetTeam());
+                        }
+                        if (!flag)
+                        {
+                            KnifeDamageOrb genericDamageOrb = new KnifeDamageOrb();
+                            genericDamageOrb.damageValue = base.characterBody.damage * damageCoefficient;
+                            genericDamageOrb.isCrit = base.RollCrit();
+                            genericDamageOrb.teamIndex = TeamComponent.GetObjectTeam(base.gameObject);
+                            genericDamageOrb.attacker = base.gameObject;
+                            genericDamageOrb.procCoefficient = 0.5f;
+                            HurtBox hurtBox = component.body.mainHurtBox;
+                            if (hurtBox)
+                            {
+                                genericDamageOrb.origin = base.transform.position + base.transform.up * 0.8f;
+                                genericDamageOrb.target = hurtBox;
+                                OrbManager.instance.AddOrb(genericDamageOrb);
+                            }
                         }
                     }
                 }

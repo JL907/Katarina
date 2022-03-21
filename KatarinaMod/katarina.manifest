@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 3073564025
+CRC: 2762241159
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 8b9347688a11882010802225b53fb785
+    Hash: ba15b2060eb8c97a3861446dfa99e26c
   TypeTreeHash:
     serializedVersion: 2
     Hash: 1fa692d6cdee47feb28ec66b66246763
@@ -58,7 +58,7 @@ ClassTypes:
 SerializeReferenceClassIdentifiers: []
 Assets:
 - Assets/Katarina/VFX/Projectile/weaponprojectile.prefab
-- Assets/Katarina/Models/runehastefootsteps.anim
+- Assets/Katarina/Models/runhastefootsteps.anim
 - Assets/Katarina/VFX/ImpactHenrySlash.prefab
 - Assets/Katarina/HUD/katarinaSprite.png
 - Assets/Katarina/Animations/KatUpper.mask

@@ -35,7 +35,6 @@ namespace KatarinaMod
 		private EntityStateMachine outer = null;
 		public override void Begin()
 		{
-			this.outer = attacker.gameObject.GetComponent<EntityStateMachine>();
 			base.duration = base.distanceToTarget / this.speed;
 			this.canBounceOnSameTarget = false;
 			EffectData effectData = new EffectData
@@ -49,8 +48,8 @@ namespace KatarinaMod
 
 		private void TossDagger()
 		{
-			if (Util.HasEffectiveAuthority(this.outer.networkIdentity))
-            {
+			if (NetworkServer.active)
+			{
 				FireProjectileInfo fireProjectileInfo = new FireProjectileInfo
 				{
 					projectilePrefab = Modules.Projectiles.knifePrefab,
@@ -62,7 +61,6 @@ namespace KatarinaMod
 					crit = false,
 					speedOverride = 120f
 				};
-
 				ProjectileManager.instance.FireProjectile(fireProjectileInfo);
 			}
 		}

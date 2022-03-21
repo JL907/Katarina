@@ -12,6 +12,8 @@ namespace KatarinaMod.Modules
     {
         internal static GameObject bombExplosionEffect;
 
+        internal static GameObject katarinaKnife;
+
         internal static Material commandoMat;
 
         internal static List<EffectDef> effectDefs = new List<EffectDef>();
@@ -176,6 +178,13 @@ namespace KatarinaMod.Modules
             daggerSoundEvent = CreateNetworkSoundEventDef("KatarinaSwordHit"); 
             swordSwingEffect = Assets.LoadEffect("HenrySwordSwingEffect", true);
             swordHitImpactEffect = Assets.LoadEffect("ImpactHenrySlash");
+            
+            katarinaKnife = Assets.mainAssetBundle.LoadAsset<GameObject>("KatarinaWeapon");
+            katarinaKnife.AddComponent<DestroyOnTimer>().duration = 6f;
+            katarinaKnife.AddComponent<NetworkIdentity>();
+            katarinaKnife.RegisterNetworkPrefab();
+            networkedObjectPrefabs.Add(katarinaKnife);
+            
         }
 
         internal static CharacterModel.RendererInfo[] SetupRendererInfos(GameObject obj)

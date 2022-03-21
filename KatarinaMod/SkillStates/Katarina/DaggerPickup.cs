@@ -18,41 +18,39 @@ namespace KatarinaMod
 		public GameObject pickupEffect;
 		public bool collided = false;
 		private bool alive = true;
-		private SphereCollider sphereCollider;
+		private bool used;
 		Vector3 eulerAngleVelocity;
 
 		private void Start()
         {
 			this.rigidbody = this.GetComponent<Rigidbody>();
 			this.rigidbody.collisionDetectionMode = CollisionDetectionMode.ContinuousSpeculative;
-			this.sphereCollider = this.GetComponent<SphereCollider>();
-			if (this.sphereCollider) this.sphereCollider.enabled = false;
 			this.stopwatch = 0f;
 			this.rigidbody.velocity = Vector3.zero;
-			eulerAngleVelocity = new Vector3(0.1f, 0, 0);
+			eulerAngleVelocity = new Vector3(0.000001f, 0, 0);
 			rigidbody.maxAngularVelocity = float.MaxValue;
 			rigidbody.rotation = Quaternion.identity;
 
 		}
-
-
-		private void OnTriggerStay(Collider other)
-		{
-			if (NetworkServer.active && this.alive && TeamComponent.GetObjectTeam(other.gameObject) == TeamIndex.Player)
+		private void FindPlayer()
+        {
+			if (used) return;
+			Collider[] array = Physics.OverlapSphere(base.transform.position, 5f);
+			for (int i = 0; i < array.Length; i++)
 			{
-				CharacterBody characterBody = other.gameObject.GetComponent<CharacterBody>();
+				if (used) return;
+				CharacterBody characterBody = array[i].gameObject.GetComponent<CharacterBody>();
 				BodyIndex bodyIndex = BodyCatalog.FindBodyIndex("Katarina");
-				if (characterBody && characterBody.bodyIndex == bodyIndex)
-                {
-					EntityStateMachine component = other.gameObject.GetComponent<EntityStateMachine>();
+				if (characterBody && characterBody.bodyIndex == bodyIndex && TeamComponent.GetObjectTeam(array[i].gameObject) == TeamIndex.Player)
+				{
+					EntityStateMachine component = array[i].gameObject.GetComponent<EntityStateMachine>();
 					if (component)
 					{
+						used = true;
 						this.alive = false;
-						if (Util.HasEffectiveAuthority(component.networkIdentity))
-                        {
-							component.SetNextState(new Voracity());
-						}
+						if (Util.HasEffectiveAuthority(component.networkIdentity)) component.SetNextState(new Voracity());
 						UnityEngine.Object.Destroy(base.gameObject);
+						return;
 					}
 				}
 			}
@@ -61,36 +59,45 @@ namespace KatarinaMod
 		private void FixedUpdate()
         {
 			this.stopwatch += Time.fixedDeltaTime;
-			if (this.stopwatch > 0.5 && sphereCollider) this.sphereCollider.enabled = true;
-			if (this.stopwatch < 0.5f && alive)
+			if (NetworkServer.active)
             {
-				this.rigidbody.velocity = Vector3.up * 15f;
-				Quaternion deltaRotation = Quaternion.Euler(eulerAngleVelocity);
-				this.rigidbody.MoveRotation(this.rigidbody.rotation * deltaRotation);
-			}
-			if (this.stopwatch > 0.5f && alive && sphereCollider)
-			{
-				if(!collided)
-                {
-					this.rigidbody.AddForce(Vector3.down * 200f); 
+				if (this.stopwatch < 0.5f && alive)
+				{
+					this.rigidbody.velocity = Vector3.up * 15f;
+					Quaternion deltaRotation = Quaternion.Euler(eulerAngleVelocity * Time.fixedDeltaTime);
+					this.rigidbody.MoveRotation(this.rigidbody.rotation * deltaRotation);
 				}
-				this.rigidbody.rotation = Quaternion.identity;
+				if (this.stopwatch > 0.5f && alive)
+				{
+					if (!used) FindPlayer();
+					if (!collided)
+					{
+						this.rigidbody.AddForce(Vector3.down * 200f);
+					}
+					this.rigidbody.rotation = Quaternion.identity;
+				}
 			}
         }
 		private void OnCollisionEnter()
         {
-			if (stopwatch > 0.5f && !collided)
+			if (NetworkServer.active)
             {
-				this.rigidbody.isKinematic = true;
-				this.collided = true;
+				if (stopwatch > 0.5f && !collided)
+				{
+					this.rigidbody.isKinematic = true;
+					this.collided = true;
+				}
 			}
         }
 		private void OnCollisionExit()
 		{
-			if (stopwatch > 0.5f && collided)
-			{
-				this.rigidbody.isKinematic = false;
-				this.collided = false;
+			if (NetworkServer.active)
+            {
+				if (stopwatch > 0.5f && collided)
+				{
+					this.rigidbody.isKinematic = false;
+					this.collided = false;
+				}
 			}
 		}
 	}
