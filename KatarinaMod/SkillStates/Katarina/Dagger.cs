@@ -60,7 +60,8 @@ namespace KatarinaMod.SkillStates.Katarina.Weapon
 			this.stopwatch += Time.fixedDeltaTime;
 			if (!this.hasTriedToThrowDagger)
 			{
-				this.FireOrbGlaive();
+				if (NetworkServer.active) this.FireOrbGlaiveServer();
+				if (base.isAuthority && hasSuccessfullyThrownDagger) Animation();
 			}
 			if (this.stopwatch >= this.duration && base.isAuthority)
 			{
@@ -74,7 +75,8 @@ namespace KatarinaMod.SkillStates.Katarina.Weapon
 			base.OnExit();
 			if (!this.hasTriedToThrowDagger)
 			{
-				this.FireOrbGlaive();
+				if (NetworkServer.active) this.FireOrbGlaiveServer();
+				if (base.isAuthority && hasSuccessfullyThrownDagger) Animation();
 			}
 			if (!this.hasSuccessfullyThrownDagger && NetworkServer.active)
 			{
@@ -94,12 +96,8 @@ namespace KatarinaMod.SkillStates.Katarina.Weapon
 			return InterruptPriority.PrioritySkill;
 		}
 
-		private void FireOrbGlaive()
+		private void FireOrbGlaiveServer()
 		{
-			if (!NetworkServer.active || this.hasTriedToThrowDagger)
-			{
-				return;
-			}
 			this.hasTriedToThrowDagger = true;
 			DaggerOrb lightningOrb = new DaggerOrb();
 			lightningOrb.damageValue = base.characterBody.damage * ThrowDagger.damageCoefficient;
@@ -116,7 +114,6 @@ namespace KatarinaMod.SkillStates.Katarina.Weapon
 			if (hurtBox)
 			{
 				this.hasSuccessfullyThrownDagger = true;
-				Animation();
 				Transform transform = this.childLocator.FindChild("R_Hand");
 				EffectManager.SimpleMuzzleFlash(ThrowGlaive.muzzleFlashPrefab, base.gameObject, "R_Hand", true);
 				lightningOrb.origin = transform.position;

@@ -59,6 +59,7 @@ namespace KatarinaMod
 		private void FixedUpdate()
         {
 			this.stopwatch += Time.fixedDeltaTime;
+			if (!used && this.stopwatch >= 0.5f) FindPlayer();
 			if (NetworkServer.active)
             {
 				if (this.stopwatch < 0.5f && alive)
@@ -69,7 +70,6 @@ namespace KatarinaMod
 				}
 				if (this.stopwatch > 0.5f && alive)
 				{
-					if (!used) FindPlayer();
 					if (!collided)
 					{
 						this.rigidbody.AddForce(Vector3.down * 200f);
