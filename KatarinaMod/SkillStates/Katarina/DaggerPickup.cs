@@ -29,7 +29,7 @@ namespace KatarinaMod
 			if (this.sphereCollider) this.sphereCollider.enabled = false;
 			this.stopwatch = 0f;
 			this.rigidbody.velocity = Vector3.zero;
-			eulerAngleVelocity = new Vector3(0.25f, 0, 0);
+			eulerAngleVelocity = new Vector3(0.1f, 0, 0);
 			rigidbody.maxAngularVelocity = float.MaxValue;
 			rigidbody.rotation = Quaternion.identity;
 
@@ -68,7 +68,7 @@ namespace KatarinaMod
 				Quaternion deltaRotation = Quaternion.Euler(eulerAngleVelocity);
 				this.rigidbody.MoveRotation(this.rigidbody.rotation * deltaRotation);
 			}
-			if (this.stopwatch > 0.75f && alive && sphereCollider)
+			if (this.stopwatch > 0.5f && alive && sphereCollider)
 			{
 				if(!collided)
                 {
