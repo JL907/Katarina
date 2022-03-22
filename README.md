@@ -1,12 +1,12 @@
-# Sett
+# Katarina
 ### KatarinaMod was created under Riot Games' "Legal Jibber Jabber" policy using assets owned by Riot Games.  Riot Games does not endorse or sponsor this project.
-![image](https://user-images.githubusercontent.com/7343912/158014157-fb82f5e3-f2b7-432f-b38d-766fd773d076.png)
-![image](https://user-images.githubusercontent.com/7343912/158014660-6eebd415-35c3-465e-8acc-f13710159e8e.png)
+![image](https://user-images.githubusercontent.com/7343912/159424928-0381bcf5-f0c9-40f0-b87e-8eba45c4d245.png)
+![Risk_of_Rain_2_LtJbsQoTw2](https://user-images.githubusercontent.com/7343912/159424837-84994a14-53f8-461c-bb22-1fc0ac7bf51d.jpg)
 
 ## Introduction
 Decisive in judgment and lethal in combat, Katarina is a Noxian assassin of the highest caliber. Eldest daughter to the legendary General Du Couteau, she made her talents known with swift kills against unsuspecting enemies. Her fiery ambition has driven her to pursue heavily-guarded targets, even at the risk of endangering her allies—but no matter the mission, Katarina will not hesitate to execute her duty amid a whirlwind of serrated daggers.
 
-## Latest Patch Notes `0.0.1`
+## Latest Patch Notes `1.0.0`
 `Bug reports can be posted in discord` https://discord.gg/aYuS9Wsxxx
 
 * Initial Release
@@ -29,28 +29,26 @@ Decisive in judgment and lethal in combat, Katarina is a Noxian assassin of the 
 * Mitchell Brown
 
 ## Katarina Base Attributes
-* Health: 180 +48
-* Health Regen: 1/s + 0.2
-* Damage: 12 + 2.8
-* Speed: 8 m/s
+* Health: 101 +33
+* Health Regen: 1.5/s + 0.2
+* Damage: 15 + 3
+* Speed: 7 m/s
 * Armor: 20
+* Jumps: 2
 
 ## Skills
-
-## Keystone Passives
+![image](https://user-images.githubusercontent.com/7343912/159425057-381deedb-503a-4ad3-9865-f927f5c95f46.png)
 
 ## Credits
-* TheTimesweeper for letting me use his cameraparms and emote code
+* Nines
 * Dragonyck 
 * All the homies at the Risk of Rain 2 Modding Discord
-* Grab Handler & Heat Crash by Rob & Enforcer Team
-* Mico 27 for helping me out with the grit resource and grit bar and Facebreaker suction
-* Nines for giving me the inspiration to create a League of Legends champion in Risk of Rain 2
-* All the Testers: Tehbudderking, Samilton, Fancy Mango, Bonji, Zeuslaz3r
+* All the Kofi Supporters
 * League of Legends
 
 ## Known Issues
-* The Showstopper may clip you or enemies into the floor if the primary target is big enough.
+* During multiplayer games Katarina's M2 will go on cooldown if theres no valid target
+* During multiplayer games Katarina's shunpo will not place daggers correctly
 
 ## Future Plans
 * Better Networking for multiplayer play.
