@@ -29,11 +29,12 @@ Decisive in judgment and lethal in combat, Katarina is a Noxian assassin of the 
 * Mitchell Brown
 
 ## Katarina Base Attributes
-* Health: 180 +48
-* Health Regen: 1/s + 0.2
-* Damage: 12 + 2.8
-* Speed: 8 m/s
+* Health: 101 +33
+* Health Regen: 1.5/s + 0.2
+* Damage: 15 + 3
+* Speed: 7 m/s
 * Armor: 20
+* Jumps: 2
 
 ## Skills
 ![image](https://user-images.githubusercontent.com/7343912/159425057-381deedb-503a-4ad3-9865-f927f5c95f46.png)
