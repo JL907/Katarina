@@ -20,7 +20,7 @@ namespace KatarinaMod.SkillStates
         private float baseDaggerThrottle = 0.166f;
         private float daggerThrottle;
         private bool throwing;
-        private static float damageCoefficient = 2f;
+        private static float damageCoefficient = 1.5f;
         private float stopwatch;
         private Animator animator;
         public uint activeSFXPlayID;

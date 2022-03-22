@@ -25,11 +25,20 @@ namespace KatarinaMod.SkillStates
         private CharacterModel characterModel;
         private HurtBoxGroup hurtboxGroup;
         private Vector3 endloc;
+        private Vector3 startLoc;
         private bool secondToss;
+        private HuntressTracker huntressTracker;
+        private HurtBox initialTarget;
+
         public override void OnEnter()
         {
             base.OnEnter();
             Util.PlaySound(this.beginSoundString, base.gameObject);
+            this.huntressTracker = base.GetComponent<HuntressTracker>();
+            if (this.huntressTracker && base.isAuthority)
+			{
+				this.initialTarget = this.huntressTracker.GetTrackingTarget();
+			}
             this.modelTransform = base.GetModelTransform();
             if (this.modelTransform)
             {
@@ -46,6 +55,7 @@ namespace KatarinaMod.SkillStates
                 int hurtBoxesDeactivatorCounter = hurtBoxGroup.hurtBoxesDeactivatorCounter + 1;
                 hurtBoxGroup.hurtBoxesDeactivatorCounter = hurtBoxesDeactivatorCounter;
             }
+            this.startLoc = base.transform.position;
             this.blinkVector = this.GetBlinkVector();
             TossDagger(base.gameObject.transform.position);
             this.CreateBlinkEffect(Util.GetCorePosition(base.gameObject));
@@ -125,8 +135,16 @@ namespace KatarinaMod.SkillStates
             endloc = base.gameObject.transform.position;
             if (base.characterMotor && base.characterDirection)
             {
-                base.characterMotor.velocity = Vector3.zero;
-                base.characterMotor.rootMotion += this.blinkVector * (7f * this.speedCoefficient * Time.fixedDeltaTime);
+                if (initialTarget)
+                {
+                    Vector3 lerpLoc = Vector3.Lerp(this.startLoc, this.initialTarget.transform.position + Vector3.up * 2f, this.stopwatch / duration);
+                    base.characterMotor.Motor.SetPositionAndRotation(lerpLoc, Quaternion.LookRotation(this.initialTarget.gameObject.transform.forward, this.initialTarget.gameObject.transform.up));
+                }
+                else
+                {
+                    base.characterMotor.velocity = Vector3.zero;
+                    base.characterMotor.rootMotion += this.blinkVector * (7f * this.speedCoefficient * Time.fixedDeltaTime);
+                }
             }
             if (this.stopwatch >= this.duration && !secondToss)
             {
