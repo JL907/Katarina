@@ -6,10 +6,12 @@
 ## Introduction
 Decisive in judgment and lethal in combat, Katarina is a Noxian assassin of the highest caliber. Eldest daughter to the legendary General Du Couteau, she made her talents known with swift kills against unsuspecting enemies. Her fiery ambition has driven her to pursue heavily-guarded targets, even at the risk of endangering her allies—but no matter the mission, Katarina will not hesitate to execute her duty amid a whirlwind of serrated daggers.
 
-## Latest Patch Notes `1.0.0`
+## Latest Patch Notes `1.0.1`
 `Bug reports can be posted in discord` https://discord.gg/aYuS9Wsxxx
 
-* Initial Release
+* Shunpo can target enemies. If shunpo has no target it will blink a fixed distance in front of katarina.
+* Death Lotus damage per dagger is now 150% down from 200% 
+* Voracity damage is now 400% down from 600%
 
 ## Discord
 <a href="https://discord.gg/aYuS9Wsxxx" target="_blank">
@@ -57,3 +59,5 @@ Decisive in judgment and lethal in combat, Katarina is a Noxian assassin of the 
 ---
 
 ## Old Patch Notes
+`1.0.0`
+* Initial Release
