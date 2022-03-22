@@ -2,6 +2,7 @@
 using RoR2;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using UnityEngine;
 using UnityEngine.Networking;
@@ -25,7 +26,7 @@ namespace KatarinaMod.SkillStates.Katarina
             this.duration = this.baseDuration / this.attackSpeedStat;
             Util.PlaySound("KatarinaVoracitySFX", base.gameObject);
             this.animator.SetFloat("Ultimate.playbackRate", 1f);
-            base.skillLocator.utility.RunRecharge(8f);
+            base.skillLocator.utility.RunRecharge(4f);
             if (!this.indicatorInstance) this.CreateIndicator();
         }
 
@@ -76,35 +77,29 @@ namespace KatarinaMod.SkillStates.Katarina
         }
         private void Fire()
         {
-            Ray aimRay = base.GetAimRay();
-            foreach (Collider collider in Physics.OverlapSphere(this.indicatorInstance.transform.position, 10f))
+            List<HurtBox> HurtBoxes = new List<HurtBox>();
+            HurtBoxes = new SphereSearch
             {
-                HealthComponent component = collider.GetComponent<HealthComponent>();
-                if (component)
-                {
-                    TeamComponent component2 = collider.GetComponent<TeamComponent>();
-                    bool flag = false;
-                    if (component2)
-                    {
-                        flag = (component2.teamIndex == base.GetTeam());
-                    }
-                    if (!flag)
-                    {
-                        DamageInfo damageInfo = new DamageInfo();
-                        damageInfo.damage = this.damageStat * this.damageCoefficient;
-                        damageInfo.attacker = base.gameObject;
-                        damageInfo.inflictor = base.gameObject;
-                        damageInfo.force = Vector3.zero;
-                        damageInfo.crit = base.RollCrit();
-                        damageInfo.procCoefficient = 1f;
-                        damageInfo.position = component.transform.position;
-                        damageInfo.damageType = DamageType.AOE;
-                        component.TakeDamage(damageInfo);
-                        GlobalEventManager.instance.OnHitEnemy(damageInfo, component.gameObject);
-                        GlobalEventManager.instance.OnHitAll(damageInfo, component.gameObject);
-                        Util.PlaySound("KatarinaImpactSFX", base.gameObject);
-                    }
-                }
+                radius = 10f,
+                mask = LayerIndex.entityPrecise.mask,
+                origin = base.transform.position
+            }.RefreshCandidates().FilterCandidatesByHurtBoxTeam(TeamMask.GetEnemyTeams(base.teamComponent.teamIndex)).FilterCandidatesByDistinctHurtBoxEntities().GetHurtBoxes().ToList();
+
+            foreach (HurtBox hurtbox in HurtBoxes)
+            {
+                DamageInfo damageInfo = new DamageInfo();
+                damageInfo.damage = this.damageStat * this.damageCoefficient;
+                damageInfo.attacker = base.gameObject;
+                damageInfo.inflictor = base.gameObject;
+                damageInfo.force = Vector3.zero;
+                damageInfo.crit = base.RollCrit();
+                damageInfo.procCoefficient = 1f;
+                damageInfo.position = hurtbox.gameObject.transform.position;
+                damageInfo.damageType = DamageType.AOE;
+                hurtbox.healthComponent.TakeDamage(damageInfo);
+                GlobalEventManager.instance.OnHitEnemy(damageInfo, hurtbox.gameObject);
+                GlobalEventManager.instance.OnHitAll(damageInfo, hurtbox.gameObject);
+                Util.PlaySound("KatarinaImpactSFX", base.gameObject);
             }
         }
 

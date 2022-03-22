@@ -53,7 +53,7 @@ namespace KatarinaMod.Modules.Survivors
                 InitializeHitboxes();
                 InitializeSkills();
                 InitializeSkins();
-                InitializeItemDisplays();
+                //InitializeItemDisplays();
                 InitializeDoppelganger();
             }
         }

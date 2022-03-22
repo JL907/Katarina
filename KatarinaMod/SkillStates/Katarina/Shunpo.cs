@@ -110,7 +110,6 @@ namespace KatarinaMod.SkillStates
             {
                 base.characterMotor.disableAirControlUntilCollision = false;
             }
-            endloc = base.gameObject.transform.position;
             if (!secondToss)
             {
                 secondToss = true;
@@ -123,6 +122,7 @@ namespace KatarinaMod.SkillStates
         {
             base.FixedUpdate();
             this.stopwatch += Time.fixedDeltaTime;
+            endloc = base.gameObject.transform.position;
             if (base.characterMotor && base.characterDirection)
             {
                 base.characterMotor.velocity = Vector3.zero;
