@@ -52,7 +52,7 @@ namespace KatarinaMod.Modules.Survivors
         internal override ItemDisplayRuleSet itemDisplayRuleSet { get; set; }
 
         internal override int mainRendererIndex { get; set; } = 0;
-        internal override float sortPosition { get; set; } = 100f;
+        internal override float sortPosition { get; set; } = 1f;
 
         internal override void InitializeCharacter()
         {
