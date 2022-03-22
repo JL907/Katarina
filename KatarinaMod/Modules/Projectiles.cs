@@ -30,25 +30,27 @@ namespace KatarinaMod.Modules
         private static void CreateKnife()
         {
             knifePrefab = CloneProjectilePrefab("CommandoGrenadeProjectile", "KatarinaKnifeProjectile");
+            Transform transform = knifePrefab.GetComponent<Transform>();
+            transform.localPosition = Vector3.zero;
+            transform.localRotation = Quaternion.identity;
+            transform.localScale = new Vector3(2, 2, 2);
 
-            ProjectileImpactExplosion impactExplosion = knifePrefab.GetComponent<ProjectileImpactExplosion>();
-            impactExplosion.blastDamageCoefficient = 1f;
-            impactExplosion.blastProcCoefficient = 1f;
-            impactExplosion.bonusBlastForce = Vector3.zero;
-            impactExplosion.childrenCount = 0;
-            impactExplosion.childrenDamageCoefficient = 0f;
-            impactExplosion.childrenProjectilePrefab = null;
-            impactExplosion.destroyOnWorld = false;
-            impactExplosion.destroyOnEnemy = false;
-            impactExplosion.falloffModel = RoR2.BlastAttack.FalloffModel.None;
-            impactExplosion.fireChildren = false;
-            impactExplosion.lifetimeRandomOffset = 0f;
-            impactExplosion.offsetForLifetimeExpiredSound = 0f;
-            impactExplosion.blastRadius = 0f;
-            impactExplosion.lifetime = 6f;
-            impactExplosion.timerAfterImpact = false;
-            impactExplosion.impactEffect = null;
-            impactExplosion.explosionSoundString = "";
+            GameObject.Destroy(knifePrefab.GetComponent<ProjectileImpactExplosion>());
+
+            knifePrefab.AddComponent<CapsuleCollider>();
+            CapsuleCollider capsuleCollider = knifePrefab.GetComponent<CapsuleCollider>();
+            capsuleCollider.radius = 0.1584539f;
+            capsuleCollider.height = 1.1f;
+            capsuleCollider.center = Vector3.zero;
+            capsuleCollider.isTrigger = false;
+
+            Rigidbody rigidBody = knifePrefab.GetComponent<Rigidbody>();
+            rigidBody.mass = 1;
+            rigidBody.drag = 0;
+            rigidBody.angularDrag = 0.05f;
+            rigidBody.collisionDetectionMode = CollisionDetectionMode.ContinuousSpeculative;
+            rigidBody.useGravity = true;
+            rigidBody.constraints = RigidbodyConstraints.None;
 
             ProjectileController bombController = knifePrefab.GetComponent<ProjectileController>();
             knifePrefab.AddComponent<DaggerPickup>();

@@ -61,7 +61,8 @@ namespace KatarinaMod.SkillStates.Katarina.Weapon
 			if (!this.hasTriedToThrowDagger)
 			{
 				if (NetworkServer.active) this.FireOrbGlaiveServer();
-				if (base.isAuthority && hasSuccessfullyThrownDagger) Animation();
+				if (hasSuccessfullyThrownDagger) Animation();
+				if (this.hasTriedToThrowDagger && !this.hasSuccessfullyThrownDagger) if (NetworkServer.active) base.skillLocator.secondary.AddOneStock();
 			}
 			if (this.stopwatch >= this.duration && base.isAuthority)
 			{
@@ -76,11 +77,8 @@ namespace KatarinaMod.SkillStates.Katarina.Weapon
 			if (!this.hasTriedToThrowDagger)
 			{
 				if (NetworkServer.active) this.FireOrbGlaiveServer();
-				if (base.isAuthority && hasSuccessfullyThrownDagger) Animation();
-			}
-			if (!this.hasSuccessfullyThrownDagger && NetworkServer.active)
-			{
-				base.skillLocator.secondary.AddOneStock();
+				if (hasSuccessfullyThrownDagger) Animation();
+				if (this.hasTriedToThrowDagger && !this.hasSuccessfullyThrownDagger) if (NetworkServer.active) base.skillLocator.secondary.AddOneStock();
 			}
         }
 

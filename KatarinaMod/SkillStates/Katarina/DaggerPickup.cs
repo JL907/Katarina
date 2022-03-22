@@ -19,21 +19,26 @@ namespace KatarinaMod
 		public bool collided = false;
 		private bool alive = true;
 		private bool used;
+		private SphereCollider sphereCollider;
 		Vector3 eulerAngleVelocity;
 
-		private void Start()
+		private void Awake()
         {
 			this.rigidbody = this.GetComponent<Rigidbody>();
-			this.rigidbody.collisionDetectionMode = CollisionDetectionMode.ContinuousSpeculative;
+			this.sphereCollider = this.GetComponent<SphereCollider>();
+			this.sphereCollider.radius = 3f;
+			this.sphereCollider.isTrigger = true;
+			this.sphereCollider.center = Vector3.zero;
+			this.used = false;
+			if (this.sphereCollider) this.sphereCollider.enabled = false;
 			this.stopwatch = 0f;
 			this.rigidbody.velocity = Vector3.zero;
-			eulerAngleVelocity = new Vector3(0.000001f, 0, 0);
-			rigidbody.maxAngularVelocity = float.MaxValue;
-			rigidbody.rotation = Quaternion.identity;
+			eulerAngleVelocity = new Vector3(95f, 0, 0);
 
 		}
+
 		private void FindPlayer()
-        {
+		{
 			if (used) return;
 			Collider[] array = Physics.OverlapSphere(base.transform.position, 5f);
 			for (int i = 0; i < array.Length; i++)
@@ -70,6 +75,7 @@ namespace KatarinaMod
 				}
 				if (this.stopwatch > 0.5f && alive)
 				{
+					this.sphereCollider.enabled = true;
 					if (!collided)
 					{
 						this.rigidbody.AddForce(Vector3.down * 200f);

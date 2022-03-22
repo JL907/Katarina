@@ -4,9 +4,11 @@ using RoR2.Orbs;
 using RoR2.Projectile;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using UnityEngine;
 using UnityEngine.Networking;
+using Random = UnityEngine.Random;
 
 namespace KatarinaMod.SkillStates
 {
@@ -22,6 +24,9 @@ namespace KatarinaMod.SkillStates
         private float stopwatch;
         private Animator animator;
         public uint activeSFXPlayID;
+
+        private readonly BullseyeSearch search = new BullseyeSearch();
+        private HurtBox trackingTarget;
 
         public override void FixedUpdate()
         {
@@ -54,37 +59,46 @@ namespace KatarinaMod.SkillStates
             return new HuntressArrowOrb();
         }
 
+        private void SearchForTarget()
+        {
+            this.search.teamMaskFilter = TeamMask.GetEnemyTeams(base.GetTeam());
+            this.search.filterByLoS = true;
+            this.search.searchOrigin = base.transform.position;
+            this.search.searchDirection = Random.onUnitSphere;
+            this.search.sortMode = BullseyeSearch.SortMode.Distance;
+            this.search.maxDistanceFilter = 20;
+            this.search.maxAngleFilter = 360f;
+            this.search.RefreshCandidates();
+            this.search.FilterOutGameObject(base.gameObject);
+            this.trackingTarget = this.search.GetResults().FirstOrDefault<HurtBox>();
+        }
+
         private void ThrowDagger()
         {
             if (NetworkServer.active)
             {
-                foreach (Collider collider in Physics.OverlapSphere(base.gameObject.transform.position, 20f))
+                List<HurtBox> HurtBoxes = new List<HurtBox>();
+                HurtBoxes = new SphereSearch
                 {
-                    HealthComponent component = collider.GetComponent<HealthComponent>();
-                    if (component)
+                    radius = 20f,
+                    mask = LayerIndex.entityPrecise.mask,
+                    origin = base.transform.position
+                }.RefreshCandidates().FilterCandidatesByHurtBoxTeam(TeamMask.GetEnemyTeams(base.teamComponent.teamIndex)).FilterCandidatesByDistinctHurtBoxEntities().GetHurtBoxes().ToList();
+
+                foreach (HurtBox hurtbox in HurtBoxes)
+                {
+                    KnifeDamageOrb genericDamageOrb = new KnifeDamageOrb();
+                    genericDamageOrb.damageValue = base.characterBody.damage * damageCoefficient;
+                    genericDamageOrb.isCrit = base.RollCrit();
+                    genericDamageOrb.teamIndex = TeamComponent.GetObjectTeam(base.gameObject);
+                    genericDamageOrb.attacker = base.gameObject;
+                    genericDamageOrb.procCoefficient = 0.5f;
+                    HurtBox hurtBox = hurtbox;
+                    if (hurtBox)
                     {
-                        TeamComponent component2 = collider.GetComponent<TeamComponent>();
-                        bool flag = false;
-                        if (component2)
-                        {
-                            flag = (component2.teamIndex == base.GetTeam());
-                        }
-                        if (!flag)
-                        {
-                            KnifeDamageOrb genericDamageOrb = new KnifeDamageOrb();
-                            genericDamageOrb.damageValue = base.characterBody.damage * damageCoefficient;
-                            genericDamageOrb.isCrit = base.RollCrit();
-                            genericDamageOrb.teamIndex = TeamComponent.GetObjectTeam(base.gameObject);
-                            genericDamageOrb.attacker = base.gameObject;
-                            genericDamageOrb.procCoefficient = 0.5f;
-                            HurtBox hurtBox = component.body.mainHurtBox;
-                            if (hurtBox)
-                            {
-                                genericDamageOrb.origin = base.transform.position + base.transform.up * 0.8f;
-                                genericDamageOrb.target = hurtBox;
-                                OrbManager.instance.AddOrb(genericDamageOrb);
-                            }
-                        }
+                        genericDamageOrb.origin = base.transform.position + base.transform.up * 0.8f;
+                        genericDamageOrb.target = hurtBox;
+                        OrbManager.instance.AddOrb(genericDamageOrb);
                     }
                 }
             }

@@ -38,6 +38,14 @@ namespace KatarinaMod
         public static KatarinaPlugin instance;
         internal List<SurvivorBase> Survivors = new List<SurvivorBase>();
 
+        public new ManualLogSource Logger
+        {
+            get
+            {
+                return base.Logger;
+            }
+        }
+
         private void Awake()
         {
             instance = this;

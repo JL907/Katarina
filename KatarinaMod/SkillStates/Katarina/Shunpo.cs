@@ -24,6 +24,7 @@ namespace KatarinaMod.SkillStates
         public string endSoundString;
         private CharacterModel characterModel;
         private HurtBoxGroup hurtboxGroup;
+        private Vector3 endloc;
         private bool secondToss;
         public override void OnEnter()
         {
@@ -109,6 +110,12 @@ namespace KatarinaMod.SkillStates
             {
                 base.characterMotor.disableAirControlUntilCollision = false;
             }
+            endloc = base.gameObject.transform.position;
+            if (!secondToss)
+            {
+                secondToss = true;
+                TossDagger(endloc);
+            }
             base.OnExit();
         }
 
@@ -123,9 +130,7 @@ namespace KatarinaMod.SkillStates
             }
             if (this.stopwatch >= this.duration && !secondToss)
             {
-                secondToss = true;
                 var location = Util.GetCorePosition(base.gameObject);
-                TossDagger(location);
             }
             if (this.stopwatch >= this.duration && base.isAuthority)
             {
