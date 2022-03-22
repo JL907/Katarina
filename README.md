@@ -1,4 +1,4 @@
-# Sett
+# Katarina
 ### KatarinaMod was created under Riot Games' "Legal Jibber Jabber" policy using assets owned by Riot Games.  Riot Games does not endorse or sponsor this project.
 ![image](https://user-images.githubusercontent.com/7343912/159424928-0381bcf5-f0c9-40f0-b87e-8eba45c4d245.png)
 ![Risk_of_Rain_2_LtJbsQoTw2](https://user-images.githubusercontent.com/7343912/159424837-84994a14-53f8-461c-bb22-1fc0ac7bf51d.jpg)
