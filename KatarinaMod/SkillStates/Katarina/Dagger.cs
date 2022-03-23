@@ -81,8 +81,9 @@ namespace KatarinaMod.SkillStates.Katarina.Weapon
 				{
 					Animation();
 				}
-				if (this.hasTriedToThrowDagger && !this.hasSuccessfullyThrownDagger)
+				if (base.isAuthority && this.hasTriedToThrowDagger && !this.hasSuccessfullyThrownDagger)
 				{
+
 					base.activatorSkillSlot.rechargeStopwatch += base.activatorSkillSlot.CalculateFinalRechargeInterval() - this.duration;
 				}
 			}
@@ -90,7 +91,7 @@ namespace KatarinaMod.SkillStates.Katarina.Weapon
 
 		public override void OnExit()
         {
-			this.AttemptDagger();
+			AttemptDagger();
 			base.OnExit();
 			
         }
