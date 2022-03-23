@@ -14,9 +14,11 @@ Decisive in judgment and lethal in combat, Katarina is a Noxian assassin of the 
 * Shunpo now only throws 1 dagger at the start of the ability
 * Shunpo's cooldown no longer resets after retrieving daggers
 * Shunpo's cooldown reduced to 6 seconds down from 8
+* Bouncing Blades duration reduced from 1 second down to 0.5 seconds
 * Bouncing Blades cooldown reduced to 4 seconds down from 6
 * Bouncing Blades invalid target lockout now matches the duration of the ability.
     * Bouncing Blades will go on cooldown on invalid target but will quickly refresh to match lockout duration.
+    * Bonus attack speed reduce the duration and lock out of Bouncing Blades
 * Death Lotus cooldown reduced to 16 from 20
 * Death Lotus damage per blade reduced to 100% down from 150%
 * Voracity kill rewards now only reduce current cooldowns by 1 second down from 2

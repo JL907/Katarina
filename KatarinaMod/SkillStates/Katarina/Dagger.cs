@@ -18,7 +18,7 @@ namespace KatarinaMod.SkillStates.Katarina.Weapon
 		public static float daggerTravelSpeed = 100f;
 		public static float daggerBounceRange = 15f;
         private static float damageCoefficientPerBounce = 1.1f;
-        public float baseDuration = 1f;
+        public float baseDuration = 0.5f;
         private HuntressTracker huntressTracker;
         private float stopwatch;
         private float duration;
