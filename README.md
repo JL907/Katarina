@@ -6,10 +6,10 @@
 ## Introduction
 Decisive in judgment and lethal in combat, Katarina is a Noxian assassin of the highest caliber. Eldest daughter to the legendary General Du Couteau, she made her talents known with swift kills against unsuspecting enemies. Her fiery ambition has driven her to pursue heavily-guarded targets, even at the risk of endangering her allies—but no matter the mission, Katarina will not hesitate to execute her duty amid a whirlwind of serrated daggers.
 
-## Latest Patch Notes `1.1.1`
+## Latest Patch Notes `1.1.2`
 `Bug reports can be posted in discord` https://discord.gg/aYuS9Wsxxx
 
-* Shunpo will now reset half of its remaining duration when picking up daggers
+* Katarina sound attenuation lowered to 100 meters down from 200 meters
 
 ## Discord
 <a href="https://discord.gg/aYuS9Wsxxx" target="_blank">
@@ -57,6 +57,9 @@ Decisive in judgment and lethal in combat, Katarina is a Noxian assassin of the 
 ---
 
 ## Old Patch Notes
+`1.1.1`
+* Shunpo will now reset half of its remaining duration when picking up daggers
+
 `1.1.0`
 * Katarina base damage reduced to 12 down from 15
 * Katarina base damage per level reduced to 2.4 down from 3
