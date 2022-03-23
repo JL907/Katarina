@@ -50,7 +50,8 @@ namespace KatarinaMod.Modules
 
             LanguageAPI.Add("KATARINA_UTILITY_NAME", "<color=#AF1AAF>SHUNPO</color>");
             LanguageAPI.Add("KATARINA_UTILITY_DESC",
-                "Katarina tosses a <color=#AF1AAF>Dagger</color> into the air above her current location and blinks toward her target or a fixed distance in front of her.");
+                "Katarina tosses a <color=#AF1AAF>Dagger</color> into the air above her current location and blinks toward her target or a fixed distance in front of her." + Environment.NewLine
+                + "Shunpo will <color=#c9aa71>refund</color> half of it's remaining <color=#c9aa71>cooldown</color> when Katarina retrieves a <color=#AF1AAF>Dagger</color>");
 
             LanguageAPI.Add("KATARINA_SPECIAL_NAME", "<color=#AF1AAF>DEATH LOTUS</color>");
             LanguageAPI.Add("KATARINA_SPECIAL_DESC",

@@ -26,6 +26,7 @@ namespace KatarinaMod.SkillStates.Katarina
             this.duration = this.baseDuration / this.attackSpeedStat;
             Util.PlaySound("KatarinaVoracitySFX", base.gameObject);
             this.animator.SetFloat("Ultimate.playbackRate", 1f);
+            base.skillLocator.utility.RunRecharge(base.skillLocator.utility.cooldownRemaining / 2);
             if (!this.indicatorInstance) this.CreateIndicator();
         }
 
