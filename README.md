@@ -50,7 +50,7 @@ Decisive in judgment and lethal in combat, Katarina is a Noxian assassin of the 
 * Jumps: 2
 
 ## Skills
-![image](https://user-images.githubusercontent.com/7343912/159587929-1d4bea2c-723d-44b7-a237-022537ca9377.png)
+![image](https://user-images.githubusercontent.com/7343912/159627203-97f0b8a7-e2dc-49b4-ab88-4f2fec0d492e.png)
 
 ## Credits
 * Nines
