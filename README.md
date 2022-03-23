@@ -10,6 +10,8 @@ Decisive in judgment and lethal in combat, Katarina is a Noxian assassin of the 
 `Bug reports can be posted in discord` https://discord.gg/aYuS9Wsxxx
 
 * Katarina sound attenuation lowered to 100 meters down from 200 meters
+* Shunpo will blink towards Katarina's target only if the basic attack button is held
+* Shunpo now refunds 75% of it's total cooldown instead of half of its remaining cooldown
 
 ## Discord
 <a href="https://discord.gg/aYuS9Wsxxx" target="_blank">

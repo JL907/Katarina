@@ -135,7 +135,7 @@ namespace KatarinaMod.SkillStates
             endloc = base.gameObject.transform.position;
             if (base.characterMotor && base.characterDirection)
             {
-                if (initialTarget)
+                if (initialTarget && base.inputBank.skill1.down)
                 {
                     Vector3 lerpLoc = Vector3.Lerp(this.startLoc, this.initialTarget.transform.position + Vector3.up * 2f, this.stopwatch / duration);
                     base.characterMotor.Motor.SetPositionAndRotation(lerpLoc, Quaternion.LookRotation(this.initialTarget.gameObject.transform.forward, this.initialTarget.gameObject.transform.up));
