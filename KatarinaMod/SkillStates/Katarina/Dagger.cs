@@ -10,7 +10,7 @@ using UnityEngine.Networking;
 
 namespace KatarinaMod.SkillStates.Katarina.Weapon
 {
-    public class ThrowDagger : BaseState
+    public class ThrowDagger : BaseSkillState
     {
         private static float damageCoefficient = 2f;
         private static float daggerProcCoefficient = 1f;
@@ -18,7 +18,7 @@ namespace KatarinaMod.SkillStates.Katarina.Weapon
 		public static float daggerTravelSpeed = 100f;
 		public static float daggerBounceRange = 15f;
         private static float damageCoefficientPerBounce = 1.1f;
-        public float baseDuration = 1f;
+        public float baseDuration = 0.5f;
         private HuntressTracker huntressTracker;
         private float stopwatch;
         private float duration;
@@ -58,11 +58,9 @@ namespace KatarinaMod.SkillStates.Katarina.Weapon
 		{
 			base.FixedUpdate();
 			this.stopwatch += Time.fixedDeltaTime;
-			if (!this.hasTriedToThrowDagger)
-			{
-				if (NetworkServer.active) this.FireOrbGlaiveServer();
-				if (hasSuccessfullyThrownDagger) Animation();
-				if (this.hasTriedToThrowDagger && !this.hasSuccessfullyThrownDagger) if (NetworkServer.active) base.skillLocator.secondary.AddOneStock();
+			if (this.stopwatch < this.duration)
+            {
+				this.AttemptDagger();
 			}
 			if (this.stopwatch >= this.duration && base.isAuthority)
 			{
@@ -71,15 +69,31 @@ namespace KatarinaMod.SkillStates.Katarina.Weapon
 			}
         }
 
-		public override void OnExit()
+		private void AttemptDagger()
         {
-			base.OnExit();
 			if (!this.hasTriedToThrowDagger)
 			{
-				if (NetworkServer.active) this.FireOrbGlaiveServer();
-				if (hasSuccessfullyThrownDagger) Animation();
-				if (this.hasTriedToThrowDagger && !this.hasSuccessfullyThrownDagger) if (NetworkServer.active) base.skillLocator.secondary.AddOneStock();
+				if (NetworkServer.active)
+				{
+					this.FireOrbGlaiveServer();
+				}
+				if (hasSuccessfullyThrownDagger)
+				{
+					Animation();
+				}
+				if (base.isAuthority && this.hasTriedToThrowDagger && !this.hasSuccessfullyThrownDagger)
+				{
+
+					base.activatorSkillSlot.rechargeStopwatch += base.activatorSkillSlot.CalculateFinalRechargeInterval() - this.duration;
+				}
 			}
+		}
+
+		public override void OnExit()
+        {
+			AttemptDagger();
+			base.OnExit();
+			
         }
 
 		public void Animation()

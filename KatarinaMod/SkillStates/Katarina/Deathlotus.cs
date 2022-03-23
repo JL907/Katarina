@@ -20,7 +20,7 @@ namespace KatarinaMod.SkillStates
         private float baseDaggerThrottle = 0.166f;
         private float daggerThrottle;
         private bool throwing;
-        private static float damageCoefficient = 1.5f;
+        private static float damageCoefficient = 1f;
         private float stopwatch;
         private Animator animator;
         public uint activeSFXPlayID;
@@ -57,20 +57,6 @@ namespace KatarinaMod.SkillStates
         protected virtual GenericDamageOrb CreateArrowOrb()
         {
             return new HuntressArrowOrb();
-        }
-
-        private void SearchForTarget()
-        {
-            this.search.teamMaskFilter = TeamMask.GetEnemyTeams(base.GetTeam());
-            this.search.filterByLoS = true;
-            this.search.searchOrigin = base.transform.position;
-            this.search.searchDirection = Random.onUnitSphere;
-            this.search.sortMode = BullseyeSearch.SortMode.Distance;
-            this.search.maxDistanceFilter = 20;
-            this.search.maxAngleFilter = 360f;
-            this.search.RefreshCandidates();
-            this.search.FilterOutGameObject(base.gameObject);
-            this.trackingTarget = this.search.GetResults().FirstOrDefault<HurtBox>();
         }
 
         private void ThrowDagger()

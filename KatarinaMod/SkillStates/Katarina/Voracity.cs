@@ -15,7 +15,7 @@ namespace KatarinaMod.SkillStates.Katarina
         public bool attacked;
         protected float stopwatch;
         protected float baseDuration = 0.2f;
-        protected float damageCoefficient = 4f;
+        protected float damageCoefficient = 3f;
         private Transform indicatorInstance;
         private Animator animator;
         public override void OnEnter()
@@ -26,7 +26,6 @@ namespace KatarinaMod.SkillStates.Katarina
             this.duration = this.baseDuration / this.attackSpeedStat;
             Util.PlaySound("KatarinaVoracitySFX", base.gameObject);
             this.animator.SetFloat("Ultimate.playbackRate", 1f);
-            base.skillLocator.utility.RunRecharge(8f);
             if (!this.indicatorInstance) this.CreateIndicator();
         }
 
