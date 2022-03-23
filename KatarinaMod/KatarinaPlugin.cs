@@ -34,7 +34,7 @@ namespace KatarinaMod
         //   this shouldn't even have to be said
         public const string MODUID = "com.Lemonlust.KatarinaMod";
 
-        public const string MODVERSION = "1.0.1";
+        public const string MODVERSION = "1.1.0";
         public static KatarinaPlugin instance;
         internal List<SurvivorBase> Survivors = new List<SurvivorBase>();
 
@@ -106,7 +106,7 @@ namespace KatarinaMod
                     SkillLocator skillLocator = damageReport.attackerBody.skillLocator;
                     if (NetworkServer.active)
                     {
-                        skillLocator.DeductCooldownFromAllSkillsServer(2f);
+                        skillLocator.DeductCooldownFromAllSkillsServer(1f);
                     }
                 }
             }

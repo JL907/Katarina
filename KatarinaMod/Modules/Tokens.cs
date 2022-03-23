@@ -36,12 +36,12 @@ namespace KatarinaMod.Modules
 
             LanguageAPI.Add("KATARINA_PASSIVE_NAME", "<color=#AF1AAF>VORACITY</color>");
             LanguageAPI.Add("KATARINA_PASSIVE_DESC",
-                "Whenever Katarina retrieves a <color=#AF1AAF>Dagger</color>, she uses it to slash around herself, dealing <color=#f68835>400%</color> damage to nearby enemies." + Environment.NewLine
+                "Whenever Katarina retrieves a <color=#AF1AAF>Dagger</color>, she uses it to slash around herself, dealing <color=#f68835>300%</color> damage to nearby enemies." + Environment.NewLine
                 + "A <color=#AF1AAF>Dagger</color> will disappear after being on the ground for <color=#ffffff>6</color> seconds." + Environment.NewLine
                 + "Kills reduces the current <color=#c9aa71>cooldowns</color> of Katarina's abilities by <color=#ffffff>2</color> seconds.");
 
             LanguageAPI.Add("KATARINA_PRIMARY_NAME", "<color=#AF1AAF>BASIC ATTACK</color>");
-            LanguageAPI.Add("KATARINA_PRIMARY_DESC", "Basic Attack's do <color=#f68835>280%</color> damage.");
+            LanguageAPI.Add("KATARINA_PRIMARY_DESC", "Basic Attacks do <color=#f68835>280%</color> damage.");
 
             LanguageAPI.Add("KATARINA_SECONDARY_NAME", "<color=#AF1AAF>BOUNCING BLADE</color>");
             LanguageAPI.Add("KATARINA_SECONDARY_DESC",
@@ -50,14 +50,13 @@ namespace KatarinaMod.Modules
 
             LanguageAPI.Add("KATARINA_UTILITY_NAME", "<color=#AF1AAF>SHUNPO</color>");
             LanguageAPI.Add("KATARINA_UTILITY_DESC",
-                "Katarina tosses a <color=#AF1AAF>Dagger</color> into the air above her current location and blinks toward her target or a fixed distance in front of her." + Environment.NewLine
-                + "Katarina tosses a 2nd <color=#AF1AAF>Dagger</color> after she blinks." + Environment.NewLine
-                + "Whenever Katarina retrieves a <color=#AF1AAF>Dagger</color>, she resets the <color=#c9aa71>cooldown timer</color> of <color=#AF1AAF>Shunpo.</color>");
+                "Katarina tosses a <color=#AF1AAF>Dagger</color> into the air above her current location and blinks toward her target or a fixed distance in front of her.");
 
             LanguageAPI.Add("KATARINA_SPECIAL_NAME", "<color=#AF1AAF>DEATH LOTUS</color>");
             LanguageAPI.Add("KATARINA_SPECIAL_DESC",
                 "Katarina channels for up to <color=#ffffff>2.5</color> seconds, rapidly throwing a dagger every <color=#ffffff>0.166</color> seconds to the closest nearby enemies." + Environment.NewLine
-                + "Each dagger deals <color=#f68835>150%</color> damage and attack speed increases the amount of daggers thrown.");
+                + "Each dagger deals <color=#f68835>100%</color> damage." + Environment.NewLine
+                + "Attack speed increases the amount of daggers thrown");
         }
     }
 }

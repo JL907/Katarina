@@ -123,7 +123,7 @@ namespace KatarinaMod.SkillStates
             if (!secondToss)
             {
                 secondToss = true;
-                TossDagger(endloc);
+                //TossDagger(endloc);
             }
             base.OnExit();
         }

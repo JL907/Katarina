@@ -6,12 +6,19 @@
 ## Introduction
 Decisive in judgment and lethal in combat, Katarina is a Noxian assassin of the highest caliber. Eldest daughter to the legendary General Du Couteau, she made her talents known with swift kills against unsuspecting enemies. Her fiery ambition has driven her to pursue heavily-guarded targets, even at the risk of endangering her allies—but no matter the mission, Katarina will not hesitate to execute her duty amid a whirlwind of serrated daggers.
 
-## Latest Patch Notes `1.0.1`
+## Latest Patch Notes `1.1.0`
 `Bug reports can be posted in discord` https://discord.gg/aYuS9Wsxxx
 
-* Shunpo can target enemies. If shunpo has no target it will blink a fixed distance in front of katarina.
-* Death Lotus damage per dagger is now 150% down from 200% 
-* Voracity damage is now 400% down from 600%
+* Shunpo now only throws 1 dagger at the start of the ability
+* Shunpo's cooldown no longer resets after retrieving daggers
+* Shunpo's cooldown reduced to 6 seconds down from 8
+* Bouncing Blades cooldown reduced to 4 seconds down from 6
+* Bouncing Blades invalid target lockout now matches the duration of the ability.
+    * Bouncing Blades will go on cooldown on invalid target but will quickly refresh to match lockout duration.
+* Katarina base damage reduced to 12 down from 15
+* Katarina base damage per level reduced to 2.4 down from 3
+* Death Lotus cooldown reduced to 16 from 20
+* Voracity kill rewards now only reduce current cooldowns by 1 second down from 2
 
 ## Discord
 <a href="https://discord.gg/aYuS9Wsxxx" target="_blank">
@@ -33,7 +40,7 @@ Decisive in judgment and lethal in combat, Katarina is a Noxian assassin of the 
 ## Katarina Base Attributes
 * Health: 101 +33
 * Health Regen: 1.5/s + 0.2
-* Damage: 15 + 3
+* Damage: 12 + 2.4
 * Speed: 7 m/s
 * Armor: 20
 * Jumps: 2
@@ -59,5 +66,10 @@ Decisive in judgment and lethal in combat, Katarina is a Noxian assassin of the 
 ---
 
 ## Old Patch Notes
+`1.0.1`
+* Shunpo can target enemies. If shunpo has no target it will blink a fixed distance in front of katarina.
+* Death Lotus damage per dagger is now 150% down from 200% 
+* Voracity damage is now 400% down from 600%
+
 `1.0.0`
 * Initial Release
