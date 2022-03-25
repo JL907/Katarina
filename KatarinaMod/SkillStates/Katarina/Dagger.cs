@@ -100,7 +100,7 @@ namespace KatarinaMod.SkillStates.Katarina.Weapon
 				{
 					Animation();
 				}
-				if (this.hasTriedToThrowDagger && !this.hasSuccessfullyThrownDagger)
+				if (base.isAuthority && this.hasTriedToThrowDagger && !this.hasSuccessfullyThrownDagger)
 				{
 					base.activatorSkillSlot.rechargeStopwatch += base.activatorSkillSlot.CalculateFinalRechargeInterval() - this.duration;
 				}
@@ -148,7 +148,7 @@ namespace KatarinaMod.SkillStates.Katarina.Weapon
 				EffectManager.SimpleMuzzleFlash(ThrowGlaive.muzzleFlashPrefab, base.gameObject, "R_Hand", true);
 				lightningOrb.origin = transform.position;
 				lightningOrb.target = hurtBox;
-				if(!tossed) TossDagger(hurtBox.transform.position);
+				if(!tossed) TossDagger(this.initialOrbTarget.transform.position);
 				OrbManager.instance.AddOrb(lightningOrb);
 			}
 		}
