@@ -6,12 +6,16 @@
 ## Introduction
 Decisive in judgment and lethal in combat, Katarina is a Noxian assassin of the highest caliber. Eldest daughter to the legendary General Du Couteau, she made her talents known with swift kills against unsuspecting enemies. Her fiery ambition has driven her to pursue heavily-guarded targets, even at the risk of endangering her allies—but no matter the mission, Katarina will not hesitate to execute her duty amid a whirlwind of serrated daggers.
 
-## Latest Patch Notes `1.1.2`
+## Latest Patch Notes `1.2.0`
 `Bug reports can be posted in discord` https://discord.gg/aYuS9Wsxxx
 
-* Katarina sound attenuation lowered to 100 meters down from 200 meters
-* Shunpo will blink towards Katarina's target only if the basic attack button is held
-* Shunpo now refunds 75% of it's total cooldown instead of half of its remaining cooldown
+* Fixed an issue where Voracity would cast multiple times when picking up daggers
+* Fixed an issue where Daggers colliding with enemies would make them float in the air
+* Fixed an issue where Bouncing Blades would go on cooldown when there were no valid targets in multiplayer
+* Fixed an issue where Bouncing Blades sounds and animations weren't playing in multiplayer
+* Dagger Physics adjusted
+* Bouncing Blades now place dagger after first enemy hit
+* Bouncing Blades visual effect speed increased
 
 ## Discord
 <a href="https://discord.gg/aYuS9Wsxxx" target="_blank">
@@ -48,10 +52,6 @@ Decisive in judgment and lethal in combat, Katarina is a Noxian assassin of the 
 * All the Kofi Supporters
 * League of Legends
 
-## Known Issues
-* During multiplayer games Katarina's M2 will go on cooldown if theres no valid target
-* During multiplayer games Katarina's shunpo will not place daggers correctly
-
 ## Future Plans
 * Better Networking for multiplayer play.
 * Alternate skills for different play styles.
@@ -59,6 +59,11 @@ Decisive in judgment and lethal in combat, Katarina is a Noxian assassin of the 
 ---
 
 ## Old Patch Notes
+`1.1.2`
+* Katarina sound attenuation lowered to 100 meters down from 200 meters
+* Shunpo will blink towards Katarina's target only if the basic attack button is held
+* Shunpo now refunds 75% of it's total cooldown instead of half of its remaining cooldown
+
 `1.1.1`
 * Shunpo will now reset half of its remaining duration when picking up daggers
 

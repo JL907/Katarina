@@ -46,24 +46,6 @@ namespace KatarinaMod
 			EffectManager.SpawnEffect(LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/OrbEffects/HuntressGlaiveOrbEffect"), effectData, true);
 		}
 
-		private void TossDagger()
-		{
-			if (NetworkServer.active)
-			{
-				FireProjectileInfo fireProjectileInfo = new FireProjectileInfo
-				{
-					projectilePrefab = Modules.Projectiles.knifePrefab,
-					position = this.target.transform.position,
-					rotation = Quaternion.identity,
-					owner = attacker.gameObject,
-					damage = 0,
-					force = 0,
-					crit = false,
-					speedOverride = 120f
-				};
-				ProjectileManager.instance.FireProjectile(fireProjectileInfo);
-			}
-		}
 		public override void OnArrival()
 		{
 			if (this.target)
@@ -123,17 +105,9 @@ namespace KatarinaMod
 							lightningOrb.failedToKill = this.failedToKill;
 							OrbManager.instance.AddOrb(lightningOrb);
 						}
-                        else 
-                        {
-							TossDagger();
-                        }
 					}
 					return;
 				}
-				if (this.bouncesRemaining <= 0)
-                {
-					TossDagger();
-                } 
 				if (!this.failedToKill)
 				{
 				}

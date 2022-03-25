@@ -2,6 +2,7 @@
 using EntityStates.Huntress.HuntressWeapon;
 using RoR2;
 using RoR2.Orbs;
+using RoR2.Projectile;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -15,7 +16,7 @@ namespace KatarinaMod.SkillStates.Katarina.Weapon
         private static float damageCoefficient = 2f;
         private static float daggerProcCoefficient = 1f;
 		public static int maxBounceCount = 4;
-		public static float daggerTravelSpeed = 100f;
+		public static float daggerTravelSpeed = 150f;
 		public static float daggerBounceRange = 15f;
         private static float damageCoefficientPerBounce = 1.1f;
         public float baseDuration = 0.5f;
@@ -28,6 +29,7 @@ namespace KatarinaMod.SkillStates.Katarina.Weapon
         private HurtBox initialOrbTarget;
         private ChildLocator childLocator;
 		private bool hasSuccessfullyThrownDagger = false;
+        private bool tossed;
 
         public override void OnEnter()
         {
@@ -54,6 +56,26 @@ namespace KatarinaMod.SkillStates.Katarina.Weapon
             }
 		}
 
+		private void TossDagger(Vector3 location)
+		{
+			if (base.isAuthority)
+			{
+				FireProjectileInfo fireProjectileInfo = new FireProjectileInfo
+				{
+					projectilePrefab = Modules.Projectiles.knifePrefab,
+					position = location + Vector3.up * 2f,
+					rotation = Quaternion.identity,
+					owner = base.gameObject,
+					damage = 0,
+					force = 0,
+					crit = false,
+					speedOverride = 0f
+				};
+				ProjectileManager.instance.FireProjectile(fireProjectileInfo);
+				tossed = true;
+			}
+		}
+
 		public override void FixedUpdate()
 		{
 			base.FixedUpdate();
@@ -73,17 +95,13 @@ namespace KatarinaMod.SkillStates.Katarina.Weapon
         {
 			if (!this.hasTriedToThrowDagger)
 			{
-				if (NetworkServer.active)
-				{
-					this.FireOrbGlaiveServer();
-				}
+				this.FireOrbGlaiveServer();
 				if (hasSuccessfullyThrownDagger)
 				{
 					Animation();
 				}
 				if (base.isAuthority && this.hasTriedToThrowDagger && !this.hasSuccessfullyThrownDagger)
 				{
-
 					base.activatorSkillSlot.rechargeStopwatch += base.activatorSkillSlot.CalculateFinalRechargeInterval() - this.duration;
 				}
 			}
@@ -130,6 +148,7 @@ namespace KatarinaMod.SkillStates.Katarina.Weapon
 				EffectManager.SimpleMuzzleFlash(ThrowGlaive.muzzleFlashPrefab, base.gameObject, "R_Hand", true);
 				lightningOrb.origin = transform.position;
 				lightningOrb.target = hurtBox;
+				if(!tossed) TossDagger(this.initialOrbTarget.transform.position);
 				OrbManager.instance.AddOrb(lightningOrb);
 			}
 		}
