@@ -1,6 +1,5 @@
 ﻿using BepInEx.Configuration;
 using EntityStates;
-using KatarinaMod.Components;
 using RoR2;
 using RoR2.Skills;
 using System;
@@ -65,7 +64,6 @@ namespace KatarinaMod.Modules.Survivors
                 huntressTracker.maxTrackingDistance = 30f;
             }
             displayPrefab.AddComponent<MenuSound>();
-            bodyPrefab.AddComponent<KatarinaNetworkCommands>();
         }
 
         internal override void InitializeDoppelganger()

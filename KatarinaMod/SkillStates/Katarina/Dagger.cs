@@ -1,6 +1,5 @@
 ﻿using EntityStates;
 using EntityStates.Huntress.HuntressWeapon;
-using KatarinaMod.Components;
 using RoR2;
 using RoR2.Orbs;
 using RoR2.Projectile;
@@ -17,7 +16,7 @@ namespace KatarinaMod.SkillStates.Katarina.Weapon
         private static float damageCoefficient = 2f;
         private static float daggerProcCoefficient = 1f;
 		public static int maxBounceCount = 4;
-		public static float daggerTravelSpeed = 100f;
+		public static float daggerTravelSpeed = 150f;
 		public static float daggerBounceRange = 15f;
         private static float damageCoefficientPerBounce = 1.1f;
         public float baseDuration = 0.5f;
@@ -57,6 +56,26 @@ namespace KatarinaMod.SkillStates.Katarina.Weapon
             }
 		}
 
+		private void TossDagger(Vector3 location)
+		{
+			if (base.isAuthority)
+			{
+				FireProjectileInfo fireProjectileInfo = new FireProjectileInfo
+				{
+					projectilePrefab = Modules.Projectiles.knifePrefab,
+					position = location + Vector3.up * 2f,
+					rotation = Quaternion.identity,
+					owner = base.gameObject,
+					damage = 0,
+					force = 0,
+					crit = false,
+					speedOverride = 0f
+				};
+				ProjectileManager.instance.FireProjectile(fireProjectileInfo);
+				tossed = true;
+			}
+		}
+
 		public override void FixedUpdate()
 		{
 			base.FixedUpdate();
@@ -81,14 +100,9 @@ namespace KatarinaMod.SkillStates.Katarina.Weapon
 				{
 					Animation();
 				}
-				if (this.hasTriedToThrowDagger && !this.hasSuccessfullyThrownDagger && base.isAuthority)
+				if (this.hasTriedToThrowDagger && !this.hasSuccessfullyThrownDagger)
 				{
-
-					KatarinaNetworkCommands knc = base.gameObject.GetComponent<KatarinaNetworkCommands>();
-					if (knc)
-                    {
-						knc.RpcResetSecondaryCooldown(this.duration);
-                    }
+					base.activatorSkillSlot.rechargeStopwatch += base.activatorSkillSlot.CalculateFinalRechargeInterval() - this.duration;
 				}
 			}
 		}
@@ -114,10 +128,6 @@ namespace KatarinaMod.SkillStates.Katarina.Weapon
 
 		private void FireOrbGlaiveServer()
 		{
-			if (!NetworkServer.active || this.hasTriedToThrowDagger)
-			{
-				return;
-			}
 			this.hasTriedToThrowDagger = true;
 			DaggerOrb lightningOrb = new DaggerOrb();
 			lightningOrb.damageValue = base.characterBody.damage * ThrowDagger.damageCoefficient;
@@ -138,6 +148,7 @@ namespace KatarinaMod.SkillStates.Katarina.Weapon
 				EffectManager.SimpleMuzzleFlash(ThrowGlaive.muzzleFlashPrefab, base.gameObject, "R_Hand", true);
 				lightningOrb.origin = transform.position;
 				lightningOrb.target = hurtBox;
+				if(!tossed) TossDagger(hurtBox.transform.position);
 				OrbManager.instance.AddOrb(lightningOrb);
 			}
 		}

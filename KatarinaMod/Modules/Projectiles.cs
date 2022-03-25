@@ -47,7 +47,7 @@ namespace KatarinaMod.Modules
             Rigidbody rigidBody = knifePrefab.GetComponent<Rigidbody>();
             rigidBody.mass = 10;
             rigidBody.drag = 0;
-            rigidBody.angularDrag = 0.5f;
+            rigidBody.angularDrag = 0.05f;
             rigidBody.collisionDetectionMode = CollisionDetectionMode.ContinuousSpeculative;
             rigidBody.useGravity = true;
             rigidBody.constraints = RigidbodyConstraints.None;

@@ -1,5 +1,4 @@
 ﻿using EntityStates;
-using KatarinaMod.Components;
 using KatarinaMod.Modules;
 using KatarinaMod.SkillStates;
 using KatarinaMod.SkillStates.Katarina;
@@ -24,6 +23,12 @@ namespace KatarinaMod
 		private SphereCollider sphereCollider;
         private ProjectileController projectileController;
         Vector3 eulerAngleVelocity;
+        private bool stuck;
+        private Vector3 contactNormal;
+        private Vector3 contactPosition;
+        private Vector3 transformPositionWhenContacted;
+        private float stopwatchSinceStuck;
+		public AnimationCurve embedDistanceCurve;
 
 		private void Awake()
         {
@@ -41,19 +46,27 @@ namespace KatarinaMod
 
 
 		private void OnTriggerEnter(Collider other)
-        {
+		{
 			CharacterBody characterBody = other.GetComponent<CharacterBody>();
 			if (characterBody && characterBody?.bodyIndex == BodyCatalog.FindBodyIndex("Katarina"))
 			{
-				this.alive = false;
-				KatarinaNetworkCommands knc = characterBody.GetComponent<KatarinaNetworkCommands>();
-				if (knc)
+				EntityStateMachine component = characterBody.GetComponent<EntityStateMachine>();
+				if (component)
 				{
-					knc.RpcVoracity();
+					this.alive = false;
+					if (Util.HasEffectiveAuthority(component.networkIdentity)) component.SetNextState(new Voracity());
+					UnityEngine.Object.Destroy(base.gameObject);
 				}
-				UnityEngine.Object.Destroy(base.gameObject);
 			}
-        }
+		}
+		private void Update()
+		{
+			if (this.stuck)
+			{
+				this.stopwatchSinceStuck += Time.deltaTime;
+				base.transform.position = this.transformPositionWhenContacted;
+			}
+		}
 
 		private void FixedUpdate()
         {
@@ -68,28 +81,32 @@ namespace KatarinaMod
 			if (this.stopwatch > 0.5f && alive)
 			{
 				this.sphereCollider.enabled = true;
-				if (!collided)
-				{
-					this.rigidbody.AddForce(Vector3.down * 10f, ForceMode.VelocityChange);
-				}
+				this.rigidbody.AddForce(Vector3.down * 5f, ForceMode.VelocityChange);
 				this.rigidbody.rotation = Quaternion.Lerp(this.rigidbody.rotation, Quaternion.identity, this.stopwatch / 1f);
 			}
         }
-		private void OnCollisionEnter()
+		private void OnCollisionEnter(Collision collision)
         {
-			if (stopwatch > 0.5f && !collided)
+			if (this.stuck || this.rigidbody.isKinematic)
 			{
+				return;
+			}
+			if (collision.transform.gameObject.layer != LayerIndex.world.intVal)
+			{
+				return;
+			}
+			if (stopwatch > 0.5f)
+			{
+				this.stuck = true;
+				ContactPoint contact = collision.GetContact(0);
+				this.contactNormal = contact.normal;
+				this.contactPosition = contact.point;
+				this.transformPositionWhenContacted = base.transform.position;
+				this.rigidbody.collisionDetectionMode = CollisionDetectionMode.ContinuousSpeculative;
+				this.rigidbody.detectCollisions = true;
 				this.rigidbody.isKinematic = true;
-				this.collided = true;
+				this.rigidbody.velocity = Vector3.zero;
 			}
         }
-		private void OnCollisionExit()
-		{
-			if (stopwatch > 0.5f && collided)
-			{
-				this.rigidbody.isKinematic = false;
-				this.collided = false;
-			}
-		}
 	}
 }

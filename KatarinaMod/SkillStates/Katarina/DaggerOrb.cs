@@ -8,7 +8,6 @@ using UnityEngine.Networking;
 using KatarinaMod.Modules;
 using R2API;
 using RoR2.Projectile;
-using KatarinaMod.Components;
 
 namespace KatarinaMod
 {
@@ -45,15 +44,6 @@ namespace KatarinaMod
 			};
 			effectData.SetHurtBoxReference(this.target);
 			EffectManager.SpawnEffect(LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/OrbEffects/HuntressGlaiveOrbEffect"), effectData, true);
-		}
-
-		private void TossDagger()
-		{
-			KatarinaNetworkCommands knc = this.attacker.GetComponent<KatarinaNetworkCommands>();
-			if (knc)
-            {
-				knc.RpcDaggerToss(this.attacker, this.target.transform.position);
-            }
 		}
 
 		public override void OnArrival()
@@ -115,17 +105,9 @@ namespace KatarinaMod
 							lightningOrb.failedToKill = this.failedToKill;
 							OrbManager.instance.AddOrb(lightningOrb);
 						}
-                        else 
-                        {
-							TossDagger();
-                        }
 					}
 					return;
 				}
-				if (this.bouncesRemaining <= 0)
-                {
-					TossDagger();
-                } 
 				if (!this.failedToKill)
 				{
 				}
