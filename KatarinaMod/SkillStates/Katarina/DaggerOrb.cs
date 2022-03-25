@@ -8,6 +8,7 @@ using UnityEngine.Networking;
 using KatarinaMod.Modules;
 using R2API;
 using RoR2.Projectile;
+using KatarinaMod.Components;
 
 namespace KatarinaMod
 {
@@ -48,22 +49,13 @@ namespace KatarinaMod
 
 		private void TossDagger()
 		{
-			if (NetworkServer.active)
-			{
-				FireProjectileInfo fireProjectileInfo = new FireProjectileInfo
-				{
-					projectilePrefab = Modules.Projectiles.knifePrefab,
-					position = this.target.transform.position,
-					rotation = Quaternion.identity,
-					owner = attacker.gameObject,
-					damage = 0,
-					force = 0,
-					crit = false,
-					speedOverride = 120f
-				};
-				ProjectileManager.instance.FireProjectile(fireProjectileInfo);
-			}
+			KatarinaNetworkCommands knc = this.attacker.GetComponent<KatarinaNetworkCommands>();
+			if (knc)
+            {
+				knc.RpcDaggerToss(this.attacker, this.target.transform.position);
+            }
 		}
+
 		public override void OnArrival()
 		{
 			if (this.target)

@@ -66,7 +66,6 @@ namespace KatarinaMod
             new Modules.ContentPacks().Initialize();
 
             RoR2.ContentManagement.ContentManager.onContentPacksAssigned += LateSetup;
-
             Hook();
         }
 

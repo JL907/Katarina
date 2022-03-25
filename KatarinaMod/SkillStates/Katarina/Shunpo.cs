@@ -63,7 +63,7 @@ namespace KatarinaMod.SkillStates
 
         private void TossDagger(Vector3 location)
         {
-            if (NetworkServer.active)
+            if (base.isAuthority)
             {
                 FireProjectileInfo fireProjectileInfo = new FireProjectileInfo
                 {
@@ -74,9 +74,8 @@ namespace KatarinaMod.SkillStates
                     damage = 0,
                     force = 0,
                     crit = false,
-                    speedOverride = 120f
+                    speedOverride = 0f
                 };
-
                 ProjectileManager.instance.FireProjectile(fireProjectileInfo);
             }
         }

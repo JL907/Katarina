@@ -45,12 +45,14 @@ namespace KatarinaMod.Modules
             capsuleCollider.isTrigger = false;
 
             Rigidbody rigidBody = knifePrefab.GetComponent<Rigidbody>();
-            rigidBody.mass = 1;
+            rigidBody.mass = 10;
             rigidBody.drag = 0;
-            rigidBody.angularDrag = 0.05f;
+            rigidBody.angularDrag = 0.5f;
             rigidBody.collisionDetectionMode = CollisionDetectionMode.ContinuousSpeculative;
             rigidBody.useGravity = true;
             rigidBody.constraints = RigidbodyConstraints.None;
+
+            knifePrefab.layer = LayerIndex.defaultLayer.intVal;
 
             ProjectileController bombController = knifePrefab.GetComponent<ProjectileController>();
             knifePrefab.AddComponent<DaggerPickup>();

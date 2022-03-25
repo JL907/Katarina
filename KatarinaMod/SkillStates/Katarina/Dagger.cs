@@ -1,7 +1,9 @@
 ﻿using EntityStates;
 using EntityStates.Huntress.HuntressWeapon;
+using KatarinaMod.Components;
 using RoR2;
 using RoR2.Orbs;
+using RoR2.Projectile;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -28,6 +30,7 @@ namespace KatarinaMod.SkillStates.Katarina.Weapon
         private HurtBox initialOrbTarget;
         private ChildLocator childLocator;
 		private bool hasSuccessfullyThrownDagger = false;
+        private bool tossed;
 
         public override void OnEnter()
         {
@@ -73,18 +76,19 @@ namespace KatarinaMod.SkillStates.Katarina.Weapon
         {
 			if (!this.hasTriedToThrowDagger)
 			{
-				if (NetworkServer.active)
-				{
-					this.FireOrbGlaiveServer();
-				}
+				this.FireOrbGlaiveServer();
 				if (hasSuccessfullyThrownDagger)
 				{
 					Animation();
 				}
-				if (base.isAuthority && this.hasTriedToThrowDagger && !this.hasSuccessfullyThrownDagger)
+				if (this.hasTriedToThrowDagger && !this.hasSuccessfullyThrownDagger && base.isAuthority)
 				{
 
-					base.activatorSkillSlot.rechargeStopwatch += base.activatorSkillSlot.CalculateFinalRechargeInterval() - this.duration;
+					KatarinaNetworkCommands knc = base.gameObject.GetComponent<KatarinaNetworkCommands>();
+					if (knc)
+                    {
+						knc.RpcResetSecondaryCooldown(this.duration);
+                    }
 				}
 			}
 		}
@@ -110,6 +114,10 @@ namespace KatarinaMod.SkillStates.Katarina.Weapon
 
 		private void FireOrbGlaiveServer()
 		{
+			if (!NetworkServer.active || this.hasTriedToThrowDagger)
+			{
+				return;
+			}
 			this.hasTriedToThrowDagger = true;
 			DaggerOrb lightningOrb = new DaggerOrb();
 			lightningOrb.damageValue = base.characterBody.damage * ThrowDagger.damageCoefficient;
