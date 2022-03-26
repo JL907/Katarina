@@ -1,0 +1,43 @@
+Event	ID	Name			Wwise Object Path	Notes
+	68608246	KatarinaAutoSFX			\Default Work Unit\KatarinaAutoSFX	
+	307566243	KatarinaRSFX			\Default Work Unit\KatarinaRSFX	
+	316800428	KatarinaVoracitySFX			\Default Work Unit\KatarinaVoracitySFX	
+	1339083702	KatarinaDeath			\Default Work Unit\KatarinaDeath	
+	1486502846	KatarinaESFX			\Default Work Unit\KatarinaESFX	
+	1565165559	KatarinaImpactSFX			\Default Work Unit\KatarinaImpactSFX	
+	2478388218	KatarinaQSFX			\Default Work Unit\KatarinaQSFX	
+	3881038749	KatarinaMenu			\Default Work Unit\KatarinaMenu	
+	4077583183	KatarinaRVO			\Default Work Unit\KatarinaRVO	
+	4110991296	KatarinaQVO			\Default Work Unit\KatarinaQVO	
+
+Game Parameter	ID	Name			Wwise Object Path	Notes
+	3673881719	Volume_SFX			\Default Work Unit\Volume_SFX	
+
+In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	58458772	ultimate3	C:\Users\Johnrey\Documents\WwiseProjects\Katarina\.cache\Windows\SFX\ultimate3_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\VO Mixer\VO\KatarinaRVO\ultimate3		27469
+	78131671	_004	C:\Users\Johnrey\Documents\WwiseProjects\Katarina\.cache\Windows\SFX\SFX\.004_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX Mixer\SFX\KatarinaImpactSFX\_004		6861
+	79263463	ultimate2	C:\Users\Johnrey\Documents\WwiseProjects\Katarina\.cache\Windows\SFX\ultimate2_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\VO Mixer\VO\KatarinaRVO\ultimate2		23178
+	84367280	_006	C:\Users\Johnrey\Documents\WwiseProjects\Katarina\.cache\Windows\SFX\SFX\.006_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX Mixer\SFX\KatarinaImpactSFX\_006		6664
+	93528572	katarina_base_vo_audio_19	C:\Users\Johnrey\Documents\WwiseProjects\Katarina\.cache\Windows\SFX\VO\katarina_base_vo_audio_19_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\VO Mixer\VO\KatarinaQVO\katarina_base_vo_audio_19		2694
+	111524207	_028	C:\Users\Johnrey\Documents\WwiseProjects\Katarina\.cache\Windows\SFX\SFX\.028_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX Mixer\SFX\KatarinaVoracitySFX\_028		13113
+	116870312	katarina_base_vo_audio_1	C:\Users\Johnrey\Documents\WwiseProjects\Katarina\.cache\Windows\SFX\VO\katarina_base_vo_audio_1_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\VO Mixer\VO\KatarinaDeath\katarina_base_vo_audio_1		7177
+	180534352	katarina_base_vo_audio_26	C:\Users\Johnrey\Documents\WwiseProjects\Katarina\.cache\Windows\SFX\VO\katarina_base_vo_audio_26_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\VO Mixer\VO\KatarinaDeath\katarina_base_vo_audio_26		5883
+	193932422	_010	C:\Users\Johnrey\Documents\WwiseProjects\Katarina\.cache\Windows\SFX\SFX\.010_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX Mixer\SFX\KatarinaRSFX\_010		53817
+	218249995	katarina_base_vo_audio_7	C:\Users\Johnrey\Documents\WwiseProjects\Katarina\.cache\Windows\SFX\VO\katarina_base_vo_audio_7_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\VO Mixer\VO\KatarinaQVO\katarina_base_vo_audio_7		4697
+	220589107	katarina_base_vo_audio_4	C:\Users\Johnrey\Documents\WwiseProjects\Katarina\.cache\Windows\SFX\VO\katarina_base_vo_audio_4_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\VO Mixer\VO\KatarinaQVO\katarina_base_vo_audio_4		2787
+	379174388	katarina_base_vo_audio_6	C:\Users\Johnrey\Documents\WwiseProjects\Katarina\.cache\Windows\SFX\VO\katarina_base_vo_audio_6_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\VO Mixer\VO\KatarinaQVO\katarina_base_vo_audio_6		3044
+	400120246	katarina_base_vo_audio_2	C:\Users\Johnrey\Documents\WwiseProjects\Katarina\.cache\Windows\SFX\VO\katarina_base_vo_audio_2_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\VO Mixer\VO\KatarinaQVO\katarina_base_vo_audio_2		4634
+	415511560	katarina_base_vo_audio_13	C:\Users\Johnrey\Documents\WwiseProjects\Katarina\.cache\Windows\SFX\VO\katarina_base_vo_audio_13_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\VO Mixer\VO\KatarinaQVO\katarina_base_vo_audio_13		3292
+	482303995	katarina_base_vo_audio_24	C:\Users\Johnrey\Documents\WwiseProjects\Katarina\.cache\Windows\SFX\VO\katarina_base_vo_audio_24_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\VO Mixer\VO\KatarinaQVO\katarina_base_vo_audio_24		3596
+	494502273	katarina_base_vo_audio_3	C:\Users\Johnrey\Documents\WwiseProjects\Katarina\.cache\Windows\SFX\VO\katarina_base_vo_audio_3_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\VO Mixer\VO\KatarinaMenu\katarina_base_vo_audio_3		19310
+	516349677	katarina_base_vo_audio_12	C:\Users\Johnrey\Documents\WwiseProjects\Katarina\.cache\Windows\SFX\VO\katarina_base_vo_audio_12_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\VO Mixer\VO\KatarinaDeath\katarina_base_vo_audio_12		6601
+	707292829	_016	C:\Users\Johnrey\Documents\WwiseProjects\Katarina\.cache\Windows\SFX\SFX\.016_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX Mixer\SFX\KatarinaAutoSFX\_016		5346
+	772909795	_043	C:\Users\Johnrey\Documents\WwiseProjects\Katarina\.cache\Windows\SFX\SFX\.043_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX Mixer\SFX\KatarinaVoracitySFX\_043		11751
+	811255497	_012	C:\Users\Johnrey\Documents\WwiseProjects\Katarina\.cache\Windows\SFX\SFX\.012_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX Mixer\SFX\KatarinaImpactSFX\_012		8518
+	862729676	katarina_base_vo_audio_21	C:\Users\Johnrey\Documents\WwiseProjects\Katarina\.cache\Windows\SFX\VO\katarina_base_vo_audio_21_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\VO Mixer\VO\KatarinaDeath\katarina_base_vo_audio_21		7738
+	886705908	_014	C:\Users\Johnrey\Documents\WwiseProjects\Katarina\.cache\Windows\SFX\SFX\.014_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX Mixer\SFX\KatarinaRSFX\_014		53416
+	892545547	ultimate	C:\Users\Johnrey\Documents\WwiseProjects\Katarina\.cache\Windows\SFX\ultimate_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\VO Mixer\VO\KatarinaRVO\ultimate		32822
+	906816577	_029	C:\Users\Johnrey\Documents\WwiseProjects\Katarina\.cache\Windows\SFX\SFX\.029_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX Mixer\SFX\KatarinaESFX\_029		15062
+	953300316	katarina_base_vo_audio_5	C:\Users\Johnrey\Documents\WwiseProjects\Katarina\.cache\Windows\SFX\VO\katarina_base_vo_audio_5_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\VO Mixer\VO\KatarinaQVO\katarina_base_vo_audio_5		3916
+	1073272869	_059	C:\Users\Johnrey\Documents\WwiseProjects\Katarina\.cache\Windows\SFX\SFX\.059_3F75BDB9.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master Mixer\SFX Mixer\SFX\KatarinaQSFX\_059		8885
+
