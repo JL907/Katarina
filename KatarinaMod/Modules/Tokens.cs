@@ -33,6 +33,7 @@ namespace KatarinaMod.Modules
             LanguageAPI.Add("KATARINA_OUTRO_FAILURE", characterOutroFailure);
 
             LanguageAPI.Add("KATARINA_DEFAULT_SKIN_NAME", "<color=#AF1AAF>KATARINA</color>");
+            LanguageAPI.Add("MERCENARY_KATARINA_NAME", "<color=#AF1AAF>MERCENARY KATARINA</color>");
 
             LanguageAPI.Add("KATARINA_PASSIVE_NAME", "<color=#AF1AAF>VORACITY</color>");
             LanguageAPI.Add("KATARINA_PASSIVE_DESC",

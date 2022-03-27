@@ -224,41 +224,38 @@ namespace KatarinaMod.Modules.Survivors
 
             #endregion DefaultSkin
 
-            #region MasterySkin
-            /*
-            Material masteryMat = Modules.Assets.CreateMaterial("matKatarinaAlt");
-            CharacterModel.RendererInfo[] masteryRendererInfos = SkinRendererInfos(defaultRenderers, new Material[]
-            {
-                masteryMat,
-                masteryMat,
-                masteryMat,
-                masteryMat
-            });
+            #region MercenarySkin
+            Skins.SkinDefInfo mercenarySkinDefInfo = default(Skins.SkinDefInfo);
+            mercenarySkinDefInfo.Name = "MERCENARY_KATARINA_NAME";
+            mercenarySkinDefInfo.NameToken = "MERCENARY_KATARINA_NAME";
+            mercenarySkinDefInfo.Icon = Assets.mainAssetBundle.LoadAsset<Sprite>("mercenary_square");
+            mercenarySkinDefInfo.UnlockableDef = null;
+            mercenarySkinDefInfo.RootObject = model;
 
-            SkinDef masterySkin = Modules.Skins.CreateSkinDef(KatarinaPlugin.developerPrefix + "_KATARINA_BODY_MASTERY_SKIN_NAME",
-                Assets.mainAssetBundle.LoadAsset<Sprite>("texMasteryAchievement"),
-                masteryRendererInfos,
-                mainRenderer,
-                model,
-                masterySkinUnlockableDef);
+            mercenarySkinDefInfo.BaseSkins = new SkinDef[] { defaultSkin };
+            mercenarySkinDefInfo.MinionSkinReplacements = new SkinDef.MinionSkinReplacement[0];
+            mercenarySkinDefInfo.ProjectileGhostReplacements = new SkinDef.ProjectileGhostReplacement[0];
 
-            masterySkin.meshReplacements = new SkinDef.MeshReplacement[]
+            mercenarySkinDefInfo.GameObjectActivations = new SkinDef.GameObjectActivation[0];
+
+            mercenarySkinDefInfo.MeshReplacements = new SkinDef.MeshReplacement[]
             {
                 new SkinDef.MeshReplacement
                 {
-                    mesh = Modules.Assets.mainAssetBundle.LoadAsset<Mesh>("meshKatarinaSwordAlt"),
-                    renderer = defaultRenderers[0].renderer
+                    renderer = mainRenderer,
+                    mesh = Modules.Assets.mainAssetBundle.LoadAsset<Mesh>("MercenaryMesh")
                 },
-                new SkinDef.MeshReplacement
-                {
-                    mesh = Modules.Assets.mainAssetBundle.LoadAsset<Mesh>("meshKatarinaAlt"),
-                    renderer = defaultRenderers[instance.mainRendererIndex].renderer
-                }
             };
 
-            skins.Add(masterySkin);
-            */
-            #endregion MasterySkin
+            mercenarySkinDefInfo.RendererInfos = new CharacterModel.RendererInfo[characterModel.baseRendererInfos.Length];
+            characterModel.baseRendererInfos.CopyTo(mercenarySkinDefInfo.RendererInfos, 0);
+
+            mercenarySkinDefInfo.RendererInfos[0].defaultMaterial = Assets.CreateMaterial("mercenaryMat");
+            mercenarySkinDefInfo.RendererInfos[mercenarySkinDefInfo.RendererInfos.Length - 1].defaultMaterial = Assets.CreateMaterial("mercenaryMat");
+
+            SkinDef mercenarySkin = Skins.CreateSkinDef(mercenarySkinDefInfo);
+            skins.Add(mercenarySkin);
+            #endregion MercenarySkin
 
             skinController.skins = skins.ToArray();
         }
