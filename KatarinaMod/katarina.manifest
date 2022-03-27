@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 197824060
+CRC: 2178486818
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: f6df923b31111b66dbf4e3eac545b503
+    Hash: c5c051f57e5cbb8a6cddef940a56bd2b
   TypeTreeHash:
     serializedVersion: 2
     Hash: 1fa692d6cdee47feb28ec66b66246763
@@ -65,6 +65,7 @@ Assets:
 - Assets/Katarina/Models/mercenaryMat.mat
 - Assets/Katarina/VFX/HenrySwordSwingEffect.prefab
 - Assets/Katarina/HUD/Katarina_Passive.png
+- Assets/Katarina/Models/MercenaryMesh.mesh
 - Assets/Katarina/VFX/aoe_leona_outer.png
 - Assets/Katarina/VFX/daggeraoe.mat
 - Assets/Katarina/HUD/KatarinaE.png
@@ -89,5 +90,4 @@ Assets:
 - Assets/Katarina/Models/skin1.png
 - Assets/Katarina/Animations/Falling Idle.anim
 - Assets/Katarina/VFX/KatarinaWeapon.prefab
-- Assets/Katarina/Models/MercenaryMesh.mesh
 Dependencies: []
