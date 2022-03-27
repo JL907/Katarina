@@ -356,6 +356,39 @@ namespace KatarinaMod.Modules.Survivors
             skins.Add(kittyCatSkin);
             #endregion KittyCatSkin
 
+            #region HighCommandSkin
+            Skins.SkinDefInfo highCommandSkinDefInfo = default(Skins.SkinDefInfo);
+            highCommandSkinDefInfo.Name = "HIGHCOMMAND_KATARINA_NAME";
+            highCommandSkinDefInfo.NameToken = "HIGHCOMMAND_KATARINA_NAME";
+            highCommandSkinDefInfo.Icon = Assets.mainAssetBundle.LoadAsset<Sprite>("highcommand_square");
+            highCommandSkinDefInfo.UnlockableDef = null;
+            highCommandSkinDefInfo.RootObject = model;
+
+            highCommandSkinDefInfo.BaseSkins = new SkinDef[] { defaultSkin };
+            highCommandSkinDefInfo.MinionSkinReplacements = new SkinDef.MinionSkinReplacement[0];
+            highCommandSkinDefInfo.ProjectileGhostReplacements = new SkinDef.ProjectileGhostReplacement[0];
+
+            highCommandSkinDefInfo.GameObjectActivations = new SkinDef.GameObjectActivation[0];
+
+            highCommandSkinDefInfo.MeshReplacements = new SkinDef.MeshReplacement[]
+            {
+                new SkinDef.MeshReplacement
+                {
+                    renderer = mainRenderer,
+                    mesh = Modules.Assets.mainAssetBundle.LoadAsset<Mesh>("HighCommandMesh")
+                },
+            };
+
+            highCommandSkinDefInfo.RendererInfos = new CharacterModel.RendererInfo[characterModel.baseRendererInfos.Length];
+            characterModel.baseRendererInfos.CopyTo(highCommandSkinDefInfo.RendererInfos, 0);
+
+            highCommandSkinDefInfo.RendererInfos[0].defaultMaterial = Assets.CreateMaterial("highCommandMat");
+            highCommandSkinDefInfo.RendererInfos[highCommandSkinDefInfo.RendererInfos.Length - 1].defaultMaterial = Assets.CreateMaterial("highCommandMat");
+
+            SkinDef HighCommandSkin = Skins.CreateSkinDef(highCommandSkinDefInfo);
+            skins.Add(HighCommandSkin);
+            #endregion HighCommandSkin
+
             skinController.skins = skins.ToArray();
         }
 

@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 2900847929
+CRC: 2135384820
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 1a2627886a28e2f4b74471f698a98a6f
+    Hash: 3265d77b8bf41c8ef70e774cff49ebc8
   TypeTreeHash:
     serializedVersion: 2
     Hash: 1fa692d6cdee47feb28ec66b66246763
@@ -65,6 +65,7 @@ Assets:
 - Assets/Katarina/Models/KATARINA.fbx
 - Assets/Katarina/Models/material/mercenaryMat.mat
 - Assets/Katarina/VFX/HenrySwordSwingEffect.prefab
+- Assets/Katarina/Models/material/highCommandMat.mat
 - Assets/Katarina/HUD/Katarina_Passive.png
 - Assets/Katarina/Models/mesh/MercenaryMesh.mesh
 - Assets/Katarina/VFX/aoe_leona_outer.png
@@ -73,6 +74,7 @@ Assets:
 - Assets/Katarina/HUD/KatarinaE.png
 - Assets/Katarina/Materials/skin0.png
 - Assets/Katarina/Models/katarina weapon.fbx
+- Assets/Katarina/Models/texture/skin5.png
 - Assets/Katarina/Animations/animDisplay.controller
 - Assets/Katarina/HUD/bouncing.png
 - Assets/Katarina/Animations/Jumping UP.anim
@@ -86,10 +88,12 @@ Assets:
 - Assets/Katarina/Materials/KatarinaMat.mat
 - Assets/Katarina/Prefabs/KatarinaDisplay.prefab
 - Assets/Katarina/Animations/animKatarina.controller
+- Assets/Katarina/HUD/highcommand_square.png
 - Assets/Katarina/Models/katarinafix.fbx
 - Assets/Katarina/Models/runfootsteps.anim
 - Assets/Katarina/Models/texture/skin4.png
 - Assets/Katarina/HUD/mercenary_square.png
+- Assets/Katarina/Models/mesh/HighCommandMesh.mesh
 - Assets/Katarina/HUD/KatarinaW.png
 - Assets/Katarina/Animations/weaponAnim.controller
 - Assets/Katarina/Models/material/redCardMat.mat
