@@ -38,6 +38,12 @@ namespace KatarinaMod.Modules
             LanguageAPI.Add("BILGEWATER_KATARINA_NAME", "<color=#AF1AAF>BILGEWATER KATARINA</color>");
             LanguageAPI.Add("KITTYCAT_KATARINA_NAME", "<color=#AF1AAF>KITTY CAT KATARINA</color>");
             LanguageAPI.Add("KITTYCAT_KATARINA_NAME", "<color=#AF1AAF>HIGH COMMAND KATARINA</color>");
+            LanguageAPI.Add("SANDSTORM_KATARINA_NAME", "<color=#AF1AAF>SAND STORM KATARINA</color>");
+            LanguageAPI.Add("SLAYBELLE_KATARINA_NAME", "<color=#AF1AAF>SLAY BELLE KATARINA</color>");
+            LanguageAPI.Add("WARRINGKINGDOMS_KATARINA_NAME", "<color=#AF1AAF>WARRING KINGDOMS KATARINA</color>");
+            LanguageAPI.Add("PROJECT_KATARINA_NAME", "<color=#AF1AAF>PROJECT: KATARINA</color>");
+            LanguageAPI.Add("BATTLEACADEMIA_KATARINA_NAME", "<color=#AF1AAF>BATTLE ACADEMIA KATARINA</color>");
+            LanguageAPI.Add("BATTLEACADEMIA_KATARINA_NAME", "<color=#AF1AAF>BLOOD MOON KATARINA</color>");
 
             LanguageAPI.Add("KATARINA_PASSIVE_NAME", "<color=#AF1AAF>VORACITY</color>");
             LanguageAPI.Add("KATARINA_PASSIVE_DESC",

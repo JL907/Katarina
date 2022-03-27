@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 2135384820
+CRC: 1396319493
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 3265d77b8bf41c8ef70e774cff49ebc8
+    Hash: 3ec28036b73b7a0093e179f4951c3978
   TypeTreeHash:
     serializedVersion: 2
     Hash: 1fa692d6cdee47feb28ec66b66246763
@@ -62,20 +62,29 @@ Assets:
 - Assets/Katarina/VFX/ImpactHenrySlash.prefab
 - Assets/Katarina/HUD/katarinaSprite.png
 - Assets/Katarina/Animations/KatUpper.mask
+- Assets/Katarina/Models/texture/skin8.png
 - Assets/Katarina/Models/KATARINA.fbx
+- Assets/Katarina/Models/material/projectMat.mat
 - Assets/Katarina/Models/material/mercenaryMat.mat
 - Assets/Katarina/VFX/HenrySwordSwingEffect.prefab
 - Assets/Katarina/Models/material/highCommandMat.mat
 - Assets/Katarina/HUD/Katarina_Passive.png
 - Assets/Katarina/Models/mesh/MercenaryMesh.mesh
+- Assets/Katarina/HUD/sandstorm_square.png
 - Assets/Katarina/VFX/aoe_leona_outer.png
 - Assets/Katarina/Models/texture/skin2.png
+- Assets/Katarina/Models/mesh/SandStormMesh.mesh
 - Assets/Katarina/VFX/daggeraoe.mat
 - Assets/Katarina/HUD/KatarinaE.png
+- Assets/Katarina/Models/texture/skin7.png
 - Assets/Katarina/Materials/skin0.png
+- Assets/Katarina/HUD/battleacademia_square.png
 - Assets/Katarina/Models/katarina weapon.fbx
 - Assets/Katarina/Models/texture/skin5.png
+- Assets/Katarina/Models/texture/skin9.png
+- Assets/Katarina/HUD/project_square.png
 - Assets/Katarina/Animations/animDisplay.controller
+- Assets/Katarina/Models/mesh/ProjectMesh.mesh
 - Assets/Katarina/HUD/bouncing.png
 - Assets/Katarina/Animations/Jumping UP.anim
 - Assets/Katarina/HUD/KatarinaR.png
@@ -83,27 +92,38 @@ Assets:
 - Assets/Katarina/HUD/redcard_square.png
 - Assets/Katarina/Materials/KatarinaMat2.mat
 - Assets/Katarina/HUD/katarina_square.png
+- Assets/Katarina/HUD/warringkingdoms_square.png
 - Assets/Katarina/HUD/KatarinaQ.png
+- Assets/Katarina/Models/material/slayBelleMat.mat
 - Assets/Katarina/HUD/kittycat_square.png
+- Assets/Katarina/Models/material/warringKingdomsMat.mat
 - Assets/Katarina/Materials/KatarinaMat.mat
 - Assets/Katarina/Prefabs/KatarinaDisplay.prefab
 - Assets/Katarina/Animations/animKatarina.controller
+- Assets/Katarina/Models/texture/skin6.png
 - Assets/Katarina/HUD/highcommand_square.png
 - Assets/Katarina/Models/katarinafix.fbx
 - Assets/Katarina/Models/runfootsteps.anim
 - Assets/Katarina/Models/texture/skin4.png
 - Assets/Katarina/HUD/mercenary_square.png
 - Assets/Katarina/Models/mesh/HighCommandMesh.mesh
+- Assets/Katarina/HUD/slaybelle_square.png
 - Assets/Katarina/HUD/KatarinaW.png
 - Assets/Katarina/Animations/weaponAnim.controller
+- Assets/Katarina/Models/mesh/WarringKingdomsMesh.mesh
 - Assets/Katarina/Models/material/redCardMat.mat
+- Assets/Katarina/Models/texture/skin12_0.png
 - Assets/Katarina/Prefabs/mdlKatarina.prefab
 - Assets/Katarina/Models/texture/skin1.png
 - Assets/Katarina/Models/mesh/RedCardMesh.mesh
 - Assets/Katarina/Models/material/kittyCatMat.mat
 - Assets/Katarina/Models/texture/skin3.png
+- Assets/Katarina/Models/mesh/BattleAcademiaMesh.mesh
 - Assets/Katarina/Animations/Falling Idle.anim
+- Assets/Katarina/Models/material/sandStormMat.mat
 - Assets/Katarina/VFX/KatarinaWeapon.prefab
+- Assets/Katarina/Models/mesh/SlayBelleMesh.mesh
+- Assets/Katarina/Models/material/battleAcademiaMat.mat
 - Assets/Katarina/Models/mesh/KittyCatMesh.mesh
 - Assets/Katarina/Models/mesh/BilgeWaterMesh.mesh
 Dependencies: []

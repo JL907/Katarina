@@ -389,6 +389,204 @@ namespace KatarinaMod.Modules.Survivors
             skins.Add(HighCommandSkin);
             #endregion HighCommandSkin
 
+            #region SandStormSkin
+            Skins.SkinDefInfo sandStormSkinDefInfo = default(Skins.SkinDefInfo);
+            sandStormSkinDefInfo.Name = "SANDSTORM_KATARINA_NAME";
+            sandStormSkinDefInfo.NameToken = "SANDSTORM_KATARINA_NAME";
+            sandStormSkinDefInfo.Icon = Assets.mainAssetBundle.LoadAsset<Sprite>("sandstorm_square");
+            sandStormSkinDefInfo.UnlockableDef = null;
+            sandStormSkinDefInfo.RootObject = model;
+
+            sandStormSkinDefInfo.BaseSkins = new SkinDef[] { defaultSkin };
+            sandStormSkinDefInfo.MinionSkinReplacements = new SkinDef.MinionSkinReplacement[0];
+            sandStormSkinDefInfo.ProjectileGhostReplacements = new SkinDef.ProjectileGhostReplacement[0];
+
+            sandStormSkinDefInfo.GameObjectActivations = new SkinDef.GameObjectActivation[0];
+
+            sandStormSkinDefInfo.MeshReplacements = new SkinDef.MeshReplacement[]
+            {
+                new SkinDef.MeshReplacement
+                {
+                    renderer = mainRenderer,
+                    mesh = Modules.Assets.mainAssetBundle.LoadAsset<Mesh>("SandStormMesh")
+                },
+            };
+
+            sandStormSkinDefInfo.RendererInfos = new CharacterModel.RendererInfo[characterModel.baseRendererInfos.Length];
+            characterModel.baseRendererInfos.CopyTo(sandStormSkinDefInfo.RendererInfos, 0);
+
+            sandStormSkinDefInfo.RendererInfos[0].defaultMaterial = Assets.CreateMaterial("sandStormMat");
+            sandStormSkinDefInfo.RendererInfos[sandStormSkinDefInfo.RendererInfos.Length - 1].defaultMaterial = Assets.CreateMaterial("sandStormMat");
+
+            SkinDef SandStormSkin = Skins.CreateSkinDef(sandStormSkinDefInfo);
+            skins.Add(SandStormSkin);
+            #endregion SandStormSkin
+
+            #region SlayBelleSkin
+            Skins.SkinDefInfo slayBelleSkinDefInfo = default(Skins.SkinDefInfo);
+            slayBelleSkinDefInfo.Name = "SLAYBELLE_KATARINA_NAME";
+            slayBelleSkinDefInfo.NameToken = "SLAYBELLE_KATARINA_NAME";
+            slayBelleSkinDefInfo.Icon = Assets.mainAssetBundle.LoadAsset<Sprite>("slaybelle_square");
+            slayBelleSkinDefInfo.UnlockableDef = null;
+            slayBelleSkinDefInfo.RootObject = model;
+
+            slayBelleSkinDefInfo.BaseSkins = new SkinDef[] { defaultSkin };
+            slayBelleSkinDefInfo.MinionSkinReplacements = new SkinDef.MinionSkinReplacement[0];
+            slayBelleSkinDefInfo.ProjectileGhostReplacements = new SkinDef.ProjectileGhostReplacement[0];
+
+            slayBelleSkinDefInfo.GameObjectActivations = new SkinDef.GameObjectActivation[0];
+
+            slayBelleSkinDefInfo.MeshReplacements = new SkinDef.MeshReplacement[]
+            {
+                new SkinDef.MeshReplacement
+                {
+                    renderer = mainRenderer,
+                    mesh = Modules.Assets.mainAssetBundle.LoadAsset<Mesh>("SlayBelleMesh")
+                },
+            };
+
+            slayBelleSkinDefInfo.RendererInfos = new CharacterModel.RendererInfo[characterModel.baseRendererInfos.Length];
+            characterModel.baseRendererInfos.CopyTo(slayBelleSkinDefInfo.RendererInfos, 0);
+
+            slayBelleSkinDefInfo.RendererInfos[0].defaultMaterial = Assets.CreateMaterial("slayBelleMat");
+            slayBelleSkinDefInfo.RendererInfos[slayBelleSkinDefInfo.RendererInfos.Length - 1].defaultMaterial = Assets.CreateMaterial("slayBelleMat");
+
+            SkinDef SlayBelleSkin = Skins.CreateSkinDef(slayBelleSkinDefInfo);
+            skins.Add(SlayBelleSkin);
+            #endregion SlayBelleSkin
+
+            #region WarringKingdomsSkin
+            Skins.SkinDefInfo warrringKingdomsSkinDefInfo = default(Skins.SkinDefInfo);
+            warrringKingdomsSkinDefInfo.Name = "WARRINGKINGDOMS_KATARINA_NAME";
+            warrringKingdomsSkinDefInfo.NameToken = "WARRINGKINGDOMS_KATARINA_NAME";
+            warrringKingdomsSkinDefInfo.Icon = Assets.mainAssetBundle.LoadAsset<Sprite>("warringkingdoms_square");
+            warrringKingdomsSkinDefInfo.UnlockableDef = null;
+            warrringKingdomsSkinDefInfo.RootObject = model;
+
+            warrringKingdomsSkinDefInfo.BaseSkins = new SkinDef[] { defaultSkin };
+            warrringKingdomsSkinDefInfo.MinionSkinReplacements = new SkinDef.MinionSkinReplacement[0];
+            warrringKingdomsSkinDefInfo.ProjectileGhostReplacements = new SkinDef.ProjectileGhostReplacement[0];
+
+            warrringKingdomsSkinDefInfo.GameObjectActivations = new SkinDef.GameObjectActivation[0];
+
+            warrringKingdomsSkinDefInfo.MeshReplacements = new SkinDef.MeshReplacement[]
+            {
+                new SkinDef.MeshReplacement
+                {
+                    renderer = mainRenderer,
+                    mesh = Modules.Assets.mainAssetBundle.LoadAsset<Mesh>("WarringKingdomsMesh")
+                },
+            };
+
+            warrringKingdomsSkinDefInfo.RendererInfos = new CharacterModel.RendererInfo[characterModel.baseRendererInfos.Length];
+            characterModel.baseRendererInfos.CopyTo(warrringKingdomsSkinDefInfo.RendererInfos, 0);
+
+            warrringKingdomsSkinDefInfo.RendererInfos[0].defaultMaterial = Assets.CreateMaterial("warringKingdomsMat");
+            warrringKingdomsSkinDefInfo.RendererInfos[warrringKingdomsSkinDefInfo.RendererInfos.Length - 1].defaultMaterial = Assets.CreateMaterial("warringKingdomsMat");
+
+            SkinDef WarringKingdomsSkin = Skins.CreateSkinDef(warrringKingdomsSkinDefInfo);
+            skins.Add(WarringKingdomsSkin);
+            #endregion WarringKingdomsSkin
+
+            #region ProjectSkin
+            Skins.SkinDefInfo projectSkinDefInfo = default(Skins.SkinDefInfo);
+            projectSkinDefInfo.Name = "PROJECT_KATARINA_NAME";
+            projectSkinDefInfo.NameToken = "PROJECT_KATARINA_NAME";
+            projectSkinDefInfo.Icon = Assets.mainAssetBundle.LoadAsset<Sprite>("project_square");
+            projectSkinDefInfo.UnlockableDef = null;
+            projectSkinDefInfo.RootObject = model;
+
+            projectSkinDefInfo.BaseSkins = new SkinDef[] { defaultSkin };
+            projectSkinDefInfo.MinionSkinReplacements = new SkinDef.MinionSkinReplacement[0];
+            projectSkinDefInfo.ProjectileGhostReplacements = new SkinDef.ProjectileGhostReplacement[0];
+
+            projectSkinDefInfo.GameObjectActivations = new SkinDef.GameObjectActivation[0];
+
+            projectSkinDefInfo.MeshReplacements = new SkinDef.MeshReplacement[]
+            {
+                new SkinDef.MeshReplacement
+                {
+                    renderer = mainRenderer,
+                    mesh = Modules.Assets.mainAssetBundle.LoadAsset<Mesh>("ProjectMesh")
+                },
+            };
+
+            projectSkinDefInfo.RendererInfos = new CharacterModel.RendererInfo[characterModel.baseRendererInfos.Length];
+            characterModel.baseRendererInfos.CopyTo(projectSkinDefInfo.RendererInfos, 0);
+
+            projectSkinDefInfo.RendererInfos[0].defaultMaterial = Assets.CreateMaterial("projectMat");
+            projectSkinDefInfo.RendererInfos[projectSkinDefInfo.RendererInfos.Length - 1].defaultMaterial = Assets.CreateMaterial("projectMat");
+
+            SkinDef ProjectSkin = Skins.CreateSkinDef(projectSkinDefInfo);
+            skins.Add(ProjectSkin);
+            #endregion ProjectSkin
+
+            #region BattleAcademiaSkin
+            Skins.SkinDefInfo battleAcademiaSkinDefInfo = default(Skins.SkinDefInfo);
+            battleAcademiaSkinDefInfo.Name = "BATTLEACADEMIA_KATARINA_NAME";
+            battleAcademiaSkinDefInfo.NameToken = "BATTLEACADEMIA_KATARINA_NAME";
+            battleAcademiaSkinDefInfo.Icon = Assets.mainAssetBundle.LoadAsset<Sprite>("battleacademia_square");
+            battleAcademiaSkinDefInfo.UnlockableDef = null;
+            battleAcademiaSkinDefInfo.RootObject = model;
+
+            battleAcademiaSkinDefInfo.BaseSkins = new SkinDef[] { defaultSkin };
+            battleAcademiaSkinDefInfo.MinionSkinReplacements = new SkinDef.MinionSkinReplacement[0];
+            battleAcademiaSkinDefInfo.ProjectileGhostReplacements = new SkinDef.ProjectileGhostReplacement[0];
+
+            battleAcademiaSkinDefInfo.GameObjectActivations = new SkinDef.GameObjectActivation[0];
+
+            battleAcademiaSkinDefInfo.MeshReplacements = new SkinDef.MeshReplacement[]
+            {
+                new SkinDef.MeshReplacement
+                {
+                    renderer = mainRenderer,
+                    mesh = Modules.Assets.mainAssetBundle.LoadAsset<Mesh>("BattleAcademiaMesh")
+                },
+            };
+
+            battleAcademiaSkinDefInfo.RendererInfos = new CharacterModel.RendererInfo[characterModel.baseRendererInfos.Length];
+            characterModel.baseRendererInfos.CopyTo(battleAcademiaSkinDefInfo.RendererInfos, 0);
+
+            battleAcademiaSkinDefInfo.RendererInfos[0].defaultMaterial = Assets.CreateMaterial("battleAcademiaMat");
+            battleAcademiaSkinDefInfo.RendererInfos[battleAcademiaSkinDefInfo.RendererInfos.Length - 1].defaultMaterial = Assets.CreateMaterial("battleAcademiaMat");
+
+            SkinDef BattleAcademiaSkin = Skins.CreateSkinDef(battleAcademiaSkinDefInfo);
+            skins.Add(BattleAcademiaSkin);
+            #endregion BattleAcademiaSkin
+
+            #region BloodMoonSkin
+            Skins.SkinDefInfo bloodMoonSkinDefInfo = default(Skins.SkinDefInfo);
+            bloodMoonSkinDefInfo.Name = "BLOODMOON_KATARINA_NAME";
+            bloodMoonSkinDefInfo.NameToken = "BLOODMOON_KATARINA_NAME";
+            bloodMoonSkinDefInfo.Icon = Assets.mainAssetBundle.LoadAsset<Sprite>("bloodmoon_square");
+            bloodMoonSkinDefInfo.UnlockableDef = null;
+            bloodMoonSkinDefInfo.RootObject = model;
+
+            bloodMoonSkinDefInfo.BaseSkins = new SkinDef[] { defaultSkin };
+            bloodMoonSkinDefInfo.MinionSkinReplacements = new SkinDef.MinionSkinReplacement[0];
+            bloodMoonSkinDefInfo.ProjectileGhostReplacements = new SkinDef.ProjectileGhostReplacement[0];
+
+            bloodMoonSkinDefInfo.GameObjectActivations = new SkinDef.GameObjectActivation[0];
+
+            bloodMoonSkinDefInfo.MeshReplacements = new SkinDef.MeshReplacement[]
+            {
+                new SkinDef.MeshReplacement
+                {
+                    renderer = mainRenderer,
+                    mesh = Modules.Assets.mainAssetBundle.LoadAsset<Mesh>("BloodMoonMesh")
+                },
+            };
+
+            bloodMoonSkinDefInfo.RendererInfos = new CharacterModel.RendererInfo[characterModel.baseRendererInfos.Length];
+            characterModel.baseRendererInfos.CopyTo(bloodMoonSkinDefInfo.RendererInfos, 0);
+
+            bloodMoonSkinDefInfo.RendererInfos[0].defaultMaterial = Assets.CreateMaterial("bloodMoonMat");
+            bloodMoonSkinDefInfo.RendererInfos[bloodMoonSkinDefInfo.RendererInfos.Length - 1].defaultMaterial = Assets.CreateMaterial("bloodMoonMat");
+
+            SkinDef BloodMoonSkin = Skins.CreateSkinDef(bloodMoonSkinDefInfo);
+            skins.Add(BloodMoonSkin);
+            #endregion BloodMoonSkin
+
             skinController.skins = skins.ToArray();
         }
 
