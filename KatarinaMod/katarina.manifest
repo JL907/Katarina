@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 1396319493
+CRC: 2530947867
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 3ec28036b73b7a0093e179f4951c3978
+    Hash: b26bbf72ff761bfa22405c54985dddd3
   TypeTreeHash:
     serializedVersion: 2
     Hash: 1fa692d6cdee47feb28ec66b66246763
@@ -77,6 +77,7 @@ Assets:
 - Assets/Katarina/VFX/daggeraoe.mat
 - Assets/Katarina/HUD/KatarinaE.png
 - Assets/Katarina/Models/texture/skin7.png
+- Assets/Katarina/Models/texture/skin21.png
 - Assets/Katarina/Materials/skin0.png
 - Assets/Katarina/HUD/battleacademia_square.png
 - Assets/Katarina/Models/katarina weapon.fbx
@@ -89,6 +90,7 @@ Assets:
 - Assets/Katarina/Animations/Jumping UP.anim
 - Assets/Katarina/HUD/KatarinaR.png
 - Assets/Katarina/HUD/bilgewater_square.png
+- Assets/Katarina/Models/material/bloodMoonMat.mat
 - Assets/Katarina/HUD/redcard_square.png
 - Assets/Katarina/Materials/KatarinaMat2.mat
 - Assets/Katarina/HUD/katarina_square.png
@@ -98,7 +100,9 @@ Assets:
 - Assets/Katarina/HUD/kittycat_square.png
 - Assets/Katarina/Models/material/warringKingdomsMat.mat
 - Assets/Katarina/Materials/KatarinaMat.mat
+- Assets/Katarina/Models/mesh/BloodMoonMesh.mesh
 - Assets/Katarina/Prefabs/KatarinaDisplay.prefab
+- Assets/Katarina/HUD/bloodmoon_square.png
 - Assets/Katarina/Animations/animKatarina.controller
 - Assets/Katarina/Models/texture/skin6.png
 - Assets/Katarina/HUD/highcommand_square.png
