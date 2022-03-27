@@ -19,7 +19,7 @@ namespace KatarinaMod.Modules.Survivors
             armorGrowth = 0f,
             bodyName = "Katarina",
             bodyNameToken = "KATARINA_NAME",
-            bodyColor = new Color(0.6862f, 0.1019f, 0.6862f),
+            bodyColor = Color.red,
             characterPortrait = Modules.Assets.LoadCharacterIcon("Katarina"),
             crosshair = Modules.Assets.LoadCrosshair("Standard"),
             damage = 12f,

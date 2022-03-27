@@ -6,7 +6,7 @@ namespace KatarinaMod.Modules
     internal static class Tokens
     {
         public const string characterLore = "A leader of Ionia's growing criminal underworld, KATARINA rose to prominence in the wake of the war with Noxus. Though he began as a humble challenger in the fighting pits of Navori, he quickly gained notoriety for his savage strength, and his ability to take seemingly endless amounts of punishment. Now, having climbed through the ranks of local combatants, KATARINA has muscled to the top, reigning over the pits he once fought in.";
-        public const string characterName = "<color=#AF1AAF>Katarina</color>";
+        public const string characterName = "<color=#FFFFFF>Katarina</color>";
         public const string characterOutro = "..expect my visit when the darkness comes. The night I think is best for hiding all.";
         public const string characterOutroFailure = "...And a horror of outer darkness after, And dust returneth to dust again";
         public const string characterSubtitle = "The Sinister Blade";
@@ -32,18 +32,18 @@ namespace KatarinaMod.Modules
             LanguageAPI.Add("KATARINA_OUTRO_FLAVOR", characterOutro);
             LanguageAPI.Add("KATARINA_OUTRO_FAILURE", characterOutroFailure);
 
-            LanguageAPI.Add("KATARINA_DEFAULT_SKIN_NAME", "<color=#AF1AAF>KATARINA</color>");
-            LanguageAPI.Add("MERCENARY_KATARINA_NAME", "<color=#AF1AAF>MERCENARY KATARINA</color>");
-            LanguageAPI.Add("REDCARD_KATARINA_NAME", "<color=#AF1AAF>RED CARD KATARINA</color>");
-            LanguageAPI.Add("BILGEWATER_KATARINA_NAME", "<color=#AF1AAF>BILGEWATER KATARINA</color>");
-            LanguageAPI.Add("KITTYCAT_KATARINA_NAME", "<color=#AF1AAF>KITTY CAT KATARINA</color>");
-            LanguageAPI.Add("KITTYCAT_KATARINA_NAME", "<color=#AF1AAF>HIGH COMMAND KATARINA</color>");
-            LanguageAPI.Add("SANDSTORM_KATARINA_NAME", "<color=#AF1AAF>SAND STORM KATARINA</color>");
-            LanguageAPI.Add("SLAYBELLE_KATARINA_NAME", "<color=#AF1AAF>SLAY BELLE KATARINA</color>");
-            LanguageAPI.Add("WARRINGKINGDOMS_KATARINA_NAME", "<color=#AF1AAF>WARRING KINGDOMS KATARINA</color>");
-            LanguageAPI.Add("PROJECT_KATARINA_NAME", "<color=#AF1AAF>PROJECT: KATARINA</color>");
-            LanguageAPI.Add("BATTLEACADEMIA_KATARINA_NAME", "<color=#AF1AAF>BATTLE ACADEMIA KATARINA</color>");
-            LanguageAPI.Add("BATTLEACADEMIA_KATARINA_NAME", "<color=#AF1AAF>BLOOD MOON KATARINA</color>");
+            LanguageAPI.Add("KATARINA_DEFAULT_SKIN_NAME", "<color=#FFFFFF>KATARINA</color>");
+            LanguageAPI.Add("MERCENARY_KATARINA_NAME", "<color=#FFFFFF>MERCENARY KATARINA</color>");
+            LanguageAPI.Add("REDCARD_KATARINA_NAME", "<color=#FFFFFF>RED CARD KATARINA</color>");
+            LanguageAPI.Add("BILGEWATER_KATARINA_NAME", "<color=#FFFFFF>BILGEWATER KATARINA</color>");
+            LanguageAPI.Add("KITTYCAT_KATARINA_NAME", "<color=#FFFFFF>KITTY CAT KATARINA</color>");
+            LanguageAPI.Add("HIGHCOMMAND_KATARINA_NAME", "<color=#FFFFFF>HIGH COMMAND KATARINA</color>");
+            LanguageAPI.Add("SANDSTORM_KATARINA_NAME", "<color=#FFFFFF>SAND STORM KATARINA</color>");
+            LanguageAPI.Add("SLAYBELLE_KATARINA_NAME", "<color=#FFFFFF>SLAY BELLE KATARINA</color>");
+            LanguageAPI.Add("WARRINGKINGDOMS_KATARINA_NAME", "<color=#FFFFFF>WARRING KINGDOMS KATARINA</color>");
+            LanguageAPI.Add("PROJECT_KATARINA_NAME", "<color=#FFFFFF>PROJECT: KATARINA</color>");
+            LanguageAPI.Add("BATTLEACADEMIA_KATARINA_NAME", "<color=#FFFFFF>BATTLE ACADEMIA KATARINA</color>");
+            LanguageAPI.Add("BLOODMOON_KATARINA_NAME", "<color=#FFFFFF>BLOOD MOON KATARINA</color>");
 
             LanguageAPI.Add("KATARINA_PASSIVE_NAME", "<color=#AF1AAF>VORACITY</color>");
             LanguageAPI.Add("KATARINA_PASSIVE_DESC",
@@ -57,7 +57,7 @@ namespace KatarinaMod.Modules
             LanguageAPI.Add("KATARINA_SECONDARY_NAME", "<color=#AF1AAF>BOUNCING BLADE</color>");
             LanguageAPI.Add("KATARINA_SECONDARY_DESC",
                 "Katarina throws a <color=#AF1AAF>Dagger</color> at the target enemy that can bounce to up to four additional nearby enemies, dealing <color=#f68835>200%</color> damage." + Environment.NewLine
-                + "The Dagger then lands onto the ground after <color=#ffffff>1</color> second.");
+                + "The <color=#AF1AAF>Dagger</color> then lands onto the ground after <color=#ffffff>1</color> second.");
 
             LanguageAPI.Add("KATARINA_UTILITY_NAME", "<color=#AF1AAF>SHUNPO</color>");
             LanguageAPI.Add("KATARINA_UTILITY_DESC",

@@ -6,16 +6,20 @@
 ## Introduction
 Decisive in judgment and lethal in combat, Katarina is a Noxian assassin of the highest caliber. Eldest daughter to the legendary General Du Couteau, she made her talents known with swift kills against unsuspecting enemies. Her fiery ambition has driven her to pursue heavily-guarded targets, even at the risk of endangering her allies—but no matter the mission, Katarina will not hesitate to execute her duty amid a whirlwind of serrated daggers.
 
-## Latest Patch Notes `1.2.0`
+## Latest Patch Notes `1.3.0`
 `Bug reports can be posted in discord` https://discord.gg/aYuS9Wsxxx
 
-* Fixed an issue where Voracity would cast multiple times when picking up daggers
-* Fixed an issue where Daggers colliding with enemies would make them float in the air
-* Fixed an issue where Bouncing Blades would go on cooldown when there were no valid targets in multiplayer
-* Fixed an issue where Bouncing Blades sounds and animations weren't playing in multiplayer
-* Dagger Physics adjusted
-* Bouncing Blades now place dagger after first enemy hit
-* Bouncing Blades visual effect speed increased
+* Added Mercenary Katarina Skin
+* Added Red Card Katarina Skin
+* Added Bilgewater Katarina Skin
+* Added Kitty Cat Katarina Skin
+* Added High Command Katarina Skin
+* Added Sand Storm Katarina Skin
+* Added Slay Belle Katarina Skin
+* Added Warring Kingdoms Katarina Skin
+* Added Project: Katarina Skin
+* Added Battle Academia Katarina Skin
+* Added Blood Moon Katarina Skin
 
 ## Discord
 <a href="https://discord.gg/aYuS9Wsxxx" target="_blank">
@@ -59,6 +63,15 @@ Decisive in judgment and lethal in combat, Katarina is a Noxian assassin of the 
 ---
 
 ## Old Patch Notes
+`1.2.0`
+* Fixed an issue where Voracity would cast multiple times when picking up daggers
+* Fixed an issue where Daggers colliding with enemies would make them float in the air
+* Fixed an issue where Bouncing Blades would go on cooldown when there were no valid targets in multiplayer
+* Fixed an issue where Bouncing Blades sounds and animations weren't playing in multiplayer
+* Dagger Physics adjusted
+* Bouncing Blades now place dagger after first enemy hit
+* Bouncing Blades visual effect speed increased
+
 `1.1.2`
 * Katarina sound attenuation lowered to 100 meters down from 200 meters
 * Shunpo will blink towards Katarina's target only if the basic attack button is held
