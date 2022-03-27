@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 2178486818
+CRC: 440395498
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: c5c051f57e5cbb8a6cddef940a56bd2b
+    Hash: 09d498364174cd9285ef3cdf7f6d014a
   TypeTreeHash:
     serializedVersion: 2
     Hash: 1fa692d6cdee47feb28ec66b66246763
@@ -57,16 +57,18 @@ ClassTypes:
   Script: {instanceID: 0}
 SerializeReferenceClassIdentifiers: []
 Assets:
+- Assets/Katarina/Models/material/bilgeWaterMat.mat
 - Assets/Katarina/Models/runhastefootsteps.anim
 - Assets/Katarina/VFX/ImpactHenrySlash.prefab
 - Assets/Katarina/HUD/katarinaSprite.png
 - Assets/Katarina/Animations/KatUpper.mask
 - Assets/Katarina/Models/KATARINA.fbx
-- Assets/Katarina/Models/mercenaryMat.mat
+- Assets/Katarina/Models/material/mercenaryMat.mat
 - Assets/Katarina/VFX/HenrySwordSwingEffect.prefab
 - Assets/Katarina/HUD/Katarina_Passive.png
-- Assets/Katarina/Models/MercenaryMesh.mesh
+- Assets/Katarina/Models/mesh/MercenaryMesh.mesh
 - Assets/Katarina/VFX/aoe_leona_outer.png
+- Assets/Katarina/Models/texture/skin2.png
 - Assets/Katarina/VFX/daggeraoe.mat
 - Assets/Katarina/HUD/KatarinaE.png
 - Assets/Katarina/Materials/skin0.png
@@ -75,6 +77,8 @@ Assets:
 - Assets/Katarina/HUD/bouncing.png
 - Assets/Katarina/Animations/Jumping UP.anim
 - Assets/Katarina/HUD/KatarinaR.png
+- Assets/Katarina/HUD/bilgewater_square.png
+- Assets/Katarina/HUD/redcard_square.png
 - Assets/Katarina/Materials/KatarinaMat2.mat
 - Assets/Katarina/HUD/katarina_square.png
 - Assets/Katarina/HUD/KatarinaQ.png
@@ -86,8 +90,12 @@ Assets:
 - Assets/Katarina/HUD/mercenary_square.png
 - Assets/Katarina/HUD/KatarinaW.png
 - Assets/Katarina/Animations/weaponAnim.controller
+- Assets/Katarina/Models/material/redCardMat.mat
 - Assets/Katarina/Prefabs/mdlKatarina.prefab
-- Assets/Katarina/Models/skin1.png
+- Assets/Katarina/Models/texture/skin1.png
+- Assets/Katarina/Models/mesh/RedCardMesh.mesh
+- Assets/Katarina/Models/texture/skin3.png
 - Assets/Katarina/Animations/Falling Idle.anim
 - Assets/Katarina/VFX/KatarinaWeapon.prefab
+- Assets/Katarina/Models/mesh/BilgeWaterMesh.mesh
 Dependencies: []

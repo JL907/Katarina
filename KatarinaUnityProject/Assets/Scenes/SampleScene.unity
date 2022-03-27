@@ -462,6 +462,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: mdlKatarina
       objectReference: {fileID: 0}
+    - target: {fileID: 7592239460299886066, guid: 7257b5492e70ef64bb766f90594ca25e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7257b5492e70ef64bb766f90594ca25e, type: 3}
 --- !u!4 &3835100387910855358

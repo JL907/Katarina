@@ -257,6 +257,72 @@ namespace KatarinaMod.Modules.Survivors
             skins.Add(mercenarySkin);
             #endregion MercenarySkin
 
+            #region RedCardSkin
+            Skins.SkinDefInfo redCardSkinDefInfo = default(Skins.SkinDefInfo);
+            redCardSkinDefInfo.Name = "REDCARD_KATARINA_NAME";
+            redCardSkinDefInfo.NameToken = "REDCARD_KATARINA_NAME";
+            redCardSkinDefInfo.Icon = Assets.mainAssetBundle.LoadAsset<Sprite>("redcard_square");
+            redCardSkinDefInfo.UnlockableDef = null;
+            redCardSkinDefInfo.RootObject = model;
+
+            redCardSkinDefInfo.BaseSkins = new SkinDef[] { defaultSkin };
+            redCardSkinDefInfo.MinionSkinReplacements = new SkinDef.MinionSkinReplacement[0];
+            redCardSkinDefInfo.ProjectileGhostReplacements = new SkinDef.ProjectileGhostReplacement[0];
+
+            redCardSkinDefInfo.GameObjectActivations = new SkinDef.GameObjectActivation[0];
+
+            redCardSkinDefInfo.MeshReplacements = new SkinDef.MeshReplacement[]
+            {
+                new SkinDef.MeshReplacement
+                {
+                    renderer = mainRenderer,
+                    mesh = Modules.Assets.mainAssetBundle.LoadAsset<Mesh>("RedCardMesh")
+                },
+            };
+
+            redCardSkinDefInfo.RendererInfos = new CharacterModel.RendererInfo[characterModel.baseRendererInfos.Length];
+            characterModel.baseRendererInfos.CopyTo(redCardSkinDefInfo.RendererInfos, 0);
+
+            redCardSkinDefInfo.RendererInfos[0].defaultMaterial = Assets.CreateMaterial("redCardMat");
+            redCardSkinDefInfo.RendererInfos[redCardSkinDefInfo.RendererInfos.Length - 1].defaultMaterial = Assets.CreateMaterial("redCardMat");
+
+            SkinDef redCardSkin = Skins.CreateSkinDef(redCardSkinDefInfo);
+            skins.Add(redCardSkin);
+            #endregion RedCardSkin
+
+            #region BilgeWaterSkin
+            Skins.SkinDefInfo bilgeWaterSkinDefInfo = default(Skins.SkinDefInfo);
+            bilgeWaterSkinDefInfo.Name = "BILGEWATER_KATARINA_NAME";
+            bilgeWaterSkinDefInfo.NameToken = "BILGEWATER_KATARINA_NAME";
+            bilgeWaterSkinDefInfo.Icon = Assets.mainAssetBundle.LoadAsset<Sprite>("bilgewater_square");
+            bilgeWaterSkinDefInfo.UnlockableDef = null;
+            bilgeWaterSkinDefInfo.RootObject = model;
+
+            bilgeWaterSkinDefInfo.BaseSkins = new SkinDef[] { defaultSkin };
+            bilgeWaterSkinDefInfo.MinionSkinReplacements = new SkinDef.MinionSkinReplacement[0];
+            bilgeWaterSkinDefInfo.ProjectileGhostReplacements = new SkinDef.ProjectileGhostReplacement[0];
+
+            bilgeWaterSkinDefInfo.GameObjectActivations = new SkinDef.GameObjectActivation[0];
+
+            bilgeWaterSkinDefInfo.MeshReplacements = new SkinDef.MeshReplacement[]
+            {
+                new SkinDef.MeshReplacement
+                {
+                    renderer = mainRenderer,
+                    mesh = Modules.Assets.mainAssetBundle.LoadAsset<Mesh>("BilgeWaterMesh")
+                },
+            };
+
+            bilgeWaterSkinDefInfo.RendererInfos = new CharacterModel.RendererInfo[characterModel.baseRendererInfos.Length];
+            characterModel.baseRendererInfos.CopyTo(bilgeWaterSkinDefInfo.RendererInfos, 0);
+
+            bilgeWaterSkinDefInfo.RendererInfos[0].defaultMaterial = Assets.CreateMaterial("bilgeWaterMat");
+            bilgeWaterSkinDefInfo.RendererInfos[bilgeWaterSkinDefInfo.RendererInfos.Length - 1].defaultMaterial = Assets.CreateMaterial("bilgeWaterMat");
+
+            SkinDef bilgeWaterSkin = Skins.CreateSkinDef(bilgeWaterSkinDefInfo);
+            skins.Add(bilgeWaterSkin);
+            #endregion bilgeWaterSkin
+
             skinController.skins = skins.ToArray();
         }
 
