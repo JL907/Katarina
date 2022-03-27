@@ -396,6 +396,12 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4712070935222472391, guid: 7257b5492e70ef64bb766f90594ca25e,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 5461320835613783329, guid: 509404aa544bd6e4a96c7f5a6e050c8a,
+        type: 3}
     - target: {fileID: 7068079918366627656, guid: 7257b5492e70ef64bb766f90594ca25e,
         type: 3}
       propertyPath: m_RootOrder
@@ -455,6 +461,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: mdlKatarina
+      objectReference: {fileID: 0}
+    - target: {fileID: 7592239460299886066, guid: 7257b5492e70ef64bb766f90594ca25e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7257b5492e70ef64bb766f90594ca25e, type: 3}

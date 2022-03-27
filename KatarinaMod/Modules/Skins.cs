@@ -6,6 +6,28 @@ namespace KatarinaMod.Modules
 {
     internal static class Skins
     {
+        internal static SkinDef CreateSkinDef(SkinDefInfo skinDefInfo)
+        {
+            On.RoR2.SkinDef.Awake += DoNothing;
+
+            SkinDef skinDef = ScriptableObject.CreateInstance<RoR2.SkinDef>();
+            skinDef.baseSkins = skinDefInfo.BaseSkins;
+            skinDef.icon = skinDefInfo.Icon;
+            skinDef.unlockableDef = skinDefInfo.UnlockableDef;
+            skinDef.rootObject = skinDefInfo.RootObject;
+            skinDef.rendererInfos = skinDefInfo.RendererInfos;
+            skinDef.gameObjectActivations = skinDefInfo.GameObjectActivations;
+            skinDef.meshReplacements = skinDefInfo.MeshReplacements;
+            skinDef.projectileGhostReplacements = skinDefInfo.ProjectileGhostReplacements;
+            skinDef.minionSkinReplacements = skinDefInfo.MinionSkinReplacements;
+            skinDef.nameToken = skinDefInfo.NameToken;
+            skinDef.name = skinDefInfo.Name;
+
+            On.RoR2.SkinDef.Awake -= DoNothing;
+
+            return skinDef;
+        }
+
         internal static SkinDef CreateSkinDef(string skinName, Sprite skinIcon, CharacterModel.RendererInfo[] rendererInfos, SkinnedMeshRenderer mainRenderer, GameObject root)
         {
             return CreateSkinDef(skinName, skinIcon, rendererInfos, mainRenderer, root, null);

@@ -1179,7 +1179,7 @@ Material:
     - m_end_subsurface: 0
     - m_end_vertexManipulation: 0
     - m_end_voronoiRandom: 0
-    - m_lightingOptions: 0
+    - m_lightingOptions: 1
     - m_mainOptions: 0
     - m_outlineOptions: 0
     - m_renderingOptions: 0
