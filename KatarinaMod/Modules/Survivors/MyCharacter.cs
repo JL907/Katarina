@@ -323,6 +323,39 @@ namespace KatarinaMod.Modules.Survivors
             skins.Add(bilgeWaterSkin);
             #endregion bilgeWaterSkin
 
+            #region KittyCatSkin
+            Skins.SkinDefInfo kittyCatSkinDefInfo = default(Skins.SkinDefInfo);
+            kittyCatSkinDefInfo.Name = "KITTYCAT_KATARINA_NAME";
+            kittyCatSkinDefInfo.NameToken = "KITTYCAT_KATARINA_NAME";
+            kittyCatSkinDefInfo.Icon = Assets.mainAssetBundle.LoadAsset<Sprite>("kittycat_square");
+            kittyCatSkinDefInfo.UnlockableDef = null;
+            kittyCatSkinDefInfo.RootObject = model;
+
+            kittyCatSkinDefInfo.BaseSkins = new SkinDef[] { defaultSkin };
+            kittyCatSkinDefInfo.MinionSkinReplacements = new SkinDef.MinionSkinReplacement[0];
+            kittyCatSkinDefInfo.ProjectileGhostReplacements = new SkinDef.ProjectileGhostReplacement[0];
+
+            kittyCatSkinDefInfo.GameObjectActivations = new SkinDef.GameObjectActivation[0];
+
+            kittyCatSkinDefInfo.MeshReplacements = new SkinDef.MeshReplacement[]
+            {
+                new SkinDef.MeshReplacement
+                {
+                    renderer = mainRenderer,
+                    mesh = Modules.Assets.mainAssetBundle.LoadAsset<Mesh>("KittyCatMesh")
+                },
+            };
+
+            kittyCatSkinDefInfo.RendererInfos = new CharacterModel.RendererInfo[characterModel.baseRendererInfos.Length];
+            characterModel.baseRendererInfos.CopyTo(kittyCatSkinDefInfo.RendererInfos, 0);
+
+            kittyCatSkinDefInfo.RendererInfos[0].defaultMaterial = Assets.CreateMaterial("kittyCatMat");
+            kittyCatSkinDefInfo.RendererInfos[kittyCatSkinDefInfo.RendererInfos.Length - 1].defaultMaterial = Assets.CreateMaterial("kittyCatMat");
+
+            SkinDef kittyCatSkin = Skins.CreateSkinDef(kittyCatSkinDefInfo);
+            skins.Add(kittyCatSkin);
+            #endregion KittyCatSkin
+
             skinController.skins = skins.ToArray();
         }
 

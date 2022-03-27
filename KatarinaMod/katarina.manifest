@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 440395498
+CRC: 2900847929
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 09d498364174cd9285ef3cdf7f6d014a
+    Hash: 1a2627886a28e2f4b74471f698a98a6f
   TypeTreeHash:
     serializedVersion: 2
     Hash: 1fa692d6cdee47feb28ec66b66246763
@@ -82,11 +82,13 @@ Assets:
 - Assets/Katarina/Materials/KatarinaMat2.mat
 - Assets/Katarina/HUD/katarina_square.png
 - Assets/Katarina/HUD/KatarinaQ.png
+- Assets/Katarina/HUD/kittycat_square.png
 - Assets/Katarina/Materials/KatarinaMat.mat
 - Assets/Katarina/Prefabs/KatarinaDisplay.prefab
 - Assets/Katarina/Animations/animKatarina.controller
 - Assets/Katarina/Models/katarinafix.fbx
 - Assets/Katarina/Models/runfootsteps.anim
+- Assets/Katarina/Models/texture/skin4.png
 - Assets/Katarina/HUD/mercenary_square.png
 - Assets/Katarina/HUD/KatarinaW.png
 - Assets/Katarina/Animations/weaponAnim.controller
@@ -94,8 +96,10 @@ Assets:
 - Assets/Katarina/Prefabs/mdlKatarina.prefab
 - Assets/Katarina/Models/texture/skin1.png
 - Assets/Katarina/Models/mesh/RedCardMesh.mesh
+- Assets/Katarina/Models/material/kittyCatMat.mat
 - Assets/Katarina/Models/texture/skin3.png
 - Assets/Katarina/Animations/Falling Idle.anim
 - Assets/Katarina/VFX/KatarinaWeapon.prefab
+- Assets/Katarina/Models/mesh/KittyCatMesh.mesh
 - Assets/Katarina/Models/mesh/BilgeWaterMesh.mesh
 Dependencies: []

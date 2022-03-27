@@ -36,6 +36,7 @@ namespace KatarinaMod.Modules
             LanguageAPI.Add("MERCENARY_KATARINA_NAME", "<color=#AF1AAF>MERCENARY KATARINA</color>");
             LanguageAPI.Add("REDCARD_KATARINA_NAME", "<color=#AF1AAF>RED CARD KATARINA</color>");
             LanguageAPI.Add("BILGEWATER_KATARINA_NAME", "<color=#AF1AAF>BILGEWATER KATARINA</color>");
+            LanguageAPI.Add("KITTYCAT_KATARINA_NAME", "<color=#AF1AAF>KITTY CAT KATARINA</color>");
 
             LanguageAPI.Add("KATARINA_PASSIVE_NAME", "<color=#AF1AAF>VORACITY</color>");
             LanguageAPI.Add("KATARINA_PASSIVE_DESC",
