@@ -11,8 +11,8 @@ namespace KatarinaMod.SkillStates
             this.hitboxName = "Sword";
 
             this.damageType = DamageType.Generic;
-            this.damageCoefficient = 2.8f;
-            this.procCoefficient = 1f;
+            this.damageCoefficient = Modules.Config.basicAttack_damageCoefficient.Value;
+            this.procCoefficient = Modules.Config.basicAttack_procCoefficient.Value;
             this.pushForce = 300f;
             this.bonusForce = Vector3.zero;
             this.baseDuration = 1f;

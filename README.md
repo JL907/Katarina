@@ -6,20 +6,12 @@
 ## Introduction
 Decisive in judgment and lethal in combat, Katarina is a Noxian assassin of the highest caliber. Eldest daughter to the legendary General Du Couteau, she made her talents known with swift kills against unsuspecting enemies. Her fiery ambition has driven her to pursue heavily-guarded targets, even at the risk of endangering her allies—but no matter the mission, Katarina will not hesitate to execute her duty amid a whirlwind of serrated daggers.
 
-## Latest Patch Notes `1.3.0`
+## Latest Patch Notes `1.3.1`
 `Bug reports can be posted in discord` https://discord.gg/aYuS9Wsxxx
 
-* Added Mercenary Katarina Skin
-* Added Red Card Katarina Skin
-* Added Bilgewater Katarina Skin
-* Added Kitty Cat Katarina Skin
-* Added High Command Katarina Skin
-* Added Sand Storm Katarina Skin
-* Added Slay Belle Katarina Skin
-* Added Warring Kingdoms Katarina Skin
-* Added Project: Katarina Skin
-* Added Battle Academia Katarina Skin
-* Added Blood Moon Katarina Skin
+* Voracity Damage increased to 400% up from 300%
+* Voracity Proc Coefficient reduced to 0.25 down from 0.5
+* Added configuration 
 
 ## Discord
 <a href="https://discord.gg/aYuS9Wsxxx" target="_blank">
@@ -63,6 +55,19 @@ Decisive in judgment and lethal in combat, Katarina is a Noxian assassin of the 
 ---
 
 ## Old Patch Notes
+`1.3.0`
+* Added Mercenary Katarina Skin
+* Added Red Card Katarina Skin
+* Added Bilgewater Katarina Skin
+* Added Kitty Cat Katarina Skin
+* Added High Command Katarina Skin
+* Added Sand Storm Katarina Skin
+* Added Slay Belle Katarina Skin
+* Added Warring Kingdoms Katarina Skin
+* Added Project: Katarina Skin
+* Added Battle Academia Katarina Skin
+* Added Blood Moon Katarina Skin
+
 `1.2.0`
 * Fixed an issue where Voracity would cast multiple times when picking up daggers
 * Fixed an issue where Daggers colliding with enemies would make them float in the air

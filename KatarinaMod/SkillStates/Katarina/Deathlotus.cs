@@ -20,7 +20,8 @@ namespace KatarinaMod.SkillStates
         private float baseDaggerThrottle = 0.166f;
         private float daggerThrottle;
         private bool throwing;
-        private static float damageCoefficient = 1f;
+        private static float damageCoefficient = Modules.Config.deathLotus_damageCoefficient.Value;
+        private static float procCoefficient = Modules.Config.deathLotus_procCoefficient.Value;
         private float stopwatch;
         private Animator animator;
         public uint activeSFXPlayID;
@@ -78,7 +79,7 @@ namespace KatarinaMod.SkillStates
                     genericDamageOrb.isCrit = base.RollCrit();
                     genericDamageOrb.teamIndex = TeamComponent.GetObjectTeam(base.gameObject);
                     genericDamageOrb.attacker = base.gameObject;
-                    genericDamageOrb.procCoefficient = 0.5f;
+                    genericDamageOrb.procCoefficient = procCoefficient;
                     HurtBox hurtBox = hurtbox;
                     if (hurtBox)
                     {

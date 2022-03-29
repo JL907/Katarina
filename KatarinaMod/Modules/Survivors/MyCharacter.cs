@@ -15,20 +15,31 @@ namespace KatarinaMod.Modules.Survivors
 
         internal override BodyInfo bodyInfo { get; set; } = new BodyInfo
         {
-            armor = 20f,
-            armorGrowth = 0f,
             bodyName = "Katarina",
             bodyNameToken = "KATARINA_NAME",
             bodyColor = Color.red,
             characterPortrait = Modules.Assets.LoadCharacterIcon("Katarina"),
             crosshair = Modules.Assets.LoadCrosshair("Standard"),
-            damage = 12f,
-            healthGrowth = 33f,
-            healthRegen = 1.5f,
-            jumpCount = 2,
-            maxHealth = 101f,
             subtitleNameToken = "KATARINA_SUBTITLE",
-            podPrefab = Resources.Load<GameObject>("Prefabs/NetworkedObjects/SurvivorPod")
+            podPrefab = Resources.Load<GameObject>("Prefabs/NetworkedObjects/SurvivorPod"),
+
+            maxHealth = Modules.Config.baseHealth.Value,
+            healthGrowth = Modules.Config.healthGrowth.Value,
+
+            healthRegen = Modules.Config.baseRegen.Value,
+            regenGrowth = Modules.Config.regenGrowth.Value,
+
+            moveSpeed = Modules.Config.baseMovementSpeed.Value,
+
+            damage = Modules.Config.baseDamage.Value,
+            damageGrowth = Modules.Config.damageGrowth.Value,
+
+            armor = Modules.Config.baseArmor.Value,
+            armorGrowth = Modules.Config.armorGrowth.Value,
+
+            crit = Modules.Config.baseCrit.Value,
+
+            jumpCount = Modules.Config.jumpCount.Value
         };
 
         internal override string bodyName { get; set; } = "Katarina";

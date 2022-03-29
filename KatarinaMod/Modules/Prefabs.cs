@@ -88,7 +88,7 @@ namespace KatarinaMod.Modules
             bodyComponent.levelMaxHealth = bodyInfo.healthGrowth;
 
             bodyComponent.baseRegen = bodyInfo.healthRegen;
-            bodyComponent.levelRegen = bodyComponent.baseRegen * 0.2f;
+            bodyComponent.levelRegen = bodyInfo.regenGrowth;
 
             bodyComponent.baseMaxShield = bodyInfo.shield;
             bodyComponent.levelMaxShield = bodyInfo.shieldGrowth;
@@ -102,7 +102,7 @@ namespace KatarinaMod.Modules
             bodyComponent.levelJumpPower = bodyInfo.jumpPowerGrowth;
 
             bodyComponent.baseDamage = bodyInfo.damage;
-            bodyComponent.levelDamage = bodyComponent.baseDamage * 0.2f;
+            bodyComponent.levelDamage = bodyInfo.damageGrowth;
 
             bodyComponent.baseAttackSpeed = bodyInfo.attackSpeed;
             bodyComponent.levelAttackSpeed = bodyInfo.attackSpeedGrowth;
@@ -458,7 +458,9 @@ internal class BodyInfo
 
     internal float damage = 12f;
     internal float healthGrowth = 2f;
+    internal float damageGrowth = 0f;
     internal float healthRegen = 0f;
+    internal float regenGrowth = 0f;
     internal int jumpCount = 1;
     internal float jumpPower = 15f;
     internal float jumpPowerGrowth = 0f;

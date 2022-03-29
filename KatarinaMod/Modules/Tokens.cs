@@ -47,7 +47,7 @@ namespace KatarinaMod.Modules
 
             LanguageAPI.Add("KATARINA_PASSIVE_NAME", "<color=#AF1AAF>VORACITY</color>");
             LanguageAPI.Add("KATARINA_PASSIVE_DESC",
-                "Whenever Katarina retrieves a <color=#AF1AAF>Dagger</color>, she uses it to slash around herself, dealing <color=#f68835>300%</color> damage to nearby enemies." + Environment.NewLine
+                "Whenever Katarina retrieves a <color=#AF1AAF>Dagger</color>, she uses it to slash around herself, dealing <color=#f68835>400%</color> damage to nearby enemies." + Environment.NewLine
                 + "A <color=#AF1AAF>Dagger</color> will disappear after being on the ground for <color=#ffffff>6</color> seconds." + Environment.NewLine
                 + "Kills reduces the current <color=#c9aa71>cooldowns</color> of Katarina's abilities by <color=#ffffff>1</color> second.");
 
