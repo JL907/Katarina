@@ -10,8 +10,9 @@ Decisive in judgment and lethal in combat, Katarina is a Noxian assassin of the 
 `Bug reports can be posted in discord` https://discord.gg/aYuS9Wsxxx
 
 * Voracity Damage increased to 400% up from 300%
-* Voracity Proc Coefficient reduced to 0.25 down from 0.5
+* Death Lotus Proc Coefficient reduced to 0.25 down from 0.5
 * Added configuration 
+* Fixed an issue with Voracity while player had Death Mark
 
 ## Discord
 <a href="https://discord.gg/aYuS9Wsxxx" target="_blank">
