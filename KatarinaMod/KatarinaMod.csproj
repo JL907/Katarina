@@ -3,7 +3,7 @@
 	<PropertyGroup>
 		<TargetFramework>netstandard2.0</TargetFramework>
 		<LangVersion>7.3</LangVersion>
-		<Version>1.3.1</Version>
+		<Version>1.3.2</Version>
 		<AssemblyName>LemonKatarinaMod</AssemblyName>
 	</PropertyGroup>
 
@@ -23,7 +23,8 @@
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
 		<PackageReference Include="BepInEx.Core" Version="5.4.19" />
-		<PackageReference Include="RiskOfRain2.GameLibs" Version="1.2.1-r.0" />
+		<PackageReference Include="R2API" Version="4.3.5" />
+		<PackageReference Include="RiskOfRain2.GameLibs" Version="1.2.2-r.0" />
 		<PackageReference Include="UnityEngine.Modules" Version="2019.4.26" />
 	</ItemGroup>
 
@@ -34,20 +35,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Reference Include="com.unity.multiplayer-hlapi.Runtime">
-	    <HintPath>..\..\libs\com.unity.multiplayer-hlapi.Runtime.dll</HintPath>
-	  </Reference>
-	  <Reference Include="KinematicCharacterController">
-	    <HintPath>..\..\libs\KinematicCharacterController.dll</HintPath>
-	  </Reference>
-	  <Reference Include="LegacyResourcesAPI">
-	    <HintPath>..\..\libs\LegacyResourcesAPI.dll</HintPath>
-	  </Reference>
 	  <Reference Include="MMHOOK_RoR2">
 	    <HintPath>..\..\libs\MMHOOK_RoR2.dll</HintPath>
-	  </Reference>
-	  <Reference Include="R2API">
-	    <HintPath>..\..\libs\R2API.dll</HintPath>
 	  </Reference>
 	</ItemGroup>
 
