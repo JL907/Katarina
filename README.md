@@ -6,10 +6,16 @@
 ## Introduction
 Decisive in judgment and lethal in combat, Katarina is a Noxian assassin of the highest caliber. Eldest daughter to the legendary General Du Couteau, she made her talents known with swift kills against unsuspecting enemies. Her fiery ambition has driven her to pursue heavily-guarded targets, even at the risk of endangering her allies—but no matter the mission, Katarina will not hesitate to execute her duty amid a whirlwind of serrated daggers.
 
-## Latest Patch Notes `1.4.0`
-`Bug reports can be posted in discord` https://discord.gg/aYuS9Wsxxx
+## Latest Patch Notes `1.4.1`
+`Bug reports can be posted in discord` https://discord.gg/aYuS9Wsxxx  
+`Please Delete Old Katarina Config File`
 
-* BetterUI support
+* Added ability cooldowns to configuration
+* Added Death Lotus radius to configuration
+* M2 and Targetted Shunpo distance increased to 40 meters (up from 30 meters)
+* Untargetted Shunpo distance increased
+* Death Lotus radius increased from 20 meters to 30 meters
+* Voracity radius increased to 15 meters (up from 10 meters)
 
 ## Discord
 <a href="https://discord.gg/aYuS9Wsxxx" target="_blank">
@@ -53,6 +59,9 @@ Decisive in judgment and lethal in combat, Katarina is a Noxian assassin of the 
 ---
 
 ## Old Patch Notes
+`1.4.0`
+* BetterUI support
+
 `1.3.2`
 * Updated to use the latest R2API
 

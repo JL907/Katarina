@@ -67,7 +67,7 @@ namespace KatarinaMod.SkillStates
                 List<HurtBox> HurtBoxes = new List<HurtBox>();
                 HurtBoxes = new SphereSearch
                 {
-                    radius = 20f,
+                    radius = Modules.Config.deathLotus_radius.Value,
                     mask = LayerIndex.entityPrecise.mask,
                     origin = base.transform.position
                 }.RefreshCandidates().FilterCandidatesByHurtBoxTeam(TeamMask.GetEnemyTeams(base.teamComponent.teamIndex)).FilterCandidatesByDistinctHurtBoxEntities().GetHurtBoxes().ToList();

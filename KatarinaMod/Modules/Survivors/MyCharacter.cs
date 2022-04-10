@@ -72,7 +72,7 @@ namespace KatarinaMod.Modules.Survivors
             HuntressTracker huntressTracker = bodyPrefab.GetComponent<HuntressTracker>();
             if (huntressTracker)
             {
-                huntressTracker.maxTrackingDistance = 30f;
+                huntressTracker.maxTrackingDistance = 40f;
             }
             displayPrefab.AddComponent<MenuSound>();
         }
@@ -120,7 +120,7 @@ namespace KatarinaMod.Modules.Survivors
                 activationState = new EntityStates.SerializableEntityStateType(typeof(KatarinaMod.SkillStates.Katarina.Weapon.ThrowDagger)),
                 activationStateMachineName = "Weapon",
                 baseMaxStock = 1,
-                baseRechargeInterval = 4f,
+                baseRechargeInterval = Modules.Config.bouncingBlades_coolDown.Value,
                 beginSkillCooldownOnSkillEnd = false,
                 canceledFromSprinting = false,
                 forceSprintDuringState = false,
@@ -150,7 +150,7 @@ namespace KatarinaMod.Modules.Survivors
                 activationState = new EntityStates.SerializableEntityStateType(typeof(SkillStates.Shunpo)),
                 activationStateMachineName = "Slide",
                 baseMaxStock = 1,
-                baseRechargeInterval = 6f,
+                baseRechargeInterval = Modules.Config.shunpo_coolDown.Value,
                 beginSkillCooldownOnSkillEnd = false,
                 canceledFromSprinting = false,
                 forceSprintDuringState = true,
@@ -179,7 +179,7 @@ namespace KatarinaMod.Modules.Survivors
                 activationState = new EntityStates.SerializableEntityStateType(typeof(SkillStates.Deathlotus)),
                 activationStateMachineName = "Weapon",
                 baseMaxStock = 1,
-                baseRechargeInterval = 16f,
+                baseRechargeInterval = Modules.Config.deathLotus_coolDown.Value,
                 beginSkillCooldownOnSkillEnd = false,
                 canceledFromSprinting = false,
                 forceSprintDuringState = false,
