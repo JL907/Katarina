@@ -118,7 +118,7 @@ namespace KatarinaMod.Modules
             skillDef.rechargeStock = 1;
             skillDef.requiredStock = 0;
             skillDef.stockToConsume = 0;
-
+            ((ScriptableObject)skillDef).name = "KatarinaPrimary";
             skillDefs.Add(skillDef);
 
             return skillDef;

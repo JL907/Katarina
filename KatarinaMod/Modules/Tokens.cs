@@ -54,7 +54,7 @@ namespace KatarinaMod.Modules
             LanguageAPI.Add("KATARINA_PRIMARY_NAME", "<color=#AF1AAF>BASIC ATTACK</color>");
             LanguageAPI.Add("KATARINA_PRIMARY_DESC", "Basic Attacks do <color=#f68835>280%</color> damage.");
 
-            LanguageAPI.Add("KATARINA_SECONDARY_NAME", "<color=#AF1AAF>BOUNCING BLADE</color>");
+            LanguageAPI.Add("KATARINA_SECONDARY_NAME", "<color=#AF1AAF>BOUNCING BLADES</color>");
             LanguageAPI.Add("KATARINA_SECONDARY_DESC",
                 "Katarina throws a <color=#AF1AAF>Dagger</color> at the target enemy that can bounce to up to four additional nearby enemies, dealing <color=#f68835>200%</color> damage." + Environment.NewLine
                 + "The <color=#AF1AAF>Dagger</color> then lands onto the ground after <color=#ffffff>1</color> second.");

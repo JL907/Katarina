@@ -134,7 +134,7 @@ namespace KatarinaMod.Modules.Survivors
                 requiredStock = 1,
                 stockToConsume = 1
             });
-
+            ((ScriptableObject)shootSkillDef).name = "KatarinaBouncingBlades";
             Modules.Skills.AddSecondarySkills(bodyPrefab, shootSkillDef);
 
             #endregion Secondary
@@ -164,7 +164,6 @@ namespace KatarinaMod.Modules.Survivors
                 requiredStock = 1,
                 stockToConsume = 1
             });
-
             Modules.Skills.AddUtilitySkills(bodyPrefab, rollSkillDef);
 
             #endregion Utility
@@ -194,7 +193,7 @@ namespace KatarinaMod.Modules.Survivors
                 requiredStock = 1,
                 stockToConsume = 1
             });
-
+            ((ScriptableObject)bombSkillDef).name = "KatarinaDeathLotus";
             Modules.Skills.AddSpecialSkills(bodyPrefab, bombSkillDef);
 
             #endregion Special

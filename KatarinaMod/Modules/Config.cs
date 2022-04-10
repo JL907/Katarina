@@ -57,7 +57,7 @@ namespace KatarinaMod.Modules
 
             bouncingBlades_damageCoefficient = KatarinaPlugin.instance.Config.Bind<float>(new ConfigDefinition("04 - Bouncing Blades", "Damage Coefficient"), 2f, new ConfigDescription("", null, Array.Empty<object>()));
             bouncingBlades_damageCoefficientPerBounce = KatarinaPlugin.instance.Config.Bind<float>(new ConfigDefinition("04 - Bouncing Blades", "Damage Coefficient Per Bounce"), 1f, new ConfigDescription("", null, Array.Empty<object>()));
-            bouncingBlades_procCoefficient = KatarinaPlugin.instance.Config.Bind<float>(new ConfigDefinition("04 - Bouncing Blades", "Damage Coefficient"), 1f, new ConfigDescription("", null, Array.Empty<object>()));
+            bouncingBlades_procCoefficient = KatarinaPlugin.instance.Config.Bind<float>(new ConfigDefinition("04 - Bouncing Blades", "Proc Coefficient"), 1f, new ConfigDescription("", null, Array.Empty<object>()));
             bouncingBlades_maxBounceCount = KatarinaPlugin.instance.Config.Bind<int>(new ConfigDefinition("04 - Bouncing Blades", "Max Bounce Count"), 4, new ConfigDescription("", null, Array.Empty<object>()));
 
             deathLotus_damageCoefficient = KatarinaPlugin.instance.Config.Bind<float>(new ConfigDefinition("05 - Death Lotus", "Damage Coefficient"), 1f, new ConfigDescription("", null, Array.Empty<object>()));

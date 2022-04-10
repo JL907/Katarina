@@ -7,6 +7,10 @@ using System.Security;
 using System.Security.Permissions;
 using BepInEx.Logging;
 using UnityEngine.Networking;
+using System;
+using System.Runtime.CompilerServices;
+using KatarinaMod.SkillStates.Katarina.Weapon;
+using KatarinaMod.SkillStates;
 
 [module: UnverifiableCode]
 [assembly: SecurityPermission(SecurityAction.RequestMinimum, SkipVerification = true)]
@@ -14,6 +18,8 @@ using UnityEngine.Networking;
 namespace KatarinaMod
 {
     [BepInDependency("com.bepis.r2api", BepInDependency.DependencyFlags.HardDependency)]
+    [BepInDependency("com.xoxfaby.BetterUI", BepInDependency.DependencyFlags.SoftDependency)]
+    [BepInDependency("com.cwmlolzlz.skills", BepInDependency.DependencyFlags.SoftDependency)]
     [NetworkCompatibility(CompatibilityLevel.EveryoneMustHaveMod, VersionStrictness.EveryoneNeedSameModVersion)]
     [BepInPlugin(MODUID, MODNAME, MODVERSION)]
     [R2APISubmoduleDependency(new string[]
@@ -34,9 +40,11 @@ namespace KatarinaMod
         //   this shouldn't even have to be said
         public const string MODUID = "com.Lemonlust.KatarinaMod";
 
-        public const string MODVERSION = "1.3.2";
+        public const string MODVERSION = "1.4.0";
         public static KatarinaPlugin instance;
         internal List<SurvivorBase> Survivors = new List<SurvivorBase>();
+
+        public static bool betterUIInstalled = false;
 
         public new ManualLogSource Logger
         {
@@ -49,24 +57,44 @@ namespace KatarinaMod
         private void Awake()
         {
             instance = this;
+            try
+            {
+                if (BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("com.xoxfaby.BetterUI")) betterUIInstalled = true;
 
-            // load assets and read config
-            Modules.Assets.Initialize();
-            Modules.Config.ReadConfig();
-            Modules.States.RegisterStates(); // register states for networking
-            Modules.Buffs.RegisterBuffs(); // add and register custom buffs/debuffs
-            Modules.Projectiles.RegisterProjectiles(); // add and register custom projectiles
-            Modules.Tokens.AddTokens(); // register name tokens
-            //Modules.ItemDisplays.PopulateDisplays(); // collect item display prefabs for use in our display rules
+                // load assets and read config
+                Modules.Assets.Initialize();
+                Modules.Config.ReadConfig();
+                Modules.States.RegisterStates(); // register states for networking
+                Modules.Buffs.RegisterBuffs(); // add and register custom buffs/debuffs
+                Modules.Projectiles.RegisterProjectiles(); // add and register custom projectiles
+                Modules.Tokens.AddTokens(); // register name tokens
+                //Modules.ItemDisplays.PopulateDisplays(); // collect item display prefabs for use in our display rules
 
-            // survivor initialization
-            new MyCharacter().Initialize();
+                // survivor initialization
+                new MyCharacter().Initialize();
 
-            // now make a content pack and add it- this part will change with the next update
-            new Modules.ContentPacks().Initialize();
+                // now make a content pack and add it- this part will change with the next update
+                new Modules.ContentPacks().Initialize();
 
-            RoR2.ContentManagement.ContentManager.onContentPacksAssigned += LateSetup;
-            Hook();
+                RoR2.ContentManagement.ContentManager.onContentPacksAssigned += LateSetup;
+                Hook();
+                if (betterUIInstalled)
+                {
+                    AddBetterUI();
+                }
+            }
+            catch (Exception e)
+            {
+                Logger.LogError(e.Message + " - " + e.StackTrace);
+            }
+
+        }
+        [MethodImpl(MethodImplOptions.NoInlining | MethodImplOptions.NoOptimization)]
+        private void AddBetterUI()
+        {
+            BetterUI.ProcCoefficientCatalog.AddSkill("KatarinaPrimary", "Basic Attack", Modules.Config.basicAttack_procCoefficient.Value);
+            BetterUI.ProcCoefficientCatalog.AddSkill("KatarinaBouncingBlades", "Bouncing Blades", Modules.Config.bouncingBlades_procCoefficient.Value);
+            BetterUI.ProcCoefficientCatalog.AddSkill("KatarinaDeathLotus", "Death Lotus", Modules.Config.deathLotus_procCoefficient.Value);
         }
 
         private void CharacterBody_RecalculateStats(On.RoR2.CharacterBody.orig_RecalculateStats orig, CharacterBody self)

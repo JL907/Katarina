@@ -13,8 +13,8 @@ namespace KatarinaMod.SkillStates.Katarina.Weapon
 {
     public class ThrowDagger : BaseSkillState
     {
-		private static float damageCoefficient = Modules.Config.bouncingBlades_damageCoefficient.Value;
-        private static float daggerProcCoefficient = Modules.Config.bouncingBlades_procCoefficient.Value;
+		public static float damageCoefficient = Modules.Config.bouncingBlades_damageCoefficient.Value;
+        public static float daggerProcCoefficient = Modules.Config.bouncingBlades_procCoefficient.Value;
 		public static int maxBounceCount = Modules.Config.bouncingBlades_maxBounceCount.Value;
 		public static float daggerTravelSpeed = 180f;
 		public static float daggerBounceRange = 15f;

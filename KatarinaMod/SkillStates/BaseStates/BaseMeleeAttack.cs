@@ -30,7 +30,7 @@ namespace KatarinaMod.SkillStates.BaseStates
         protected NetworkSoundEventIndex impactSound;
         protected bool inHitPause;
         protected string muzzleString = "SwingCenter";
-        protected float procCoefficient = 1f;
+        public float procCoefficient = 1f;
         protected float pushForce = 300f;
         protected float stopwatch;
         protected GameObject swingEffectPrefab;
