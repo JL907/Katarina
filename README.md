@@ -1,5 +1,16 @@
 # Katarina
 ### KatarinaMod was created under Riot Games' "Legal Jibber Jabber" policy using assets owned by Riot Games.  Riot Games does not endorse or sponsor this project.
+
+<p align="center">
+  <h2>My league Mods</h2>
+</p>
+
+<p align="center">
+  <a href="https://thunderstore.io/package/lemonlust/SettMod/"><img width="128" height="128" src="https://user-images.githubusercontent.com/7343912/167464106-0d8f197a-8f71-4446-8853-57dddc300b5b.png"></a>
+  <a href="https://thunderstore.io/package/lemonlust/KatarinaMod/"><img width="128" height="128" src="https://user-images.githubusercontent.com/7343912/167464178-cdc05ba4-1a93-434b-8ef6-3cfb7de6c1f5.png"></a>
+  <a href="https://thunderstore.io/package/lemonlust/JinxMod/"><img width="128" height="128" src="https://user-images.githubusercontent.com/7343912/167464222-08ee52e6-bf9e-4117-9bd8-70636d63b03b.png"></a>
+</p>
+
 ![image](https://user-images.githubusercontent.com/7343912/159424928-0381bcf5-f0c9-40f0-b87e-8eba45c4d245.png)
 ![Risk_of_Rain_2_LtJbsQoTw2](https://user-images.githubusercontent.com/7343912/159424837-84994a14-53f8-461c-bb22-1fc0ac7bf51d.jpg)
 
