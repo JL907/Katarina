@@ -48,6 +48,7 @@
 
 	<ItemGroup>
 	  <Folder Include="Components\" />
+	  <Folder Include="SkillModifiers\" />
 	</ItemGroup>
 
 	<Target Name="PostBuild" AfterTargets="PostBuildEvent">

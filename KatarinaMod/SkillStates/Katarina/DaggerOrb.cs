@@ -8,6 +8,8 @@ using UnityEngine.Networking;
 using KatarinaMod.Modules;
 using R2API;
 using RoR2.Projectile;
+using R2API.Networking;
+using R2API.Networking.Interfaces;
 
 namespace KatarinaMod
 {
@@ -67,6 +69,8 @@ namespace KatarinaMod
 					healthComponent.TakeDamage(damageInfo);
 					GlobalEventManager.instance.OnHitEnemy(damageInfo, healthComponent.gameObject);
 					GlobalEventManager.instance.OnHitAll(damageInfo, healthComponent.gameObject);
+					CharacterBody characterBody = this.attacker.GetComponent<CharacterBody>();
+					new DaggerSpawnMessage(characterBody, damageInfo.position).Send(NetworkDestination.Clients);
 				}
 				this.failedToKill |= (!healthComponent || healthComponent.alive);
 				if (this.bouncesRemaining > 0)

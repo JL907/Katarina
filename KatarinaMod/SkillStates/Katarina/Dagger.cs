@@ -148,7 +148,6 @@ namespace KatarinaMod.SkillStates.Katarina.Weapon
 				EffectManager.SimpleMuzzleFlash(ThrowGlaive.muzzleFlashPrefab, base.gameObject, "R_Hand", true);
 				lightningOrb.origin = transform.position;
 				lightningOrb.target = hurtBox;
-				if(!tossed) TossDagger(this.initialOrbTarget.transform.position);
 				OrbManager.instance.AddOrb(lightningOrb);
 			}
 		}
