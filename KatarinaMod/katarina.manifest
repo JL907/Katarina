@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 2785490841
+CRC: 2822945450
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: aa70ad923450b66509f00d2f906a0f6d
+    Hash: 114b74b9dd617fcc5429e8df76b5a2f1
   TypeTreeHash:
     serializedVersion: 2
     Hash: 1fa692d6cdee47feb28ec66b66246763
@@ -91,8 +91,10 @@ Assets:
 - Assets/Katarina/HUD/KatarinaR.png
 - Assets/Katarina/HUD/bilgewater_square.png
 - Assets/Katarina/Models/material/bloodMoonMat.mat
+- Assets/Katarina/Models/material/highNoonMat.mat
 - Assets/Katarina/HUD/redcard_square.png
 - Assets/Katarina/Materials/KatarinaMat2.mat
+- Assets/Katarina/Models/texture/highnoon_0.png
 - Assets/Katarina/HUD/katarina_square.png
 - Assets/Katarina/HUD/warringkingdoms_square.png
 - Assets/Katarina/HUD/KatarinaQ.png
@@ -111,6 +113,7 @@ Assets:
 - Assets/Katarina/Models/texture/skin4.png
 - Assets/Katarina/HUD/mercenary_square.png
 - Assets/Katarina/Models/mesh/HighCommandMesh.mesh
+- Assets/Katarina/HUD/highnoon_square.png
 - Assets/Katarina/HUD/slaybelle_square.png
 - Assets/Katarina/HUD/KatarinaW.png
 - Assets/Katarina/Animations/weaponAnim.controller
@@ -124,6 +127,7 @@ Assets:
 - Assets/Katarina/Models/texture/skin3.png
 - Assets/Katarina/Models/mesh/BattleAcademiaMesh.mesh
 - Assets/Katarina/Animations/Falling Idle.anim
+- Assets/Katarina/Models/mesh/HighNoonMesh.mesh
 - Assets/Katarina/Models/material/sandStormMat.mat
 - Assets/Katarina/VFX/KatarinaWeapon.prefab
 - Assets/Katarina/Models/mesh/SlayBelleMesh.mesh

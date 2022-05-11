@@ -17,16 +17,11 @@
 ## Introduction
 Decisive in judgment and lethal in combat, Katarina is a Noxian assassin of the highest caliber. Eldest daughter to the legendary General Du Couteau, she made her talents known with swift kills against unsuspecting enemies. Her fiery ambition has driven her to pursue heavily-guarded targets, even at the risk of endangering her allies—but no matter the mission, Katarina will not hesitate to execute her duty amid a whirlwind of serrated daggers.
 
-## Latest Patch Notes `1.4.2`
+## Latest Patch Notes `1.4.3`
 `Bug reports can be posted in discord` https://discord.gg/aYuS9Wsxxx  
 `Please Delete Old Katarina Config File`
 
-* Updated to use Latest R2API
-* Updated to use Latest BepinExPack
-* Fixed an issue where Bouncing Blade Dagger was spawning before it hit enemies.
-* Bouncing Blade Dagger Travel Speed reduced by 33%
-* Bouncing Blade Bounce Range increased to 20m up from 15m
-* Added configuration options to adjust Bouncing Blades Travel Speed and Bounce Range
+* Added High Noon Katarina Skin
 
 ## Discord
 <a href="https://discord.gg/aYuS9Wsxxx" target="_blank">
@@ -70,6 +65,14 @@ Decisive in judgment and lethal in combat, Katarina is a Noxian assassin of the 
 ---
 
 ## Old Patch Notes
+`1.4.2`
+* Updated to use Latest R2API
+* Updated to use Latest BepinExPack
+* Fixed an issue where Bouncing Blade Dagger was spawning before it hit enemies.
+* Bouncing Blade Dagger Travel Speed reduced by 33%
+* Bouncing Blade Bounce Range increased to 20m up from 15m
+* Added configuration options to adjust Bouncing Blades Travel Speed and Bounce Range
+
 `1.4.1`
 * Added ability cooldowns to configuration
 * Added Death Lotus radius to configuration

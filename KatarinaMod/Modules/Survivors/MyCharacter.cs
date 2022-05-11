@@ -597,6 +597,39 @@ namespace KatarinaMod.Modules.Survivors
             skins.Add(BloodMoonSkin);
             #endregion BloodMoonSkin
 
+            #region HighNoonSkin
+            Skins.SkinDefInfo highNoonSkinDefInfo = default(Skins.SkinDefInfo);
+            highNoonSkinDefInfo.Name = "HIGHNOON_KATARINA_NAME";
+            highNoonSkinDefInfo.NameToken = "HIGHNOON_KATARINA_NAME";
+            highNoonSkinDefInfo.Icon = Assets.mainAssetBundle.LoadAsset<Sprite>("highnoon_square");
+            highNoonSkinDefInfo.UnlockableDef = null;
+            highNoonSkinDefInfo.RootObject = model;
+
+            highNoonSkinDefInfo.BaseSkins = new SkinDef[] { defaultSkin };
+            highNoonSkinDefInfo.MinionSkinReplacements = new SkinDef.MinionSkinReplacement[0];
+            highNoonSkinDefInfo.ProjectileGhostReplacements = new SkinDef.ProjectileGhostReplacement[0];
+
+            highNoonSkinDefInfo.GameObjectActivations = new SkinDef.GameObjectActivation[0];
+
+            highNoonSkinDefInfo.MeshReplacements = new SkinDef.MeshReplacement[]
+            {
+                new SkinDef.MeshReplacement
+                {
+                    renderer = mainRenderer,
+                    mesh = Modules.Assets.mainAssetBundle.LoadAsset<Mesh>("HighNoonMesh")
+                },
+            };
+
+            highNoonSkinDefInfo.RendererInfos = new CharacterModel.RendererInfo[characterModel.baseRendererInfos.Length];
+            characterModel.baseRendererInfos.CopyTo(highNoonSkinDefInfo.RendererInfos, 0);
+
+            highNoonSkinDefInfo.RendererInfos[0].defaultMaterial = Assets.CreateMaterial("highNoonMat");
+            highNoonSkinDefInfo.RendererInfos[highNoonSkinDefInfo.RendererInfos.Length - 1].defaultMaterial = Assets.CreateMaterial("highNoonMat");
+
+            SkinDef HighNoonSkin = Skins.CreateSkinDef(highNoonSkinDefInfo);
+            skins.Add(HighNoonSkin);
+            #endregion HighNoonSkin
+
             skinController.skins = skins.ToArray();
         }
 
