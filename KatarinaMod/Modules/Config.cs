@@ -28,6 +28,8 @@ namespace KatarinaMod.Modules
         public static ConfigEntry<float> bouncingBlades_damageCoefficientPerBounce;
         public static ConfigEntry<float> bouncingBlades_procCoefficient;
         public static ConfigEntry<int> bouncingBlades_maxBounceCount;
+        public static ConfigEntry<float> bouncingBlades_bounceRange;
+        public static ConfigEntry<float> bouncingBlades_travelSpeed;
 
         public static ConfigEntry<float> basicAttack_damageCoefficient;
         public static ConfigEntry<float> basicAttack_procCoefficient;
@@ -64,8 +66,9 @@ namespace KatarinaMod.Modules
             bouncingBlades_damageCoefficientPerBounce = KatarinaPlugin.instance.Config.Bind<float>(new ConfigDefinition("04 - Bouncing Blades", "Damage Coefficient Per Bounce"), 1f, new ConfigDescription("", null, Array.Empty<object>()));
             bouncingBlades_procCoefficient = KatarinaPlugin.instance.Config.Bind<float>(new ConfigDefinition("04 - Bouncing Blades", "Proc Coefficient"), 1f, new ConfigDescription("", null, Array.Empty<object>()));
             bouncingBlades_maxBounceCount = KatarinaPlugin.instance.Config.Bind<int>(new ConfigDefinition("04 - Bouncing Blades", "Max Bounce Count"), 4, new ConfigDescription("", null, Array.Empty<object>()));
+            bouncingBlades_bounceRange = KatarinaPlugin.instance.Config.Bind<float>(new ConfigDefinition("04 - Bouncing Blades", "Bounce Range"), 20f, new ConfigDescription("", null, Array.Empty<object>()));
             bouncingBlades_coolDown = KatarinaPlugin.instance.Config.Bind<float>(new ConfigDefinition("04 - Bouncing Blades", "Cooldown"), 4f, new ConfigDescription("", null, Array.Empty<object>()));
-
+            bouncingBlades_travelSpeed = KatarinaPlugin.instance.Config.Bind<float>(new ConfigDefinition("04 - Bouncing Blades", "Travel Speed"), 120f, new ConfigDescription("", null, Array.Empty<object>()));
 
             deathLotus_damageCoefficient = KatarinaPlugin.instance.Config.Bind<float>(new ConfigDefinition("05 - Death Lotus", "Damage Coefficient"), 1f, new ConfigDescription("", null, Array.Empty<object>()));
             deathLotus_procCoefficient = KatarinaPlugin.instance.Config.Bind<float>(new ConfigDefinition("05 - Death Lotus", "Proc Coefficient"), 0.25f, new ConfigDescription("", null, Array.Empty<object>()));
