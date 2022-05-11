@@ -54,9 +54,17 @@ namespace KatarinaMod.SkillStates.Katarina.Weapon
             {
                 base.characterBody.SetAimTimer(this.duration);
             }
+
+            DaggerOrb.onDaggerOrbArrival += DaggerOrb_onDaggerOrbArrival;
 		}
 
-		private void TossDagger(Vector3 location)
+        private void DaggerOrb_onDaggerOrbArrival(DaggerOrb obj)
+        {
+			if (obj == null) return;
+			if (!tossed) this.TossDagger(obj.target.transform.position);
+        }
+
+        private void TossDagger(Vector3 location)
 		{
 			if (base.isAuthority)
 			{

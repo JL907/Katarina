@@ -35,6 +35,9 @@ namespace KatarinaMod
 		private BullseyeSearch search;
 		private GameObject weaponInstance;
 		private EntityStateMachine outer = null;
+
+		public static event Action<DaggerOrb> onDaggerOrbArrival;
+
 		public override void Begin()
 		{
 			base.duration = base.distanceToTarget / this.speed;
@@ -69,8 +72,12 @@ namespace KatarinaMod
 					healthComponent.TakeDamage(damageInfo);
 					GlobalEventManager.instance.OnHitEnemy(damageInfo, healthComponent.gameObject);
 					GlobalEventManager.instance.OnHitAll(damageInfo, healthComponent.gameObject);
-					CharacterBody characterBody = this.attacker.GetComponent<CharacterBody>();
-					new DaggerSpawnMessage(characterBody, damageInfo.position).Send(NetworkDestination.Clients);
+					Action<DaggerOrb> action = DaggerOrb.onDaggerOrbArrival;
+					if (action == null)
+					{
+						return;
+					}
+					action(this);
 				}
 				this.failedToKill |= (!healthComponent || healthComponent.alive);
 				if (this.bouncesRemaining > 0)

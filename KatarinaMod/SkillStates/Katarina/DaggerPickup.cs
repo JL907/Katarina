@@ -13,7 +13,7 @@ using UnityEngine.Networking;
 
 namespace KatarinaMod
 {
-	public class DaggerPickup : NetworkBehaviour
+	public class DaggerPickup : MonoBehaviour
     {
 		private float stopwatch;
 		public Rigidbody rigidbody;
