@@ -39,6 +39,7 @@ namespace KatarinaMod.SkillStates.Katarina.Weapon
             this.modelTransform = base.GetModelTransform();
             this.animator = base.GetModelAnimator();
             this.huntressTracker = base.GetComponent<HuntressTracker>();
+			DaggerOrb.onDaggerOrbArrival += DaggerOrb_onDaggerOrbArrival;
 
 			if (this.huntressTracker && base.isAuthority)
 			{
@@ -54,8 +55,6 @@ namespace KatarinaMod.SkillStates.Katarina.Weapon
             {
                 base.characterBody.SetAimTimer(this.duration);
             }
-
-            DaggerOrb.onDaggerOrbArrival += DaggerOrb_onDaggerOrbArrival;
 		}
 
         private void DaggerOrb_onDaggerOrbArrival(DaggerOrb obj)
@@ -118,6 +117,7 @@ namespace KatarinaMod.SkillStates.Katarina.Weapon
 		public override void OnExit()
         {
 			AttemptDagger();
+			DaggerOrb.onDaggerOrbArrival -= DaggerOrb_onDaggerOrbArrival;
 			base.OnExit();
 			
         }

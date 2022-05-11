@@ -32,6 +32,7 @@ namespace KatarinaMod
 		public DamageType damageType;
 		private bool canBounceOnSameTarget;
 		private bool failedToKill;
+		private bool tossed;
 		private BullseyeSearch search;
 		private GameObject weaponInstance;
 		private EntityStateMachine outer = null;
@@ -72,12 +73,16 @@ namespace KatarinaMod
 					healthComponent.TakeDamage(damageInfo);
 					GlobalEventManager.instance.OnHitEnemy(damageInfo, healthComponent.gameObject);
 					GlobalEventManager.instance.OnHitAll(damageInfo, healthComponent.gameObject);
-					Action<DaggerOrb> action = DaggerOrb.onDaggerOrbArrival;
-					if (action == null)
+					if (!tossed)
 					{
-						return;
+						tossed = true;
+						Action<DaggerOrb> action = DaggerOrb.onDaggerOrbArrival;
+						if (action == null)
+						{
+							return;
+						}
+						action(this);
 					}
-					action(this);
 				}
 				this.failedToKill |= (!healthComponent || healthComponent.alive);
 				if (this.bouncesRemaining > 0)
@@ -118,9 +123,6 @@ namespace KatarinaMod
 						}
 					}
 					return;
-				}
-				if (!this.failedToKill)
-				{
 				}
 			}
 		}
