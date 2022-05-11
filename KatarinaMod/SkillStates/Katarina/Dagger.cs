@@ -57,9 +57,10 @@ namespace KatarinaMod.SkillStates.Katarina.Weapon
             }
 		}
 
-        private void DaggerOrb_onDaggerOrbArrival(DaggerOrb obj)
+        private void DaggerOrb_onDaggerOrbArrival(DaggerOrb obj, CharacterBody body)
         {
 			if (obj == null) return;
+			if (body != base.characterBody) return;
 			if (!tossed) this.TossDagger(obj.target.transform.position);
         }
 
@@ -102,7 +103,7 @@ namespace KatarinaMod.SkillStates.Katarina.Weapon
         {
 			if (!this.hasTriedToThrowDagger)
 			{
-				this.FireOrbGlaiveServer();
+				this.FireOrbGlaive();
 				if (hasSuccessfullyThrownDagger)
 				{
 					Animation();
@@ -134,9 +135,9 @@ namespace KatarinaMod.SkillStates.Katarina.Weapon
 			return InterruptPriority.PrioritySkill;
 		}
 
-		private void FireOrbGlaiveServer()
+		private void FireOrbGlaive()
 		{
-			this.hasTriedToThrowDagger = true;
+ 			this.hasTriedToThrowDagger = true;
 			DaggerOrb lightningOrb = new DaggerOrb();
 			lightningOrb.damageValue = base.characterBody.damage * ThrowDagger.damageCoefficient;
 			lightningOrb.isCrit = Util.CheckRoll(base.characterBody.crit, base.characterBody.master);

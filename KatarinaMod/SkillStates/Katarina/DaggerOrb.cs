@@ -37,7 +37,7 @@ namespace KatarinaMod
 		private GameObject weaponInstance;
 		private EntityStateMachine outer = null;
 
-		public static event Action<DaggerOrb> onDaggerOrbArrival;
+		public static event Action<DaggerOrb, CharacterBody> onDaggerOrbArrival;
 
 		public override void Begin()
 		{
@@ -73,15 +73,16 @@ namespace KatarinaMod
 					healthComponent.TakeDamage(damageInfo);
 					GlobalEventManager.instance.OnHitEnemy(damageInfo, healthComponent.gameObject);
 					GlobalEventManager.instance.OnHitAll(damageInfo, healthComponent.gameObject);
+					CharacterBody characterBody = this.attacker.gameObject.GetComponent<CharacterBody>();
 					if (!tossed)
 					{
 						tossed = true;
-						Action<DaggerOrb> action = DaggerOrb.onDaggerOrbArrival;
+						Action<DaggerOrb, CharacterBody> action = DaggerOrb.onDaggerOrbArrival;
 						if (action == null)
 						{
 							return;
 						}
-						action(this);
+						action(this, characterBody);
 					}
 				}
 				this.failedToKill |= (!healthComponent || healthComponent.alive);
