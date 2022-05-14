@@ -19,7 +19,7 @@ namespace KatarinaMod
 
         private void PlayEffect()
         {
-            this.playID = Util.PlaySound("KatarinaMenu", base.gameObject);
+            if (Modules.Config.voiceLines.Value) this.playID = Util.PlaySound("KatarinaMenu", base.gameObject);
         }
     }
 }

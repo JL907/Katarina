@@ -126,7 +126,7 @@ namespace KatarinaMod.SkillStates.Katarina.Weapon
 		public void Animation()
         {
 			Util.PlaySound("KatarinaQSFX", base.gameObject);
-			Util.PlaySound("KatarinaQVO", base.gameObject);
+			if(Modules.Config.voiceLines.Value) Util.PlaySound("KatarinaQVO", base.gameObject);
 			base.PlayAnimation("Gesture, Override", "ThrowDagger", "ThrowDagger.playbackRate", this.duration);
 		}
 

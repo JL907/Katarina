@@ -40,8 +40,12 @@ namespace KatarinaMod.Modules
         public static ConfigEntry<float> deathLotus_radius;
 
         public static ConfigEntry<float> shunpo_coolDown;
+
+        public static ConfigEntry<bool> voiceLines;
         public static void ReadConfig()
         {
+            voiceLines = KatarinaPlugin.instance.Config.Bind<bool>(new ConfigDefinition("00 - Other", "Voice Lines"), true, new ConfigDescription("Enable Voice Lines", null, Array.Empty<object>()));
+
             baseHealth = KatarinaPlugin.instance.Config.Bind<float>(new ConfigDefinition("01 - Character Stats", "Base Health"), 101f, new ConfigDescription("", null, Array.Empty<object>()));
             healthGrowth = KatarinaPlugin.instance.Config.Bind<float>(new ConfigDefinition("01 - Character Stats", "Health Growth"), 33f, new ConfigDescription("", null, Array.Empty<object>()));
             baseRegen = KatarinaPlugin.instance.Config.Bind<float>(new ConfigDefinition("01 - Character Stats", "Base Health Regen"), 1.5f, new ConfigDescription("", null, Array.Empty<object>()));

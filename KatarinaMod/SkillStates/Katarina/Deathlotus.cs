@@ -99,7 +99,7 @@ namespace KatarinaMod.SkillStates
             this.duration = this.baseDuration;
             this.daggerThrottle = this.baseDaggerThrottle / this.attackSpeedStat;
             activeSFXPlayID = Util.PlaySound("KatarinaRSFX", base.gameObject);
-            Util.PlaySound("KatarinaRVO", base.gameObject);
+            if (Modules.Config.voiceLines.Value) Util.PlaySound("KatarinaRVO", base.gameObject);
             this.animator.SetFloat("Ultimate.playbackRate", 1f);
             //base.PlayAnimation("FullBody, Override", "Ultimate", "Ultimate.playbackRate", this.duration);
         }
