@@ -121,6 +121,30 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &111863275 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8909740488285110608, guid: 7257b5492e70ef64bb766f90594ca25e,
+    type: 3}
+  m_PrefabInstance: {fileID: 2815137211066824610}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &111863277
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 111863275}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: baedd976e12657241bf7ff2d1c685342, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_Bound: 0
+  m_Radius: 0.21
+  m_Height: 0
+  m_Radius2: 0
 --- !u!1 &170076733
 GameObject:
   m_ObjectHideFlags: 0
@@ -396,12 +420,42 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3888048670774414718, guid: 7257b5492e70ef64bb766f90594ca25e,
+        type: 3}
+      propertyPath: m_Inert
+      value: 0.033
+      objectReference: {fileID: 0}
+    - target: {fileID: 3888048670774414718, guid: 7257b5492e70ef64bb766f90594ca25e,
+        type: 3}
+      propertyPath: m_Damping
+      value: 0.587
+      objectReference: {fileID: 0}
+    - target: {fileID: 3888048670774414718, guid: 7257b5492e70ef64bb766f90594ca25e,
+        type: 3}
+      propertyPath: m_Stiffness
+      value: 0.202
+      objectReference: {fileID: 0}
+    - target: {fileID: 3888048670774414718, guid: 7257b5492e70ef64bb766f90594ca25e,
+        type: 3}
+      propertyPath: m_Elasticity
+      value: 0.059
+      objectReference: {fileID: 0}
     - target: {fileID: 4712070935222472391, guid: 7257b5492e70ef64bb766f90594ca25e,
         type: 3}
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 5461320835613783329, guid: 3ef0af71b2ce22946b730c006987f7f5,
         type: 3}
+    - target: {fileID: 6548750763042526878, guid: 7257b5492e70ef64bb766f90594ca25e,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.0009362116
+      objectReference: {fileID: 0}
+    - target: {fileID: 6548750763042526878, guid: 7257b5492e70ef64bb766f90594ca25e,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.001295266
+      objectReference: {fileID: 0}
     - target: {fileID: 7068079918366627656, guid: 7257b5492e70ef64bb766f90594ca25e,
         type: 3}
       propertyPath: m_RootOrder
@@ -457,6 +511,36 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7173711636657117748, guid: 7257b5492e70ef64bb766f90594ca25e,
+        type: 3}
+      propertyPath: m_Inert
+      value: 0.033
+      objectReference: {fileID: 0}
+    - target: {fileID: 7173711636657117748, guid: 7257b5492e70ef64bb766f90594ca25e,
+        type: 3}
+      propertyPath: m_Damping
+      value: 0.914
+      objectReference: {fileID: 0}
+    - target: {fileID: 7173711636657117748, guid: 7257b5492e70ef64bb766f90594ca25e,
+        type: 3}
+      propertyPath: m_Stiffness
+      value: 0.186
+      objectReference: {fileID: 0}
+    - target: {fileID: 7173711636657117748, guid: 7257b5492e70ef64bb766f90594ca25e,
+        type: 3}
+      propertyPath: m_Elasticity
+      value: 0.137
+      objectReference: {fileID: 0}
+    - target: {fileID: 7173711636657117748, guid: 7257b5492e70ef64bb766f90594ca25e,
+        type: 3}
+      propertyPath: m_Colliders.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7173711636657117748, guid: 7257b5492e70ef64bb766f90594ca25e,
+        type: 3}
+      propertyPath: m_Colliders.Array.data[0]
+      value: 
+      objectReference: {fileID: 111863277}
     - target: {fileID: 7592239460299886066, guid: 7257b5492e70ef64bb766f90594ca25e,
         type: 3}
       propertyPath: m_Name
@@ -467,7 +551,9 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3888048670774414718, guid: 7257b5492e70ef64bb766f90594ca25e, type: 3}
+    - {fileID: 6332426590245203959, guid: 7257b5492e70ef64bb766f90594ca25e, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 7257b5492e70ef64bb766f90594ca25e, type: 3}
 --- !u!4 &3835100387910855358
 Transform:
