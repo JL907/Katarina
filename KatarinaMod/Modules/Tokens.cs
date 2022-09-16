@@ -47,7 +47,7 @@ namespace KatarinaMod.Modules
 
             LanguageAPI.Add("KATARINA_PASSIVE_NAME", "<color=#AF1AAF>VORACITY</color>");
             LanguageAPI.Add("KATARINA_PASSIVE_DESC",
-                "Whenever Katarina retrieves a <color=#AF1AAF>Dagger</color>, she uses it to slash around herself, dealing <color=#f68835>400%</color> damage to nearby enemies." + Environment.NewLine
+                "Whenever Katarina retrieves a <color=#AF1AAF>Dagger</color>, she uses it to slash around herself, dealing <color=#f68835>600%</color> damage to nearby enemies." + Environment.NewLine
                 + "A <color=#AF1AAF>Dagger</color> will disappear after being on the ground for <color=#ffffff>6</color> seconds." + Environment.NewLine
                 + "Kills reduces the current <color=#c9aa71>cooldowns</color> of Katarina's abilities by <color=#ffffff>1</color> second.");
 
@@ -56,7 +56,7 @@ namespace KatarinaMod.Modules
 
             LanguageAPI.Add("KATARINA_SECONDARY_NAME", "<color=#AF1AAF>BOUNCING BLADES</color>");
             LanguageAPI.Add("KATARINA_SECONDARY_DESC",
-                "Katarina throws a <color=#AF1AAF>Dagger</color> at the target enemy that can bounce to up to four additional nearby enemies, dealing <color=#f68835>200%</color> damage." + Environment.NewLine
+                "Katarina throws a <color=#AF1AAF>Dagger</color> at the target enemy that can bounce to up to four additional nearby enemies, dealing <color=#f68835>400%</color> damage." + Environment.NewLine
                 + "The <color=#AF1AAF>Dagger</color> then lands onto the ground after <color=#ffffff>1</color> second.");
 
             LanguageAPI.Add("KATARINA_UTILITY_NAME", "<color=#AF1AAF>SHUNPO</color>");
@@ -68,7 +68,7 @@ namespace KatarinaMod.Modules
             LanguageAPI.Add("KATARINA_SPECIAL_NAME", "<color=#AF1AAF>DEATH LOTUS</color>");
             LanguageAPI.Add("KATARINA_SPECIAL_DESC",
                 "Katarina channels for up to <color=#ffffff>2.5</color> seconds, rapidly throwing a dagger every <color=#ffffff>0.166</color> seconds to the closest nearby enemies." + Environment.NewLine
-                + "Each dagger deals <color=#f68835>100%</color> damage." + Environment.NewLine
+                + "Each dagger deals <color=#f68835>200%</color> damage." + Environment.NewLine
                 + "Attack speed increases the amount of daggers thrown");
         }
     }

@@ -17,10 +17,13 @@
 ## Introduction
 Decisive in judgment and lethal in combat, Katarina is a Noxian assassin of the highest caliber. Eldest daughter to the legendary General Du Couteau, she made her talents known with swift kills against unsuspecting enemies. Her fiery ambition has driven her to pursue heavily-guarded targets, even at the risk of endangering her allies—but no matter the mission, Katarina will not hesitate to execute her duty amid a whirlwind of serrated daggers.
 
-## Latest Patch Notes `1.4.5`
+## Latest Patch Notes `1.5.0`
 `Bug reports can be posted in discord` https://discord.gg/aYuS9Wsxxx  
 
-* Added Dynamic Bones on Katarina's hair.
+* Voracity damage increased to 600% (up from 400%)
+* Bouncing Blades damage increased to 400% (up from 200%)
+* Death Lotus damage increased to 200% per dagger (up from 100%)
+* Death Lotus Proc coefficient increased to 0.5 (up from 0.25)
 
 ## Discord
 <a href="https://discord.gg/aYuS9Wsxxx" target="_blank">
@@ -64,6 +67,9 @@ Decisive in judgment and lethal in combat, Katarina is a Noxian assassin of the 
 ---
 
 ## Old Patch Notes
+`1.4.5`
+* Added Dynamic Bones on Katarina's hair.
+
 `1.4.4`
 * Voicelines can now be disabled in configuration because people complained
 
