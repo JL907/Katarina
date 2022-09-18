@@ -18,7 +18,7 @@ namespace KatarinaMod.SkillStates.Katarina.Weapon
 		public static int maxBounceCount = Modules.Config.bouncingBlades_maxBounceCount.Value;
 		public static float daggerTravelSpeed = Modules.Config.bouncingBlades_travelSpeed.Value;
 		public static float daggerBounceRange = Modules.Config.bouncingBlades_bounceRange.Value;
-		private static float damageCoefficientPerBounce = Modules.Config.bouncingBlades_damageCoefficientPerBounce.Value;
+		public static float damageCoefficientPerBounce = Modules.Config.bouncingBlades_damageCoefficientPerBounce.Value;
         public float baseDuration = 0.5f;
         private HuntressTracker huntressTracker;
         private float stopwatch;
@@ -35,7 +35,7 @@ namespace KatarinaMod.SkillStates.Katarina.Weapon
         {
             base.OnEnter();
             this.stopwatch = 0f;
-            this.duration = this.baseDuration / this.attackSpeedStat;
+            this.duration = this.baseDuration;
             this.modelTransform = base.GetModelTransform();
             this.animator = base.GetModelAnimator();
             this.huntressTracker = base.GetComponent<HuntressTracker>();
@@ -88,7 +88,7 @@ namespace KatarinaMod.SkillStates.Katarina.Weapon
 		{
 			base.FixedUpdate();
 			this.stopwatch += Time.fixedDeltaTime;
-			if (this.stopwatch < this.duration)
+			if (this.stopwatch >= this.duration * 0.1f && this.stopwatch < this.duration)
             {
 				this.AttemptDagger();
 			}

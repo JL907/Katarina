@@ -80,7 +80,6 @@ namespace KatarinaMod.SkillStates.Katarina
         }
         private void Fire()
         {
-            KatarinaMod.KatarinaPlugin.instance.Logger.LogMessage("Fired Voracity");
             List<HurtBox> HurtBoxes = new List<HurtBox>();
             HurtBoxes = new SphereSearch
             {
