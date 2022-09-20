@@ -40,6 +40,8 @@ namespace KatarinaMod.Modules
         public static ConfigEntry<float> deathLotus_radius;
 
         public static ConfigEntry<float> shunpo_coolDown;
+        public static ConfigEntry<float> shunpo_damageCoefficient;
+        public static ConfigEntry<float> shunpo_procCoefficient;
 
         public static ConfigEntry<bool> voiceLines;
         public static void ReadConfig()
@@ -80,7 +82,8 @@ namespace KatarinaMod.Modules
             deathLotus_radius = KatarinaPlugin.instance.Config.Bind<float>(new ConfigDefinition("05 - Death Lotus", "Radius"), 30f, new ConfigDescription("", null, Array.Empty<object>()));
 
             shunpo_coolDown = KatarinaPlugin.instance.Config.Bind<float>(new ConfigDefinition("06 - Shunpo", "Cooldown"), 6f, new ConfigDescription("", null, Array.Empty<object>()));
-
+            shunpo_damageCoefficient = KatarinaPlugin.instance.Config.Bind<float>(new ConfigDefinition("06 - Shunpo", "Damage Coefficient"), 2.1f, new ConfigDescription("", null, Array.Empty<object>()));
+            shunpo_procCoefficient = KatarinaPlugin.instance.Config.Bind<float>(new ConfigDefinition("06 - Shunpo", "Proc Coefficient"), 1f, new ConfigDescription("", null, Array.Empty<object>()));
         }
 
         // this helper automatically makes config entries for disabling survivors

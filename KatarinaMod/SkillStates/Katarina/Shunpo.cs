@@ -24,11 +24,12 @@ namespace KatarinaMod.SkillStates
         public string endSoundString;
         private CharacterModel characterModel;
         private HurtBoxGroup hurtboxGroup;
-        private Vector3 endloc;
         private Vector3 startLoc;
-        private bool secondToss;
         private HuntressTracker huntressTracker;
         private HurtBox initialTarget;
+        private float damageCoefficient = Modules.Config.shunpo_damageCoefficient.Value;
+        private float procCoefficient = Modules.Config.shunpo_procCoefficient.Value;
+        private bool damaged = false;
 
         public override void OnEnter()
         {
@@ -119,19 +120,31 @@ namespace KatarinaMod.SkillStates
             {
                 base.characterMotor.disableAirControlUntilCollision = false;
             }
-            if (!secondToss)
-            {
-                secondToss = true;
-                //TossDagger(endloc);
-            }
             base.OnExit();
+        }
+
+        private void ShunpoDamage(HurtBox hurtbox)
+        {
+            DamageInfo damageInfo = new DamageInfo();
+            damageInfo.damage = this.damageStat * this.damageCoefficient;
+            damageInfo.attacker = base.gameObject;
+            damageInfo.inflictor = base.gameObject;
+            damageInfo.force = Vector3.zero;
+            damageInfo.crit = base.RollCrit();
+            damageInfo.procCoefficient = this.procCoefficient;
+            damageInfo.position = hurtbox.gameObject.transform.position;
+            damageInfo.damageType = DamageType.Generic;
+            hurtbox.healthComponent.TakeDamage(damageInfo);
+            GlobalEventManager.instance.OnHitEnemy(damageInfo, hurtbox.healthComponent.gameObject);
+            GlobalEventManager.instance.OnHitAll(damageInfo, hurtbox.healthComponent.gameObject);
+            Util.PlaySound("KatarinaImpactSFX", base.gameObject);
+            damaged = true; 
         }
 
         public override void FixedUpdate()
         {
             base.FixedUpdate();
             this.stopwatch += Time.fixedDeltaTime;
-            endloc = base.gameObject.transform.position;
             if (base.characterMotor && base.characterDirection)
             {
                 if (initialTarget && base.inputBank.skill1.down)
@@ -145,9 +158,9 @@ namespace KatarinaMod.SkillStates
                     base.characterMotor.rootMotion += this.blinkVector * (8f * this.speedCoefficient * Time.fixedDeltaTime);
                 }
             }
-            if (this.stopwatch >= this.duration && !secondToss)
+            if (this.stopwatch >= this.duration && initialTarget && base.inputBank.skill1.down)
             {
-                var location = Util.GetCorePosition(base.gameObject);
+                if (!damaged) ShunpoDamage(initialTarget);
             }
             if (this.stopwatch >= this.duration && base.isAuthority)
             {
