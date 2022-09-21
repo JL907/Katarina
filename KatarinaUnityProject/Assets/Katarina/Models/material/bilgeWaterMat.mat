@@ -220,7 +220,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 2cdf48bdb29d01c4189dfb54f1eb2636, type: 3}
+        m_Texture: {fileID: 2800000, guid: c436b810f443e4f4da51a8de08ce1ee3, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Matcap:
@@ -1180,7 +1180,7 @@ Material:
     - m_end_vertexManipulation: 0
     - m_end_voronoiRandom: 0
     - m_lightingOptions: 1
-    - m_mainOptions: 0
+    - m_mainOptions: 1
     - m_outlineOptions: 0
     - m_renderingOptions: 0
     - m_start_Alpha: 0
