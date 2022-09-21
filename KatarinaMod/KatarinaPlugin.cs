@@ -40,7 +40,7 @@ namespace KatarinaMod
         //   this shouldn't even have to be said
         public const string MODUID = "com.Lemonlust.KatarinaMod";
 
-        public const string MODVERSION = "1.6.1";
+        public const string MODVERSION = "1.6.2";
         public static KatarinaPlugin instance;
         internal List<SurvivorBase> Survivors = new List<SurvivorBase>();
 

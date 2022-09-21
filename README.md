@@ -17,19 +17,11 @@
 ## Introduction
 Decisive in judgment and lethal in combat, Katarina is a Noxian assassin of the highest caliber. Eldest daughter to the legendary General Du Couteau, she made her talents known with swift kills against unsuspecting enemies. Her fiery ambition has driven her to pursue heavily-guarded targets, even at the risk of endangering her allies—but no matter the mission, Katarina will not hesitate to execute her duty amid a whirlwind of serrated daggers.
 
-## Latest Patch Notes `1.6.1`
+## Latest Patch Notes `1.6.2`
 `Bug reports can be posted in discord` https://discord.gg/aYuS9Wsxxx  
 
-After much discussion in the discord we have concluded that Katarina's damage was a little bit too high after the recent buffs. Targeted Shunpo also recently received a change to apply damage to the target further increasing her damage output. Considering the mechanical difficulty with Katarina we still thought her damage output was still too much. To keep her in line with other survivors we have adjusted the following values.
+* Adjusted the animation speed on Katarina's sprinting animation.
 
-Please delete any old Katarina configuration file to update to the latest changes.
-
-* Voracity damage decreased to 450% (down from 600%)
-* Bouncing Blades damage decreased to 320% (down from 400%)
-* Death Lotus Proc decreased to 0.25 (down from 0.5)
-* Death Lotus CD decreased to 12 seconds (down from 16 seconds)
-
-Skill descriptions will now reflect any changes made to the configuration file.
 
 ## Discord
 <a href="https://discord.gg/aYuS9Wsxxx" target="_blank">
@@ -73,6 +65,19 @@ Skill descriptions will now reflect any changes made to the configuration file.
 ---
 
 ## Old Patch Notes
+`1.6.1`
+
+After much discussion in the discord we have concluded that Katarina's damage was a little bit too high after the recent buffs. Targeted Shunpo also recently received a change to apply damage to the target further increasing her damage output. Considering the mechanical difficulty with Katarina we still thought her damage output was still too much. To keep her in line with other survivors we have adjusted the following values.
+
+Please delete any old Katarina configuration file to update to the latest changes.
+
+* Voracity damage decreased to 450% (down from 600%)
+* Bouncing Blades damage decreased to 320% (down from 400%)
+* Death Lotus Proc decreased to 0.25 (down from 0.5)
+* Death Lotus CD decreased to 12 seconds (down from 16 seconds)
+
+Skill descriptions will now reflect any changes made to the configuration file.
+
 `1.6.0`
 * Targetted Shunpo will now deal 210% damage on the target.
 
