@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 504139770
+CRC: 44002928
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: cd810753c7c91f44a963ff1766e89d72
+    Hash: 0ba4e43b9f93d82139061fa375f6eaf1
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 1fa692d6cdee47feb28ec66b66246763
+    Hash: 1ca8795c4f8a320a9a3594d73922e8c6
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -38,7 +38,11 @@ ClassTypes:
 - Class: 95
   Script: {instanceID: 0}
 - Class: 114
+  Script: {fileID: 11500000, guid: dd7635f4b57ecfd40affe8315f5c0d3d, type: 3}
+- Class: 114
   Script: {fileID: 11500000, guid: 261c50d8a80898e4ebf2e8e415ea6766, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 6b08a8b96e76a8e4ea5d5ebb4b76b464, type: 3}
 - Class: 115
   Script: {instanceID: 0}
 - Class: 135
@@ -64,6 +68,7 @@ Assets:
 - Assets/Katarina/Models/runhastefootsteps.anim
 - Assets/Katarina/VFX/ImpactHenrySlash.prefab
 - Assets/Katarina/HUD/katarinaSprite.png
+- Assets/Katarina/Prefabs/KatarinaDisplay.prefab
 - Assets/Katarina/Models/mesh/MercenaryMesh.mesh
 - Assets/Katarina/Models/material/kittyCatMat.mat
 - Assets/Katarina/Models/mesh/WarringKingdomsMesh.mesh
@@ -104,7 +109,6 @@ Assets:
 - Assets/Katarina/Models/texture/skin5.png
 - Assets/Katarina/Models/texture/skin7.png
 - Assets/Katarina/Materials/KatarinaMat.mat
-- Assets/Katarina/Prefabs/KatarinaDisplay.prefab
 - Assets/Katarina/Models/texture/skin4.png
 - Assets/Katarina/Animations/animKatarina.controller
 - Assets/Katarina/Models/material/redCardMat.mat
