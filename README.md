@@ -21,7 +21,8 @@ Decisive in judgment and lethal in combat, Katarina is a Noxian assassin of the 
 `Bug reports can be posted in discord` https://discord.gg/aYuS9Wsxxx  
 
 * Adjusted the animation speed on Katarina's sprinting animation.
-
+* Bouncing Blades is now disabled when you have no target.
+* Fixed skill descriptions.
 
 ## Discord
 <a href="https://discord.gg/aYuS9Wsxxx" target="_blank">

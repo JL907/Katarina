@@ -1,5 +1,6 @@
 ﻿using BepInEx.Configuration;
 using EntityStates;
+using KatarinaMod.Skills;
 using RoR2;
 using RoR2.Skills;
 using System;
@@ -110,32 +111,30 @@ namespace KatarinaMod.Modules.Survivors
             #endregion Primary
 
             #region Secondary
-
-            SkillDef shootSkillDef = Modules.Skills.CreateSkillDef(new SkillDefInfo
-            {
-                skillName = "KATARINA_SECONDARY_NAME",
-                skillNameToken = "KATARINA_SECONDARY_NAME",
-                skillDescriptionToken = "KATARINA_SECONDARY_DESC",
-                skillIcon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("KatarinaQ"),
-                activationState = new EntityStates.SerializableEntityStateType(typeof(KatarinaMod.SkillStates.Katarina.Weapon.ThrowDagger)),
-                activationStateMachineName = "Weapon",
-                baseMaxStock = 1,
-                baseRechargeInterval = Modules.Config.bouncingBlades_coolDown.Value,
-                beginSkillCooldownOnSkillEnd = false,
-                canceledFromSprinting = false,
-                forceSprintDuringState = false,
-                fullRestockOnAssign = true,
-                interruptPriority = EntityStates.InterruptPriority.Skill,
-                resetCooldownTimerOnUse = false,
-                isCombatSkill = true,
-                mustKeyPress = true,
-                cancelSprintingOnActivation = false,
-                rechargeStock = 1,
-                requiredStock = 1,
-                stockToConsume = 1
-            });
-            ((ScriptableObject)shootSkillDef).name = "KatarinaBouncingBlades";
-            Modules.Skills.AddSecondarySkills(bodyPrefab, shootSkillDef);
+            ThrowDaggerSkillDef skillDef = ScriptableObject.CreateInstance<ThrowDaggerSkillDef>();
+            skillDef.skillName = "KATARINA_SECONDARY_NAME";
+            skillDef.skillNameToken = "KATARINA_SECONDARY_NAME";
+            skillDef.skillDescriptionToken = "KATARINA_SECONDARY_DESC";
+            skillDef.icon = Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("KatarinaQ");
+            skillDef.activationState = new EntityStates.SerializableEntityStateType(typeof(KatarinaMod.SkillStates.Katarina.Weapon.ThrowDagger));
+            skillDef.activationStateMachineName = "Weapon";
+            skillDef.baseMaxStock = 1;
+            skillDef.baseRechargeInterval = Modules.Config.bouncingBlades_coolDown.Value;
+            skillDef.beginSkillCooldownOnSkillEnd = false;
+            skillDef.canceledFromSprinting = false;
+            skillDef.forceSprintDuringState = false;
+            skillDef.fullRestockOnAssign = true;
+            skillDef.interruptPriority = EntityStates.InterruptPriority.Skill;
+            skillDef.resetCooldownTimerOnUse = false;
+            skillDef.isCombatSkill = true;
+            skillDef.mustKeyPress = true;
+            skillDef.cancelSprintingOnActivation = false;
+            skillDef.rechargeStock = 1;
+            skillDef.requiredStock = 1;
+            skillDef.stockToConsume = 1;
+            ((ScriptableObject)skillDef).name = "KatarinaBouncingBlades";
+            Skills.skillDefs.Add(skillDef);
+            Modules.Skills.AddSecondarySkills(bodyPrefab, skillDef);
 
             #endregion Secondary
 

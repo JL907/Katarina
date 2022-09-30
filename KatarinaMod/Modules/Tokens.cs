@@ -53,23 +53,23 @@ namespace KatarinaMod.Modules
                 + "Kills reduces the current <color=#c9aa71>cooldowns</color> of Katarina's abilities by <color=#ffffff>1</color> second.");
 
             LanguageAPI.Add("KATARINA_PRIMARY_NAME", "<color=#AF1AAF>BASIC ATTACK</color>");
-            LanguageAPI.Add("KATARINA_PRIMARY_DESC", "Basic Attacks do " + $"<color=#f68835>{100f * Modules.Config.basicAttack_damageCoefficient.Value}</color> damage.");
+            LanguageAPI.Add("KATARINA_PRIMARY_DESC", "Basic Attacks do " + $"<color=#f68835>{100f * Modules.Config.basicAttack_damageCoefficient.Value}%</color> damage.");
 
             LanguageAPI.Add("KATARINA_SECONDARY_NAME", "<color=#AF1AAF>BOUNCING BLADES</color>");
             LanguageAPI.Add("KATARINA_SECONDARY_DESC",
-                "Katarina throws a <color=#AF1AAF>Dagger</color> at the target enemy that can bounce to up to four additional nearby enemies, dealing " + $"<color=#f68835>{100f * Modules.Config.bouncingBlades_damageCoefficient.Value}</color> damage." + Environment.NewLine
+                "Katarina throws a <color=#AF1AAF>Dagger</color> at the target enemy that can bounce to up to four additional nearby enemies, dealing " + $"<color=#f68835>{100f * Modules.Config.bouncingBlades_damageCoefficient.Value}%</color> damage." + Environment.NewLine
                 + "The <color=#AF1AAF>Dagger</color> then lands onto the ground after <color=#ffffff>1</color> second.");
 
             LanguageAPI.Add("KATARINA_UTILITY_NAME", "<color=#AF1AAF>SHUNPO</color>");
             LanguageAPI.Add("KATARINA_UTILITY_DESC",
                 "Katarina tosses a <color=#AF1AAF>Dagger</color> into the air above her current location and blinks toward her target or a fixed distance in front of her." + Environment.NewLine
-                + "Katarina will blink toward her target if the basic attack button is held and deal " + $"<color=#f68835>{100f * Modules.Config.shunpo_damageCoefficient.Value}</color> damage." + Environment.NewLine
+                + "Katarina will blink toward her target if the basic attack button is held and deal " + $"<color=#f68835>{100f * Modules.Config.shunpo_damageCoefficient.Value}%</color> damage." + Environment.NewLine
                 + "Shunpo will <color=#c9aa71>refund</color> 100% of it's total <color=#c9aa71>cooldown</color> when Katarina retrieves a <color=#AF1AAF>Dagger.</color>");
 
             LanguageAPI.Add("KATARINA_SPECIAL_NAME", "<color=#AF1AAF>DEATH LOTUS</color>");
             LanguageAPI.Add("KATARINA_SPECIAL_DESC",
                 "Katarina channels for up to <color=#ffffff>2.5</color> seconds, rapidly throwing a dagger every <color=#ffffff>0.166</color> seconds to the closest nearby enemies." + Environment.NewLine
-                + "Each dagger deals " + $"<color=#f68835>{100f * Modules.Config.deathLotus_damageCoefficient.Value}</color> damage." + Environment.NewLine
+                + "Each dagger deals " + $"<color=#f68835>{100f * Modules.Config.deathLotus_damageCoefficient.Value}%</color> damage." + Environment.NewLine
                 + "Attack speed increases the amount of daggers thrown");
         }
     }
