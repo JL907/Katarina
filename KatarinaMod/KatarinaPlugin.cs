@@ -18,16 +18,13 @@ using KatarinaMod.SkillStates;
 namespace KatarinaMod
 {
     [BepInDependency("com.bepis.r2api", BepInDependency.DependencyFlags.HardDependency)]
+    [BepInDependency("com.bepis.r2api.prefab", BepInDependency.DependencyFlags.HardDependency)]
+    [BepInDependency("com.bepis.r2api.language", BepInDependency.DependencyFlags.HardDependency)]
+    [BepInDependency("com.bepis.r2api.sound", BepInDependency.DependencyFlags.HardDependency)]
     [BepInDependency("com.xoxfaby.BetterUI", BepInDependency.DependencyFlags.SoftDependency)]
     [BepInDependency("com.cwmlolzlz.skills", BepInDependency.DependencyFlags.SoftDependency)]
     [NetworkCompatibility(CompatibilityLevel.EveryoneMustHaveMod, VersionStrictness.EveryoneNeedSameModVersion)]
     [BepInPlugin(MODUID, MODNAME, MODVERSION)]
-    [R2APISubmoduleDependency(new string[]
-    {
-        "PrefabAPI",
-        "LanguageAPI",
-        "SoundAPI",
-    })]
     public class KatarinaPlugin : BaseUnityPlugin
     {
         // a prefix for name tokens to prevent conflicts- please capitalize all name tokens for convention
@@ -40,7 +37,7 @@ namespace KatarinaMod
         //   this shouldn't even have to be said
         public const string MODUID = "com.Lemonlust.KatarinaMod";
 
-        public const string MODVERSION = "1.6.2";
+        public const string MODVERSION = "1.7.0";
         public static KatarinaPlugin instance;
         internal List<SurvivorBase> Survivors = new List<SurvivorBase>();
 

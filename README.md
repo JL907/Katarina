@@ -17,12 +17,10 @@
 ## Introduction
 Decisive in judgment and lethal in combat, Katarina is a Noxian assassin of the highest caliber. Eldest daughter to the legendary General Du Couteau, she made her talents known with swift kills against unsuspecting enemies. Her fiery ambition has driven her to pursue heavily-guarded targets, even at the risk of endangering her allies—but no matter the mission, Katarina will not hesitate to execute her duty amid a whirlwind of serrated daggers.
 
-## Latest Patch Notes `1.6.2`
+## Latest Patch Notes `1.7.0`
 `Bug reports can be posted in discord` https://discord.gg/aYuS9Wsxxx  
 
-* Adjusted the animation speed on Katarina's sprinting animation.
-* Bouncing Blades is now disabled when you have no target.
-* Fixed skill descriptions.
+* R2API Conversion
 
 ## Discord
 <a href="https://discord.gg/aYuS9Wsxxx" target="_blank">
@@ -66,6 +64,13 @@ Decisive in judgment and lethal in combat, Katarina is a Noxian assassin of the 
 ---
 
 ## Old Patch Notes
+`1.6.2`
+`Bug reports can be posted in discord` https://discord.gg/aYuS9Wsxxx  
+
+* Adjusted the animation speed on Katarina's sprinting animation.
+* Bouncing Blades is now disabled when you have no target.
+* Fixed skill descriptions.
+
 `1.6.1`
 
 After much discussion in the discord we have concluded that Katarina's damage was a little bit too high after the recent buffs. Targeted Shunpo also recently received a change to apply damage to the target further increasing her damage output. Considering the mechanical difficulty with Katarina we still thought her damage output was still too much. To keep her in line with other survivors we have adjusted the following values.
