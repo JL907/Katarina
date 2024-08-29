@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{CD8FE401-F3E4-475A-8D26-CA987DEC6DFF}" SchemaVersion="97">
+	<Events>
+		<WorkUnit Name="Default Work Unit" ID="{CD8FE401-F3E4-475A-8D26-CA987DEC6DFF}" PersistMode="Standalone">
+			<ChildrenList>
+				<Event Name="KatarinaAutoSFX" ID="{0860E2DD-B419-4268-A5C8-CB645E64C9F5}">
+					<ChildrenList>
+						<Action Name="" ID="{486E05D0-AB3B-41D7-8A71-74746E071CDE}" ShortID="14958093">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="KatarinaAutoSFX" ID="{0EC77E52-3639-495C-A3C6-4C12BCF04CDD}" WorkUnitID="{B2FF84F8-5B39-4785-9EC3-A04C077E0CCE}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="KatarinaImpactSFX" ID="{91C08B90-4D25-481C-B2C7-72F00162D70A}">
+					<ChildrenList>
+						<Action Name="" ID="{EBE34E3C-7250-41BF-BC9D-FD9D89434652}" ShortID="1054884847">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="KatarinaImpactSFX" ID="{CA5DF837-5009-4098-9C48-C63CCB7A169E}" WorkUnitID="{B2FF84F8-5B39-4785-9EC3-A04C077E0CCE}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="KatarinaQSFX" ID="{8AD08EA4-2CDC-4A6A-B41B-86831E6C13DE}">
+					<ChildrenList>
+						<Action Name="" ID="{B0F5A44B-4D44-46B9-B133-B660C655949D}" ShortID="231062073">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="KatarinaQSFX" ID="{7149F626-BC0A-4509-ADC3-E25E78779B1E}" WorkUnitID="{B2FF84F8-5B39-4785-9EC3-A04C077E0CCE}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="KatarinaRSFX" ID="{732EC76B-2FBD-4E93-909A-189635C8D5F3}">
+					<ChildrenList>
+						<Action Name="" ID="{8A5A058A-874F-4494-A0AA-5267165210CA}" ShortID="165196182">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="KatarinaRSFX" ID="{3F692345-C9AD-4762-A725-D89F6C756F46}" WorkUnitID="{B2FF84F8-5B39-4785-9EC3-A04C077E0CCE}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="KatarinaVoracitySFX" ID="{71BC8EEF-EE84-4CDF-88F6-62CB16021347}">
+					<ChildrenList>
+						<Action Name="" ID="{BABE3A49-7339-42C2-B737-2139D262D578}" ShortID="166750816">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="KatarinaVoracitySFX" ID="{2BBF82D9-B1AD-4F12-B03E-2B02FA35A9FB}" WorkUnitID="{B2FF84F8-5B39-4785-9EC3-A04C077E0CCE}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="KatarinaMenu" ID="{2EA2F998-E3AA-415C-BDB6-7FFB1B445AEC}">
+					<ChildrenList>
+						<Action Name="" ID="{47C0D593-8D6F-40EF-82C2-1DA1D940A561}" ShortID="975890890">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="KatarinaMenu" ID="{64D1C5C3-46B2-445B-9F67-7D33880A1755}" WorkUnitID="{B2FF84F8-5B39-4785-9EC3-A04C077E0CCE}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="KatarinaQVO" ID="{51366E90-E645-4759-8989-CB2AB4A560BA}">
+					<ChildrenList>
+						<Action Name="" ID="{E866400C-6183-4AD2-B15D-DDAAB3982016}" ShortID="651306417">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="KatarinaQVO" ID="{7D713569-EEF1-44BA-A212-75D21555385F}" WorkUnitID="{B2FF84F8-5B39-4785-9EC3-A04C077E0CCE}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="KatarinaRVO" ID="{1C9C0DE9-F1AE-4BA4-97DE-454F0529E8B8}">
+					<ChildrenList>
+						<Action Name="" ID="{AB26A0EB-8C87-4F49-BE91-A1A47FE28C25}" ShortID="13777338">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="KatarinaRVO" ID="{1653E2A9-9FB2-489E-BED5-B268F7CB1BAF}" WorkUnitID="{B2FF84F8-5B39-4785-9EC3-A04C077E0CCE}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="KatarinaESFX" ID="{475CD903-5290-483F-A90B-2BDB39F3E7E8}">
+					<ChildrenList>
+						<Action Name="" ID="{7DC86159-CBD3-45E1-8D12-48F265CE3BD4}" ShortID="1017587295">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="KatarinaESFX" ID="{72C850F0-FCF1-4038-A8D1-8D78E17FBE5F}" WorkUnitID="{B2FF84F8-5B39-4785-9EC3-A04C077E0CCE}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="KatarinaDeath" ID="{00CF951B-2AE2-4336-BC01-012B833EECF1}">
+					<ChildrenList>
+						<Action Name="" ID="{DBB93019-8A04-4E35-924E-F14B20B4FC25}" ShortID="536963061">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="KatarinaDeath" ID="{EC4894CC-408B-4768-9204-4A31857A62CD}" WorkUnitID="{B2FF84F8-5B39-4785-9EC3-A04C077E0CCE}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+			</ChildrenList>
+		</WorkUnit>
+	</Events>
+</WwiseDocument>

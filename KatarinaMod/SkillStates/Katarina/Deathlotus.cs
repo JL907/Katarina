@@ -28,10 +28,12 @@ namespace KatarinaMod.SkillStates
 
         private readonly BullseyeSearch search = new BullseyeSearch();
         private HurtBox trackingTarget;
+        private Rigidbody rb;
 
         public override void FixedUpdate()
         {
             base.FixedUpdate();
+            base.characterMotor.velocity.y = base.characterMotor.velocity.y * 0.75f;
             this.stopwatch += Time.fixedDeltaTime;
             int layerIndex = animator.GetLayerIndex("FullBody, Override");
             this.animator.PlayInFixedTime("Ultimate", layerIndex, this.stopwatch);

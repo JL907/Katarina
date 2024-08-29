@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{8DC794B7-77E7-41E2-BF23-19A52FB5229D}" SchemaVersion="97">
+	<SoundBanks>
+		<WorkUnit Name="Default Work Unit" ID="{8DC794B7-77E7-41E2-BF23-19A52FB5229D}" PersistMode="Standalone">
+			<ChildrenList>
+				<SoundBank Name="Katarina" ID="{CDC30F13-5A2D-4EC7-BDE8-E247C5328B4D}">
+					<ObjectInclusionList>
+						<ObjectRef Name="KatarinaMenu" ID="{2EA2F998-E3AA-415C-BDB6-7FFB1B445AEC}" WorkUnitID="{CD8FE401-F3E4-475A-8D26-CA987DEC6DFF}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="KatarinaAutoSFX" ID="{0860E2DD-B419-4268-A5C8-CB645E64C9F5}" WorkUnitID="{CD8FE401-F3E4-475A-8D26-CA987DEC6DFF}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="KatarinaDeath" ID="{00CF951B-2AE2-4336-BC01-012B833EECF1}" WorkUnitID="{CD8FE401-F3E4-475A-8D26-CA987DEC6DFF}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="KatarinaQVO" ID="{51366E90-E645-4759-8989-CB2AB4A560BA}" WorkUnitID="{CD8FE401-F3E4-475A-8D26-CA987DEC6DFF}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="KatarinaImpactSFX" ID="{91C08B90-4D25-481C-B2C7-72F00162D70A}" WorkUnitID="{CD8FE401-F3E4-475A-8D26-CA987DEC6DFF}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="KatarinaESFX" ID="{475CD903-5290-483F-A90B-2BDB39F3E7E8}" WorkUnitID="{CD8FE401-F3E4-475A-8D26-CA987DEC6DFF}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="KatarinaQSFX" ID="{8AD08EA4-2CDC-4A6A-B41B-86831E6C13DE}" WorkUnitID="{CD8FE401-F3E4-475A-8D26-CA987DEC6DFF}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="KatarinaRVO" ID="{1C9C0DE9-F1AE-4BA4-97DE-454F0529E8B8}" WorkUnitID="{CD8FE401-F3E4-475A-8D26-CA987DEC6DFF}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="KatarinaVoracitySFX" ID="{71BC8EEF-EE84-4CDF-88F6-62CB16021347}" WorkUnitID="{CD8FE401-F3E4-475A-8D26-CA987DEC6DFF}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="KatarinaRSFX" ID="{732EC76B-2FBD-4E93-909A-189635C8D5F3}" WorkUnitID="{CD8FE401-F3E4-475A-8D26-CA987DEC6DFF}" Origin="Manual" Filter="7"/>
+					</ObjectInclusionList>
+					<ObjectExclusionList/>
+					<GameSyncExclusionList/>
+				</SoundBank>
+			</ChildrenList>
+		</WorkUnit>
+	</SoundBanks>
+</WwiseDocument>

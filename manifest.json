@@ -1,14 +1,16 @@
 {
     "name": "KatarinaMod",
-    "version_number": "1.7.0",
+    "version_number": "1.8.0",
     "website_url": "https://github.com/JL907/Katarina",
     "description": "Violence solves everything.",
     "dependencies": [
-        "bbepis-BepInExPack-5.4.2103",
-		"RiskofThunder-HookGenPatcher-1.2.3",
-		"RiskofThunder-R2API_Core-5.0.0",
-		"RiskofThunder-R2API_Prefab-1.0.0",
-		"RiskofThunder-R2API_Language-1.0.0",
-		"RiskofThunder-R2API_Sound-1.0.0"
+        "bbepis-BepInExPack-5.4.2117",
+		"RiskofThunder-HookGenPatcher-1.2.4",
+		"RiskofThunder-R2API_Core-5.1.1",
+		"RiskofThunder-R2API_Prefab-1.0.4",
+		"RiskofThunder-R2API_Language-1.0.1",
+		"RiskofThunder-R2API_Sound-1.0.3",
+		"RiskofThunder-RoR2BepInExPack-1.19.0",
+		"RiskofThunder-R2API_Networking-1.0.2"
     ]
 }

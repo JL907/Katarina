@@ -1,9 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFramework>netstandard2.0</TargetFramework>
+		<TargetFramework>netstandard2.1</TargetFramework>
 		<LangVersion>7.3</LangVersion>
-		<Version>1.7.0</Version>
+		<Version>1.8.0</Version>
 		<AssemblyName>LemonKatarinaMod</AssemblyName>
 	</PropertyGroup>
 
@@ -18,14 +18,25 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="BepInEx.Analyzers" Version="1.0.*">
+		<PackageReference Include="RoR2BepInExPack" Version="*" />
+		<PackageReference Include="BepInEx.Analyzers" Version="*">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
+
 		<PackageReference Include="BepInEx.Core" Version="5.4.19" />
-		<PackageReference Include="R2API" Version="5.0.3" />
-		<PackageReference Include="RiskOfRain2.GameLibs" Version="1.2.4-r.0" />
-		<PackageReference Include="UnityEngine.Modules" Version="2019.4.26" />
+
+		<PackageReference Include="MMHOOK.RoR2" Version="2024.8.28" NoWarn="NU1701" />
+
+		<PackageReference Include="RiskOfRain2.GameLibs" Version="*-*" />
+
+		<PackageReference Include="UnityEngine.Modules" Version="2021.3.33" />
+
+		<PackageReference Include="R2API.Core" Version="*" />
+		<PackageReference Include="R2API.Prefab" Version="*" />
+		<PackageReference Include="R2API.Language" Version="*" />
+		<PackageReference Include="R2API.Sound" Version="*" />
+		<PackageReference Include="R2API.Networking" Version="*" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -35,21 +46,12 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<Reference Include="BetterUI">
-		  <HintPath>..\..\..\AppData\Roaming\Thunderstore Mod Manager\DataFolder\RiskOfRain2\profiles\Lemonlust Testing\BepInEx\plugins\XoXFaby-BetterUI\BetterUI\BetterUI.dll</HintPath>
-		</Reference>
-		<Reference Include="MMHOOK_RoR2">
-			<HintPath>..\..\libs\MMHOOK_RoR2.dll</HintPath>
-		</Reference>
-	</ItemGroup>
-
-	<ItemGroup>
 	  <Folder Include="Components\" />
 	  <Folder Include="SkillModifiers\" />
 	</ItemGroup>
 
 	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
-	  <Exec Command="XCOPY &quot;$(TargetDir)$(TargetName).dll&quot; &quot;C:\Program Files (x86)\Steam\steamapps\common\Risk of Rain 2\BepInEx\plugins&quot; /S /Y&#xD;&#xA;&#xD;&#xA;XCOPY &quot;$(TargetDir)$(TargetName).pdb&quot; &quot;C:\Program Files (x86)\Steam\steamapps\common\Risk of Rain 2\BepInEx\plugins&quot; /S /Y&#xD;&#xA;&#xD;&#xA;XCOPY &quot;$(TargetDir)$(TargetName).pdb&quot; &quot;C:\Users\Johnrey\AppData\Roaming\Thunderstore Mod Manager\DataFolder\RiskOfRain2\profiles\Lemonlust Testing\BepInEx\plugins&quot; /S /Y&#xD;&#xA;&#xD;&#xA;XCOPY &quot;$(TargetDir)$(TargetName).dll&quot; &quot;C:\Users\Johnrey\AppData\Roaming\Thunderstore Mod Manager\DataFolder\RiskOfRain2\profiles\Lemonlust Testing\BepInEx\plugins&quot; /S /Y&#xD;&#xA;&#xD;&#xA;if $(Configuration) == Debug (&#xD;&#xA;goto debug&#xD;&#xA;)&#xD;&#xA;&#xD;&#xA;if $(Configuration) == Release (&#xD;&#xA;goto release&#xD;&#xA;)&#xD;&#xA;&#xD;&#xA;:debug&#xD;&#xA;echo Debug, only dll is updated.&#xD;&#xA;goto:EOF&#xD;&#xA;&#xD;&#xA;:release&#xD;&#xA;powershell Compress-Archive -Path '$(TargetDir)$(TargetName).dll', '$(SolutionDir)icon.png', '$(SolutionDir)manifest.json', '$(SolutionDir)README.md' -DestinationPath '$(SolutionDir)$(TargetName) $(Version).zip' -Force&#xD;&#xA;goto:EOF:&#xD;&#xA;&#xD;&#xA;:eof&#xD;&#xA;" />
+	  <Exec Command="if $(Configuration) == Release (&#xD;&#xA;powershell Compress-Archive -Path '$(TargetDir)$(TargetName).dll', '$(SolutionDir)icon.png', '$(SolutionDir)manifest.json', '$(SolutionDir)README.md' -DestinationPath '$(SolutionDir)$(TargetName) $(Version).zip' -Force&#xD;&#xA;)&#xD;&#xA;&#xD;&#xA;" />
 	</Target>
 
 </Project>

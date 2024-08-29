@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<WwiseDocument Type="WorkUnit" ID="{B2FF84F8-5B39-4785-9EC3-A04C077E0CCE}" SchemaVersion="97">
+<WwiseDocument Type="WorkUnit" ID="{B2FF84F8-5B39-4785-9EC3-A04C077E0CCE}" SchemaVersion="119">
 	<AudioObjects>
 		<WorkUnit Name="Default Work Unit" ID="{B2FF84F8-5B39-4785-9EC3-A04C077E0CCE}" PersistMode="Standalone">
 			<ChildrenList>
@@ -17,34 +17,6 @@
 							<PropertyList>
 								<Property Name="3DSpatialization" Type="int16" Value="1"/>
 								<Property Name="OverridePositioning" Type="bool" Value="True"/>
-								<Property Name="Volume" Type="Real64">
-									<RTPCList>
-										<RTPC Name="" ID="{BAD046F8-0738-4D2E-B297-B6E10A06AD44}" ShortID="837852736">
-											<ReferenceList>
-												<Reference Name="ControlInput">
-													<ObjectRef Name="Volume_SFX" ID="{3ADB15C7-4E03-45E1-AD51-FD42E24C368D}" WorkUnitID="{AE436643-F990-4E5C-AE33-C6A5CEAE8439}"/>
-												</Reference>
-											</ReferenceList>
-											<Curve Name="" ID="{15F5A8A4-4C40-4B1A-B3BA-421B7D0E46F6}">
-												<PropertyList>
-													<Property Name="Flags" Type="int32" Value="3"/>
-												</PropertyList>
-												<PointList>
-													<Point>
-														<XPos>0</XPos>
-														<YPos>-200</YPos>
-														<Flags>5</Flags>
-													</Point>
-													<Point>
-														<XPos>100</XPos>
-														<YPos>0</YPos>
-														<Flags>37</Flags>
-													</Point>
-												</PointList>
-											</Curve>
-										</RTPC>
-									</RTPCList>
-								</Property>
 							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Attenuation">
@@ -3020,6 +2992,45 @@
 									</ChildrenList>
 								</Folder>
 							</ChildrenList>
+							<ObjectLists>
+								<ObjectList Name="RTPC">
+									<Reference>
+										<Local>
+											<RTPC Name="" ID="{BAD046F8-0738-4D2E-B297-B6E10A06AD44}" ShortID="837852736">
+												<PropertyList>
+													<Property Name="PropertyName" Type="string" Value="Volume"/>
+												</PropertyList>
+												<ReferenceList>
+													<Reference Name="ControlInput">
+														<ObjectRef Name="Volume_SFX" ID="{3ADB15C7-4E03-45E1-AD51-FD42E24C368D}" WorkUnitID="{AE436643-F990-4E5C-AE33-C6A5CEAE8439}"/>
+													</Reference>
+													<Reference Name="Curve">
+														<Custom>
+															<Curve Name="" ID="{15F5A8A4-4C40-4B1A-B3BA-421B7D0E46F6}">
+																<PropertyList>
+																	<Property Name="Flags" Type="int32" Value="3"/>
+																</PropertyList>
+																<PointList>
+																	<Point>
+																		<XPos>0</XPos>
+																		<YPos>-200</YPos>
+																		<Flags>5</Flags>
+																	</Point>
+																	<Point>
+																		<XPos>100</XPos>
+																		<YPos>0</YPos>
+																		<Flags>37</Flags>
+																	</Point>
+																</PointList>
+															</Curve>
+														</Custom>
+													</Reference>
+												</ReferenceList>
+											</RTPC>
+										</Local>
+									</Reference>
+								</ObjectList>
+							</ObjectLists>
 						</ActorMixer>
 						<ActorMixer Name="VO Mixer" ID="{E300ED05-8DBC-432E-81B6-B64D679066CE}" ShortID="462249985">
 							<PropertyList>
@@ -3035,34 +3046,6 @@
 									<ValueList>
 										<Value>True</Value>
 									</ValueList>
-								</Property>
-								<Property Name="Volume" Type="Real64">
-									<RTPCList>
-										<RTPC Name="" ID="{6DC499C1-BE1D-43A5-9B7A-38A056EA1BCB}" ShortID="101502268">
-											<ReferenceList>
-												<Reference Name="ControlInput">
-													<ObjectRef Name="Volume_SFX" ID="{3ADB15C7-4E03-45E1-AD51-FD42E24C368D}" WorkUnitID="{AE436643-F990-4E5C-AE33-C6A5CEAE8439}"/>
-												</Reference>
-											</ReferenceList>
-											<Curve Name="" ID="{B969301C-463D-4E11-B44F-580A363F7560}">
-												<PropertyList>
-													<Property Name="Flags" Type="int32" Value="3"/>
-												</PropertyList>
-												<PointList>
-													<Point>
-														<XPos>0</XPos>
-														<YPos>-200</YPos>
-														<Flags>5</Flags>
-													</Point>
-													<Point>
-														<XPos>100</XPos>
-														<YPos>0</YPos>
-														<Flags>37</Flags>
-													</Point>
-												</PointList>
-											</Curve>
-										</RTPC>
-									</RTPCList>
 								</Property>
 							</PropertyList>
 							<ReferenceList>
@@ -4168,6 +4151,45 @@
 									</ChildrenList>
 								</Folder>
 							</ChildrenList>
+							<ObjectLists>
+								<ObjectList Name="RTPC">
+									<Reference>
+										<Local>
+											<RTPC Name="" ID="{6DC499C1-BE1D-43A5-9B7A-38A056EA1BCB}" ShortID="101502268">
+												<PropertyList>
+													<Property Name="PropertyName" Type="string" Value="Volume"/>
+												</PropertyList>
+												<ReferenceList>
+													<Reference Name="ControlInput">
+														<ObjectRef Name="Volume_SFX" ID="{3ADB15C7-4E03-45E1-AD51-FD42E24C368D}" WorkUnitID="{AE436643-F990-4E5C-AE33-C6A5CEAE8439}"/>
+													</Reference>
+													<Reference Name="Curve">
+														<Custom>
+															<Curve Name="" ID="{B969301C-463D-4E11-B44F-580A363F7560}">
+																<PropertyList>
+																	<Property Name="Flags" Type="int32" Value="3"/>
+																</PropertyList>
+																<PointList>
+																	<Point>
+																		<XPos>0</XPos>
+																		<YPos>-200</YPos>
+																		<Flags>5</Flags>
+																	</Point>
+																	<Point>
+																		<XPos>100</XPos>
+																		<YPos>0</YPos>
+																		<Flags>37</Flags>
+																	</Point>
+																</PointList>
+															</Curve>
+														</Custom>
+													</Reference>
+												</ReferenceList>
+											</RTPC>
+										</Local>
+									</Reference>
+								</ObjectList>
+							</ObjectLists>
 						</ActorMixer>
 					</ChildrenList>
 				</ActorMixer>

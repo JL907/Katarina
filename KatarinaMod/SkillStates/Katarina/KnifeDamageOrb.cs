@@ -8,7 +8,7 @@ namespace RoR2.Orbs
 	{
 		public override void Begin()
 		{
-			this.speed = 120f;
+			this.speed = 400f;
 			base.duration = base.distanceToTarget / this.speed;
 			if (this.GetOrbEffect())
 			{

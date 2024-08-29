@@ -1,174 +1,211 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="12" SoundbankVersion="135">
+<SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="16" SoundBankVersion="150">
 	<RootPaths>
-		<ProjectRoot>C:\Users\Johnrey\Documents\WwiseProjects\Katarina\</ProjectRoot>
-		<SourceFilesRoot>C:\Users\Johnrey\Documents\WwiseProjects\Katarina\.cache\Windows\</SourceFilesRoot>
-		<SoundBanksRoot>C:\Users\Johnrey\Documents\WwiseProjects\Katarina\GeneratedSoundBanks\Windows\</SoundBanksRoot>
+		<ProjectRoot>../..</ProjectRoot>
+		<SourceFilesRoot>../../.cache/Windows</SourceFilesRoot>
+		<SoundBanksRoot>.</SoundBanksRoot>
 		<ExternalSourcesInputFile></ExternalSourcesInputFile>
-		<ExternalSourcesOutputRoot>C:\Users\Johnrey\Documents\WwiseProjects\Katarina\GeneratedSoundBanks\Windows</ExternalSourcesOutputRoot>
+		<ExternalSourcesOutputRoot>.</ExternalSourcesOutputRoot>
 	</RootPaths>
 	<DialogueEvents/>
-	<StreamedFiles/>
-	<MediaFilesNotInAnyBank/>
 	<SoundBanks>
-		<SoundBank Id="321054304" Language="SFX" Hash="51252290">
-			<ObjectPath>\SoundBanks\Default Work Unit\Katarina</ObjectPath>
+		<SoundBank Id="321054304" Type="User" Language="SFX" Hash="{864C86A2-A69D-098F-0FF2-C738FCFFEC7B}">
 			<ShortName>Katarina</ShortName>
 			<Path>Katarina.bnk</Path>
-			<IncludedEvents>
-				<Event Id="68608246" Name="KatarinaAutoSFX" ObjectPath="\Events\Default Work Unit\KatarinaAutoSFX">
-					<IncludedMemoryFiles>
-						<File Id="707292829" Language="SFX">
-							<ShortName>SFX\.016.wav</ShortName>
-							<Path>SFX\SFX\.016_3F75BDB9.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
+			<Media>
+				<File Id="58458772" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>ultimate3.wav</ShortName>
+					<CachePath>SFX/ultimate3_8E324C96.wem</CachePath>
+				</File>
+				<File Id="78131671" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>SFX\.004.wav</ShortName>
+					<CachePath>SFX/SFX/.004_8E324C96.wem</CachePath>
+				</File>
+				<File Id="79263463" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>ultimate2.wav</ShortName>
+					<CachePath>SFX/ultimate2_8E324C96.wem</CachePath>
+				</File>
+				<File Id="84367280" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>SFX\.006.wav</ShortName>
+					<CachePath>SFX/SFX/.006_8E324C96.wem</CachePath>
+				</File>
+				<File Id="93528572" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>VO\katarina_base_vo_audio_19.wav</ShortName>
+					<CachePath>SFX/VO/katarina_base_vo_audio_19_8E324C96.wem</CachePath>
+				</File>
+				<File Id="111524207" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>SFX\.028.wav</ShortName>
+					<CachePath>SFX/SFX/.028_8E324C96.wem</CachePath>
+				</File>
+				<File Id="116870312" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>VO\katarina_base_vo_audio_1.wav</ShortName>
+					<CachePath>SFX/VO/katarina_base_vo_audio_1_8E324C96.wem</CachePath>
+				</File>
+				<File Id="180534352" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>VO\katarina_base_vo_audio_26.wav</ShortName>
+					<CachePath>SFX/VO/katarina_base_vo_audio_26_8E324C96.wem</CachePath>
+				</File>
+				<File Id="193932422" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>SFX\.010.wav</ShortName>
+					<CachePath>SFX/SFX/.010_8E324C96.wem</CachePath>
+				</File>
+				<File Id="218249995" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>VO\katarina_base_vo_audio_7.wav</ShortName>
+					<CachePath>SFX/VO/katarina_base_vo_audio_7_8E324C96.wem</CachePath>
+				</File>
+				<File Id="220589107" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>VO\katarina_base_vo_audio_4.wav</ShortName>
+					<CachePath>SFX/VO/katarina_base_vo_audio_4_8E324C96.wem</CachePath>
+				</File>
+				<File Id="379174388" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>VO\katarina_base_vo_audio_6.wav</ShortName>
+					<CachePath>SFX/VO/katarina_base_vo_audio_6_8E324C96.wem</CachePath>
+				</File>
+				<File Id="400120246" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>VO\katarina_base_vo_audio_2.wav</ShortName>
+					<CachePath>SFX/VO/katarina_base_vo_audio_2_8E324C96.wem</CachePath>
+				</File>
+				<File Id="415511560" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>VO\katarina_base_vo_audio_13.wav</ShortName>
+					<CachePath>SFX/VO/katarina_base_vo_audio_13_8E324C96.wem</CachePath>
+				</File>
+				<File Id="482303995" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>VO\katarina_base_vo_audio_24.wav</ShortName>
+					<CachePath>SFX/VO/katarina_base_vo_audio_24_8E324C96.wem</CachePath>
+				</File>
+				<File Id="494502273" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>VO\katarina_base_vo_audio_3.wav</ShortName>
+					<CachePath>SFX/VO/katarina_base_vo_audio_3_8E324C96.wem</CachePath>
+				</File>
+				<File Id="516349677" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>VO\katarina_base_vo_audio_12.wav</ShortName>
+					<CachePath>SFX/VO/katarina_base_vo_audio_12_8E324C96.wem</CachePath>
+				</File>
+				<File Id="707292829" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>SFX\.016.wav</ShortName>
+					<CachePath>SFX/SFX/.016_8E324C96.wem</CachePath>
+				</File>
+				<File Id="772909795" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>SFX\.043.wav</ShortName>
+					<CachePath>SFX/SFX/.043_8E324C96.wem</CachePath>
+				</File>
+				<File Id="811255497" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>SFX\.012.wav</ShortName>
+					<CachePath>SFX/SFX/.012_8E324C96.wem</CachePath>
+				</File>
+				<File Id="862729676" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>VO\katarina_base_vo_audio_21.wav</ShortName>
+					<CachePath>SFX/VO/katarina_base_vo_audio_21_8E324C96.wem</CachePath>
+				</File>
+				<File Id="886705908" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>SFX\.014.wav</ShortName>
+					<CachePath>SFX/SFX/.014_8E324C96.wem</CachePath>
+				</File>
+				<File Id="892545547" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>ultimate.wav</ShortName>
+					<CachePath>SFX/ultimate_8E324C96.wem</CachePath>
+				</File>
+				<File Id="906816577" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>SFX\.029.wav</ShortName>
+					<CachePath>SFX/SFX/.029_8E324C96.wem</CachePath>
+				</File>
+				<File Id="953300316" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>VO\katarina_base_vo_audio_5.wav</ShortName>
+					<CachePath>SFX/VO/katarina_base_vo_audio_5_8E324C96.wem</CachePath>
+				</File>
+				<File Id="1073272869" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>SFX\.059.wav</ShortName>
+					<CachePath>SFX/SFX/.059_8E324C96.wem</CachePath>
+				</File>
+			</Media>
+			<Events>
+				<Event Id="68608246" Name="KatarinaAutoSFX">
+					<MediaRefs>
+						<MediaRef Id="707292829"/>
+					</MediaRefs>
 				</Event>
-				<Event Id="1339083702" Name="KatarinaDeath" ObjectPath="\Events\Default Work Unit\KatarinaDeath">
-					<IncludedMemoryFiles>
-						<File Id="116870312" Language="SFX">
-							<ShortName>VO\katarina_base_vo_audio_1.wav</ShortName>
-							<Path>SFX\VO\katarina_base_vo_audio_1_3F75BDB9.wem</Path>
-						</File>
-						<File Id="180534352" Language="SFX">
-							<ShortName>VO\katarina_base_vo_audio_26.wav</ShortName>
-							<Path>SFX\VO\katarina_base_vo_audio_26_3F75BDB9.wem</Path>
-						</File>
-						<File Id="516349677" Language="SFX">
-							<ShortName>VO\katarina_base_vo_audio_12.wav</ShortName>
-							<Path>SFX\VO\katarina_base_vo_audio_12_3F75BDB9.wem</Path>
-						</File>
-						<File Id="862729676" Language="SFX">
-							<ShortName>VO\katarina_base_vo_audio_21.wav</ShortName>
-							<Path>SFX\VO\katarina_base_vo_audio_21_3F75BDB9.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
+				<Event Id="1339083702" Name="KatarinaDeath">
+					<MediaRefs>
+						<MediaRef Id="116870312"/>
+						<MediaRef Id="180534352"/>
+						<MediaRef Id="516349677"/>
+						<MediaRef Id="862729676"/>
+					</MediaRefs>
 				</Event>
-				<Event Id="1486502846" Name="KatarinaESFX" ObjectPath="\Events\Default Work Unit\KatarinaESFX">
-					<IncludedMemoryFiles>
-						<File Id="906816577" Language="SFX">
-							<ShortName>SFX\.029.wav</ShortName>
-							<Path>SFX\SFX\.029_3F75BDB9.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
+				<Event Id="1486502846" Name="KatarinaESFX">
+					<MediaRefs>
+						<MediaRef Id="906816577"/>
+					</MediaRefs>
 				</Event>
-				<Event Id="1565165559" Name="KatarinaImpactSFX" ObjectPath="\Events\Default Work Unit\KatarinaImpactSFX">
-					<IncludedMemoryFiles>
-						<File Id="78131671" Language="SFX">
-							<ShortName>SFX\.004.wav</ShortName>
-							<Path>SFX\SFX\.004_3F75BDB9.wem</Path>
-						</File>
-						<File Id="84367280" Language="SFX">
-							<ShortName>SFX\.006.wav</ShortName>
-							<Path>SFX\SFX\.006_3F75BDB9.wem</Path>
-						</File>
-						<File Id="811255497" Language="SFX">
-							<ShortName>SFX\.012.wav</ShortName>
-							<Path>SFX\SFX\.012_3F75BDB9.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
+				<Event Id="1565165559" Name="KatarinaImpactSFX">
+					<MediaRefs>
+						<MediaRef Id="78131671"/>
+						<MediaRef Id="84367280"/>
+						<MediaRef Id="811255497"/>
+					</MediaRefs>
 				</Event>
-				<Event Id="3881038749" Name="KatarinaMenu" ObjectPath="\Events\Default Work Unit\KatarinaMenu">
-					<IncludedMemoryFiles>
-						<File Id="494502273" Language="SFX">
-							<ShortName>VO\katarina_base_vo_audio_3.wav</ShortName>
-							<Path>SFX\VO\katarina_base_vo_audio_3_3F75BDB9.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
+				<Event Id="3881038749" Name="KatarinaMenu">
+					<MediaRefs>
+						<MediaRef Id="494502273"/>
+					</MediaRefs>
 				</Event>
-				<Event Id="2478388218" Name="KatarinaQSFX" ObjectPath="\Events\Default Work Unit\KatarinaQSFX">
-					<IncludedMemoryFiles>
-						<File Id="1073272869" Language="SFX">
-							<ShortName>SFX\.059.wav</ShortName>
-							<Path>SFX\SFX\.059_3F75BDB9.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
+				<Event Id="2478388218" Name="KatarinaQSFX">
+					<MediaRefs>
+						<MediaRef Id="1073272869"/>
+					</MediaRefs>
 				</Event>
-				<Event Id="4110991296" Name="KatarinaQVO" ObjectPath="\Events\Default Work Unit\KatarinaQVO">
-					<IncludedMemoryFiles>
-						<File Id="93528572" Language="SFX">
-							<ShortName>VO\katarina_base_vo_audio_19.wav</ShortName>
-							<Path>SFX\VO\katarina_base_vo_audio_19_3F75BDB9.wem</Path>
-						</File>
-						<File Id="218249995" Language="SFX">
-							<ShortName>VO\katarina_base_vo_audio_7.wav</ShortName>
-							<Path>SFX\VO\katarina_base_vo_audio_7_3F75BDB9.wem</Path>
-						</File>
-						<File Id="220589107" Language="SFX">
-							<ShortName>VO\katarina_base_vo_audio_4.wav</ShortName>
-							<Path>SFX\VO\katarina_base_vo_audio_4_3F75BDB9.wem</Path>
-						</File>
-						<File Id="379174388" Language="SFX">
-							<ShortName>VO\katarina_base_vo_audio_6.wav</ShortName>
-							<Path>SFX\VO\katarina_base_vo_audio_6_3F75BDB9.wem</Path>
-						</File>
-						<File Id="400120246" Language="SFX">
-							<ShortName>VO\katarina_base_vo_audio_2.wav</ShortName>
-							<Path>SFX\VO\katarina_base_vo_audio_2_3F75BDB9.wem</Path>
-						</File>
-						<File Id="415511560" Language="SFX">
-							<ShortName>VO\katarina_base_vo_audio_13.wav</ShortName>
-							<Path>SFX\VO\katarina_base_vo_audio_13_3F75BDB9.wem</Path>
-						</File>
-						<File Id="482303995" Language="SFX">
-							<ShortName>VO\katarina_base_vo_audio_24.wav</ShortName>
-							<Path>SFX\VO\katarina_base_vo_audio_24_3F75BDB9.wem</Path>
-						</File>
-						<File Id="953300316" Language="SFX">
-							<ShortName>VO\katarina_base_vo_audio_5.wav</ShortName>
-							<Path>SFX\VO\katarina_base_vo_audio_5_3F75BDB9.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
+				<Event Id="4110991296" Name="KatarinaQVO">
+					<MediaRefs>
+						<MediaRef Id="93528572"/>
+						<MediaRef Id="218249995"/>
+						<MediaRef Id="220589107"/>
+						<MediaRef Id="379174388"/>
+						<MediaRef Id="400120246"/>
+						<MediaRef Id="415511560"/>
+						<MediaRef Id="482303995"/>
+						<MediaRef Id="953300316"/>
+					</MediaRefs>
 				</Event>
-				<Event Id="307566243" Name="KatarinaRSFX" ObjectPath="\Events\Default Work Unit\KatarinaRSFX">
-					<IncludedMemoryFiles>
-						<File Id="193932422" Language="SFX">
-							<ShortName>SFX\.010.wav</ShortName>
-							<Path>SFX\SFX\.010_3F75BDB9.wem</Path>
-						</File>
-						<File Id="886705908" Language="SFX">
-							<ShortName>SFX\.014.wav</ShortName>
-							<Path>SFX\SFX\.014_3F75BDB9.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
+				<Event Id="307566243" Name="KatarinaRSFX">
+					<MediaRefs>
+						<MediaRef Id="193932422"/>
+						<MediaRef Id="886705908"/>
+					</MediaRefs>
 				</Event>
-				<Event Id="4077583183" Name="KatarinaRVO" ObjectPath="\Events\Default Work Unit\KatarinaRVO">
-					<IncludedMemoryFiles>
-						<File Id="58458772" Language="SFX">
-							<ShortName>ultimate3.wav</ShortName>
-							<Path>SFX\ultimate3_3F75BDB9.wem</Path>
-						</File>
-						<File Id="79263463" Language="SFX">
-							<ShortName>ultimate2.wav</ShortName>
-							<Path>SFX\ultimate2_3F75BDB9.wem</Path>
-						</File>
-						<File Id="892545547" Language="SFX">
-							<ShortName>ultimate.wav</ShortName>
-							<Path>SFX\ultimate_3F75BDB9.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
+				<Event Id="4077583183" Name="KatarinaRVO">
+					<MediaRefs>
+						<MediaRef Id="58458772"/>
+						<MediaRef Id="79263463"/>
+						<MediaRef Id="892545547"/>
+					</MediaRefs>
 				</Event>
-				<Event Id="316800428" Name="KatarinaVoracitySFX" ObjectPath="\Events\Default Work Unit\KatarinaVoracitySFX">
-					<IncludedMemoryFiles>
-						<File Id="111524207" Language="SFX">
-							<ShortName>SFX\.028.wav</ShortName>
-							<Path>SFX\SFX\.028_3F75BDB9.wem</Path>
-						</File>
-						<File Id="772909795" Language="SFX">
-							<ShortName>SFX\.043.wav</ShortName>
-							<Path>SFX\SFX\.043_3F75BDB9.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
+				<Event Id="316800428" Name="KatarinaVoracitySFX">
+					<MediaRefs>
+						<MediaRef Id="111524207"/>
+						<MediaRef Id="772909795"/>
+					</MediaRefs>
 				</Event>
-			</IncludedEvents>
+			</Events>
 			<GameParameters>
-				<GameParameter Id="3673881719" Name="Volume_SFX" ObjectPath="\Game Parameters\Default Work Unit\Volume_SFX"/>
+				<GameParameter Id="3673881719" Name="Volume_SFX"/>
 			</GameParameters>
 		</SoundBank>
-		<SoundBank Id="1355168291" Language="SFX" Hash="263542888">
-			<ObjectPath>Init</ObjectPath>
+		<SoundBank Id="1355168291" Type="User" Language="SFX" Hash="{7F3A15DD-340D-EF22-59CE-AC32EA50B08A}">
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
+			<Plugins>
+				<AudioDevices>
+					<Plugin Id="2317455096" Name="No_Output" LibName="No Output" LibId="11862023"/>
+					<Plugin Id="3859886410" Name="System" LibName="System" LibId="11403271"/>
+				</AudioDevices>
+			</Plugins>
+			<Busses>
+				<Bus Id="3803692087" Name="Master Audio Bus"/>
+			</Busses>
+			<GameParameters>
+				<GameParameter Id="3673881719" Name="Volume_SFX"/>
+			</GameParameters>
 		</SoundBank>
 	</SoundBanks>
+	<FileHash>{A63D3076-0185-DAFC-C1B8-692F4C96859C}</FileHash>
 </SoundBanksInfo>

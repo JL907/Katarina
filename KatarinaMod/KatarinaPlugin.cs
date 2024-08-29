@@ -21,8 +21,7 @@ namespace KatarinaMod
     [BepInDependency("com.bepis.r2api.prefab", BepInDependency.DependencyFlags.HardDependency)]
     [BepInDependency("com.bepis.r2api.language", BepInDependency.DependencyFlags.HardDependency)]
     [BepInDependency("com.bepis.r2api.sound", BepInDependency.DependencyFlags.HardDependency)]
-    [BepInDependency("com.xoxfaby.BetterUI", BepInDependency.DependencyFlags.SoftDependency)]
-    [BepInDependency("com.cwmlolzlz.skills", BepInDependency.DependencyFlags.SoftDependency)]
+    [BepInDependency("com.bepis.r2api.networking", BepInDependency.DependencyFlags.HardDependency)]
     [NetworkCompatibility(CompatibilityLevel.EveryoneMustHaveMod, VersionStrictness.EveryoneNeedSameModVersion)]
     [BepInPlugin(MODUID, MODNAME, MODVERSION)]
     public class KatarinaPlugin : BaseUnityPlugin
@@ -37,11 +36,9 @@ namespace KatarinaMod
         //   this shouldn't even have to be said
         public const string MODUID = "com.Lemonlust.KatarinaMod";
 
-        public const string MODVERSION = "1.7.0";
+        public const string MODVERSION = "1.8.0";
         public static KatarinaPlugin instance;
         internal List<SurvivorBase> Survivors = new List<SurvivorBase>();
-
-        public static bool betterUIInstalled = false;
 
         public new ManualLogSource Logger
         {
@@ -56,8 +53,6 @@ namespace KatarinaMod
             instance = this;
             try
             {
-                if (BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("com.xoxfaby.BetterUI")) betterUIInstalled = true;
-
                 // load assets and read config
                 Modules.Assets.Initialize();
                 Modules.Config.ReadConfig();
@@ -75,23 +70,12 @@ namespace KatarinaMod
 
                 RoR2.ContentManagement.ContentManager.onContentPacksAssigned += LateSetup;
                 Hook();
-                if (betterUIInstalled)
-                {
-                    AddBetterUI();
-                }
             }
             catch (Exception e)
             {
                 Logger.LogError(e.Message + " - " + e.StackTrace);
             }
 
-        }
-        [MethodImpl(MethodImplOptions.NoInlining | MethodImplOptions.NoOptimization)]
-        private void AddBetterUI()
-        {
-            BetterUI.ProcCoefficientCatalog.AddSkill("KatarinaPrimary", "Basic Attack", Modules.Config.basicAttack_procCoefficient.Value);
-            BetterUI.ProcCoefficientCatalog.AddSkill("KatarinaBouncingBlades", "Bouncing Blades", Modules.Config.bouncingBlades_procCoefficient.Value);
-            BetterUI.ProcCoefficientCatalog.AddSkill("KatarinaDeathLotus", "Death Lotus", Modules.Config.deathLotus_procCoefficient.Value);
         }
 
         private void CharacterBody_RecalculateStats(On.RoR2.CharacterBody.orig_RecalculateStats orig, CharacterBody self)

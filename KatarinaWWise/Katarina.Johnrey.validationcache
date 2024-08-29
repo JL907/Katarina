@@ -1,57 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ValidationCache Version="1" SchemaVersion="97">
-	<ValidationCacheItem File="C:\Users\Johnrey\Documents\WwiseProjects\KatarinaWWise\Virtual Acoustics\Default Work Unit.wwu" DateLow="1647643672" DateHigh="0"/>
-	<ValidationCacheItem File="C:\Users\Johnrey\Documents\WwiseProjects\KatarinaWWise\Triggers\Default Work Unit.wwu" DateLow="1647643672" DateHigh="0"/>
-	<ValidationCacheItem File="C:\Users\Johnrey\Documents\WwiseProjects\KatarinaWWise\Switches\Default Work Unit.wwu" DateLow="1647643672" DateHigh="0"/>
-	<ValidationCacheItem File="C:\Users\Johnrey\Documents\WwiseProjects\KatarinaWWise\States\Default Work Unit.wwu" DateLow="1647643672" DateHigh="0"/>
-	<ValidationCacheItem File="C:\Users\Johnrey\Documents\WwiseProjects\KatarinaWWise\Soundcaster Sessions\Default Work Unit.wwu" DateLow="1647643672" DateHigh="0"/>
-	<ValidationCacheItem File="C:\Users\Johnrey\Documents\WwiseProjects\KatarinaWWise\SoundBanks\Default Work Unit.wwu" DateLow="1647769012" DateHigh="0"/>
-	<ValidationCacheItem File="C:\Users\Johnrey\Documents\WwiseProjects\KatarinaWWise\Queries\Factory Queries.wwu" DateLow="1646380656" DateHigh="0"/>
-	<ValidationCacheItem File="C:\Users\Johnrey\Documents\WwiseProjects\KatarinaWWise\Queries\Default Work Unit.wwu" DateLow="1647643672" DateHigh="0"/>
-	<ValidationCacheItem File="C:\Users\Johnrey\Documents\WwiseProjects\KatarinaWWise\Presets\Factory Spatial Audio.wwu" DateLow="1646380656" DateHigh="0"/>
-	<ValidationCacheItem File="C:\Users\Johnrey\Documents\WwiseProjects\KatarinaWWise\Presets\Default Work Unit.wwu" DateLow="1647643672" DateHigh="0"/>
-	<ValidationCacheItem File="C:\Users\Johnrey\Documents\WwiseProjects\KatarinaWWise\Modulators\Default Work Unit.wwu" DateLow="1647643672" DateHigh="0"/>
-	<ValidationCacheItem File="C:\Users\Johnrey\Documents\WwiseProjects\KatarinaWWise\Mixing Sessions\Default Work Unit.wwu" DateLow="1647643672" DateHigh="0"/>
-	<ValidationCacheItem File="C:\Users\Johnrey\Documents\WwiseProjects\KatarinaWWise\Master-Mixer Hierarchy\Default Work Unit.wwu" DateLow="1647643672" DateHigh="0"/>
-	<ValidationCacheItem File="C:\Users\Johnrey\Documents\WwiseProjects\KatarinaWWise\Katarina.wproj" DateLow="1647643672" DateHigh="0"/>
-	<ValidationCacheItem File="C:\Users\Johnrey\Documents\WwiseProjects\KatarinaWWise\Katarina.Johnrey.wsettings" DateLow="1648050375" DateHigh="0"/>
-	<ValidationCacheItem File="C:\Users\Johnrey\Documents\WwiseProjects\KatarinaWWise\Interactive Music Hierarchy\Default Work Unit.wwu" DateLow="1647643672" DateHigh="0"/>
-	<ValidationCacheItem File="C:\Users\Johnrey\Documents\WwiseProjects\KatarinaWWise\Game Parameters\Default Work Unit.wwu" DateLow="1647644081" DateHigh="0"/>
-	<ValidationCacheItem File="C:\Users\Johnrey\Documents\WwiseProjects\KatarinaWWise\Events\Default Work Unit.wwu" DateLow="1647769012" DateHigh="0"/>
-	<ValidationCacheItem File="C:\Users\Johnrey\Documents\WwiseProjects\KatarinaWWise\Effects\Factory Effects.wwu" DateLow="1646380656" DateHigh="0"/>
-	<ValidationCacheItem File="C:\Users\Johnrey\Documents\WwiseProjects\KatarinaWWise\Effects\Default Work Unit.wwu" DateLow="1647643672" DateHigh="0"/>
-	<ValidationCacheItem File="C:\Users\Johnrey\Documents\WwiseProjects\KatarinaWWise\Dynamic Dialogue\Default Work Unit.wwu" DateLow="1647643672" DateHigh="0"/>
-	<ValidationCacheItem File="C:\Users\Johnrey\Documents\WwiseProjects\KatarinaWWise\Conversion Settings\Factory Conversion Settings.wwu" DateLow="1646380656" DateHigh="0"/>
-	<ValidationCacheItem File="C:\Users\Johnrey\Documents\WwiseProjects\KatarinaWWise\Conversion Settings\Default Work Unit.wwu" DateLow="1647645308" DateHigh="0"/>
-	<ValidationCacheItem File="C:\Users\Johnrey\Documents\WwiseProjects\KatarinaWWise\Control Surface Sessions\Default Work Unit.wwu" DateLow="1647643672" DateHigh="0"/>
-	<ValidationCacheItem File="C:\Users\Johnrey\Documents\WwiseProjects\KatarinaWWise\Audio Devices\Default Work Unit.wwu" DateLow="1647643672" DateHigh="0"/>
-	<ValidationCacheItem File="C:\Users\Johnrey\Documents\WwiseProjects\KatarinaWWise\Attenuations\Default Work Unit.wwu" DateLow="1648050374" DateHigh="0"/>
-	<ValidationCacheItem File="C:\Users\Johnrey\Documents\WwiseProjects\KatarinaWWise\Actor-Mixer Hierarchy\Default Work Unit.wwu" DateLow="1647932601" DateHigh="0"/>
-	<ValidationCacheItem File="C:\Users\Johnrey\Documents\WwiseProjects\Katarina\Virtual Acoustics\Default Work Unit.wwu" DateLow="1647643672" DateHigh="0"/>
-	<ValidationCacheItem File="C:\Users\Johnrey\Documents\WwiseProjects\Katarina\Triggers\Default Work Unit.wwu" DateLow="1647643672" DateHigh="0"/>
-	<ValidationCacheItem File="C:\Users\Johnrey\Documents\WwiseProjects\Katarina\Switches\Default Work Unit.wwu" DateLow="1647643672" DateHigh="0"/>
-	<ValidationCacheItem File="C:\Users\Johnrey\Documents\WwiseProjects\Katarina\States\Default Work Unit.wwu" DateLow="1647643672" DateHigh="0"/>
-	<ValidationCacheItem File="C:\Users\Johnrey\Documents\WwiseProjects\Katarina\Soundcaster Sessions\Default Work Unit.wwu" DateLow="1647643672" DateHigh="0"/>
-	<ValidationCacheItem File="C:\Users\Johnrey\Documents\WwiseProjects\Katarina\SoundBanks\Default Work Unit.wwu" DateLow="1647769012" DateHigh="0"/>
-	<ValidationCacheItem File="C:\Users\Johnrey\Documents\WwiseProjects\Katarina\Queries\Factory Queries.wwu" DateLow="1646380656" DateHigh="0"/>
-	<ValidationCacheItem File="C:\Users\Johnrey\Documents\WwiseProjects\Katarina\Queries\Default Work Unit.wwu" DateLow="1647643672" DateHigh="0"/>
-	<ValidationCacheItem File="C:\Users\Johnrey\Documents\WwiseProjects\Katarina\Presets\Factory Spatial Audio.wwu" DateLow="1646380656" DateHigh="0"/>
-	<ValidationCacheItem File="C:\Users\Johnrey\Documents\WwiseProjects\Katarina\Presets\Default Work Unit.wwu" DateLow="1647643672" DateHigh="0"/>
-	<ValidationCacheItem File="C:\Users\Johnrey\Documents\WwiseProjects\Katarina\Modulators\Default Work Unit.wwu" DateLow="1647643672" DateHigh="0"/>
-	<ValidationCacheItem File="C:\Users\Johnrey\Documents\WwiseProjects\Katarina\Mixing Sessions\Default Work Unit.wwu" DateLow="1647643672" DateHigh="0"/>
-	<ValidationCacheItem File="C:\Users\Johnrey\Documents\WwiseProjects\Katarina\Master-Mixer Hierarchy\Default Work Unit.wwu" DateLow="1647643672" DateHigh="0"/>
-	<ValidationCacheItem File="C:\Users\Johnrey\Documents\WwiseProjects\Katarina\Katarina.wproj" DateLow="1647643672" DateHigh="0"/>
-	<ValidationCacheItem File="C:\Users\Johnrey\Documents\WwiseProjects\Katarina\Katarina.Johnrey.wsettings" DateLow="1647932602" DateHigh="0"/>
-	<ValidationCacheItem File="C:\Users\Johnrey\Documents\WwiseProjects\Katarina\Interactive Music Hierarchy\Default Work Unit.wwu" DateLow="1647643672" DateHigh="0"/>
-	<ValidationCacheItem File="C:\Users\Johnrey\Documents\WwiseProjects\Katarina\Game Parameters\Default Work Unit.wwu" DateLow="1647644081" DateHigh="0"/>
-	<ValidationCacheItem File="C:\Users\Johnrey\Documents\WwiseProjects\Katarina\Events\Default Work Unit.wwu" DateLow="1647769012" DateHigh="0"/>
-	<ValidationCacheItem File="C:\Users\Johnrey\Documents\WwiseProjects\Katarina\Effects\Factory Effects.wwu" DateLow="1646380656" DateHigh="0"/>
-	<ValidationCacheItem File="C:\Users\Johnrey\Documents\WwiseProjects\Katarina\Effects\Default Work Unit.wwu" DateLow="1647643672" DateHigh="0"/>
-	<ValidationCacheItem File="C:\Users\Johnrey\Documents\WwiseProjects\Katarina\Dynamic Dialogue\Default Work Unit.wwu" DateLow="1647643672" DateHigh="0"/>
-	<ValidationCacheItem File="C:\Users\Johnrey\Documents\WwiseProjects\Katarina\Conversion Settings\Factory Conversion Settings.wwu" DateLow="1646380656" DateHigh="0"/>
-	<ValidationCacheItem File="C:\Users\Johnrey\Documents\WwiseProjects\Katarina\Conversion Settings\Default Work Unit.wwu" DateLow="1647645308" DateHigh="0"/>
-	<ValidationCacheItem File="C:\Users\Johnrey\Documents\WwiseProjects\Katarina\Control Surface Sessions\Default Work Unit.wwu" DateLow="1647643672" DateHigh="0"/>
-	<ValidationCacheItem File="C:\Users\Johnrey\Documents\WwiseProjects\Katarina\Audio Devices\Default Work Unit.wwu" DateLow="1647643672" DateHigh="0"/>
-	<ValidationCacheItem File="C:\Users\Johnrey\Documents\WwiseProjects\Katarina\Attenuations\Default Work Unit.wwu" DateLow="1647645308" DateHigh="0"/>
-	<ValidationCacheItem File="C:\Users\Johnrey\Documents\WwiseProjects\Katarina\Actor-Mixer Hierarchy\Default Work Unit.wwu" DateLow="1647932601" DateHigh="0"/>
+<ValidationCache Version="1" SchemaVersion="119">
+	<ValidationCacheItem File="C:\Users\Johnrey\Desktop\Katarina\KatarinaWWise\Virtual Acoustics\Default Work Unit.wwu" DateLow="1724926189" DateHigh="0"/>
+	<ValidationCacheItem File="C:\Users\Johnrey\Desktop\Katarina\KatarinaWWise\Triggers\Default Work Unit.wwu" DateLow="1724926189" DateHigh="0"/>
+	<ValidationCacheItem File="C:\Users\Johnrey\Desktop\Katarina\KatarinaWWise\Switches\Default Work Unit.wwu" DateLow="1724926189" DateHigh="0"/>
+	<ValidationCacheItem File="C:\Users\Johnrey\Desktop\Katarina\KatarinaWWise\States\Default Work Unit.wwu" DateLow="1724926189" DateHigh="0"/>
+	<ValidationCacheItem File="C:\Users\Johnrey\Desktop\Katarina\KatarinaWWise\Soundcaster Sessions\Default Work Unit.wwu" DateLow="1724926189" DateHigh="0"/>
+	<ValidationCacheItem File="C:\Users\Johnrey\Desktop\Katarina\KatarinaWWise\SoundBanks\Default Work Unit.wwu" DateLow="1724926189" DateHigh="0"/>
+	<ValidationCacheItem File="C:\Users\Johnrey\Desktop\Katarina\KatarinaWWise\Queries\Factory Queries.wwu" DateLow="1724926189" DateHigh="0"/>
+	<ValidationCacheItem File="C:\Users\Johnrey\Desktop\Katarina\KatarinaWWise\Queries\Default Work Unit.wwu" DateLow="1724926189" DateHigh="0"/>
+	<ValidationCacheItem File="C:\Users\Johnrey\Desktop\Katarina\KatarinaWWise\Presets\Factory Spatial Audio.wwu" DateLow="1724926189" DateHigh="0"/>
+	<ValidationCacheItem File="C:\Users\Johnrey\Desktop\Katarina\KatarinaWWise\Presets\Default Work Unit.wwu" DateLow="1724926189" DateHigh="0"/>
+	<ValidationCacheItem File="C:\Users\Johnrey\Desktop\Katarina\KatarinaWWise\Modulators\Default Work Unit.wwu" DateLow="1724926189" DateHigh="0"/>
+	<ValidationCacheItem File="C:\Users\Johnrey\Desktop\Katarina\KatarinaWWise\Mixing Sessions\Default Work Unit.wwu" DateLow="1724926189" DateHigh="0"/>
+	<ValidationCacheItem File="C:\Users\Johnrey\Desktop\Katarina\KatarinaWWise\Master-Mixer Hierarchy\Default Work Unit.wwu" DateLow="1724926189" DateHigh="0"/>
+	<ValidationCacheItem File="C:\Users\Johnrey\Desktop\Katarina\KatarinaWWise\Katarina.wproj" DateLow="1724926189" DateHigh="0"/>
+	<ValidationCacheItem File="C:\Users\Johnrey\Desktop\Katarina\KatarinaWWise\Katarina.Johnrey.wsettings" DateLow="1724926189" DateHigh="0"/>
+	<ValidationCacheItem File="C:\Users\Johnrey\Desktop\Katarina\KatarinaWWise\Interactive Music Hierarchy\Default Work Unit.wwu" DateLow="1724926189" DateHigh="0"/>
+	<ValidationCacheItem File="C:\Users\Johnrey\Desktop\Katarina\KatarinaWWise\Game Parameters\Default Work Unit.wwu" DateLow="1724926189" DateHigh="0"/>
+	<ValidationCacheItem File="C:\Users\Johnrey\Desktop\Katarina\KatarinaWWise\Events\Default Work Unit.wwu" DateLow="1724926189" DateHigh="0"/>
+	<ValidationCacheItem File="C:\Users\Johnrey\Desktop\Katarina\KatarinaWWise\Effects\Factory Effects.wwu" DateLow="1724926189" DateHigh="0"/>
+	<ValidationCacheItem File="C:\Users\Johnrey\Desktop\Katarina\KatarinaWWise\Effects\Default Work Unit.wwu" DateLow="1724926189" DateHigh="0"/>
+	<ValidationCacheItem File="C:\Users\Johnrey\Desktop\Katarina\KatarinaWWise\Dynamic Dialogue\Default Work Unit.wwu" DateLow="1724926189" DateHigh="0"/>
+	<ValidationCacheItem File="C:\Users\Johnrey\Desktop\Katarina\KatarinaWWise\Conversion Settings\Factory Conversion Settings.wwu" DateLow="1724926189" DateHigh="0"/>
+	<ValidationCacheItem File="C:\Users\Johnrey\Desktop\Katarina\KatarinaWWise\Conversion Settings\Default Work Unit.wwu" DateLow="1724926189" DateHigh="0"/>
+	<ValidationCacheItem File="C:\Users\Johnrey\Desktop\Katarina\KatarinaWWise\Control Surface Sessions\Default Work Unit.wwu" DateLow="1724926189" DateHigh="0"/>
+	<ValidationCacheItem File="C:\Users\Johnrey\Desktop\Katarina\KatarinaWWise\Audio Devices\Default Work Unit.wwu" DateLow="1724926189" DateHigh="0"/>
+	<ValidationCacheItem File="C:\Users\Johnrey\Desktop\Katarina\KatarinaWWise\Attenuations\Default Work Unit.wwu" DateLow="1724926189" DateHigh="0"/>
+	<ValidationCacheItem File="C:\Users\Johnrey\Desktop\Katarina\KatarinaWWise\Actor-Mixer Hierarchy\Default Work Unit.wwu" DateLow="1724926189" DateHigh="0"/>
 </ValidationCache>
