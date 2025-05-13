@@ -3,7 +3,7 @@
 	<PropertyGroup>
 		<TargetFramework>netstandard2.1</TargetFramework>
 		<LangVersion>7.3</LangVersion>
-		<Version>1.8.0</Version>
+		<Version>1.8.1</Version>
 		<AssemblyName>LemonKatarinaMod</AssemblyName>
 	</PropertyGroup>
 
@@ -26,7 +26,7 @@
 
 		<PackageReference Include="BepInEx.Core" Version="5.4.19" />
 
-		<PackageReference Include="MMHOOK.RoR2" Version="2024.8.28" NoWarn="NU1701" />
+		<PackageReference Include="MMHOOK.RoR2" Version="2024.12.10" NoWarn="NU1701" />
 
 		<PackageReference Include="RiskOfRain2.GameLibs" Version="*-*" />
 

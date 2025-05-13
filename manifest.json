@@ -1,6 +1,6 @@
 {
     "name": "KatarinaMod",
-    "version_number": "1.8.0",
+    "version_number": "1.8.1",
     "website_url": "https://github.com/JL907/Katarina",
     "description": "Violence solves everything.",
     "dependencies": [
@@ -11,6 +11,7 @@
 		"RiskofThunder-R2API_Language-1.0.1",
 		"RiskofThunder-R2API_Sound-1.0.3",
 		"RiskofThunder-RoR2BepInExPack-1.19.0",
-		"RiskofThunder-R2API_Networking-1.0.2"
+		"RiskofThunder-R2API_Networking-1.0.2",
+		"pseudopulse-SeekersPatcher-1.3.7"
     ]
 }
