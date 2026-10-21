@@ -32,12 +32,11 @@ namespace KatarinaMod
 		public DamageType damageType;
 		private bool canBounceOnSameTarget;
 		private bool failedToKill;
-		private bool tossed;
+		// set on the first orb of a throw; it drops the dagger where it lands
+		public bool tossDaggerOnArrival;
 		private BullseyeSearch search;
 		private GameObject weaponInstance;
 		private EntityStateMachine outer = null;
-
-		public static event Action<DaggerOrb, CharacterBody> onDaggerOrbArrival;
 
 		public override void Begin()
 		{
@@ -73,16 +72,10 @@ namespace KatarinaMod
 					healthComponent.TakeDamage(damageInfo);
 					GlobalEventManager.instance.OnHitEnemy(damageInfo, healthComponent.gameObject);
 					GlobalEventManager.instance.OnHitAll(damageInfo, healthComponent.gameObject);
-					CharacterBody characterBody = this.attacker.gameObject.GetComponent<CharacterBody>();
-					if (!tossed)
+					if (this.tossDaggerOnArrival)
 					{
-						tossed = true;
-						Action<DaggerOrb, CharacterBody> action = DaggerOrb.onDaggerOrbArrival;
-						if (action == null)
-						{
-							return;
-						}
-						action(this, characterBody);
+						this.tossDaggerOnArrival = false;
+						this.TossDagger(this.target.transform.position);
 					}
 				}
 				this.failedToKill |= (!healthComponent || healthComponent.alive);
@@ -127,6 +120,22 @@ namespace KatarinaMod
 				}
 			}
 		}
+		private void TossDagger(Vector3 location)
+		{
+			if (!NetworkServer.active || !this.attacker) return;
+			ProjectileManager.instance.FireProjectile(new FireProjectileInfo
+			{
+				projectilePrefab = Modules.Projectiles.knifePrefab,
+				position = location + Vector3.up * 2f,
+				rotation = Quaternion.identity,
+				owner = this.attacker, // only this Katarina can pick it up
+				damage = 0,
+				force = 0,
+				crit = false,
+				speedOverride = 0f
+			});
+		}
+
 		public HurtBox PickNextTarget(Vector3 position)
 		{
 			if (this.search == null)

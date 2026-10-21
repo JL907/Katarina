@@ -80,6 +80,8 @@ namespace KatarinaMod.Modules
             if (timer) Object.DestroyImmediate(timer);
 
             if (!ghostPrefab.GetComponent<ProjectileGhostController>()) ghostPrefab.AddComponent<ProjectileGhostController>();
+            // only the owning Katarina sees her dagger, with an on-screen marker
+            ghostPrefab.AddComponent<DaggerGhostVisibility>();
 
             Modules.Assets.ConvertAllRenderersToHopooShader(ghostPrefab);
 

@@ -29,7 +29,6 @@ namespace KatarinaMod.SkillStates.Katarina.Weapon
         private HurtBox initialOrbTarget;
         private ChildLocator childLocator;
 		private bool hasSuccessfullyThrownDagger = false;
-        private bool tossed;
 
         public override void OnEnter()
         {
@@ -39,7 +38,6 @@ namespace KatarinaMod.SkillStates.Katarina.Weapon
             this.modelTransform = base.GetModelTransform();
             this.animator = base.GetModelAnimator();
             this.huntressTracker = base.GetComponent<HuntressTracker>();
-			DaggerOrb.onDaggerOrbArrival += DaggerOrb_onDaggerOrbArrival;
 
 			if (this.huntressTracker && base.isAuthority)
 			{
@@ -55,33 +53,6 @@ namespace KatarinaMod.SkillStates.Katarina.Weapon
             {
                 base.characterBody.SetAimTimer(this.duration);
             }
-		}
-
-        private void DaggerOrb_onDaggerOrbArrival(DaggerOrb obj, CharacterBody body)
-        {
-			if (obj == null) return;
-			if (body != base.characterBody) return;
-			if (!tossed) this.TossDagger(obj.target.transform.position);
-        }
-
-        private void TossDagger(Vector3 location)
-		{
-			if (base.isAuthority)
-			{
-				FireProjectileInfo fireProjectileInfo = new FireProjectileInfo
-				{
-					projectilePrefab = Modules.Projectiles.knifePrefab,
-					position = location + Vector3.up * 2f,
-					rotation = Quaternion.identity,
-					owner = base.gameObject,
-					damage = 0,
-					force = 0,
-					crit = false,
-					speedOverride = 0f
-				};
-				ProjectileManager.instance.FireProjectile(fireProjectileInfo);
-				tossed = true;
-			}
 		}
 
 		public override void FixedUpdate()
@@ -101,24 +72,25 @@ namespace KatarinaMod.SkillStates.Katarina.Weapon
 
 		private void AttemptDagger()
         {
-			if (!this.hasTriedToThrowDagger)
+			if (this.hasTriedToThrowDagger) return;
+			this.hasTriedToThrowDagger = true;
+
+			if (this.initialOrbTarget)
 			{
-				this.FireOrbGlaive();
-				if (hasSuccessfullyThrownDagger)
-				{
-					Animation();
-				}
-				if (base.isAuthority && this.hasTriedToThrowDagger && !this.hasSuccessfullyThrownDagger)
-				{
-					base.activatorSkillSlot.rechargeStopwatch += base.activatorSkillSlot.CalculateFinalRechargeInterval() - this.duration;
-				}
+				this.hasSuccessfullyThrownDagger = true;
+				this.Animation();
+				// the orb (damage, bounces, and the dagger it drops) only runs on the server
+				if (NetworkServer.active) this.FireOrbGlaive();
+			}
+			else if (base.isAuthority)
+			{
+				base.activatorSkillSlot.rechargeStopwatch += base.activatorSkillSlot.CalculateFinalRechargeInterval() - this.duration;
 			}
 		}
 
 		public override void OnExit()
         {
 			AttemptDagger();
-			DaggerOrb.onDaggerOrbArrival -= DaggerOrb_onDaggerOrbArrival;
 			base.OnExit();
 			
         }
@@ -137,7 +109,6 @@ namespace KatarinaMod.SkillStates.Katarina.Weapon
 
 		private void FireOrbGlaive()
 		{
- 			this.hasTriedToThrowDagger = true;
 			DaggerOrb lightningOrb = new DaggerOrb();
 			lightningOrb.damageValue = base.characterBody.damage * ThrowDagger.damageCoefficient;
 			lightningOrb.isCrit = Util.CheckRoll(base.characterBody.crit, base.characterBody.master);
@@ -149,16 +120,12 @@ namespace KatarinaMod.SkillStates.Katarina.Weapon
 			lightningOrb.bouncedObjects = new List<HealthComponent>();
 			lightningOrb.range = ThrowDagger.daggerBounceRange;
             lightningOrb.damageCoefficientPerBounce = ThrowDagger.damageCoefficientPerBounce;
-            HurtBox hurtBox = this.initialOrbTarget;
-			if (hurtBox)
-			{
-				this.hasSuccessfullyThrownDagger = true;
-				Transform transform = this.childLocator.FindChild("R_Hand");
-				EffectManager.SimpleMuzzleFlash(ThrowGlaive.muzzleFlashPrefab, base.gameObject, "R_Hand", true);
-				lightningOrb.origin = transform.position;
-				lightningOrb.target = hurtBox;
-				OrbManager.instance.AddOrb(lightningOrb);
-			}
+			lightningOrb.tossDaggerOnArrival = true;
+			Transform hand = this.childLocator ? this.childLocator.FindChild("R_Hand") : null;
+			EffectManager.SimpleMuzzleFlash(ThrowGlaive.muzzleFlashPrefab, base.gameObject, "R_Hand", true);
+			lightningOrb.origin = hand ? hand.position : base.characterBody.corePosition;
+			lightningOrb.target = this.initialOrbTarget;
+			OrbManager.instance.AddOrb(lightningOrb);
 		}
 		public override void OnSerialize(NetworkWriter writer)
 		{

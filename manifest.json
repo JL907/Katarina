@@ -1,6 +1,6 @@
 {
     "name": "KatarinaMod",
-    "version_number": "1.8.2",
+    "version_number": "1.8.3",
     "website_url": "https://github.com/JL907/Katarina",
     "description": "Violence solves everything.",
     "dependencies": [
@@ -11,6 +11,7 @@
         "RiskofThunder-R2API_Language-1.1.0",
         "RiskofThunder-R2API_Sound-1.0.3",
         "RiskofThunder-RoR2BepInExPack-1.47.0",
-        "RiskofThunder-R2API_Networking-1.0.4"
+        "RiskofThunder-R2API_Networking-1.0.4",
+        "lemonlust-Runes-1.0.0"
     ]
 }

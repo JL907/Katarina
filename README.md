@@ -17,10 +17,18 @@
 ## Introduction
 Decisive in judgment and lethal in combat, Katarina is a Noxian assassin of the highest caliber. Eldest daughter to the legendary General Du Couteau, she made her talents known with swift kills against unsuspecting enemies. Her fiery ambition has driven her to pursue heavily-guarded targets, even at the risk of endangering her allies—but no matter the mission, Katarina will not hesitate to execute her duty amid a whirlwind of serrated daggers.
 
-## Latest Patch Notes `1.8.0`
+## Latest Patch Notes `1.8.3`
 `Bug reports can be posted in discord` https://discord.gg/aYuS9Wsxxx  
 
-* SOTS Update
+* Multiplayer fixes for daggers
+   * Dagger pickups are now handled by the host, so every player sees the same result and a dagger can't be picked up twice.
+   * Bouncing Blades daggers now drop correctly for every player, not just the host.
+   * Fixed duplicate Bouncing Blades effects in multiplayer.
+* Each Katarina can only pick up her own daggers.
+* Daggers are now only visible to the Katarina who threw them.
+* Landed daggers now show a League-style ground circle marking their pickup range.
+* Landed daggers now show an on-screen marker (with an edge-of-screen arrow when off-screen) so they're easier to spot.
+* Added [Runes](https://thunderstore.io/package/lemonlust/Runes/) as a dependency.
 
 ## Discord
 <a href="https://discord.gg/aYuS9Wsxxx" target="_blank">
@@ -64,6 +72,15 @@ Decisive in judgment and lethal in combat, Katarina is a Noxian assassin of the 
 ---
 
 ## Old Patch Notes
+`1.8.2`
+* Updated for Risk of Rain 2 version 1.5.0
+   * Fixed Katarina failing to load.
+   * Fixed thrown daggers showing the Commando grenade model.
+* Updated dependencies to their latest versions.
+
+`1.8.0`
+* SOTS Update
+
 `1.7.0`
 * R2API Conversion
 

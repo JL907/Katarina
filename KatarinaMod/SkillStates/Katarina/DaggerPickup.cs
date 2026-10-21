@@ -47,18 +47,22 @@ namespace KatarinaMod
 
 		private void OnTriggerEnter(Collider other)
 		{
+			// Only the server decides pickups, so every player sees the same result
+			// and a dagger can't be collected twice.
+			if (!NetworkServer.active || !this.alive) return;
+
 			CharacterBody characterBody = other.GetComponent<CharacterBody>();
-			if (characterBody && characterBody?.bodyIndex == BodyCatalog.FindBodyIndex("Katarina"))
-			{
-				EntityStateMachine component = characterBody.GetComponent<EntityStateMachine>();
-				if (component)
-				{
-					this.alive = false;
-					if (Util.HasEffectiveAuthority(component.networkIdentity)) component.SetNextState(new Voracity());
-					UnityEngine.Object.Destroy(base.gameObject);
-				}
-			}
+			if (!characterBody) return;
+
+			// Each Katarina can only pick up her own daggers.
+			GameObject owner = this.projectileController ? this.projectileController.owner : null;
+			if (!owner || characterBody.gameObject != owner) return;
+
+			this.alive = false;
+			Modules.DaggerPickupMessage.NotifyPickup(characterBody);
+			NetworkServer.Destroy(base.gameObject);
 		}
+
 		private void Update()
 		{
 			if (this.stuck)
