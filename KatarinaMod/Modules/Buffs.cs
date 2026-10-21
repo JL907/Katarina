@@ -29,7 +29,7 @@ namespace KatarinaMod.Modules
 
         internal static void RegisterBuffs()
         {
-            armorBuff = AddNewBuff("KatarinaArmorBuff", Resources.Load<Sprite>("Textures/BuffIcons/texBuffGenericShield"), Color.white, false, false);
+            armorBuff = AddNewBuff("KatarinaArmorBuff", LegacyResourcesAPI.Load<Sprite>("Textures/BuffIcons/texBuffGenericShield"), Color.white, false, false);
         }
     }
 }

@@ -22,7 +22,7 @@ namespace KatarinaMod.Modules.Survivors
             characterPortrait = Modules.Assets.LoadCharacterIcon("Katarina"),
             crosshair = Modules.Assets.LoadCrosshair("Standard"),
             subtitleNameToken = "KATARINA_SUBTITLE",
-            podPrefab = Resources.Load<GameObject>("Prefabs/NetworkedObjects/SurvivorPod"),
+            podPrefab = LegacyResourcesAPI.Load<GameObject>("Prefabs/NetworkedObjects/SurvivorPod"),
 
             maxHealth = Modules.Config.baseHealth.Value,
             healthGrowth = Modules.Config.healthGrowth.Value,

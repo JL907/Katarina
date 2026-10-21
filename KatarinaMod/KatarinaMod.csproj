@@ -3,7 +3,7 @@
 	<PropertyGroup>
 		<TargetFramework>netstandard2.1</TargetFramework>
 		<LangVersion>7.3</LangVersion>
-		<Version>1.8.1</Version>
+		<Version>1.8.2</Version>
 		<AssemblyName>LemonKatarinaMod</AssemblyName>
 	</PropertyGroup>
 
@@ -19,18 +19,18 @@
 
 	<ItemGroup>
 		<PackageReference Include="RoR2BepInExPack" Version="*" />
-		<PackageReference Include="BepInEx.Analyzers" Version="*">
+		<PackageReference Include="BepInEx.Analyzers" Version="1.0.8">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
 
-		<PackageReference Include="BepInEx.Core" Version="5.4.19" />
+		<PackageReference Include="BepInEx.Core" Version="5.4.21" />
 
-		<PackageReference Include="MMHOOK.RoR2" Version="2024.12.10" NoWarn="NU1701" />
+		<PackageReference Include="MMHOOK.RoR2" Version="2025.11.19" NoWarn="NU1701" />
 
-		<PackageReference Include="RiskOfRain2.GameLibs" Version="*-*" />
+		<PackageReference Include="RiskOfRain2.GameLibs" Version="1.5.0-r.1" />
 
-		<PackageReference Include="UnityEngine.Modules" Version="2021.3.33" />
+		<PackageReference Include="UnityEngine.Modules" Version="2021.3.45" />
 
 		<PackageReference Include="R2API.Core" Version="*" />
 		<PackageReference Include="R2API.Prefab" Version="*" />
@@ -53,6 +53,14 @@
 	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
 	  <Exec Command="if $(Configuration) == Release (&#xD;&#xA;powershell Compress-Archive -Path '$(TargetDir)$(TargetName).dll', '$(SolutionDir)icon.png', '$(SolutionDir)manifest.json', '$(SolutionDir)README.md' -DestinationPath '$(SolutionDir)$(TargetName) $(Version).zip' -Force&#xD;&#xA;)&#xD;&#xA;&#xD;&#xA;" />
 	</Target>
+
+	<Target Name="CopyToR2Modman" AfterTargets="Build">
+		<PropertyGroup>
+			<PluginDir>$(APPDATA)\r2modmanPlus-local\RiskOfRain2\profiles\Default\BepInEx\plugins\$(TargetName)</PluginDir>
+		</PropertyGroup>
+		<Copy SourceFiles="$(TargetDir)$(TargetName).dll" DestinationFolder="$(PluginDir)" SkipUnchangedFiles="true" />
+	</Target>
+	
 
 </Project>
 

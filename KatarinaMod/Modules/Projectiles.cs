@@ -2,6 +2,7 @@
 using RoR2;
 using RoR2.Projectile;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 using UnityEngine.Networking;
 
 namespace KatarinaMod.Modules
@@ -24,7 +25,7 @@ namespace KatarinaMod.Modules
 
         private static GameObject CloneProjectilePrefab(string prefabName, string newPrefabName)
         {
-            GameObject newPrefab = PrefabAPI.InstantiateClone(Resources.Load<GameObject>("Prefabs/Projectiles/" + prefabName), newPrefabName);
+            GameObject newPrefab = PrefabAPI.InstantiateClone(LegacyResourcesAPI.Load<GameObject>("Prefabs/Projectiles/" + prefabName), newPrefabName);
             return newPrefab;
         }
         private static void CreateKnife()
@@ -57,14 +58,27 @@ namespace KatarinaMod.Modules
             ProjectileController bombController = knifePrefab.GetComponent<ProjectileController>();
             knifePrefab.AddComponent<DaggerPickup>();
             knifePrefab.AddComponent<DestroyOnTimer>().duration = 6f;
-            if (Modules.Assets.mainAssetBundle.LoadAsset<GameObject>("KatarinaWeapon") != null) bombController.ghostPrefab = CreateGhostPrefab("KatarinaWeapon");
+            if (Modules.Assets.mainAssetBundle.LoadAsset<GameObject>("KatarinaWeapon") != null)
+            {
+                bombController.ghostPrefab = CreateGhostPrefab("KatarinaWeapon");
+                // RoR2 1.5: ProjectileController.Awake prefers ghostPrefabAddress over ghostPrefab.
+                // The cloned Commando grenade still points at its own ghost, so clear it.
+                bombController.ghostPrefabAddress = new AssetReferenceT<GameObject>(string.Empty);
+            }
         }
  
 
         private static GameObject CreateGhostPrefab(string ghostName)
         {
-            GameObject ghostPrefab = Modules.Assets.mainAssetBundle.LoadAsset<GameObject>(ghostName);
-            if (!ghostPrefab.GetComponent<NetworkIdentity>()) ghostPrefab.AddComponent<NetworkIdentity>();
+            // clone the asset so the ghost is separate from the networked "KatarinaWeapon" prefab set up in Assets
+            GameObject ghostPrefab = PrefabAPI.InstantiateClone(Modules.Assets.mainAssetBundle.LoadAsset<GameObject>(ghostName), ghostName + "Ghost", false);
+
+            // ghosts are local, pooled visuals: no NetworkIdentity, and no DestroyOnTimer (the pool handles lifetime)
+            NetworkIdentity netId = ghostPrefab.GetComponent<NetworkIdentity>();
+            if (netId) Object.DestroyImmediate(netId);
+            DestroyOnTimer timer = ghostPrefab.GetComponent<DestroyOnTimer>();
+            if (timer) Object.DestroyImmediate(timer);
+
             if (!ghostPrefab.GetComponent<ProjectileGhostController>()) ghostPrefab.AddComponent<ProjectileGhostController>();
 
             Modules.Assets.ConvertAllRenderersToHopooShader(ghostPrefab);
