@@ -6,6 +6,7 @@ namespace KatarinaMod.Modules
     internal class DaggerGroundIndicator : MonoBehaviour
     {
         private const int segments = 96;
+        private const int fillRings = 8;
         private const float groundOffset = 0.1f;
         private const float ringWidth = 0.15f;
         private const float pulseSpeed = 4f;
@@ -78,7 +79,6 @@ namespace KatarinaMod.Modules
                 Vector3 flat = center + toPlane * new Vector3(Mathf.Cos(angle) * radius, 0f, Mathf.Sin(angle) * radius);
                 edge[i] = ProjectToGround(flat, normal);
             }
-            Vector3 centerPoint = center + normal * groundOffset;
 
             this.ring = base.gameObject.AddComponent<LineRenderer>();
             this.ring.sharedMaterial = sharedMaterial;
@@ -95,19 +95,56 @@ namespace KatarinaMod.Modules
             GameObject fill = new GameObject("Fill");
             fill.transform.SetParent(base.transform, false);
             fill.transform.position = Vector3.zero;
-            Vector3[] verts = new Vector3[segments + 1];
-            int[] tris = new int[segments * 3];
-            this.fillColors = new Color[segments + 1];
-            this.fadedColors = new Color[segments + 1];
-            verts[0] = centerPoint;
+            int vertexCount = 1 + fillRings * segments;
+            Vector3[] verts = new Vector3[vertexCount];
+            this.fillColors = new Color[vertexCount];
+            this.fadedColors = new Color[vertexCount];
+            verts[0] = ProjectToGround(center, normal);
             this.fillColors[0] = fillColor * new Color(1f, 1f, 1f, 0.5f);
+            for (int r = 1; r <= fillRings; r++)
+            {
+                float fraction = r / (float)fillRings;
+                Color color = Color.Lerp(this.fillColors[0], fillColor, fraction);
+                for (int i = 0; i < segments; i++)
+                {
+                    int v = FillIndex(r, i);
+                    if (r == fillRings)
+                    {
+                        verts[v] = edge[i];
+                    }
+                    else
+                    {
+                        float angle = i * Mathf.PI * 2f / segments;
+                        Vector3 flat = center + toPlane * new Vector3(Mathf.Cos(angle) * radius * fraction, 0f, Mathf.Sin(angle) * radius * fraction);
+                        verts[v] = ProjectToGround(flat, normal);
+                    }
+                    this.fillColors[v] = color;
+                }
+            }
+
+            int[] tris = new int[segments * 3 + (fillRings - 1) * segments * 6];
+            int k = 0;
             for (int i = 0; i < segments; i++)
             {
-                verts[i + 1] = edge[i];
-                this.fillColors[i + 1] = fillColor;
-                tris[i * 3] = 0;
-                tris[i * 3 + 1] = 1 + (i + 1) % segments;
-                tris[i * 3 + 2] = 1 + i;
+                tris[k++] = 0;
+                tris[k++] = FillIndex(1, (i + 1) % segments);
+                tris[k++] = FillIndex(1, i);
+            }
+            for (int r = 1; r < fillRings; r++)
+            {
+                for (int i = 0; i < segments; i++)
+                {
+                    int innerCurrent = FillIndex(r, i);
+                    int innerNext = FillIndex(r, (i + 1) % segments);
+                    int outerCurrent = FillIndex(r + 1, i);
+                    int outerNext = FillIndex(r + 1, (i + 1) % segments);
+                    tris[k++] = innerCurrent;
+                    tris[k++] = innerNext;
+                    tris[k++] = outerNext;
+                    tris[k++] = innerCurrent;
+                    tris[k++] = outerNext;
+                    tris[k++] = outerCurrent;
+                }
             }
             this.fillMesh = new Mesh { vertices = verts, triangles = tris, colors = this.fillColors };
             this.fillMesh.RecalculateBounds();
@@ -116,6 +153,11 @@ namespace KatarinaMod.Modules
             meshRenderer.sharedMaterial = sharedMaterial;
             meshRenderer.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
             meshRenderer.receiveShadows = false;
+        }
+
+        private static int FillIndex(int ring, int segment)
+        {
+            return 1 + (ring - 1) * segments + segment;
         }
 
         private static Vector3 ProjectToGround(Vector3 point, Vector3 normal)

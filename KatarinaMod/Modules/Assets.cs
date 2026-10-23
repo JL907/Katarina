@@ -126,9 +126,11 @@ namespace KatarinaMod.Modules
         {
             if (mainAssetBundle == null)
             {
-                using (var assetStream = Assembly.GetExecutingAssembly().GetManifestResourceStream("KatarinaMod." + assetbundleName))
+                using (Stream assetStream = Assembly.GetExecutingAssembly().GetManifestResourceStream("KatarinaMod." + assetbundleName))
+                using (MemoryStream buffer = new MemoryStream())
                 {
-                    mainAssetBundle = AssetBundle.LoadFromStream(assetStream);
+                    assetStream.CopyTo(buffer);
+                    mainAssetBundle = AssetBundle.LoadFromMemory(buffer.ToArray());
                 }
             }
 
