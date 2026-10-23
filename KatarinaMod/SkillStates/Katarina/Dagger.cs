@@ -13,12 +13,12 @@ namespace KatarinaMod.SkillStates.Katarina.Weapon
 {
     public class ThrowDagger : BaseSkillState
     {
-		public static float damageCoefficient = Modules.Config.bouncingBlades_damageCoefficient.Value;
+        public static float damageCoefficient = Modules.Config.bouncingBlades_damageCoefficient.Value;
         public static float daggerProcCoefficient = Modules.Config.bouncingBlades_procCoefficient.Value;
-		public static int maxBounceCount = Modules.Config.bouncingBlades_maxBounceCount.Value;
-		public static float daggerTravelSpeed = Modules.Config.bouncingBlades_travelSpeed.Value;
-		public static float daggerBounceRange = Modules.Config.bouncingBlades_bounceRange.Value;
-		public static float damageCoefficientPerBounce = Modules.Config.bouncingBlades_damageCoefficientPerBounce.Value;
+        public static int maxBounceCount = Modules.Config.bouncingBlades_maxBounceCount.Value;
+        public static float daggerTravelSpeed = Modules.Config.bouncingBlades_travelSpeed.Value;
+        public static float daggerBounceRange = Modules.Config.bouncingBlades_bounceRange.Value;
+        public static float damageCoefficientPerBounce = Modules.Config.bouncingBlades_damageCoefficientPerBounce.Value;
         public float baseDuration = 0.5f;
         private HuntressTracker huntressTracker;
         private float stopwatch;
@@ -28,7 +28,6 @@ namespace KatarinaMod.SkillStates.Katarina.Weapon
         private bool hasTriedToThrowDagger;
         private HurtBox initialOrbTarget;
         private ChildLocator childLocator;
-		private bool hasSuccessfullyThrownDagger = false;
 
         public override void OnEnter()
         {
@@ -39,103 +38,99 @@ namespace KatarinaMod.SkillStates.Katarina.Weapon
             this.animator = base.GetModelAnimator();
             this.huntressTracker = base.GetComponent<HuntressTracker>();
 
-			if (this.huntressTracker && base.isAuthority)
-			{
-				this.initialOrbTarget = this.huntressTracker.GetTrackingTarget();
-			}
+            if (this.huntressTracker && base.isAuthority)
+            {
+                this.initialOrbTarget = this.huntressTracker.GetTrackingTarget();
+            }
 
-			if (this.modelTransform)
-			{
-				this.childLocator = this.modelTransform.GetComponent<ChildLocator>();
-			}
+            if (this.modelTransform)
+            {
+                this.childLocator = this.modelTransform.GetComponent<ChildLocator>();
+            }
 
-			if (base.characterBody)
+            if (base.characterBody)
             {
                 base.characterBody.SetAimTimer(this.duration);
             }
-		}
+        }
 
-		public override void FixedUpdate()
-		{
-			base.FixedUpdate();
-			this.stopwatch += Time.fixedDeltaTime;
-			if (this.stopwatch >= this.duration * 0.1f && this.stopwatch < this.duration)
+        public override void FixedUpdate()
+        {
+            base.FixedUpdate();
+            this.stopwatch += Time.fixedDeltaTime;
+            if (this.stopwatch >= this.duration * 0.1f && this.stopwatch < this.duration)
             {
-				this.AttemptDagger();
-			}
-			if (this.stopwatch >= this.duration && base.isAuthority)
-			{
-				this.outer.SetNextStateToMain();
-				return;
-			}
+                this.AttemptDagger();
+            }
+            if (this.stopwatch >= this.duration && base.isAuthority)
+            {
+                this.outer.SetNextStateToMain();
+                return;
+            }
         }
 
-		private void AttemptDagger()
+        private void AttemptDagger()
         {
-			if (this.hasTriedToThrowDagger) return;
-			this.hasTriedToThrowDagger = true;
+            if (this.hasTriedToThrowDagger) return;
+            this.hasTriedToThrowDagger = true;
 
-			if (this.initialOrbTarget)
-			{
-				this.hasSuccessfullyThrownDagger = true;
-				this.Animation();
-				// the orb (damage, bounces, and the dagger it drops) only runs on the server
-				if (NetworkServer.active) this.FireOrbGlaive();
-			}
-			else if (base.isAuthority)
-			{
-				base.activatorSkillSlot.rechargeStopwatch += base.activatorSkillSlot.CalculateFinalRechargeInterval() - this.duration;
-			}
-		}
-
-		public override void OnExit()
-        {
-			AttemptDagger();
-			base.OnExit();
-			
+            if (this.initialOrbTarget)
+            {
+                this.Animation();
+                if (NetworkServer.active) this.FireOrbGlaive();
+            }
+            else if (base.isAuthority)
+            {
+                base.activatorSkillSlot.rechargeStopwatch += base.activatorSkillSlot.CalculateFinalRechargeInterval() - this.duration;
+            }
         }
 
-		public void Animation()
+        public override void OnExit()
         {
-			Util.PlaySound("KatarinaQSFX", base.gameObject);
-			if(Modules.Config.voiceLines.Value) Util.PlaySound("KatarinaQVO", base.gameObject);
-			base.PlayAnimation("Gesture, Override", "ThrowDagger", "ThrowDagger.playbackRate", this.duration);
-		}
+            AttemptDagger();
+            base.OnExit();
+        }
 
-		public override InterruptPriority GetMinimumInterruptPriority()
-		{
-			return InterruptPriority.PrioritySkill;
-		}
+        public void Animation()
+        {
+            Util.PlaySound("KatarinaQSFX", base.gameObject);
+            if(Modules.Config.voiceLines.Value) Util.PlaySound("KatarinaQVO", base.gameObject);
+            base.PlayAnimation("Gesture, Override", "ThrowDagger", "ThrowDagger.playbackRate", this.duration);
+        }
 
-		private void FireOrbGlaive()
-		{
-			DaggerOrb lightningOrb = new DaggerOrb();
-			lightningOrb.damageValue = base.characterBody.damage * ThrowDagger.damageCoefficient;
-			lightningOrb.isCrit = Util.CheckRoll(base.characterBody.crit, base.characterBody.master);
-			lightningOrb.teamIndex = TeamComponent.GetObjectTeam(base.gameObject);
-			lightningOrb.attacker = base.gameObject;
-			lightningOrb.procCoefficient = ThrowDagger.daggerProcCoefficient;
-			lightningOrb.bouncesRemaining = ThrowDagger.maxBounceCount;
-			lightningOrb.speed = ThrowDagger.daggerTravelSpeed;
-			lightningOrb.bouncedObjects = new List<HealthComponent>();
-			lightningOrb.range = ThrowDagger.daggerBounceRange;
+        public override InterruptPriority GetMinimumInterruptPriority()
+        {
+            return InterruptPriority.PrioritySkill;
+        }
+
+        private void FireOrbGlaive()
+        {
+            DaggerOrb lightningOrb = new DaggerOrb();
+            lightningOrb.damageValue = base.characterBody.damage * ThrowDagger.damageCoefficient;
+            lightningOrb.isCrit = Util.CheckRoll(base.characterBody.crit, base.characterBody.master);
+            lightningOrb.teamIndex = TeamComponent.GetObjectTeam(base.gameObject);
+            lightningOrb.attacker = base.gameObject;
+            lightningOrb.procCoefficient = ThrowDagger.daggerProcCoefficient;
+            lightningOrb.bouncesRemaining = ThrowDagger.maxBounceCount;
+            lightningOrb.speed = ThrowDagger.daggerTravelSpeed;
+            lightningOrb.bouncedObjects = new List<HealthComponent>();
+            lightningOrb.range = ThrowDagger.daggerBounceRange;
             lightningOrb.damageCoefficientPerBounce = ThrowDagger.damageCoefficientPerBounce;
-			lightningOrb.tossDaggerOnArrival = true;
-			Transform hand = this.childLocator ? this.childLocator.FindChild("R_Hand") : null;
-			EffectManager.SimpleMuzzleFlash(ThrowGlaive.muzzleFlashPrefab, base.gameObject, "R_Hand", true);
-			lightningOrb.origin = hand ? hand.position : base.characterBody.corePosition;
-			lightningOrb.target = this.initialOrbTarget;
-			OrbManager.instance.AddOrb(lightningOrb);
-		}
-		public override void OnSerialize(NetworkWriter writer)
-		{
-			writer.Write(HurtBoxReference.FromHurtBox(this.initialOrbTarget));
-		}
+            lightningOrb.tossDaggerOnArrival = true;
+            Transform hand = this.childLocator ? this.childLocator.FindChild("R_Hand") : null;
+            EffectManager.SimpleMuzzleFlash(ThrowGlaive.muzzleFlashPrefab, base.gameObject, "R_Hand", true);
+            lightningOrb.origin = hand ? hand.position : base.characterBody.corePosition;
+            lightningOrb.target = this.initialOrbTarget;
+            OrbManager.instance.AddOrb(lightningOrb);
+        }
+        public override void OnSerialize(NetworkWriter writer)
+        {
+            writer.Write(HurtBoxReference.FromHurtBox(this.initialOrbTarget));
+        }
 
-		// Token: 0x06000E6F RID: 3695 RVA: 0x0003E6A4 File Offset: 0x0003C8A4
-		public override void OnDeserialize(NetworkReader reader)
-		{
-			this.initialOrbTarget = reader.ReadHurtBoxReference().ResolveHurtBox();
-		}
-	}
+        public override void OnDeserialize(NetworkReader reader)
+        {
+            this.initialOrbTarget = reader.ReadHurtBoxReference().ResolveHurtBox();
+        }
+    }
 }

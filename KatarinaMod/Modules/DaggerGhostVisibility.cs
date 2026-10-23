@@ -7,8 +7,6 @@ using UnityEngine.UI;
 
 namespace KatarinaMod.Modules
 {
-    // Lives on the dagger's ghost (the local-only visual each player's game spawns for the projectile).
-    // Only the player whose Katarina threw the dagger sees it, and that player also gets an on-screen marker.
     internal class DaggerGhostVisibility : MonoBehaviour
     {
         private static readonly Color markerTint = new Color(0.9f, 0.15f, 0.2f, 1f);
@@ -18,10 +16,11 @@ namespace KatarinaMod.Modules
         private Renderer[] renderers;
         private GameObject indicatorInstance;
         private GameObject groundIndicatorInstance;
+        private GameObject lootBeamInstance;
+        private ParticleSystem[] particleSystems;
         private Transform projectileTransform;
         private bool resolved;
 
-        // landing detection for the marker: the dagger pops up for 0.5s, then falls and sticks where it lands
         private const float minAirTime = 0.5f;
         private const float settleTime = 0.1f;
         private const float settleDistance = 0.02f;
@@ -34,17 +33,18 @@ namespace KatarinaMod.Modules
         {
             this.ghostController = base.GetComponent<ProjectileGhostController>();
             this.renderers = base.GetComponentsInChildren<Renderer>(true);
+            this.particleSystems = base.GetComponentsInChildren<ParticleSystem>(true);
         }
 
         private void OnEnable()
         {
-            // ghosts are pooled and reused, so start hidden every time and work out the owner again
             this.resolved = false;
             this.waitingForLanding = false;
             this.aliveTime = 0f;
             this.stillTime = 0f;
             this.lastPosition = base.transform.position;
             this.SetVisible(false);
+            this.SetParticles(true);
         }
 
         private void OnDisable()
@@ -53,6 +53,8 @@ namespace KatarinaMod.Modules
             this.indicatorInstance = null;
             if (this.groundIndicatorInstance) Object.Destroy(this.groundIndicatorInstance);
             this.groundIndicatorInstance = null;
+            if (this.lootBeamInstance) Object.Destroy(this.lootBeamInstance);
+            this.lootBeamInstance = null;
             this.projectileTransform = null;
         }
 
@@ -65,16 +67,15 @@ namespace KatarinaMod.Modules
             if (!projectile) return;
 
             ProjectileController projectileController = projectile.GetComponent<ProjectileController>();
-            if (!projectileController || !projectileController.owner) return; // owner not known yet, stay hidden
+            if (!projectileController || !projectileController.owner) return;
 
             this.resolved = true;
             this.projectileTransform = projectile;
             bool mine = Util.HasEffectiveAuthority(projectileController.owner.GetComponent<NetworkIdentity>());
             this.SetVisible(mine);
-            this.waitingForLanding = mine; // the marker appears once the dagger is on the ground
+            this.waitingForLanding = mine;
         }
 
-        // The ghost follows the projectile on every machine, so "stopped moving after the pop-up" means it landed.
         private void CheckLanded()
         {
             this.aliveTime += Time.deltaTime;
@@ -94,16 +95,37 @@ namespace KatarinaMod.Modules
                 this.waitingForLanding = false;
                 this.CreateIndicator();
                 this.groundIndicatorInstance = DaggerGroundIndicator.Create(base.transform.position, this.GetPickupRadius());
+                this.SetParticles(false);
+                this.lootBeamInstance = LeagueVfx.DaggerLootBeam.Create(base.transform.position);
             }
         }
 
-        // the real pickup range: the projectile's trigger sphere, scaled with the projectile
         private float GetPickupRadius()
         {
             SphereCollider sphere = this.projectileTransform ? this.projectileTransform.GetComponent<SphereCollider>() : null;
             if (!sphere) return 3f;
             Vector3 scale = sphere.transform.lossyScale;
             return sphere.radius * Mathf.Max(Mathf.Abs(scale.x), Mathf.Abs(scale.y), Mathf.Abs(scale.z));
+        }
+
+        private void SetParticles(bool on)
+        {
+            if (this.particleSystems == null) return;
+            foreach (ParticleSystem system in this.particleSystems)
+            {
+                if (!system) continue;
+                if (on)
+                {
+                    system.Clear(false);
+                    system.Play(false);
+                }
+                else
+                {
+                    system.Stop(false, ParticleSystemStopBehavior.StopEmittingAndClear);
+                    Renderer renderer = system.GetComponent<Renderer>();
+                    if (renderer) renderer.enabled = false;
+                }
+            }
         }
 
         private void SetVisible(bool visible)
@@ -125,8 +147,6 @@ namespace KatarinaMod.Modules
             if (positionIndicator) positionIndicator.targetTransform = base.transform;
         }
 
-        // RoR2's point-of-interest marker: an icon over the target, and an arrow at the screen edge when it's off-screen.
-        // The icon is swapped for Katarina's Q icon and everything is tinted red.
         private static GameObject BuildIndicatorPrefab()
         {
             GameObject original = LegacyResourcesAPI.Load<GameObject>("Prefabs/PositionIndicators/PoiPositionIndicator");
@@ -140,7 +160,6 @@ namespace KatarinaMod.Modules
             {
                 foreach (SpriteRenderer sr in positionIndicator.insideViewObject.GetComponentsInChildren<SpriteRenderer>(true))
                 {
-                    // keep the on-screen size of the original marker
                     if (sr.sprite) sr.transform.localScale *= sr.sprite.bounds.size.x / icon.bounds.size.x;
                     sr.sprite = icon;
                     sr.color = Color.white;

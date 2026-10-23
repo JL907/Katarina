@@ -96,16 +96,14 @@ namespace KatarinaMod.Modules.Survivors
         {
             Modules.Skills.CreateSkillFamilies(bodyPrefab);
 
-            string prefix = KatarinaPlugin.developerPrefix;
-
             #region Primary
 
-            Modules.Skills.AddPrimarySkill(bodyPrefab, 
-                Modules.Skills.CreatePrimarySkillDef(new EntityStates.SerializableEntityStateType(typeof(SkillStates.SlashCombo)), 
-                "Weapon", 
-                "KATARINA_PRIMARY_NAME", 
-                "KATARINA_PRIMARY_DESC", 
-                Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("bouncing"), 
+            Modules.Skills.AddPrimarySkill(bodyPrefab,
+                Modules.Skills.CreatePrimarySkillDef(new EntityStates.SerializableEntityStateType(typeof(SkillStates.SlashCombo)),
+                "Weapon",
+                "KATARINA_PRIMARY_NAME",
+                "KATARINA_PRIMARY_DESC",
+                Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("bouncing"),
                 true));
 
             #endregion Primary
@@ -208,6 +206,8 @@ namespace KatarinaMod.Modules.Survivors
 
             SkinnedMeshRenderer mainRenderer = characterModel.mainSkinnedMeshRenderer;
 
+            List<LeagueSkins.BuiltLeagueSkin> leagueSkins = LeagueSkins.LeagueSkinBuilder.BuildAll(model, mainRenderer, characterModel, displayPrefab);
+
             CharacterModel.RendererInfo[] defaultRenderers = characterModel.baseRendererInfos;
 
             List<SkinDef> skins = new List<SkinDef>();
@@ -260,7 +260,6 @@ namespace KatarinaMod.Modules.Survivors
             characterModel.baseRendererInfos.CopyTo(mercenarySkinDefInfo.RendererInfos, 0);
 
             mercenarySkinDefInfo.RendererInfos[0].defaultMaterial = Assets.CreateMaterial("mercenaryMat");
-            mercenarySkinDefInfo.RendererInfos[mercenarySkinDefInfo.RendererInfos.Length - 1].defaultMaterial = Assets.CreateMaterial("mercenaryMat");
 
             SkinDef mercenarySkin = Skins.CreateSkinDef(mercenarySkinDefInfo);
             skins.Add(mercenarySkin);
@@ -293,7 +292,6 @@ namespace KatarinaMod.Modules.Survivors
             characterModel.baseRendererInfos.CopyTo(redCardSkinDefInfo.RendererInfos, 0);
 
             redCardSkinDefInfo.RendererInfos[0].defaultMaterial = Assets.CreateMaterial("redCardMat");
-            redCardSkinDefInfo.RendererInfos[redCardSkinDefInfo.RendererInfos.Length - 1].defaultMaterial = Assets.CreateMaterial("redCardMat");
 
             SkinDef redCardSkin = Skins.CreateSkinDef(redCardSkinDefInfo);
             skins.Add(redCardSkin);
@@ -326,7 +324,6 @@ namespace KatarinaMod.Modules.Survivors
             characterModel.baseRendererInfos.CopyTo(bilgeWaterSkinDefInfo.RendererInfos, 0);
 
             bilgeWaterSkinDefInfo.RendererInfos[0].defaultMaterial = Assets.CreateMaterial("bilgeWaterMat");
-            bilgeWaterSkinDefInfo.RendererInfos[bilgeWaterSkinDefInfo.RendererInfos.Length - 1].defaultMaterial = Assets.CreateMaterial("bilgeWaterMat");
 
             SkinDef bilgeWaterSkin = Skins.CreateSkinDef(bilgeWaterSkinDefInfo);
             skins.Add(bilgeWaterSkin);
@@ -359,7 +356,6 @@ namespace KatarinaMod.Modules.Survivors
             characterModel.baseRendererInfos.CopyTo(kittyCatSkinDefInfo.RendererInfos, 0);
 
             kittyCatSkinDefInfo.RendererInfos[0].defaultMaterial = Assets.CreateMaterial("kittyCatMat");
-            kittyCatSkinDefInfo.RendererInfos[kittyCatSkinDefInfo.RendererInfos.Length - 1].defaultMaterial = Assets.CreateMaterial("kittyCatMat");
 
             SkinDef kittyCatSkin = Skins.CreateSkinDef(kittyCatSkinDefInfo);
             skins.Add(kittyCatSkin);
@@ -392,7 +388,6 @@ namespace KatarinaMod.Modules.Survivors
             characterModel.baseRendererInfos.CopyTo(highCommandSkinDefInfo.RendererInfos, 0);
 
             highCommandSkinDefInfo.RendererInfos[0].defaultMaterial = Assets.CreateMaterial("highCommandMat");
-            highCommandSkinDefInfo.RendererInfos[highCommandSkinDefInfo.RendererInfos.Length - 1].defaultMaterial = Assets.CreateMaterial("highCommandMat");
 
             SkinDef HighCommandSkin = Skins.CreateSkinDef(highCommandSkinDefInfo);
             skins.Add(HighCommandSkin);
@@ -425,7 +420,6 @@ namespace KatarinaMod.Modules.Survivors
             characterModel.baseRendererInfos.CopyTo(sandStormSkinDefInfo.RendererInfos, 0);
 
             sandStormSkinDefInfo.RendererInfos[0].defaultMaterial = Assets.CreateMaterial("sandStormMat");
-            sandStormSkinDefInfo.RendererInfos[sandStormSkinDefInfo.RendererInfos.Length - 1].defaultMaterial = Assets.CreateMaterial("sandStormMat");
 
             SkinDef SandStormSkin = Skins.CreateSkinDef(sandStormSkinDefInfo);
             skins.Add(SandStormSkin);
@@ -458,7 +452,6 @@ namespace KatarinaMod.Modules.Survivors
             characterModel.baseRendererInfos.CopyTo(slayBelleSkinDefInfo.RendererInfos, 0);
 
             slayBelleSkinDefInfo.RendererInfos[0].defaultMaterial = Assets.CreateMaterial("slayBelleMat");
-            slayBelleSkinDefInfo.RendererInfos[slayBelleSkinDefInfo.RendererInfos.Length - 1].defaultMaterial = Assets.CreateMaterial("slayBelleMat");
 
             SkinDef SlayBelleSkin = Skins.CreateSkinDef(slayBelleSkinDefInfo);
             skins.Add(SlayBelleSkin);
@@ -491,7 +484,6 @@ namespace KatarinaMod.Modules.Survivors
             characterModel.baseRendererInfos.CopyTo(warrringKingdomsSkinDefInfo.RendererInfos, 0);
 
             warrringKingdomsSkinDefInfo.RendererInfos[0].defaultMaterial = Assets.CreateMaterial("warringKingdomsMat");
-            warrringKingdomsSkinDefInfo.RendererInfos[warrringKingdomsSkinDefInfo.RendererInfos.Length - 1].defaultMaterial = Assets.CreateMaterial("warringKingdomsMat");
 
             SkinDef WarringKingdomsSkin = Skins.CreateSkinDef(warrringKingdomsSkinDefInfo);
             skins.Add(WarringKingdomsSkin);
@@ -524,7 +516,6 @@ namespace KatarinaMod.Modules.Survivors
             characterModel.baseRendererInfos.CopyTo(projectSkinDefInfo.RendererInfos, 0);
 
             projectSkinDefInfo.RendererInfos[0].defaultMaterial = Assets.CreateMaterial("projectMat");
-            projectSkinDefInfo.RendererInfos[projectSkinDefInfo.RendererInfos.Length - 1].defaultMaterial = Assets.CreateMaterial("projectMat");
 
             SkinDef ProjectSkin = Skins.CreateSkinDef(projectSkinDefInfo);
             skins.Add(ProjectSkin);
@@ -557,7 +548,6 @@ namespace KatarinaMod.Modules.Survivors
             characterModel.baseRendererInfos.CopyTo(battleAcademiaSkinDefInfo.RendererInfos, 0);
 
             battleAcademiaSkinDefInfo.RendererInfos[0].defaultMaterial = Assets.CreateMaterial("battleAcademiaMat");
-            battleAcademiaSkinDefInfo.RendererInfos[battleAcademiaSkinDefInfo.RendererInfos.Length - 1].defaultMaterial = Assets.CreateMaterial("battleAcademiaMat");
 
             SkinDef BattleAcademiaSkin = Skins.CreateSkinDef(battleAcademiaSkinDefInfo);
             skins.Add(BattleAcademiaSkin);
@@ -590,7 +580,6 @@ namespace KatarinaMod.Modules.Survivors
             characterModel.baseRendererInfos.CopyTo(bloodMoonSkinDefInfo.RendererInfos, 0);
 
             bloodMoonSkinDefInfo.RendererInfos[0].defaultMaterial = Assets.CreateMaterial("bloodMoonMat");
-            bloodMoonSkinDefInfo.RendererInfos[bloodMoonSkinDefInfo.RendererInfos.Length - 1].defaultMaterial = Assets.CreateMaterial("bloodMoonMat");
 
             SkinDef BloodMoonSkin = Skins.CreateSkinDef(bloodMoonSkinDefInfo);
             skins.Add(BloodMoonSkin);
@@ -623,11 +612,14 @@ namespace KatarinaMod.Modules.Survivors
             characterModel.baseRendererInfos.CopyTo(highNoonSkinDefInfo.RendererInfos, 0);
 
             highNoonSkinDefInfo.RendererInfos[0].defaultMaterial = Assets.CreateMaterial("highNoonMat");
-            highNoonSkinDefInfo.RendererInfos[highNoonSkinDefInfo.RendererInfos.Length - 1].defaultMaterial = Assets.CreateMaterial("highNoonMat");
 
             SkinDef HighNoonSkin = Skins.CreateSkinDef(highNoonSkinDefInfo);
             skins.Add(HighNoonSkin);
             #endregion HighNoonSkin
+
+            LeagueSkins.LeagueSkinBuilder.AddSkins(skins, leagueSkins, model, mainRenderer, characterModel);
+
+            LeagueSkins.LeagueDaggers.Apply(skins, characterModel.baseRendererInfos.Length > 0 ? characterModel.baseRendererInfos[0].defaultMaterial : null);
 
             skinController.skins = skins.ToArray();
         }

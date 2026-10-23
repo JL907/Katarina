@@ -53,8 +53,6 @@ namespace KatarinaMod.Modules
                 return hotpoo ? new Material(hotpoo) { name = materialName } : null;
             }
 
-            // previously a copy of Commando's material was configured here but never returned;
-            // RoR2 1.5 no longer guarantees CharacterModel.RendererInfo.defaultMaterial is loaded, so that copy is skipped
             return tempMat;
         }
 
@@ -166,16 +164,19 @@ namespace KatarinaMod.Modules
                 return;
             }
             swordHitSoundEvent = CreateNetworkSoundEventDef("KatarinaSwordHit");
-            daggerSoundEvent = CreateNetworkSoundEventDef("KatarinaSwordHit"); 
+            daggerSoundEvent = CreateNetworkSoundEventDef("KatarinaSwordHit");
             swordSwingEffect = Assets.LoadEffect("HenrySwordSwingEffect", true);
             swordHitImpactEffect = Assets.LoadEffect("ImpactHenrySlash");
-            
+
             katarinaKnife = Assets.mainAssetBundle.LoadAsset<GameObject>("KatarinaWeapon");
             katarinaKnife.AddComponent<DestroyOnTimer>().duration = 6f;
             katarinaKnife.AddComponent<NetworkIdentity>();
             katarinaKnife.RegisterNetworkPrefab();
             networkedObjectPrefabs.Add(katarinaKnife);
-            
+
+            LeagueVfx.VoracitySpinEffect.CreatePrefab();
+            LeagueVfx.DaggerPickupHitEffect.CreatePrefab();
+
         }
 
         internal static CharacterModel.RendererInfo[] SetupRendererInfos(GameObject obj)
@@ -197,7 +198,7 @@ namespace KatarinaMod.Modules
             return rendererInfos;
         }
 
-        private static void AddNewEffectDef(GameObject effectPrefab)
+        internal static void AddNewEffectDef(GameObject effectPrefab)
         {
             AddNewEffectDef(effectPrefab, "");
         }

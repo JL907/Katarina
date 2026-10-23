@@ -61,26 +61,20 @@ namespace KatarinaMod.Modules
             if (Modules.Assets.mainAssetBundle.LoadAsset<GameObject>("KatarinaWeapon") != null)
             {
                 bombController.ghostPrefab = CreateGhostPrefab("KatarinaWeapon");
-                // RoR2 1.5: ProjectileController.Awake prefers ghostPrefabAddress over ghostPrefab.
-                // The cloned Commando grenade still points at its own ghost, so clear it.
                 bombController.ghostPrefabAddress = new AssetReferenceT<GameObject>(string.Empty);
             }
         }
- 
 
         private static GameObject CreateGhostPrefab(string ghostName)
         {
-            // clone the asset so the ghost is separate from the networked "KatarinaWeapon" prefab set up in Assets
             GameObject ghostPrefab = PrefabAPI.InstantiateClone(Modules.Assets.mainAssetBundle.LoadAsset<GameObject>(ghostName), ghostName + "Ghost", false);
 
-            // ghosts are local, pooled visuals: no NetworkIdentity, and no DestroyOnTimer (the pool handles lifetime)
             NetworkIdentity netId = ghostPrefab.GetComponent<NetworkIdentity>();
             if (netId) Object.DestroyImmediate(netId);
             DestroyOnTimer timer = ghostPrefab.GetComponent<DestroyOnTimer>();
             if (timer) Object.DestroyImmediate(timer);
 
             if (!ghostPrefab.GetComponent<ProjectileGhostController>()) ghostPrefab.AddComponent<ProjectileGhostController>();
-            // only the owning Katarina sees her dagger, with an on-screen marker
             ghostPrefab.AddComponent<DaggerGhostVisibility>();
 
             Modules.Assets.ConvertAllRenderersToHopooShader(ghostPrefab);

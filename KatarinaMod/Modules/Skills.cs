@@ -165,12 +165,11 @@ namespace KatarinaMod.Modules
             }
 
             SkillLocator skillLocator = targetPrefab.GetComponent<SkillLocator>();
-            
+
             skillLocator.passiveSkill.enabled = true;
             skillLocator.passiveSkill.skillNameToken = "KATARINA_PASSIVE_NAME";
             skillLocator.passiveSkill.skillDescriptionToken = "KATARINA_PASSIVE_DESC";
             skillLocator.passiveSkill.icon = Assets.mainAssetBundle.LoadAsset<Sprite>("Katarina_Passive");
-
 
             skillLocator.primary = targetPrefab.AddComponent<GenericSkill>();
             SkillFamily primaryFamily = ScriptableObject.CreateInstance<SkillFamily>();

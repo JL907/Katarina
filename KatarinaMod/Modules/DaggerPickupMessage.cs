@@ -7,8 +7,6 @@ using UnityEngine.Networking;
 
 namespace KatarinaMod.Modules
 {
-    // Sent by the server to the player who controls a Katarina when she picks up one of her daggers.
-    // Skill states run on the controlling player's machine, so that is where Voracity has to start.
     internal class DaggerPickupMessage : INetMessage
     {
         private NetworkInstanceId bodyNetId;
@@ -35,7 +33,6 @@ namespace KatarinaMod.Modules
             EnterVoracity(Util.FindNetworkObject(this.bodyNetId));
         }
 
-        // Server only: start Voracity on whoever controls this body.
         internal static void NotifyPickup(CharacterBody body)
         {
             if (!NetworkServer.active || !body) return;
@@ -45,7 +42,6 @@ namespace KatarinaMod.Modules
 
             if (Util.HasEffectiveAuthority(identity))
             {
-                // host's own Katarina (or a server-controlled one)
                 EnterVoracity(body.gameObject);
             }
             else if (identity.clientAuthorityOwner != null)
