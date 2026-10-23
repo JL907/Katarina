@@ -74,7 +74,7 @@ namespace KatarinaMod.SkillStates.Katarina.Weapon
             if (this.initialOrbTarget)
             {
                 this.Animation();
-                if (NetworkServer.active) this.FireOrbGlaive();
+                if (NetworkServer.active) this.FireDaggerOrb();
             }
             else if (base.isAuthority)
             {
@@ -100,25 +100,25 @@ namespace KatarinaMod.SkillStates.Katarina.Weapon
             return InterruptPriority.PrioritySkill;
         }
 
-        private void FireOrbGlaive()
+        private void FireDaggerOrb()
         {
-            DaggerOrb lightningOrb = new DaggerOrb();
-            lightningOrb.damageValue = base.characterBody.damage * ThrowDagger.damageCoefficient;
-            lightningOrb.isCrit = Util.CheckRoll(base.characterBody.crit, base.characterBody.master);
-            lightningOrb.teamIndex = TeamComponent.GetObjectTeam(base.gameObject);
-            lightningOrb.attacker = base.gameObject;
-            lightningOrb.procCoefficient = ThrowDagger.daggerProcCoefficient;
-            lightningOrb.bouncesRemaining = ThrowDagger.maxBounceCount;
-            lightningOrb.speed = ThrowDagger.daggerTravelSpeed;
-            lightningOrb.bouncedObjects = new List<HealthComponent>();
-            lightningOrb.range = ThrowDagger.daggerBounceRange;
-            lightningOrb.damageCoefficientPerBounce = ThrowDagger.damageCoefficientPerBounce;
-            lightningOrb.tossDaggerOnArrival = true;
-            lightningOrb.landingDistance = ThrowDagger.landingDistance;
+            DaggerOrb daggerOrb = new DaggerOrb();
+            daggerOrb.damageValue = base.characterBody.damage * ThrowDagger.damageCoefficient;
+            daggerOrb.isCrit = Util.CheckRoll(base.characterBody.crit, base.characterBody.master);
+            daggerOrb.teamIndex = TeamComponent.GetObjectTeam(base.gameObject);
+            daggerOrb.attacker = base.gameObject;
+            daggerOrb.procCoefficient = ThrowDagger.daggerProcCoefficient;
+            daggerOrb.bouncesRemaining = ThrowDagger.maxBounceCount;
+            daggerOrb.speed = ThrowDagger.daggerTravelSpeed;
+            daggerOrb.bouncedObjects = new List<HealthComponent>();
+            daggerOrb.range = ThrowDagger.daggerBounceRange;
+            daggerOrb.damageCoefficientPerBounce = ThrowDagger.damageCoefficientPerBounce;
+            daggerOrb.tossDaggerOnArrival = true;
+            daggerOrb.landingDistance = ThrowDagger.landingDistance;
             Transform hand = this.childLocator ? this.childLocator.FindChild("R_Hand") : null;
-            lightningOrb.origin = hand ? hand.position : base.characterBody.corePosition;
-            lightningOrb.target = this.initialOrbTarget;
-            OrbManager.instance.AddOrb(lightningOrb);
+            daggerOrb.origin = hand ? hand.position : base.characterBody.corePosition;
+            daggerOrb.target = this.initialOrbTarget;
+            OrbManager.instance.AddOrb(daggerOrb);
         }
         public override void OnSerialize(NetworkWriter writer)
         {

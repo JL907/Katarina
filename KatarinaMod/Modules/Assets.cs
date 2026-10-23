@@ -18,27 +18,21 @@ namespace KatarinaMod.Modules
 
         internal static List<EffectDef> effectDefs = new List<EffectDef>();
 
-        // cache these and use to create our own materials
         internal static Shader hotpoo = LegacyResourcesAPI.Load<Shader>("Shaders/Deferred/HGStandard");
 
-        // the assetbundle to load assets from
         internal static AssetBundle mainAssetBundle;
 
-        // lists of assets to add to contentpack
         internal static List<NetworkSoundEventDef> networkSoundEventDefs = new List<NetworkSoundEventDef>();
         internal static List<GameObject> networkedObjectPrefabs = new List<GameObject>();
 
         internal static GameObject swordHitImpactEffect;
         internal static GameObject daggerSpinEffect;
 
-        // networked hit sounds
         internal static NetworkSoundEventDef swordHitSoundEvent;
         internal static NetworkSoundEventDef daggerSoundEvent;
 
-        // particle effects
         internal static GameObject swordSwingEffect;
 
-        // CHANGE THIS
         private const string assetbundleName = "katarina";
 
         private static string[] assetNames = new string[0];
@@ -180,7 +174,6 @@ namespace KatarinaMod.Modules
             LeagueVfx.DaggerPickupHitEffect.CreatePrefab();
             LeagueVfx.DaggerOrbEffect.CreatePrefab();
             DaggerLandingPreview.CreatePrefab();
-
         }
 
         internal static CharacterModel.RendererInfo[] SetupRendererInfos(GameObject obj)

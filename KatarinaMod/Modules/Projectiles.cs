@@ -18,7 +18,6 @@ namespace KatarinaMod.Modules
 
         internal static void RegisterProjectiles()
         {
-            // only separating into separate methods for my sanity
             CreateKnife();
             AddProjectile(knifePrefab);
         }

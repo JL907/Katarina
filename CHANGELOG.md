@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.9.2
+* Bouncing Blades:
+   * The dagger now lands 1 second after the last bounce instead of 1.5, closer to League.
+   * The dagger now pops up off airborne enemies before falling, instead of dropping straight to the ground.
+   * The default bounce radius is now 5 m. If your config already has "Bounce Radius (m)" saved, change it to 5 to match.
+* Code cleanup.
+
 ## 1.9.1
 * Bouncing Blades rework, closer to League:
    * Throws Katarina's own dagger, matching her current skin, instead of Huntress's glaive.

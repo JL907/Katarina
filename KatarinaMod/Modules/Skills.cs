@@ -12,7 +12,6 @@ namespace KatarinaMod.Modules
         internal static List<SkillDef> skillDefs = new List<SkillDef>();
         internal static List<SkillFamily> skillFamilies = new List<SkillFamily>();
 
-        // this could all be a lot cleaner but at least it's simple and easy to work with
         internal static void AddPrimarySkill(GameObject targetPrefab, SkillDef skillDef)
         {
             SkillLocator skillLocator = targetPrefab.GetComponent<SkillLocator>();

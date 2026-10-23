@@ -28,6 +28,5 @@ namespace RoR2.Orbs
         {
             return LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/OrbEffects/ArrowOrbEffect");
         }
-
     }
 }

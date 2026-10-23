@@ -34,7 +34,6 @@ namespace KatarinaMod.Modules.Survivors
 
         internal virtual void InitializeCharacter()
         {
-            // this creates a config option to enable the character- feel free to remove if the character is the only thing in your mod
             characterEnabled = Modules.Config.CharacterEnableConfig(bodyName);
 
             if (characterEnabled.Value)
@@ -53,7 +52,6 @@ namespace KatarinaMod.Modules.Survivors
                 InitializeHitboxes();
                 InitializeSkills();
                 InitializeSkins();
-                //InitializeItemDisplays();
                 InitializeDoppelganger();
             }
         }

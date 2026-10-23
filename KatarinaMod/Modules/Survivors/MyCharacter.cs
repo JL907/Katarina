@@ -60,7 +60,6 @@ namespace KatarinaMod.Modules.Survivors
 
         internal override List<ItemDisplayRuleSet.KeyAssetRuleGroup> itemDisplayRules { get; set; }
 
-        // item display stuffs
         internal override ItemDisplayRuleSet itemDisplayRuleSet { get; set; }
 
         internal override int mainRendererIndex { get; set; } = 0;
@@ -624,17 +623,9 @@ namespace KatarinaMod.Modules.Survivors
             skinController.skins = skins.ToArray();
         }
 
-        internal override void InitializeUnlockables()
-        {
-            //masterySkinUnlockableDef = Modules.Unlockables.AddUnlockable<Achievements.MasteryAchievement>(true);
-        }
-
         internal override void SetItemDisplays()
         {
             itemDisplayRules = new List<ItemDisplayRuleSet.KeyAssetRuleGroup>();
-
-            // add item displays here
-            //  HIGHLY recommend using KingEnderBrine's ItemDisplayPlacementHelper mod for this
 
             #region Item Displays
 

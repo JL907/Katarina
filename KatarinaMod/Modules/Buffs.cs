@@ -6,12 +6,10 @@ namespace KatarinaMod.Modules
 {
     public static class Buffs
     {
-        // armor buff gained during roll
         internal static BuffDef armorBuff;
 
         internal static List<BuffDef> buffDefs = new List<BuffDef>();
 
-        // simple helper method
         internal static BuffDef AddNewBuff(string buffName, Sprite buffIcon, Color buffColor, bool canStack, bool isDebuff)
         {
             BuffDef buffDef = ScriptableObject.CreateInstance<BuffDef>();

@@ -97,7 +97,6 @@ namespace KatarinaMod.SkillStates
             activeSFXPlayID = Util.PlaySound("KatarinaRSFX", base.gameObject);
             if (Modules.Config.voiceLines.Value) Util.PlaySound("KatarinaRVO", base.gameObject);
             this.animator.SetFloat("Ultimate.playbackRate", 1f);
-            //base.PlayAnimation("FullBody, Override", "Ultimate", "Ultimate.playbackRate", this.duration);
         }
 
         public override void OnExit()

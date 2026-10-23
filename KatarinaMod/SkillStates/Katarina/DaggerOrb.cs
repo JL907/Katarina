@@ -22,11 +22,11 @@ namespace KatarinaMod
         public ProcChainMask procChainMask;
         public float procCoefficient = 1f;
         public DamageColorIndex damageColorIndex;
-        public float range = 20f;
+        public float range = 5f;
         public float damageCoefficientPerBounce = 1f;
         public DamageType damageType;
         public bool tossDaggerOnArrival;
-        public float landingDistance = 15f;
+        public float landingDistance = 3f;
 
         private const float MinFlightTime = 0.1f;
         private Vector3 lastTargetPosition;

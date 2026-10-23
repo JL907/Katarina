@@ -19,11 +19,6 @@ namespace KatarinaMod.Modules
 
         internal static void AddTokens()
         {
-            //<color=#c9aa71> tan
-            //<color=#ffffff> white
-            //<color=#f68835> orange
-            //<color=#d62d20> red
-            //<color=#AF1AAF> purple
             LanguageAPI.Add("KATARINA_NAME", characterName);
 
             LanguageAPI.Add("KATARINA_DESCRIPTION", descriptionText);
@@ -58,7 +53,7 @@ namespace KatarinaMod.Modules
             LanguageAPI.Add("KATARINA_SECONDARY_NAME", "<color=#AF1AAF>BOUNCING BLADES</color>");
             LanguageAPI.Add("KATARINA_SECONDARY_DESC",
                 "Katarina throws a <color=#AF1AAF>Dagger</color> at the target enemy that bounces to up to " + $"<color=#ffffff>{Modules.Config.bouncingBlades_maxBounceCount.Value}</color> additional nearby enemies, dealing " + $"<color=#f68835>{100f * Modules.Config.bouncingBlades_damageCoefficient.Value}%</color> damage to each." + Environment.NewLine
-                + "The <color=#AF1AAF>Dagger</color> then lands on the ground behind the last enemy hit after <color=#ffffff>1.5</color> seconds.");
+                + "The <color=#AF1AAF>Dagger</color> then lands on the ground behind the last enemy hit after <color=#ffffff>1</color> second.");
 
             LanguageAPI.Add("KATARINA_UTILITY_NAME", "<color=#AF1AAF>SHUNPO</color>");
             LanguageAPI.Add("KATARINA_UTILITY_DESC",

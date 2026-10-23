@@ -8,9 +8,6 @@ using UnityEngine.Networking;
 
 namespace KatarinaMod.Modules
 {
-    // module for creating body prefabs and whatnot
-    // recommended to simply avoid touching this unless you REALLY need to
-
     internal static class Prefabs
     {
         internal static List<GameObject> bodyPrefabs = new List<GameObject>();
@@ -21,7 +18,6 @@ namespace KatarinaMod.Modules
 
         internal static List<SurvivorDef> survivorDefinitions = new List<SurvivorDef>();
 
-        // cache this just to give our ragdolls the same physic material as vanilla stuff
         private static PhysicMaterial ragdollMaterial;
 
         internal static GameObject CreateDisplayPrefab(string modelName, GameObject prefab, BodyInfo bodyInfo)
@@ -79,7 +75,6 @@ namespace KatarinaMod.Modules
             bodyComponent.baseNameToken = bodyInfo.bodyNameToken;
             bodyComponent.subtitleNameToken = bodyInfo.subtitleNameToken;
             bodyComponent.portraitIcon = bodyInfo.characterPortrait;
-            //bodyComponent.crosshairPrefab = bodyInfo.crosshair;
 
             bodyComponent.bodyFlags = CharacterBody.BodyFlags.ImmuneToExecutes;
             bodyComponent.rootMotionInMainState = false;
@@ -202,10 +197,7 @@ namespace KatarinaMod.Modules
                 else
                 {
                     Renderer j = childLocator.FindChild(rendererInfo[i].childName).GetComponent<Renderer>();
-                    if (!j)
-                    {
-                    }
-                    else
+                    if (j)
                     {
                         rendererInfos.Add(new CharacterModel.RendererInfo
                         {
@@ -333,7 +325,6 @@ namespace KatarinaMod.Modules
             cameraTargetParams.cameraPivotTransform = prefab.transform.Find("ModelBase").Find("CameraPivot");
             cameraTargetParams.RequestAimType(CameraTargetParams.AimType.Standard);
             cameraTargetParams.recoil = Vector2.zero;
-            //cameraTargetParams.idealLocalCameraPos = Vector3.zero;
             cameraTargetParams.dontRaycastToPivot = false;
         }
 
@@ -434,7 +425,6 @@ namespace KatarinaMod.Modules
     }
 }
 
-// for simplifying characterbody creation
 internal class BodyInfo
 {
     internal float acceleration = 80f;
@@ -452,7 +442,6 @@ internal class BodyInfo
     internal float crit = 1f;
     internal float critGrowth = 0f;
 
-    // body prefab you're cloning for your character- commando is the safest
     internal GameObject crosshair = null;
 
     internal float damage = 12f;
@@ -465,7 +454,6 @@ internal class BodyInfo
     internal float jumpPowerGrowth = 0f;
     internal float maxHealth = 100f;
 
-    // jump power per level exists for some reason
     internal Vector3 modelBasePosition = new Vector3(0f, -0.92f, 0f);
 
     internal float moveSpeed = 7f;
@@ -473,13 +461,11 @@ internal class BodyInfo
     internal GameObject podPrefab = null;
     internal float shield = 0f;
 
-    // base shield is a thing apparently. neat
     internal float shieldGrowth = 0f;
 
     internal string subtitleNameToken = "";
 }
 
-// for simplifying rendererinfo creation
 internal class CustomRendererInfo
 {
     internal string childName;

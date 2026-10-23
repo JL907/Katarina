@@ -73,7 +73,7 @@ namespace KatarinaMod.Modules
             bouncingBlades_damageCoefficientPerBounce = KatarinaPlugin.instance.Config.Bind<float>(new ConfigDefinition("04 - Bouncing Blades", "Damage Coefficient Per Bounce"), 1f, new ConfigDescription("", null, Array.Empty<object>()));
             bouncingBlades_procCoefficient = KatarinaPlugin.instance.Config.Bind<float>(new ConfigDefinition("04 - Bouncing Blades", "Proc Coefficient"), 1f, new ConfigDescription("", null, Array.Empty<object>()));
             bouncingBlades_maxBounceCount = KatarinaPlugin.instance.Config.Bind<int>(new ConfigDefinition("04 - Bouncing Blades", "Bounce Count"), 2, new ConfigDescription("Extra enemies the dagger bounces to after the first target (League: 2)", null, Array.Empty<object>()));
-            bouncingBlades_bounceRange = KatarinaPlugin.instance.Config.Bind<float>(new ConfigDefinition("04 - Bouncing Blades", "Bounce Radius (m)"), 7f, new ConfigDescription("How far (metres) the dagger looks for the next enemy to bounce to. Only the nearest unhit enemy in line of sight is picked.", null, Array.Empty<object>()));
+            bouncingBlades_bounceRange = KatarinaPlugin.instance.Config.Bind<float>(new ConfigDefinition("04 - Bouncing Blades", "Bounce Radius (m)"), 5f, new ConfigDescription("How far (metres) the dagger looks for the next enemy to bounce to. Only the nearest unhit enemy in line of sight is picked.", null, Array.Empty<object>()));
             bouncingBlades_coolDown = KatarinaPlugin.instance.Config.Bind<float>(new ConfigDefinition("04 - Bouncing Blades", "Cooldown"), 4f, new ConfigDescription("", null, Array.Empty<object>()));
             bouncingBlades_travelSpeed = KatarinaPlugin.instance.Config.Bind<float>(new ConfigDefinition("04 - Bouncing Blades", "Travel Speed"), 120f, new ConfigDescription("", null, Array.Empty<object>()));
             bouncingBlades_landingDistance = KatarinaPlugin.instance.Config.Bind<float>(new ConfigDefinition("04 - Bouncing Blades", "Dagger Landing Distance (m)"), 3f, new ConfigDescription("How far behind the last enemy hit the dagger lands, in metres, on the far side from Katarina", null, Array.Empty<object>()));
@@ -88,7 +88,6 @@ namespace KatarinaMod.Modules
             shunpo_procCoefficient = KatarinaPlugin.instance.Config.Bind<float>(new ConfigDefinition("06 - Shunpo", "Proc Coefficient"), 1f, new ConfigDescription("", null, Array.Empty<object>()));
         }
 
-        // this helper automatically makes config entries for disabling survivors
         internal static ConfigEntry<bool> CharacterEnableConfig(string characterName)
         {
             return KatarinaPlugin.instance.Config.Bind<bool>(new ConfigDefinition(characterName, "Enabled"), true, new ConfigDescription("Set to false to disable this character"));

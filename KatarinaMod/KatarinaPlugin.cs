@@ -26,17 +26,13 @@ namespace KatarinaMod
     [BepInPlugin(MODUID, MODNAME, MODVERSION)]
     public class KatarinaPlugin : BaseUnityPlugin
     {
-        // a prefix for name tokens to prevent conflicts- please capitalize all name tokens for convention
         public const string developerPrefix = "Lemonlust";
 
         public const string MODNAME = "KatarinaMod";
 
-        // if you don't change these you're giving permission to deprecate the mod-
-        //  please change the names to your own stuff, thanks
-        //   this shouldn't even have to be said
         public const string MODUID = "com.Lemonlust.KatarinaMod";
 
-        public const string MODVERSION = "1.9.1";
+        public const string MODVERSION = "1.9.2";
         public static KatarinaPlugin instance;
         internal List<SurvivorBase> Survivors = new List<SurvivorBase>();
 
@@ -53,38 +49,31 @@ namespace KatarinaMod
             instance = this;
             try
             {
-                // load assets and read config
                 Modules.Assets.Initialize();
                 Modules.Config.ReadConfig();
-                Modules.States.RegisterStates(); // register states for networking
+                Modules.States.RegisterStates();
                 R2API.Networking.NetworkingAPI.RegisterMessageType<Modules.DaggerPickupMessage>();
                 R2API.Networking.NetworkingAPI.RegisterMessageType<Modules.DaggerLandingPreview.CancelMessage>();
-                Modules.Buffs.RegisterBuffs(); // add and register custom buffs/debuffs
-                Modules.Projectiles.RegisterProjectiles(); // add and register custom projectiles
-                Modules.Tokens.AddTokens(); // register name tokens
-                //Modules.ItemDisplays.PopulateDisplays(); // collect item display prefabs for use in our display rules
+                Modules.Buffs.RegisterBuffs();
+                Modules.Projectiles.RegisterProjectiles();
+                Modules.Tokens.AddTokens();
 
-                // survivor initialization
                 new MyCharacter().Initialize();
 
-                // now make a content pack and add it- this part will change with the next update
                 new Modules.ContentPacks().Initialize();
 
-                RoR2.ContentManagement.ContentManager.onContentPacksAssigned += LateSetup;
                 Hook();
             }
             catch (Exception e)
             {
                 Logger.LogError(e.ToString());
             }
-
         }
 
         private void CharacterBody_RecalculateStats(On.RoR2.CharacterBody.orig_RecalculateStats orig, CharacterBody self)
         {
             orig(self);
 
-            // a simple stat hook, adds armor after stats are recalculated
             if (self)
             {
                 if (self.HasBuff(Modules.Buffs.armorBuff))
@@ -96,7 +85,6 @@ namespace KatarinaMod
 
         private void Hook()
         {
-            // run hooks here, disabling one is as simple as commenting out the line
             On.RoR2.CharacterBody.RecalculateStats += CharacterBody_RecalculateStats;
             On.RoR2.GlobalEventManager.OnCharacterDeath += GlobalEventManager_OnCharacterDeath;
         }
@@ -120,12 +108,6 @@ namespace KatarinaMod
                     }
                 }
             }
-        }
-
-        private void LateSetup(HG.ReadOnlyArray<RoR2.ContentManagement.ReadOnlyContentPack> obj)
-        {
-            // have to set item displays later now because they require direct object references..
-            //Modules.Survivors.MyCharacter.instance.SetItemDisplays();
         }
     }
 }

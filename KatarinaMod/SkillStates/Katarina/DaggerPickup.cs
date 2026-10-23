@@ -20,14 +20,16 @@ namespace KatarinaMod
         public AnimationCurve embedDistanceCurve;
 
         internal static Vector3? pendingLanding;
-        internal const float LeagueLandTime = 1.5f;
+        internal const float LeagueLandTime = 1f;
         internal const float PickupRadius = 3f;
         private const float LandingArcHeight = 8f;
         private bool scriptedFlight;
         private Vector3 flightStart;
         private Vector3 flightEnd;
+        private float apexHeight;
+        private float apexTime;
         private Vector3 landingGround;
-        private const float MidAirPickupDelay = 0.5f;
+        private const float MidAirPickupDelay = 0.25f;
 
         private void Awake()
         {
@@ -48,6 +50,7 @@ namespace KatarinaMod
                 this.flightStart = base.transform.position;
                 this.landingGround = pendingLanding.Value;
                 this.flightEnd = pendingLanding.Value + Vector3.up * this.RestHeight();
+                this.SetupArc();
                 pendingLanding = null;
 
                 this.rigidbody.isKinematic = true;
@@ -62,10 +65,26 @@ namespace KatarinaMod
             return capsule.height * 0.5f * Mathf.Abs(base.transform.lossyScale.y);
         }
 
+        private void SetupArc()
+        {
+            this.apexHeight = Mathf.Max(this.flightStart.y, this.flightEnd.y) + LandingArcHeight;
+            float rise = Mathf.Sqrt(this.apexHeight - this.flightStart.y);
+            float fall = Mathf.Sqrt(this.apexHeight - this.flightEnd.y);
+            this.apexTime = rise / (rise + fall);
+        }
+
+        private float ArcY(float t)
+        {
+            float d = t - this.apexTime;
+            float a = (this.apexHeight - this.flightStart.y) / (this.apexTime * this.apexTime);
+            return this.apexHeight - a * d * d;
+        }
+
         private void ScriptedFlightStep()
         {
             float t = Mathf.Clamp01(this.stopwatch / LeagueLandTime);
-            Vector3 position = Vector3.Lerp(this.flightStart, this.flightEnd, t) + Vector3.up * (4f * LandingArcHeight * t * (1f - t));
+            Vector3 position = Vector3.Lerp(this.flightStart, this.flightEnd, t);
+            position.y = this.ArcY(t);
 
             if (this.stopwatch >= MidAirPickupDelay) this.sphereCollider.enabled = true;
 
