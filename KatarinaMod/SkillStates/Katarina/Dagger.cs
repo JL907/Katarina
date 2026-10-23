@@ -1,5 +1,4 @@
 ﻿using EntityStates;
-using EntityStates.Huntress.HuntressWeapon;
 using RoR2;
 using RoR2.Orbs;
 using RoR2.Projectile;
@@ -19,6 +18,7 @@ namespace KatarinaMod.SkillStates.Katarina.Weapon
         public static float daggerTravelSpeed = Modules.Config.bouncingBlades_travelSpeed.Value;
         public static float daggerBounceRange = Modules.Config.bouncingBlades_bounceRange.Value;
         public static float damageCoefficientPerBounce = Modules.Config.bouncingBlades_damageCoefficientPerBounce.Value;
+        public static float landingDistance = Modules.Config.bouncingBlades_landingDistance.Value;
         public float baseDuration = 0.5f;
         private HuntressTracker huntressTracker;
         private float stopwatch;
@@ -117,8 +117,9 @@ namespace KatarinaMod.SkillStates.Katarina.Weapon
             lightningOrb.range = ThrowDagger.daggerBounceRange;
             lightningOrb.damageCoefficientPerBounce = ThrowDagger.damageCoefficientPerBounce;
             lightningOrb.tossDaggerOnArrival = true;
+            lightningOrb.throwOrigin = base.characterBody.corePosition;
+            lightningOrb.landingDistance = ThrowDagger.landingDistance;
             Transform hand = this.childLocator ? this.childLocator.FindChild("R_Hand") : null;
-            EffectManager.SimpleMuzzleFlash(ThrowGlaive.muzzleFlashPrefab, base.gameObject, "R_Hand", true);
             lightningOrb.origin = hand ? hand.position : base.characterBody.corePosition;
             lightningOrb.target = this.initialOrbTarget;
             OrbManager.instance.AddOrb(lightningOrb);

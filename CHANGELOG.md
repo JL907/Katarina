@@ -1,5 +1,18 @@
 # Changelog
 
+## 1.9.1
+* Bouncing Blades rework, closer to League:
+   * Throws Katarina's own dagger, matching her current skin, instead of Huntress's glaive.
+   * Bounces to up to 2 extra enemies. Each bounce goes to the nearest enemy that hasn't been hit, is within 7 m and is in line of sight. Every hit deals the same damage.
+   * The dagger then lands behind the last enemy hit, on the far side from Katarina, after a 1.5 second arc.
+   * A ground circle shows where it will land while it's in the air. Catch the dagger mid-air and the circle goes away.
+   * Thrown daggers spin edge-first in the air and leave a red afterimage trail. Shunpo's dagger does too.
+   * Config: "Max Bounce Count" and "Bounce Range" are replaced by "Bounce Count" and "Bounce Radius (m)". "Dagger Landing Distance (m)" is new. Old values for these settings aren't carried over.
+* Added a backpedal animation for moving backwards.
+* Fixed Katarina's left leg twisting inward while running and sprinting.
+* The dagger ground circle now follows uneven terrain smoothly, without spikes or floating edges on slopes and ledges.
+* Katarina's assets are now built for the game's current Unity version.
+
 ## 1.9.0
 * Added Death Sworn Katarina Skin
 * Added Battle Queen Katarina Skin

@@ -27,11 +27,23 @@ namespace KatarinaMod
         private Vector3 transformPositionWhenContacted;
         public AnimationCurve embedDistanceCurve;
 
+        // Set by DaggerOrb (server) right before firing the Bouncing Blade dagger: the ground point it should land on.
+        // When set, the dagger flies there in a scripted arc and lands after LeagueLandTime (League: 1.023 s).
+        internal static Vector3? pendingLanding;
+        internal const float LeagueLandTime = 1.5f;
+        internal const float PickupRadius = 3f;
+        private const float LandingArcHeight = 8f;
+        private bool scriptedFlight;
+        private Vector3 flightStart;
+        private Vector3 flightEnd;
+        private Vector3 landingGround;
+        private const float MidAirPickupDelay = 0.5f;
+
         private void Awake()
         {
             this.rigidbody = this.GetComponent<Rigidbody>();
             this.sphereCollider = this.GetComponent<SphereCollider>();
-            this.sphereCollider.radius = 3f;
+            this.sphereCollider.radius = PickupRadius;
             this.sphereCollider.isTrigger = true;
             this.sphereCollider.center = Vector3.zero;
             this.projectileController = base.GetComponent<ProjectileController>();
@@ -39,6 +51,49 @@ namespace KatarinaMod
             this.stopwatch = 0f;
             this.rigidbody.velocity = Vector3.zero;
             eulerAngleVelocity = new Vector3(15f, 0, 0);
+
+            if (NetworkServer.active && pendingLanding.HasValue)
+            {
+                this.scriptedFlight = true;
+                this.flightStart = base.transform.position;
+                this.landingGround = pendingLanding.Value;
+                this.flightEnd = pendingLanding.Value + Vector3.up * this.RestHeight();
+                pendingLanding = null;
+
+                this.rigidbody.isKinematic = true;
+                this.rigidbody.useGravity = false;
+            }
+        }
+
+        // How high the dagger's pivot sits above the ground when it rests upright (same as the physics landing).
+        private float RestHeight()
+        {
+            CapsuleCollider capsule = base.GetComponent<CapsuleCollider>();
+            if (!capsule) return 0f;
+            return capsule.height * 0.5f * Mathf.Abs(base.transform.lossyScale.y);
+        }
+
+        private void ScriptedFlightStep()
+        {
+            float t = Mathf.Clamp01(this.stopwatch / LeagueLandTime);
+            Vector3 position = Vector3.Lerp(this.flightStart, this.flightEnd, t) + Vector3.up * (4f * LandingArcHeight * t * (1f - t));
+
+            // Like Shunpo's dagger, it can be caught in the air once it has been flying for a moment.
+            if (this.stopwatch >= MidAirPickupDelay) this.sphereCollider.enabled = true;
+
+            // Rotation stays upright here; DaggerGhostVisibility spins the visible model on each client.
+            this.rigidbody.MovePosition(position);
+            this.rigidbody.MoveRotation(Quaternion.identity);
+
+            if (t >= 1f)
+            {
+                this.scriptedFlight = false;
+                this.stuck = true;
+                this.transformPositionWhenContacted = this.flightEnd;
+                base.transform.SetPositionAndRotation(this.flightEnd, Quaternion.identity);
+                this.rigidbody.rotation = Quaternion.identity;
+                this.sphereCollider.enabled = true;
+            }
         }
 
         private void OnTriggerEnter(Collider other)
@@ -52,6 +107,7 @@ namespace KatarinaMod
             if (!owner || characterBody.gameObject != owner) return;
 
             this.alive = false;
+            if (this.scriptedFlight) Modules.DaggerLandingPreview.CancelForOwner(owner, this.landingGround);
             Modules.DaggerPickupMessage.NotifyPickup(characterBody);
             NetworkServer.Destroy(base.gameObject);
         }
@@ -67,6 +123,11 @@ namespace KatarinaMod
         private void FixedUpdate()
         {
             this.stopwatch += Time.fixedDeltaTime;
+            if (this.scriptedFlight)
+            {
+                if (this.alive) this.ScriptedFlightStep();
+                return;
+            }
             if (this.stopwatch < 0.5f && alive)
             {
                 this.sphereCollider.enabled = false;

@@ -178,6 +178,8 @@ namespace KatarinaMod.Modules
 
             LeagueVfx.VoracitySpinEffect.CreatePrefab();
             LeagueVfx.DaggerPickupHitEffect.CreatePrefab();
+            LeagueVfx.DaggerOrbEffect.CreatePrefab();
+            DaggerLandingPreview.CreatePrefab();
 
         }
 

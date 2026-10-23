@@ -17,20 +17,20 @@
 ## Introduction
 Decisive in judgment and lethal in combat, Katarina is a Noxian assassin of the highest caliber. Eldest daughter to the legendary General Du Couteau, she made her talents known with swift kills against unsuspecting enemies. Her fiery ambition has driven her to pursue heavily-guarded targets, even at the risk of endangering her allies—but no matter the mission, Katarina will not hesitate to execute her duty amid a whirlwind of serrated daggers.
 
-## Latest Patch Notes `1.9.0`
+## Latest Patch Notes `1.9.1`
 `Bug reports can be posted in discord` https://discord.gg/aYuS9Wsxxx  
 
-* Added Death Sworn Katarina Skin
-* Added Battle Queen Katarina Skin
-* Added Faerie Court Katarina Skin
-* Added Prestige Faerie Court Katarina Skin
-* Added Chosen of the Wolf Katarina Skin
-* Added Prestige Masque of the Black Rose Katarina Skin
-* Added Petals of Spring Katarina Skin
-* New skins have hair and cloth physics.
-* Thrown daggers now match the dagger of the skin you're using.
-* Voracity now uses the League dagger pickup spin effect, with a hit effect on every enemy struck.
-* Landed daggers now have a red light beam so they're easier to spot.
+* Bouncing Blades rework, closer to League:
+   * Throws Katarina's own dagger, matching her current skin, instead of Huntress's glaive.
+   * Bounces to up to 2 extra enemies. Each bounce goes to the nearest enemy that hasn't been hit, is within 7 m and is in line of sight. Every hit deals the same damage.
+   * The dagger then lands behind the last enemy hit, on the far side from Katarina, after a 1.5 second arc.
+   * A ground circle shows where it will land while it's in the air. Catch the dagger mid-air and the circle goes away.
+   * Thrown daggers spin edge-first in the air and leave a red afterimage trail. Shunpo's dagger does too.
+   * Config: "Max Bounce Count" and "Bounce Range" are replaced by "Bounce Count" and "Bounce Radius (m)". "Dagger Landing Distance (m)" is new. Old values for these settings aren't carried over.
+* Added a backpedal animation for moving backwards.
+* Fixed Katarina's left leg twisting inward while running and sprinting.
+* The dagger ground circle now follows uneven terrain smoothly, without spikes or floating edges on slopes and ledges.
+* Katarina's assets are now built for the game's current Unity version.
 
 ## Discord
 <a href="https://discord.gg/aYuS9Wsxxx" target="_blank">
@@ -74,6 +74,19 @@ Decisive in judgment and lethal in combat, Katarina is a Noxian assassin of the 
 ---
 
 ## Old Patch Notes
+`1.9.0`
+* Added Death Sworn Katarina Skin
+* Added Battle Queen Katarina Skin
+* Added Faerie Court Katarina Skin
+* Added Prestige Faerie Court Katarina Skin
+* Added Chosen of the Wolf Katarina Skin
+* Added Prestige Masque of the Black Rose Katarina Skin
+* Added Petals of Spring Katarina Skin
+* New skins have hair and cloth physics.
+* Thrown daggers now match the dagger of the skin you're using.
+* Voracity now uses the League dagger pickup spin effect, with a hit effect on every enemy struck.
+* Landed daggers now have a red light beam so they're easier to spot.
+
 `1.8.3`
 * Multiplayer fixes for daggers
    * Dagger pickups are now handled by the host, so every player sees the same result and a dagger can't be picked up twice.
