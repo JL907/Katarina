@@ -7,8 +7,8 @@ namespace KatarinaMod.Modules
     // Built at runtime (ring + soft fill) and shaped to the ground beneath it.
     internal class DaggerGroundIndicator : MonoBehaviour
     {
-        private const int segments = 48;
-        private const float groundOffset = 0.06f;    // lift off the ground to avoid z-fighting
+        private const int segments = 96;
+        private const float groundOffset = 0.1f;    // lift off the ground to avoid z-fighting
         private const float ringWidth = 0.15f;
         private const float pulseSpeed = 4f;
         private static readonly Color ringColor = new Color(0.95f, 0.12f, 0.18f, 0.9f);

@@ -43,6 +43,7 @@
 		<EmbeddedResource Include="katarina" />
 		<EmbeddedResource Include="Katarina.bnk" />
 		<EmbeddedResource Include="KatarinaMod" />
+		<EmbeddedResource Include="LeagueSkins\**\*.*" />
 	</ItemGroup>
 
 	<ItemGroup>
