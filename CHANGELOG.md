@@ -1,5 +1,18 @@
 # Changelog
 
+## 1.9.0
+* Added Death Sworn Katarina Skin
+* Added Battle Queen Katarina Skin
+* Added Faerie Court Katarina Skin
+* Added Prestige Faerie Court Katarina Skin
+* Added Chosen of the Wolf Katarina Skin
+* Added Prestige Masque of the Black Rose Katarina Skin
+* Added Petals of Spring Katarina Skin
+* New skins have hair and cloth physics.
+* Thrown daggers now match the dagger of the skin you're using.
+* Voracity now uses the League dagger pickup spin effect, with a hit effect on every enemy struck.
+* Landed daggers now have a red light beam so they're easier to spot.
+
 ## 1.8.3
 * Multiplayer fixes for daggers
    * Dagger pickups are now handled by the host, so every player sees the same result and a dagger can't be picked up twice.

@@ -17,18 +17,20 @@
 ## Introduction
 Decisive in judgment and lethal in combat, Katarina is a Noxian assassin of the highest caliber. Eldest daughter to the legendary General Du Couteau, she made her talents known with swift kills against unsuspecting enemies. Her fiery ambition has driven her to pursue heavily-guarded targets, even at the risk of endangering her allies—but no matter the mission, Katarina will not hesitate to execute her duty amid a whirlwind of serrated daggers.
 
-## Latest Patch Notes `1.8.3`
+## Latest Patch Notes `1.9.0`
 `Bug reports can be posted in discord` https://discord.gg/aYuS9Wsxxx  
 
-* Multiplayer fixes for daggers
-   * Dagger pickups are now handled by the host, so every player sees the same result and a dagger can't be picked up twice.
-   * Bouncing Blades daggers now drop correctly for every player, not just the host.
-   * Fixed duplicate Bouncing Blades effects in multiplayer.
-* Each Katarina can only pick up her own daggers.
-* Daggers are now only visible to the Katarina who threw them.
-* Landed daggers now show a League-style ground circle marking their pickup range.
-* Landed daggers now show an on-screen marker (with an edge-of-screen arrow when off-screen) so they're easier to spot.
-* Added [Runes](https://thunderstore.io/package/lemonlust/Runes/) as a dependency.
+* Added Death Sworn Katarina Skin
+* Added Battle Queen Katarina Skin
+* Added Faerie Court Katarina Skin
+* Added Prestige Faerie Court Katarina Skin
+* Added Chosen of the Wolf Katarina Skin
+* Added Prestige Masque of the Black Rose Katarina Skin
+* Added Petals of Spring Katarina Skin
+* New skins have hair and cloth physics.
+* Thrown daggers now match the dagger of the skin you're using.
+* Voracity now uses the League dagger pickup spin effect, with a hit effect on every enemy struck.
+* Landed daggers now have a red light beam so they're easier to spot.
 
 ## Discord
 <a href="https://discord.gg/aYuS9Wsxxx" target="_blank">
@@ -72,6 +74,17 @@ Decisive in judgment and lethal in combat, Katarina is a Noxian assassin of the 
 ---
 
 ## Old Patch Notes
+`1.8.3`
+* Multiplayer fixes for daggers
+   * Dagger pickups are now handled by the host, so every player sees the same result and a dagger can't be picked up twice.
+   * Bouncing Blades daggers now drop correctly for every player, not just the host.
+   * Fixed duplicate Bouncing Blades effects in multiplayer.
+* Each Katarina can only pick up her own daggers.
+* Daggers are now only visible to the Katarina who threw them.
+* Landed daggers now show a League-style ground circle marking their pickup range.
+* Landed daggers now show an on-screen marker (with an edge-of-screen arrow when off-screen) so they're easier to spot.
+* Added [Runes](https://thunderstore.io/package/lemonlust/Runes/) as a dependency.
+
 `1.8.2`
 * Updated for Risk of Rain 2 version 1.5.0
    * Fixed Katarina failing to load.
