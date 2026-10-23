@@ -96,16 +96,14 @@ namespace KatarinaMod.Modules.Survivors
         {
             Modules.Skills.CreateSkillFamilies(bodyPrefab);
 
-            string prefix = KatarinaPlugin.developerPrefix;
-
             #region Primary
 
-            Modules.Skills.AddPrimarySkill(bodyPrefab, 
-                Modules.Skills.CreatePrimarySkillDef(new EntityStates.SerializableEntityStateType(typeof(SkillStates.SlashCombo)), 
-                "Weapon", 
-                "KATARINA_PRIMARY_NAME", 
-                "KATARINA_PRIMARY_DESC", 
-                Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("bouncing"), 
+            Modules.Skills.AddPrimarySkill(bodyPrefab,
+                Modules.Skills.CreatePrimarySkillDef(new EntityStates.SerializableEntityStateType(typeof(SkillStates.SlashCombo)),
+                "Weapon",
+                "KATARINA_PRIMARY_NAME",
+                "KATARINA_PRIMARY_DESC",
+                Modules.Assets.mainAssetBundle.LoadAsset<Sprite>("bouncing"),
                 true));
 
             #endregion Primary
@@ -621,7 +619,6 @@ namespace KatarinaMod.Modules.Survivors
 
             LeagueSkins.LeagueSkinBuilder.AddSkins(skins, leagueSkins, model, mainRenderer, characterModel);
 
-            // every skin throws the dagger she holds
             LeagueSkins.LeagueDaggers.Apply(skins, characterModel.baseRendererInfos.Length > 0 ? characterModel.baseRendererInfos[0].defaultMaterial : null);
 
             skinController.skins = skins.ToArray();

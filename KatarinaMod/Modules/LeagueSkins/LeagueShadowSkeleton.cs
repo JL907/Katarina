@@ -6,13 +6,8 @@ using UnityEngine;
 
 namespace KatarinaMod.Modules.LeagueSkins
 {
-    // Build-time description of a League skin skeleton retargeted onto the mod's animated rig.
-    // Every skin joint keeps its own rest position (bone lengths / pivots) but takes its rotation
-    // from the animated bone it maps to (or from the nearest mapped ancestor for hair, skirts, props).
-    // Joints listed in the skin's dynamic chains become a real bone hierarchy simulated by DynamicBone.
     internal class ShadowRig
     {
-        // Single-child bones shorter than this (League units) don't get a bind-pose correction.
         private const float MinCorrectionBoneLength = 5f;
 
         internal int count;
@@ -68,7 +63,6 @@ namespace KatarinaMod.Modules.LeagueSkins
             rig.display.bones = new Transform[n];
             rig.order = TopologicalOrder(skeleton.parents);
 
-            // Dynamic chains: the root joint and everything below it.
             foreach (DynamicChainDefinition chain in definition.dynamicChains)
             {
                 if (!skeleton.index.TryGetValue(chain.root, out int root))
@@ -108,8 +102,6 @@ namespace KatarinaMod.Modules.LeagueSkins
                 rig.anchorBind[j] = baseBindposes.TryGetValue(bone, out Matrix4x4 bindpose) ? bindpose : bone.worldToLocalMatrix * rendererTransform.localToWorldMatrix;
             }
 
-            // Bind-pose correction: swing each limb bone of the skin so it points the same way as
-            // the champion's bone at bind time, so the existing animations put limbs where intended.
             Quaternion[] correction = new Quaternion[n];
             foreach (int j in rig.order)
             {
@@ -148,15 +140,12 @@ namespace KatarinaMod.Modules.LeagueSkins
                 rig.rotation[j] = LeagueSkinBuilder.AlignBindPose ? Matrix4x4.Rotate(q) : Matrix4x4.identity;
             }
 
-            // Dynamic joints form a real hierarchy: each child sits at its rest offset inside its parent.
             foreach (int j in rig.order)
             {
                 if (!rig.dynamic[j]) continue;
                 int p = skeleton.parents[j];
                 if (p < 0 || !rig.dynamic[p])
                 {
-                    // Chain root: placed at the joint itself (inside the driven holder) so DynamicBone
-                    // pivots the chain where it attaches, not at the anchor bone's origin.
                     Matrix4x4 holderBind = rig.anchorBind[j] * rig.rotation[j];
                     rig.chainLocal[j] = holderBind.MultiplyPoint3x4(rig.rest[j]);
                     rig.chainBind[j] = Matrix4x4.Translate(-rig.chainLocal[j]) * holderBind;
@@ -198,7 +187,6 @@ namespace KatarinaMod.Modules.LeagueSkins
             order.Add(i);
         }
 
-        // Skinning matrix for joint j = bone.localToWorld * bindpose.
         internal Matrix4x4 Bindpose(int j)
         {
             return this.dynamic[j] ? this.chainBind[j] : this.anchorBind[j] * this.rotation[j];
@@ -263,7 +251,6 @@ namespace KatarinaMod.Modules.LeagueSkins
                 }
             }
 
-            // Make sure whole dynamic chains exist (end joints carry no weights but shape the chain).
             for (int j = 0; j < this.count; j++)
             {
                 if (this.dynamic[j]) this.Shadow(side, j, lookup);
@@ -298,8 +285,6 @@ namespace KatarinaMod.Modules.LeagueSkins
         }
     }
 
-    // Adds RoR2's DynamicBone / DynamicBoneCollider through reflection so this compiles against any
-    // version of the class (field names are the standard DynamicBone ones).
     internal static class DynamicBones
     {
         private static Type boneType;
@@ -338,7 +323,6 @@ namespace KatarinaMod.Modules.LeagueSkins
             }
         }
 
-        // DynamicBone components already on the model (from the asset bundle), before any skin adds its own.
         internal static Behaviour[] Existing(GameObject model)
         {
             if (!model || !Resolve()) return new Behaviour[0];
@@ -362,7 +346,6 @@ namespace KatarinaMod.Modules.LeagueSkins
             Set(dynamicBone, "m_Elasticity", chain.elasticity);
             Set(dynamicBone, "m_Stiffness", chain.stiffness);
             Set(dynamicBone, "m_Inert", chain.inert);
-            // Particle radius and gravity are in the model's units (the component lives on the model).
             Set(dynamicBone, "m_Radius", chain.radius * LeagueSkinBuilder.LeagueUnitScale);
             Set(dynamicBone, "m_Gravity", chain.gravity);
 
@@ -387,7 +370,6 @@ namespace KatarinaMod.Modules.LeagueSkins
             return dynamicBone;
         }
 
-        // One set of body colliders per model, shared by every skin's chains.
         private static Dictionary<string, Component> Colliders(GameObject model, Dictionary<string, Transform> bones, Dictionary<string, Matrix4x4> bindposesByName, Matrix4x4 leagueToRenderer)
         {
             int key = model.GetInstanceID();
@@ -413,12 +395,9 @@ namespace KatarinaMod.Modules.LeagueSkins
         }
     }
 
-    // Runs after the Animator each frame (and before DynamicBone) and places the hidden skin bones.
     [DefaultExecutionOrder(-50)]
     public class LeagueShadowSkeleton : MonoBehaviour
     {
-        // A mapped bone whose animated distance to its parent differs from the bind distance by more
-        // than this is treated as translated by the animation (e.g. daggers snapping into the hands).
         private const float TranslationTolerance = 0.1f;
         private const float MinBoneLength = 0.01f;
 
@@ -433,7 +412,6 @@ namespace KatarinaMod.Modules.LeagueSkins
         public Transform[] shadows;
         public GameObject[] parts;
         public Behaviour[] dynamics;
-        // The base skin's own DynamicBones (asset bundle); switched off while any League skin is shown.
         public Behaviour[] baseDynamics;
 
         private Vector3[] position;

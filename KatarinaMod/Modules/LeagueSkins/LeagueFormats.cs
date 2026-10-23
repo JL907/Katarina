@@ -280,6 +280,12 @@ namespace KatarinaMod.Modules.LeagueSkins
             return false;
         }
 
+        internal static Color32[] LoadPixels(byte[] d, out int width, out int height)
+        {
+            if (!ReadHeader(d, out width, out height, out int format, out bool hasMips)) return null;
+            return Decode(TopLevel(d, format, width, height, hasMips), format, width, height);
+        }
+
         internal static Sprite LoadIcon(byte[] d, string name)
         {
             if (!ReadHeader(d, out int width, out int height, out int format, out bool hasMips)) return null;

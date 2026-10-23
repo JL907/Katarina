@@ -19,7 +19,6 @@ namespace KatarinaMod.SkillStates.Katarina
         protected float procCoefficient = Modules.Config.voracity_procCoefficient.Value;
         public float damageRadius = Modules.Config.voracity_radius.Value;
         public float shunpoRecharge = Modules.Config.voracity_shunpoRecharge.Value;
-        private Transform indicatorInstance;
         private Animator animator;
         public override void OnEnter()
         {
@@ -30,13 +29,12 @@ namespace KatarinaMod.SkillStates.Katarina
             Util.PlaySound("KatarinaVoracitySFX", base.gameObject);
             this.animator.SetFloat("Ultimate.playbackRate", 1f);
             base.skillLocator.utility.RunRecharge(this.shunpoRecharge);
-            if (!this.indicatorInstance) this.CreateIndicator();
+            if (base.isAuthority) Modules.LeagueVfx.VoracitySpinEffect.Spawn(base.characterBody, this.damageRadius);
         }
 
         public override void OnExit()
         {
             base.PlayAnimation("FullBody, Override", "BufferEmpty");
-            if (this.indicatorInstance) EntityState.Destroy(this.indicatorInstance.gameObject);
             base.OnExit();
         }
 
@@ -52,8 +50,7 @@ namespace KatarinaMod.SkillStates.Katarina
                 float length = animator.GetCurrentAnimatorStateInfo(layerIndex).length;
                 animator.SetFloat("Ultimate.playbackRate", length / duration);
             }
-            if (!this.indicatorInstance) this.CreateIndicator(); this.UpdateIndicator();
-            if (!this.attacked) 
+            if (!this.attacked)
             {
                 this.attacked = true;
                 if (NetworkServer.active)
@@ -63,33 +60,24 @@ namespace KatarinaMod.SkillStates.Katarina
             }
             if (stopwatch >= this.duration && base.isAuthority)
             {
-                if (this.indicatorInstance) EntityState.Destroy(this.indicatorInstance.gameObject);
                 this.outer.SetNextStateToMain();
                 return;
             }
         }
 
-        private void CreateIndicator()
-        {
-            if (EntityStates.Huntress.ArrowRain.areaIndicatorPrefab)
-            {
-                this.indicatorInstance = UnityEngine.Object.Instantiate<GameObject>(EntityStates.Huntress.ArrowRain.areaIndicatorPrefab).transform;
-                this.indicatorInstance.localScale = Vector3.one * this.damageRadius;
-                this.indicatorInstance.transform.position = base.gameObject.transform.position;
-            }
-        }
         private void Fire()
         {
-            List<HurtBox> HurtBoxes = new List<HurtBox>();
-            HurtBoxes = new SphereSearch
+            List<HurtBox> hurtBoxes = new SphereSearch
             {
                 radius = this.damageRadius,
                 mask = LayerIndex.entityPrecise.mask,
                 origin = base.transform.position
             }.RefreshCandidates().FilterCandidatesByHurtBoxTeam(TeamMask.GetEnemyTeams(base.teamComponent.teamIndex)).FilterCandidatesByDistinctHurtBoxEntities().GetHurtBoxes().ToList();
 
-            foreach (HurtBox hurtbox in HurtBoxes)
+            foreach (HurtBox hurtbox in hurtBoxes)
             {
+                Modules.LeagueVfx.DaggerPickupHitEffect.Spawn(hurtbox, base.transform.position);
+
                 DamageInfo damageInfo = new DamageInfo();
                 damageInfo.damage = this.damageStat * this.damageCoefficient;
                 damageInfo.attacker = base.gameObject;
@@ -103,15 +91,6 @@ namespace KatarinaMod.SkillStates.Katarina
                 GlobalEventManager.instance.OnHitEnemy(damageInfo, hurtbox.healthComponent.gameObject);
                 GlobalEventManager.instance.OnHitAll(damageInfo, hurtbox.healthComponent.gameObject);
                 Util.PlaySound("KatarinaImpactSFX", base.gameObject);
-            }
-        }
-
-
-        private void UpdateIndicator()
-        {
-            if (indicatorInstance)
-            {
-                this.indicatorInstance.transform.position = base.gameObject.transform.position;
             }
         }
 

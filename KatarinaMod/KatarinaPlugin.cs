@@ -57,7 +57,7 @@ namespace KatarinaMod
                 Modules.Assets.Initialize();
                 Modules.Config.ReadConfig();
                 Modules.States.RegisterStates(); // register states for networking
-                R2API.Networking.NetworkingAPI.RegisterMessageType<Modules.DaggerPickupMessage>(); // server -> owner: dagger picked up
+                R2API.Networking.NetworkingAPI.RegisterMessageType<Modules.DaggerPickupMessage>();
                 Modules.Buffs.RegisterBuffs(); // add and register custom buffs/debuffs
                 Modules.Projectiles.RegisterProjectiles(); // add and register custom projectiles
                 Modules.Tokens.AddTokens(); // register name tokens

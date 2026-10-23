@@ -5,10 +5,8 @@ namespace KatarinaMod.Modules.LeagueSkins
 {
     internal static class LeagueSkinCatalog
     {
-        // Katarina's base skin has no emote/recall props; each skin lists its own hidden parts below.
         private static readonly string[] EmoteProps = new string[0];
 
-        // Body colliders for DynamicBone, fitted to the base Katarina mesh (League units, base bind pose).
         internal static readonly BodyColliderDefinition[] BodyColliders =
         {
             Collider("Head", -0.4f, 149.3f, 8.1f, 6.0f),
@@ -41,20 +39,17 @@ namespace KatarinaMod.Modules.LeagueSkins
             Collider("R_KneeLower", 22.4f, 19.2f, 0.3f, 4.1f)
         };
 
-        // Which body colliders each kind of chain collides with.
         private static readonly string[] HairColliders = { "Head", "Neck", "Spine2", "Spine1", "Pelvis", "L_Clavicle", "R_Clavicle", "L_Shoulder", "R_Shoulder" };
         private static readonly string[] BangColliders = { "Neck", "L_Clavicle", "R_Clavicle", "L_Shoulder", "R_Shoulder" };
         private static readonly string[] SashColliders = { "Spine2", "Spine1", "Pelvis", "L_Clavicle", "R_Clavicle", "L_Shoulder", "R_Shoulder", "L_Elbow", "R_Elbow" };
         private static readonly string[] SkirtColliders = { "L_Hip", "R_Hip", "L_KneeLower", "R_KneeLower" };
         private static readonly string[] CoatColliders = { "Pelvis", "L_Hip", "R_Hip", "L_KneeLower", "R_KneeLower" };
 
-        // Long hair: starts from the base skin's own DynamicBone tuning (damping .611, elasticity .085, stiffness .037).
         private static DynamicChainDefinition Hair(string root)
         {
             return Chain(root, 0.6f, 0.085f, 0.04f, 0.2f, 2f, Vector3.zero, HairColliders);
         }
 
-        // Short front locks: stiffer so they keep their shape around the face.
         private static DynamicChainDefinition Bang(string root)
         {
             return Chain(root, 0.5f, 0.2f, 0.5f, 0.3f, 1.5f, Vector3.zero, BangColliders);
@@ -70,7 +65,6 @@ namespace KatarinaMod.Modules.LeagueSkins
             return Chain(root, 0.35f, 0.12f, 0.3f, 0.3f, 1f, new Vector3(0f, -0.001f, 0f), SkirtColliders);
         }
 
-        // Coat tails hanging behind the legs: a little looser than skirt panels so they trail when running.
         private static DynamicChainDefinition Coat(string root)
         {
             return Chain(root, 0.3f, 0.08f, 0.2f, 0.3f, 2f, new Vector3(0f, -0.0012f, 0f), CoatColliders);
@@ -102,7 +96,6 @@ namespace KatarinaMod.Modules.LeagueSkins
             return definition;
         }
 
-        // Katarina's standard hair rig (used by most skins): ponytail with side locks, a bang and a back lock.
         private static DynamicChainDefinition[] StandardHair()
         {
             return new[] { Hair("Hair_M1"), Bang("Hair_R_bang1"), Hair("Hair_R_Back1") };

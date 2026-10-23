@@ -26,10 +26,6 @@ namespace KatarinaMod.SkillStates
         private Animator animator;
         public uint activeSFXPlayID;
 
-        private readonly BullseyeSearch search = new BullseyeSearch();
-        private HurtBox trackingTarget;
-        private Rigidbody rb;
-
         public override void FixedUpdate()
         {
             base.FixedUpdate();
@@ -66,15 +62,14 @@ namespace KatarinaMod.SkillStates
         {
             if (NetworkServer.active)
             {
-                List<HurtBox> HurtBoxes = new List<HurtBox>();
-                HurtBoxes = new SphereSearch
+                List<HurtBox> hurtBoxes = new SphereSearch
                 {
                     radius = Modules.Config.deathLotus_radius.Value,
                     mask = LayerIndex.entityPrecise.mask,
                     origin = base.transform.position
                 }.RefreshCandidates().FilterCandidatesByHurtBoxTeam(TeamMask.GetEnemyTeams(base.teamComponent.teamIndex)).FilterCandidatesByDistinctHurtBoxEntities().GetHurtBoxes().ToList();
 
-                foreach (HurtBox hurtbox in HurtBoxes)
+                foreach (HurtBox hurtBox in hurtBoxes)
                 {
                     KnifeDamageOrb genericDamageOrb = new KnifeDamageOrb();
                     genericDamageOrb.damageValue = base.characterBody.damage * damageCoefficient;
@@ -82,7 +77,6 @@ namespace KatarinaMod.SkillStates
                     genericDamageOrb.teamIndex = TeamComponent.GetObjectTeam(base.gameObject);
                     genericDamageOrb.attacker = base.gameObject;
                     genericDamageOrb.procCoefficient = procCoefficient;
-                    HurtBox hurtBox = hurtbox;
                     if (hurtBox)
                     {
                         genericDamageOrb.origin = base.transform.position + base.transform.up * 0.8f;

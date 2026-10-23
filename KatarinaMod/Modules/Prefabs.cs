@@ -130,7 +130,6 @@ namespace KatarinaMod.Modules
             CharacterDeathBehavior characterDeathBehavior = newPrefab.GetComponent<CharacterDeathBehavior>();
             characterDeathBehavior.deathState = new SerializableEntityStateType(typeof(SkillStates.BaseStates.Death));
 
-
             #endregion CharacterBody
 
             if (modelBaseTransform != null) SetupCharacterDirection(newPrefab, modelBaseTransform, model.transform);

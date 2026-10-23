@@ -22,7 +22,6 @@ namespace KatarinaMod.Modules.LeagueSkins
         internal DynamicChainDefinition[] dynamicChains = new DynamicChainDefinition[0];
     }
 
-    // A skin joint whose whole subtree is simulated by DynamicBone (hair, sashes, skirt panels).
     internal class DynamicChainDefinition
     {
         internal string root;
@@ -30,15 +29,11 @@ namespace KatarinaMod.Modules.LeagueSkins
         internal float elasticity;
         internal float stiffness;
         internal float inert;
-        // Particle radius in League units.
         internal float radius;
-        // DynamicBone gravity in model units per update step.
         internal Vector3 gravity;
-        // Bones (Unity rig names) whose body colliders this chain collides with.
         internal string[] colliders;
     }
 
-    // A sphere collider on one of the rig's bones, given in League units at the base bind pose.
     internal class BodyColliderDefinition
     {
         internal string bone;
@@ -67,14 +62,9 @@ namespace KatarinaMod.Modules.LeagueSkins
         internal const bool ReverseWinding = true;
         internal const float MaxRotationRebind = 30f;
 
-        // Shadow skeleton: each skin keeps its own League skeleton as hidden bones that copy the
-        // animated rig's rotations every frame (see LeagueShadowSkeleton). When false, the mesh is
-        // rebound onto the champion's bones instead (older behaviour).
         internal const bool UseShadowSkeleton = true;
-        // Swing the skin's limbs to match the champion's bind pose so existing animations line up.
         internal const bool AlignBindPose = true;
         internal static readonly string[] CorrectionIgnoredBoneKeywords = { "Weapon", "Buffbone" };
-        // Simulate the catalog's dynamic chains (hair, cloth) with DynamicBone (shadow skeleton only).
         internal const bool EnableDynamicBones = true;
 
         private static LeagueSkeleton baseSkeleton;

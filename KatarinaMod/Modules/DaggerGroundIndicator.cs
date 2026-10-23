@@ -3,12 +3,10 @@ using UnityEngine;
 
 namespace KatarinaMod.Modules
 {
-    // League-style ground circle under a landed dagger, showing the area Katarina can pick it up from.
-    // Built at runtime (ring + soft fill) and shaped to the ground beneath it.
     internal class DaggerGroundIndicator : MonoBehaviour
     {
         private const int segments = 96;
-        private const float groundOffset = 0.1f;    // lift off the ground to avoid z-fighting
+        private const float groundOffset = 0.1f;
         private const float ringWidth = 0.15f;
         private const float pulseSpeed = 4f;
         private static readonly Color ringColor = new Color(0.95f, 0.12f, 0.18f, 0.9f);
@@ -19,6 +17,7 @@ namespace KatarinaMod.Modules
         private LineRenderer ring;
         private Mesh fillMesh;
         private Color[] fillColors;
+        private Color[] fadedColors;
         private float age;
 
         internal static GameObject Create(Vector3 daggerPosition, float radius)
@@ -26,7 +25,6 @@ namespace KatarinaMod.Modules
             if (!sharedMaterial) sharedMaterial = CreateMaterial();
             if (!sharedMaterial) return null;
 
-            // centre the circle on the ground below the dagger (it may be stuck in a wall)
             Vector3 center = daggerPosition;
             Vector3 normal = Vector3.up;
             if (Physics.Raycast(daggerPosition + Vector3.up * 0.5f, Vector3.down, out RaycastHit hit, 15f, LayerIndex.world.mask, QueryTriggerInteraction.Ignore))
@@ -41,8 +39,6 @@ namespace KatarinaMod.Modules
             return obj;
         }
 
-        // Unity's default sprite material: alpha blended, uses vertex colours, depth tested against the world.
-        // Shader.Find can't be used: RoR2BepInExPack routes it to RoR2's shader lookup, which only knows game shaders.
         private static Material CreateMaterial()
         {
             Shader shader = null;
@@ -84,7 +80,6 @@ namespace KatarinaMod.Modules
             }
             Vector3 centerPoint = center + normal * groundOffset;
 
-            // outer ring
             this.ring = base.gameObject.AddComponent<LineRenderer>();
             this.ring.sharedMaterial = sharedMaterial;
             this.ring.useWorldSpace = true;
@@ -97,15 +92,15 @@ namespace KatarinaMod.Modules
             this.ring.receiveShadows = false;
             this.ring.startColor = this.ring.endColor = ringColor;
 
-            // soft fill: a fan from the centre to the ring, in local space of this object
             GameObject fill = new GameObject("Fill");
             fill.transform.SetParent(base.transform, false);
             fill.transform.position = Vector3.zero;
             Vector3[] verts = new Vector3[segments + 1];
             int[] tris = new int[segments * 3];
             this.fillColors = new Color[segments + 1];
+            this.fadedColors = new Color[segments + 1];
             verts[0] = centerPoint;
-            this.fillColors[0] = fillColor * new Color(1f, 1f, 1f, 0.5f); // lighter in the middle
+            this.fillColors[0] = fillColor * new Color(1f, 1f, 1f, 0.5f);
             for (int i = 0; i < segments; i++)
             {
                 verts[i + 1] = edge[i];
@@ -123,7 +118,6 @@ namespace KatarinaMod.Modules
             meshRenderer.receiveShadows = false;
         }
 
-        // drop each edge point onto the terrain so the circle hugs slopes and bumps
         private static Vector3 ProjectToGround(Vector3 point, Vector3 normal)
         {
             if (Physics.Raycast(point + normal * 2f, -normal, out RaycastHit hit, 4f, LayerIndex.world.mask, QueryTriggerInteraction.Ignore))
@@ -135,7 +129,6 @@ namespace KatarinaMod.Modules
 
         private void Update()
         {
-            // gentle pulse, with a quick fade-in when the dagger lands
             this.age += Time.deltaTime;
             float fadeIn = Mathf.Clamp01(this.age / 0.15f);
             float pulse = 0.75f + 0.25f * Mathf.Sin(this.age * pulseSpeed);
@@ -146,13 +139,12 @@ namespace KatarinaMod.Modules
 
             if (this.fillMesh != null)
             {
-                Color[] colors = new Color[this.fillColors.Length];
-                for (int i = 0; i < colors.Length; i++)
+                for (int i = 0; i < this.fadedColors.Length; i++)
                 {
-                    colors[i] = this.fillColors[i];
-                    colors[i].a *= fadeIn * pulse;
+                    this.fadedColors[i] = this.fillColors[i];
+                    this.fadedColors[i].a *= fadeIn * pulse;
                 }
-                this.fillMesh.colors = colors;
+                this.fillMesh.colors = this.fadedColors;
             }
         }
 

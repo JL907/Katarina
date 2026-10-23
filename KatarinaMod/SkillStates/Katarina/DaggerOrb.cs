@@ -13,151 +13,148 @@ using R2API.Networking.Interfaces;
 
 namespace KatarinaMod
 {
-	public class DaggerOrb : Orb
-	{
-		public float speed = 100f;
-		public float damageValue;
-		public GameObject attacker;
-		public GameObject inflictor;
-		public int bouncesRemaining;
-		public List<HealthComponent> bouncedObjects;
-		public TeamIndex teamIndex;
-		public bool isCrit;
-		public ProcChainMask procChainMask;
-		public float procCoefficient = 1f;
-		public DamageColorIndex damageColorIndex;
-		public float range = 20f;
-		public float damageCoefficientPerBounce = 1f;
-		public int targetsToFindPerBounce = 1;
-		public DamageType damageType;
-		private bool canBounceOnSameTarget;
-		private bool failedToKill;
-		// set on the first orb of a throw; it drops the dagger where it lands
-		public bool tossDaggerOnArrival;
-		private BullseyeSearch search;
-		private GameObject weaponInstance;
-		private EntityStateMachine outer = null;
+    public class DaggerOrb : Orb
+    {
+        public float speed = 100f;
+        public float damageValue;
+        public GameObject attacker;
+        public GameObject inflictor;
+        public int bouncesRemaining;
+        public List<HealthComponent> bouncedObjects;
+        public TeamIndex teamIndex;
+        public bool isCrit;
+        public ProcChainMask procChainMask;
+        public float procCoefficient = 1f;
+        public DamageColorIndex damageColorIndex;
+        public float range = 20f;
+        public float damageCoefficientPerBounce = 1f;
+        public int targetsToFindPerBounce = 1;
+        public DamageType damageType;
+        private bool canBounceOnSameTarget;
+        private bool failedToKill;
+        public bool tossDaggerOnArrival;
+        private BullseyeSearch search;
 
-		public override void Begin()
-		{
-			base.duration = base.distanceToTarget / this.speed;
-			this.canBounceOnSameTarget = false;
-			EffectData effectData = new EffectData
-			{
-				origin = this.origin,
-				genericFloat = base.duration
-			};
-			effectData.SetHurtBoxReference(this.target);
-			EffectManager.SpawnEffect(LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/OrbEffects/HuntressGlaiveOrbEffect"), effectData, true);
-		}
+        public override void Begin()
+        {
+            base.duration = base.distanceToTarget / this.speed;
+            this.canBounceOnSameTarget = false;
+            EffectData effectData = new EffectData
+            {
+                origin = this.origin,
+                genericFloat = base.duration
+            };
+            effectData.SetHurtBoxReference(this.target);
+            EffectManager.SpawnEffect(LegacyResourcesAPI.Load<GameObject>("Prefabs/Effects/OrbEffects/HuntressGlaiveOrbEffect"), effectData, true);
+        }
 
-		public override void OnArrival()
-		{
-			if (this.target)
-			{
-				HealthComponent healthComponent = this.target.healthComponent;
-				if (healthComponent)
-				{
-					DamageInfo damageInfo = new DamageInfo();
-					damageInfo.damage = this.damageValue;
-					damageInfo.attacker = this.attacker;
-					damageInfo.inflictor = this.inflictor;
-					damageInfo.force = Vector3.zero;
-					damageInfo.crit = this.isCrit;
-					damageInfo.procChainMask = this.procChainMask;
-					damageInfo.procCoefficient = this.procCoefficient;
-					damageInfo.position = this.target.transform.position;
-					damageInfo.damageColorIndex = this.damageColorIndex;
-					damageInfo.damageType = this.damageType;
-					healthComponent.TakeDamage(damageInfo);
-					GlobalEventManager.instance.OnHitEnemy(damageInfo, healthComponent.gameObject);
-					GlobalEventManager.instance.OnHitAll(damageInfo, healthComponent.gameObject);
-					if (this.tossDaggerOnArrival)
-					{
-						this.tossDaggerOnArrival = false;
-						this.TossDagger(this.target.transform.position);
-					}
-				}
-				this.failedToKill |= (!healthComponent || healthComponent.alive);
-				if (this.bouncesRemaining > 0)
-				{
-					for (int i = 0; i < this.targetsToFindPerBounce; i++)
-					{
-						if (this.bouncedObjects != null)
-						{
-							if (this.canBounceOnSameTarget)
-							{
-								this.bouncedObjects.Clear();
-							}
-							this.bouncedObjects.Add(this.target.healthComponent);
-						}
-						HurtBox hurtBox = this.PickNextTarget(this.target.transform.position);
-						if (hurtBox)
-						{
-							DaggerOrb lightningOrb = new DaggerOrb();
-							lightningOrb.search = this.search;
-							lightningOrb.origin = this.target.transform.position;
-							lightningOrb.target = hurtBox;
-							lightningOrb.attacker = this.attacker;
-							lightningOrb.inflictor = this.inflictor;
-							lightningOrb.teamIndex = this.teamIndex;
-							lightningOrb.damageValue = this.damageValue * this.damageCoefficientPerBounce;
-							lightningOrb.bouncesRemaining = this.bouncesRemaining - 1;
-							lightningOrb.isCrit = this.isCrit;
-							lightningOrb.bouncedObjects = this.bouncedObjects;
-							lightningOrb.procChainMask = this.procChainMask;
-							lightningOrb.procCoefficient = this.procCoefficient;
-							lightningOrb.damageColorIndex = this.damageColorIndex;
-							lightningOrb.damageCoefficientPerBounce = this.damageCoefficientPerBounce;
-							lightningOrb.speed = this.speed;
-							lightningOrb.range = this.range;
-							lightningOrb.damageType = this.damageType;
-							lightningOrb.failedToKill = this.failedToKill;
-							OrbManager.instance.AddOrb(lightningOrb);
-						}
-					}
-					return;
-				}
-			}
-		}
-		private void TossDagger(Vector3 location)
-		{
-			if (!NetworkServer.active || !this.attacker) return;
-			ProjectileManager.instance.FireProjectile(new FireProjectileInfo
-			{
-				projectilePrefab = Modules.Projectiles.knifePrefab,
-				position = location + Vector3.up * 2f,
-				rotation = Quaternion.identity,
-				owner = this.attacker, // only this Katarina can pick it up
-				damage = 0,
-				force = 0,
-				crit = false,
-				speedOverride = 0f
-			});
-		}
+        public override void OnArrival()
+        {
+            if (this.target)
+            {
+                HealthComponent healthComponent = this.target.healthComponent;
+                if (healthComponent)
+                {
+                    DamageInfo damageInfo = new DamageInfo();
+                    damageInfo.damage = this.damageValue;
+                    damageInfo.attacker = this.attacker;
+                    damageInfo.inflictor = this.inflictor;
+                    damageInfo.force = Vector3.zero;
+                    damageInfo.crit = this.isCrit;
+                    damageInfo.procChainMask = this.procChainMask;
+                    damageInfo.procCoefficient = this.procCoefficient;
+                    damageInfo.position = this.target.transform.position;
+                    damageInfo.damageColorIndex = this.damageColorIndex;
+                    damageInfo.damageType = this.damageType;
+                    healthComponent.TakeDamage(damageInfo);
+                    GlobalEventManager.instance.OnHitEnemy(damageInfo, healthComponent.gameObject);
+                    GlobalEventManager.instance.OnHitAll(damageInfo, healthComponent.gameObject);
+                    if (this.tossDaggerOnArrival)
+                    {
+                        this.tossDaggerOnArrival = false;
+                        this.TossDagger(this.target.transform.position);
+                    }
+                }
+                this.failedToKill |= (!healthComponent || healthComponent.alive);
+                if (this.bouncesRemaining > 0)
+                {
+                    for (int i = 0; i < this.targetsToFindPerBounce; i++)
+                    {
+                        if (this.bouncedObjects != null)
+                        {
+                            if (this.canBounceOnSameTarget)
+                            {
+                                this.bouncedObjects.Clear();
+                            }
+                            this.bouncedObjects.Add(this.target.healthComponent);
+                        }
+                        HurtBox hurtBox = this.PickNextTarget(this.target.transform.position);
+                        if (hurtBox)
+                        {
+                            DaggerOrb lightningOrb = new DaggerOrb();
+                            lightningOrb.search = this.search;
+                            lightningOrb.origin = this.target.transform.position;
+                            lightningOrb.target = hurtBox;
+                            lightningOrb.attacker = this.attacker;
+                            lightningOrb.inflictor = this.inflictor;
+                            lightningOrb.teamIndex = this.teamIndex;
+                            lightningOrb.damageValue = this.damageValue * this.damageCoefficientPerBounce;
+                            lightningOrb.bouncesRemaining = this.bouncesRemaining - 1;
+                            lightningOrb.isCrit = this.isCrit;
+                            lightningOrb.bouncedObjects = this.bouncedObjects;
+                            lightningOrb.procChainMask = this.procChainMask;
+                            lightningOrb.procCoefficient = this.procCoefficient;
+                            lightningOrb.damageColorIndex = this.damageColorIndex;
+                            lightningOrb.damageCoefficientPerBounce = this.damageCoefficientPerBounce;
+                            lightningOrb.speed = this.speed;
+                            lightningOrb.range = this.range;
+                            lightningOrb.damageType = this.damageType;
+                            lightningOrb.failedToKill = this.failedToKill;
+                            OrbManager.instance.AddOrb(lightningOrb);
+                        }
+                    }
+                    return;
+                }
+            }
+        }
+        private void TossDagger(Vector3 location)
+        {
+            if (!NetworkServer.active || !this.attacker) return;
+            ProjectileManager.instance.FireProjectile(new FireProjectileInfo
+            {
+                projectilePrefab = Modules.Projectiles.knifePrefab,
+                position = location + Vector3.up * 2f,
+                rotation = Quaternion.identity,
+                owner = this.attacker,
+                damage = 0,
+                force = 0,
+                crit = false,
+                speedOverride = 0f
+            });
+        }
 
-		public HurtBox PickNextTarget(Vector3 position)
-		{
-			if (this.search == null)
-			{
-				this.search = new BullseyeSearch();
-			}
-			this.search.searchOrigin = position;
-			this.search.searchDirection = Vector3.zero;
-			this.search.teamMaskFilter = TeamMask.allButNeutral;
-			this.search.teamMaskFilter.RemoveTeam(this.teamIndex);
-			this.search.filterByLoS = false;
-			this.search.sortMode = BullseyeSearch.SortMode.Distance;
-			this.search.maxDistanceFilter = this.range;
-			this.search.RefreshCandidates();
-			HurtBox hurtBox = (from v in this.search.GetResults()
-							   where !this.bouncedObjects.Contains(v.healthComponent)
-							   select v).FirstOrDefault<HurtBox>();
-			if (hurtBox)
-			{
-				this.bouncedObjects.Add(hurtBox.healthComponent);
-			}
-			return hurtBox;
-		}
+        public HurtBox PickNextTarget(Vector3 position)
+        {
+            if (this.search == null)
+            {
+                this.search = new BullseyeSearch();
+            }
+            this.search.searchOrigin = position;
+            this.search.searchDirection = Vector3.zero;
+            this.search.teamMaskFilter = TeamMask.allButNeutral;
+            this.search.teamMaskFilter.RemoveTeam(this.teamIndex);
+            this.search.filterByLoS = false;
+            this.search.sortMode = BullseyeSearch.SortMode.Distance;
+            this.search.maxDistanceFilter = this.range;
+            this.search.RefreshCandidates();
+            HurtBox hurtBox = (from v in this.search.GetResults()
+                               where !this.bouncedObjects.Contains(v.healthComponent)
+                               select v).FirstOrDefault<HurtBox>();
+            if (hurtBox)
+            {
+                this.bouncedObjects.Add(hurtBox.healthComponent);
+            }
+            return hurtBox;
+        }
     }
 }

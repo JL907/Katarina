@@ -9,21 +9,14 @@ using UnityEngine.Rendering;
 
 namespace KatarinaMod.Modules.LeagueSkins
 {
-    // Gives every skin a thrown dagger (projectile ghost) that matches the dagger in her hands.
-    // Each skin's right-hand dagger was cut out of its League mesh and pre-baked into
-    // LeagueSkins/Daggers/katarina_dagger_NN.skn, already lined up with the bundle's "katarina weapon.fbx"
-    // (positions in the FBX's centimetres), so the new ghost flies and lands exactly like the original.
     internal static class LeagueDaggers
     {
         private const string Folder = "Daggers";
 
-        // FBX space -> imported Unity mesh space: Unity flips X for FBX files and the file unit is centimetres.
         private static readonly Vector3 FbxToMesh = new Vector3(-0.01f, 0.01f, 0.01f);
 
-        // Ghost child that holds the dagger mesh in the KatarinaWeapon prefab.
         private const string ModelChild = "Model";
 
-        // Skins whose body comes from the asset bundle: League dagger number + that skin's bundle material.
         private static readonly Dictionary<string, KeyValuePair<int, string>> BundleSkins = new Dictionary<string, KeyValuePair<int, string>>
         {
             { "MERCENARY_KATARINA_NAME", new KeyValuePair<int, string>(1, "mercenaryMat") },
@@ -60,7 +53,6 @@ namespace KatarinaMod.Modules.LeagueSkins
                     if (BundleSkins.TryGetValue(skin.nameToken, out KeyValuePair<int, string> bundle))
                     {
                         Material source = Assets.CreateMaterial(bundle.Value);
-                        // bundle textures are imported PNGs, so League UVs need V flipped
                         ghost = CreateGhost(baseGhost, bundle.Key, part => source ? new Material(source) : null, true);
                     }
                     else
@@ -115,7 +107,6 @@ namespace KatarinaMod.Modules.LeagueSkins
                     uvs.Add(flipV ? new Vector2(uv.x, 1f - uv.y) : uv);
                 }
 
-                // the X flip mirrors the mesh, so reverse the winding to keep faces pointing out
                 int[] triangles = new int[part.indexCount];
                 for (int i = 0; i + 2 < part.indexCount; i += 3)
                 {

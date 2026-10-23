@@ -37,9 +37,9 @@ namespace KatarinaMod.SkillStates
             Util.PlaySound(this.beginSoundString, base.gameObject);
             this.huntressTracker = base.GetComponent<HuntressTracker>();
             if (this.huntressTracker && base.isAuthority)
-			{
-				this.initialTarget = this.huntressTracker.GetTrackingTarget();
-			}
+            {
+                this.initialTarget = this.huntressTracker.GetTrackingTarget();
+            }
             this.modelTransform = base.GetModelTransform();
             if (this.modelTransform)
             {
@@ -138,7 +138,7 @@ namespace KatarinaMod.SkillStates
             GlobalEventManager.instance.OnHitEnemy(damageInfo, hurtbox.healthComponent.gameObject);
             GlobalEventManager.instance.OnHitAll(damageInfo, hurtbox.healthComponent.gameObject);
             Util.PlaySound("KatarinaImpactSFX", base.gameObject);
-            damaged = true; 
+            damaged = true;
         }
 
         public override void FixedUpdate()
