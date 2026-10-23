@@ -29,7 +29,6 @@ namespace KatarinaMod.Modules
         private float stillTime;
         private Vector3 lastPosition;
 
-        // In-flight spin and afterimages (client side, only while the owner sees it flying).
         private const float FlightSpinSpeed = 1980f;
         private Transform model;
         private Vector3 modelLocalPosition;
@@ -74,9 +73,6 @@ namespace KatarinaMod.Modules
             if (this.afterimages) this.afterimages.emitting = false;
         }
 
-        // Maps mesh space so the blade's length is +Y and the flat face's normal (its thinnest axis) is +Z.
-        // Spinning around that face normal keeps the blade turning in its own plane: sharp edge leading,
-        // never the broad side.
         internal static Quaternion BladeFrame(Bounds bounds)
         {
             Vector3 e = bounds.extents;
@@ -92,8 +88,6 @@ namespace KatarinaMod.Modules
             return Quaternion.Inverse(Quaternion.LookRotation(axes[thinnest], axes[longest]));
         }
 
-        // Tumbles the dagger end over end around the horizontal axis across its travel direction,
-        // flat face toward that axis, pivoting on the middle of the mesh so it doesn't wobble.
         private void SpinModel()
         {
             Vector3 position = base.transform.position;

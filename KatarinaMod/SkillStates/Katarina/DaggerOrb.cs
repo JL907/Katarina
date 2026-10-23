@@ -9,11 +9,6 @@ using KatarinaMod.Modules.LeagueVfx;
 
 namespace KatarinaMod
 {
-    // Bouncing Blade, League style:
-    // - the dagger hits the target, then bounces to the nearest enemy it hasn't hit yet that it can see,
-    //   up to bouncesRemaining more times (2 in League), each bounce dealing the same damage;
-    // - after the last bounce the real dagger is thrown onto the ground behind that last target,
-    //   on the far side from where Katarina is standing at that moment, landing about 1 second later.
     public class DaggerOrb : Orb
     {
         public float speed = 100f;
@@ -31,7 +26,6 @@ namespace KatarinaMod
         public float damageCoefficientPerBounce = 1f;
         public DamageType damageType;
         public bool tossDaggerOnArrival;
-        public Vector3 throwOrigin;
         public float landingDistance = 15f;
 
         private const float MinFlightTime = 0.1f;
@@ -74,8 +68,6 @@ namespace KatarinaMod
             HurtBox next = this.bouncesRemaining > 0 ? this.PickNextTarget(hitPosition) : null;
             if (!next)
             {
-                // Last hit of the chain: drop the real dagger behind this target
-                // (even if it died before the dagger arrived, like League).
                 if (this.tossDaggerOnArrival)
                 {
                     this.tossDaggerOnArrival = false;
@@ -103,7 +95,6 @@ namespace KatarinaMod
             bounce.range = this.range;
             bounce.damageType = this.damageType;
             bounce.landingDistance = this.landingDistance;
-            bounce.throwOrigin = this.throwOrigin;
             bounce.tossDaggerOnArrival = this.tossDaggerOnArrival;
             OrbManager.instance.AddOrb(bounce);
         }
@@ -143,13 +134,11 @@ namespace KatarinaMod
             }
         }
 
-        // The spot on the ground `distance` metres behind the target, on the far side from Katarina's current position.
-        // If a wall is in the way the dagger lands just in front of it (League uses the closest valid spot).
-        private static Vector3? FindLandingPoint(Vector3 hitPosition, Vector3 throwOrigin, float distance)
+        private static Vector3? FindLandingPoint(Vector3 hitPosition, Vector3 katarinaPosition, float distance)
         {
             int world = LayerIndex.world.mask;
 
-            Vector3 direction = hitPosition - throwOrigin;
+            Vector3 direction = hitPosition - katarinaPosition;
             direction.y = 0f;
             if (direction.sqrMagnitude < 0.0001f) direction = Vector3.forward;
             direction.Normalize();
@@ -173,7 +162,6 @@ namespace KatarinaMod
             return null;
         }
 
-        // Nearest living enemy in range that hasn't been hit yet and is in line of sight.
         public HurtBox PickNextTarget(Vector3 position)
         {
             if (this.search == null) this.search = new BullseyeSearch();

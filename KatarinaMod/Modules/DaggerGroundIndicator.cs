@@ -3,9 +3,6 @@ using UnityEngine;
 
 namespace KatarinaMod.Modules
 {
-    // Red circle on the ground around a landed dagger (and the landing preview while it falls).
-    // The circle is sampled as a polar grid; every point is dropped straight down onto the terrain and
-    // checked against its neighbours, so slopes, bumps and ledges don't produce spikes or floating edges.
     internal class DaggerGroundIndicator : MonoBehaviour
     {
         private const int segments = 96;
@@ -16,10 +13,9 @@ namespace KatarinaMod.Modules
         private static readonly Color ringColor = new Color(0.95f, 0.12f, 0.18f, 0.9f);
         private static readonly Color fillColor = new Color(0.95f, 0.12f, 0.18f, 0.12f);
 
-        // Terrain sampling.
-        private const float probeAbove = 4f;      // start each ray this far above the expected height
-        private const float probeDepth = 10f;     // and look this far down
-        private const float maxSlope = 1.6f;      // max height change per metre before a sample counts as a ledge
+        private const float probeAbove = 4f;
+        private const float probeDepth = 10f;
+        private const float maxSlope = 1.6f;
         private const int smoothingPasses = 2;
 
         private static Material sharedMaterial;
@@ -32,9 +28,8 @@ namespace KatarinaMod.Modules
 
         private Vector3 center;
         private float radius;
-        private float[] heights; // index 0 = centre, then ring r (1..fillRings) * segments + i
+        private float[] heights;
 
-        // Landing preview: an inner ring that grows from the centre to the edge as the dagger falls.
         private static readonly Color progressColor = new Color(1f, 0.35f, 0.4f, 0.95f);
         private LineRenderer progress;
         private float previewDuration;
@@ -114,8 +109,6 @@ namespace KatarinaMod.Modules
             return new Vector3(this.center.x + o.x, this.heights[Index(ring, segment)] + groundOffset, this.center.z + o.y);
         }
 
-        // Drops a ray straight down near `expectedY` and returns the ground height closest to it,
-        // so overhangs above and lower floors below are ignored.
         private static bool SampleHeight(float x, float z, float expectedY, out float y)
         {
             y = expectedY;
@@ -147,7 +140,6 @@ namespace KatarinaMod.Modules
             float step = this.radius / fillRings;
             float maxStep = maxSlope * step;
 
-            // Work outward ring by ring; each sample is expected near the sample just inside it.
             for (int r = 1; r <= fillRings; r++)
             {
                 for (int i = 0; i < segments; i++)
@@ -162,14 +154,11 @@ namespace KatarinaMod.Modules
                     }
                     else
                     {
-                        // Ledge, wall or nothing below: carry the inner height so the circle stays flat there
-                        // instead of spiking; fixed up from neighbours below.
                         this.heights[k] = inner;
                         valid[k] = false;
                     }
                 }
 
-                // Fill invalid samples on this ring from the nearest valid neighbours around the ring.
                 for (int i = 0; i < segments; i++)
                 {
                     int k = Index(r, i);
@@ -195,7 +184,6 @@ namespace KatarinaMod.Modules
                 }
             }
 
-            // Light smoothing around each ring removes stair-steps from small rocks and mesh seams.
             float[] temp = new float[segments];
             for (int pass = 0; pass < smoothingPasses; pass++)
             {
@@ -290,7 +278,6 @@ namespace KatarinaMod.Modules
             meshRenderer.receiveShadows = false;
         }
 
-        // Height of the sampled terrain at a fractional ring position (0 = centre, fillRings = edge).
         private float HeightAt(float ringPosition, int segment)
         {
             ringPosition = Mathf.Clamp(ringPosition, 0f, fillRings);

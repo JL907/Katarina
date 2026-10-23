@@ -1,13 +1,5 @@
-﻿using EntityStates;
-using KatarinaMod.Modules;
-using KatarinaMod.SkillStates;
-using KatarinaMod.SkillStates.Katarina;
-using RoR2;
+﻿using RoR2;
 using RoR2.Projectile;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -27,8 +19,6 @@ namespace KatarinaMod
         private Vector3 transformPositionWhenContacted;
         public AnimationCurve embedDistanceCurve;
 
-        // Set by DaggerOrb (server) right before firing the Bouncing Blade dagger: the ground point it should land on.
-        // When set, the dagger flies there in a scripted arc and lands after LeagueLandTime (League: 1.023 s).
         internal static Vector3? pendingLanding;
         internal const float LeagueLandTime = 1.5f;
         internal const float PickupRadius = 3f;
@@ -65,7 +55,6 @@ namespace KatarinaMod
             }
         }
 
-        // How high the dagger's pivot sits above the ground when it rests upright (same as the physics landing).
         private float RestHeight()
         {
             CapsuleCollider capsule = base.GetComponent<CapsuleCollider>();
@@ -78,10 +67,8 @@ namespace KatarinaMod
             float t = Mathf.Clamp01(this.stopwatch / LeagueLandTime);
             Vector3 position = Vector3.Lerp(this.flightStart, this.flightEnd, t) + Vector3.up * (4f * LandingArcHeight * t * (1f - t));
 
-            // Like Shunpo's dagger, it can be caught in the air once it has been flying for a moment.
             if (this.stopwatch >= MidAirPickupDelay) this.sphereCollider.enabled = true;
 
-            // Rotation stays upright here; DaggerGhostVisibility spins the visible model on each client.
             this.rigidbody.MovePosition(position);
             this.rigidbody.MoveRotation(Quaternion.identity);
 

@@ -1,10 +1,7 @@
 ﻿using EntityStates;
 using RoR2;
 using RoR2.Orbs;
-using RoR2.Projectile;
-using System;
 using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -117,7 +114,6 @@ namespace KatarinaMod.SkillStates.Katarina.Weapon
             lightningOrb.range = ThrowDagger.daggerBounceRange;
             lightningOrb.damageCoefficientPerBounce = ThrowDagger.damageCoefficientPerBounce;
             lightningOrb.tossDaggerOnArrival = true;
-            lightningOrb.throwOrigin = base.characterBody.corePosition;
             lightningOrb.landingDistance = ThrowDagger.landingDistance;
             Transform hand = this.childLocator ? this.childLocator.FindChild("R_Hand") : null;
             lightningOrb.origin = hand ? hand.position : base.characterBody.corePosition;

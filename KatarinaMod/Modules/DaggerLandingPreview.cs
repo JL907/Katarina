@@ -8,14 +8,10 @@ using UnityEngine.Networking;
 
 namespace KatarinaMod.Modules
 {
-    // Bouncing Blades: shows the owner where the dagger is going to land while it is still in the air.
-    // Spawned by the server as a networked effect at the landing point; only Katarina's own player sees it,
-    // matching the landed dagger and its ground circle.
     internal class DaggerLandingPreview : MonoBehaviour
     {
         internal static GameObject prefab;
 
-        // Keep the preview a moment past the landing so it overlaps with the landed-dagger circle (no flicker).
         private const float Overlap = 0.25f;
 
         private static readonly List<DaggerLandingPreview> active = new List<DaggerLandingPreview>();
@@ -52,7 +48,6 @@ namespace KatarinaMod.Modules
             Assets.AddNewEffectDef(prefab);
         }
 
-        // Server side.
         internal static void Spawn(Vector3 landingPoint, float radius, float flightTime, GameObject owner)
         {
             if (!prefab || !owner) return;
@@ -94,7 +89,6 @@ namespace KatarinaMod.Modules
             active.Remove(this);
         }
 
-        // Server side: the dagger was picked up before it landed, so remove its preview for the owner.
         internal static void CancelForOwner(GameObject owner, Vector3 landingPoint)
         {
             if (!NetworkServer.active || !owner) return;

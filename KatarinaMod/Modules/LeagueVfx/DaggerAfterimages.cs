@@ -3,9 +3,6 @@ using UnityEngine;
 
 namespace KatarinaMod.Modules.LeagueVfx
 {
-    // Motion-blur style afterimages: every frame while `emitting`, snapshots the meshes under `source`
-    // and redraws those snapshots as glowing red silhouettes that fade out quickly.
-    // Drawn with Graphics.DrawMesh, so no extra GameObjects are created.
     internal class DaggerAfterimages : MonoBehaviour
     {
         private static readonly Color Tint = new Color(1f, 0.12f, 0.22f, 1f);
@@ -106,7 +103,6 @@ namespace KatarinaMod.Modules.LeagueVfx
                     snapshot.used = false;
                     continue;
                 }
-                // Skip the snapshot taken this frame: it would sit exactly on top of the real dagger.
                 if (age <= 0f) continue;
 
                 float fade = 1f - age / Lifetime;

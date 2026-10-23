@@ -6,8 +6,6 @@ using UnityEngine;
 
 namespace KatarinaMod.Modules.LeagueVfx
 {
-    // Bouncing Blade in flight: Katarina's own dagger model (for her current skin) flying
-    // to the target in a short arc and tumbling end over end. Replaces HuntressGlaiveOrbEffect.
     internal class DaggerOrbEffect : MonoBehaviour
     {
         internal static GameObject prefab;
@@ -70,7 +68,6 @@ namespace KatarinaMod.Modules.LeagueVfx
             Assets.AddNewEffectDef(prefab);
         }
 
-        // Server side. attacker is used to pick the dagger mesh of Katarina's current skin.
         internal static void Spawn(Vector3 origin, HurtBox target, float duration, GameObject attacker)
         {
             if (!prefab || !target) return;
@@ -161,8 +158,6 @@ namespace KatarinaMod.Modules.LeagueVfx
             Vector3 side = Vector3.Cross(Vector3.up, direction);
             side = side.sqrMagnitude > 0.0001f ? side.normalized : Vector3.right;
 
-            // Blade length along the travel direction, flat face toward the spin axis, so it always
-            // turns in its own plane (sharp edge leading) instead of flipping on its broad side.
             Transform t = this.visual.transform;
             Quaternion meshToFrame = Quaternion.Inverse(Quaternion.LookRotation(this.template.faceNormal, this.template.bladeAxis));
             Quaternion aligned = Quaternion.LookRotation(side, direction) * meshToFrame;
@@ -256,8 +251,6 @@ namespace KatarinaMod.Modules.LeagueVfx
             return fallback;
         }
 
-        // A copy of the projectile ghost with only transforms, meshes, renderers and particles left,
-        // kept under an inactive holder so nothing on it runs.
         private static Template GetTemplate(GameObject ghost)
         {
             if (templates.TryGetValue(ghost, out Template cached) && cached != null && cached.root) return cached;
@@ -309,8 +302,6 @@ namespace KatarinaMod.Modules.LeagueVfx
 
         private static void StripComponents(GameObject root)
         {
-            // Behaviours first (scripts, Animator), then colliders, then rigidbodies, then anything left,
-            // so nothing is removed while another component still requires it.
             List<Component> behaviours = new List<Component>();
             List<Component> colliders = new List<Component>();
             List<Component> bodies = new List<Component>();
